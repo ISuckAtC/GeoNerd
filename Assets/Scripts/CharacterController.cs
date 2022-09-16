@@ -89,7 +89,7 @@ public class CharacterController : MonoBehaviour
     {
         float averageFrame = averageFrameTime.Sum() / averageStackLength;
         
-        Debug.Log(averageFrame);
+        //Debug.Log(averageFrame);
         
         transform.position += transform.forward * speed * averageFrame;
         
