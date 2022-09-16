@@ -22,9 +22,11 @@ public class CharacterController : MonoBehaviour
     public List<float> averageFrameTime = new List<float>();
     public int averageStackLength;
 
+    private float turnSpeedMultiplier;
+    
     void Start()
     {
-        
+        turnSpeedMultiplier = 1 / maxSpeed;
     }
 
     void Update()
@@ -53,11 +55,11 @@ public class CharacterController : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.A))
         {
-            transform.Rotate(Vector3.up, -turnSpeed * Time.deltaTime);
+            transform.Rotate(Vector3.up, -turnSpeed * (currentSpeed * turnSpeedMultiplier) * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.D))
         {
-            transform.Rotate(Vector3.up, turnSpeed * Time.deltaTime);
+            transform.Rotate(Vector3.up, turnSpeed * (currentSpeed * turnSpeedMultiplier) * Time.deltaTime);
         }
 
         if (!Input.GetKey(KeyCode.W) && (!Input.GetKey(KeyCode.S)))

@@ -44,13 +44,13 @@ public class CameraFollow : MonoBehaviour
 
     private void Start()
     {
-        transform.LookAt(target.position);
+        //transform.LookAt(target.position);
     }
 
     void Update()
     {
         transform.position = target.position + offset;
-        transform.LookAt(target.position);
+        //transform.LookAt(target.position);
 
     }
 }
