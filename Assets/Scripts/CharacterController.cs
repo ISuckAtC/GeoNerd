@@ -86,6 +86,9 @@ public class CharacterController : MonoBehaviour
     void Move(float speed)
     {
         float averageFrame = averageFrameTime.Sum() / averageStackLength;
+        
+        Debug.Log(averageFrame);
+        
         transform.position += transform.forward * speed * averageFrame;
         
         //transform.Translate(transform.forward * Time.deltaTime * speed, Space.Self);
