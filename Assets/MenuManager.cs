@@ -44,7 +44,6 @@ public class MenuManager : MonoBehaviour
                 backList.Push(currPanel);
                 currPanel.transform.DOMoveY(bottomMargin.transform.position.y, 1);
                 menuPanel.transform.DOMoveY(centerPoint.transform.position.y, 1);
-                backList.Push(currPanel);
                 currPanel = menuPanel;
                 break;
             case "Settings":
@@ -52,9 +51,19 @@ public class MenuManager : MonoBehaviour
                 backList.Push(currPanel);
                 currPanel.transform.DOMoveY(bottomMargin.transform.position.y, 1);
                 settingsPanel.transform.DOMoveY(centerPoint.transform.position.y, 1);
-                backList.Push(currPanel);
                 currPanel = settingsPanel;
                 break;
+            case "AudioSettings":
+                if (currPanel == audioSettingsPanel) break;
+                backList.Push(currPanel);
+                currPanel.transform.DOMoveY(bottomMargin.transform.position.y, 1);
+                audioSettingsPanel.transform.DOMoveY(centerPoint.transform.position.y, 1);
+                currPanel = audioSettingsPanel;
+                break;
+
+            default:
+                Debug.Log("name of the panel not mathcing");
+                return;
         }
     }
     
