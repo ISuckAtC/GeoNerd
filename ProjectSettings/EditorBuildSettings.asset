@@ -21,6 +21,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Forest/ForestLeft.unity
     guid: 0701960ca55ab09458d56c6976b90c35
   - enabled: 1
+    path: Assets/Scenes/OsloCity.unity
+    guid: 47a7d66d6235ad646bb7f689000743ab
+  - enabled: 1
+    path: Assets/Scenes/NorwayMap.unity
+    guid: 954caa2514bc4d04e850d2a62403c82e
+  - enabled: 1
     path: Assets/Scenes/Forest/ForestUp.unity
     guid: fe37298330291784e9353ff96982d0db
   m_configObjects: {}

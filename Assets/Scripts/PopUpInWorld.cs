@@ -5,10 +5,12 @@ using UnityEngine;
 
 public class PopUpInWorld : MonoBehaviour
 {
-    Canvas popUpCanvas = null;
+    [SerializeField] GameObject popUpObject;
+    [SerializeField] GameObject exclamationMark;
     private void Start()
     {
-        popUpCanvas = GetComponentInChildren<Canvas>();
+        if(popUpObject)popUpObject.SetActive(false);
+        if (exclamationMark) exclamationMark.SetActive(true);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -16,8 +18,8 @@ public class PopUpInWorld : MonoBehaviour
         //if the player is the one who enters
         if (other.GetComponent<CharacterController>())
         {
-            Debug.Log("car entered");
-            popUpCanvas.enabled = true;
+            if (popUpObject) popUpObject.SetActive(true);
+            if (exclamationMark) exclamationMark.SetActive(false);
         }
     }
 
@@ -25,7 +27,8 @@ public class PopUpInWorld : MonoBehaviour
     {
         if (other.GetComponent<CharacterController>())
         {
-            popUpCanvas.enabled = false;
+            if (popUpObject) popUpObject.SetActive(false);
+            if (exclamationMark) exclamationMark.SetActive(true);
         }
     }
 
