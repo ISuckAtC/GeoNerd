@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     private static GameManager _instance;
     public static GameData GameData;
 
+
+    public MapManager currentMapManager;
     public static GameManager Instance
     {
         get
