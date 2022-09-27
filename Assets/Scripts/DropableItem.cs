@@ -17,11 +17,22 @@ public class DropableItem : MonoBehaviour/*, IDropHandler*/
     {
         
     }
-   
+
+
 
     public void OnDrop(BaseEventData data)
     {
-        if(objectToEnable)objectToEnable.SetActive(true);
+        Debug.Log("BaseEventDrop");
+        if (objectToEnable) objectToEnable.SetActive(true);
         Destroy(gameObject);
+
     }
+
+
+    //public void OnDrop(PointerEventData data)
+    //{
+    //    Debug.Log("PointerEventDrop");
+    //    if (objectToEnable) objectToEnable.SetActive(true);
+    //    //Destroy(data.pointerDrag.gameObject);
+    //}
 }
