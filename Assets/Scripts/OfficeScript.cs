@@ -4,23 +4,32 @@ using UnityEngine;
 
 public class OfficeScript : MonoBehaviour
 {
-    [SerializeField] private bool spotlight;
-    // Start is called before the first frame update
+    [SerializeField] private bool spotlight; //Is spotlight object active
+
+    [SerializeField] private bool folder = true; //Is case file object active
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         
     }
 
-    public void LightToggle()
+    public void LightToggle() //used in the Canvas button for the lightswitch
     {
         spotlight = !spotlight;
         gameObject.SetActive(spotlight);
         
+    }
+
+    public void FolderOff() //used in the Canvas button for the folder (very temp)
+    {
+        folder = false;
+        gameObject.SetActive(folder);
+
     }
 }
