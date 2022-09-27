@@ -6,7 +6,7 @@ using System;
 public struct LevelData
 {
     // Level data should be 12 bytes
-    public int id;
+    public int id; // unique identifier for each level
     public bool completed; // whether or not the mission has been completed by the player
     public bool visited; // whether or not the mission has been visited by the player before
     public bool unlocked; // whether or not the mission has been unlocked by the player
@@ -15,10 +15,13 @@ public struct LevelData
     public bool[] additionalFlags; // slots for custom flags, such as level specific ones
     public int score; // the highscore the player has on this level (dont know if we will use this)
 
-    //
-    // Summary:
-    //     Serializes the current object, 
-    //     returns a serialized array of bytes containing the data of this object, the size is 8 bytes   
+
+    /// <summary>
+    ///     Serializes the current object
+    /// </summary>
+    /// <returns>
+    ///     A serialized array of bytes containing the data of this object, the size is 8 byte
+    /// </returns>
     public byte[] Serialized
     {
         get
