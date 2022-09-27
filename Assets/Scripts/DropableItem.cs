@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+
 public class DropableItem : MonoBehaviour/*, IDropHandler*/
 {
     // Start is called before the first frame update
     public GameObject objectToEnable;
+    public Item.ItemType unlockableWith = Item.ItemType.NONE;
     void Start()
     {
         
@@ -23,16 +25,14 @@ public class DropableItem : MonoBehaviour/*, IDropHandler*/
     public void OnDrop(BaseEventData data)
     {
         Debug.Log("BaseEventDrop");
-        if (objectToEnable) objectToEnable.SetActive(true);
-        Destroy(gameObject);
+        PointerEventData pointerData = (PointerEventData)data;
+        if(pointerData.pointerDrag.gameObject.GetComponent<Item>().itemType == unlockableWith)
+        {
+            if (objectToEnable) objectToEnable.SetActive(true);
+            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+            Destroy(gameObject);
+        }
+        
 
     }
-
-
-    //public void OnDrop(PointerEventData data)
-    //{
-    //    Debug.Log("PointerEventDrop");
-    //    if (objectToEnable) objectToEnable.SetActive(true);
-    //    //Destroy(data.pointerDrag.gameObject);
-    //}
 }

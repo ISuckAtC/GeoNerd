@@ -14,4 +14,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/OfficeTestRune.unity
     guid: fb2696946b2440a49acee4898959f940
+  - enabled: 1
+    path: Assets/Scenes/Forest/ForestMain.unity
+    guid: bc781684b89109d4383e4862ce247d4b
+  - enabled: 1
+    path: Assets/Scenes/Forest/ForestLeft.unity
+    guid: 0701960ca55ab09458d56c6976b90c35
+  - enabled: 1
+    path: Assets/Scenes/Forest/ForestUp.unity
+    guid: cbb8e5fa04965ae4489b42c2747bd75e
+  - enabled: 1
+    path: Assets/Scenes/Forest/OgreCave.unity
+    guid: 83d8623b2bc5d0946a25919920f3d875
   m_configObjects: {}
