@@ -6,8 +6,10 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     private static GameManager _instance;
+    public static GameData GameData;
 
 
+    public MapManager currentMapManager;
     public static GameManager Instance
     {
         get
@@ -15,8 +17,12 @@ public class GameManager : MonoBehaviour
             if (_instance == null)
             {
                 GameObject go = new GameObject("GameManager");
+                DontDestroyOnLoad(go);
                 _instance = go.AddComponent<GameManager>();
+                GameData = new GameData();
+                GameData.LoadData();
 
+                
             }
             return _instance;
         }
@@ -29,6 +35,7 @@ public class GameManager : MonoBehaviour
 
         SceneManager.LoadScene(sceneName);
         
+
     }
 
 }
