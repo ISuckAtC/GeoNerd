@@ -17,8 +17,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        horizontalInput = Input.GetAxis("Horizontal");
-        verticalInput = Input.GetAxis("Vertical");
+        horizontalInput = Input.GetAxisRaw("Horizontal");
+        verticalInput = Input.GetAxisRaw("Vertical");
 
         //Vector3 dir = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         //dir.Normalize();
@@ -28,12 +28,16 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //Vector3 dir = new Vector3(horizontalInput * velocity * Time.fixedDeltaTime, 0, verticalInput * velocity * Time.fixedDeltaTime);
-        //dir.Normalize();
-        //rb.position = Vector3.Lerp(rb.position, rb.position + dir, 0.3f);
 
 
-        Vector3 targetVelocity = new Vector3(horizontalInput * velocity, 0, verticalInput * velocity);
-        rb.velocity = Vector3.Lerp(rb.velocity, targetVelocity, 0.6f);
+        Vector3 inputVector = new Vector3(horizontalInput, 0, verticalInput);
+        inputVector.Normalize();
+        Vector3 targetVelocity = new Vector3(inputVector.x * velocity , rb.velocity.y, inputVector.z * velocity);
+        rb.velocity = Vector3.Lerp(rb.velocity, targetVelocity, 0.2f);
+
+        if(horizontalInput != 0 || verticalInput != 0)
+            rb.rotation = Quaternion.RotateTowards(rb.rotation, Quaternion.LookRotation(inputVector, Vector3.up), rotationVelocity);
+
+
     }
 }
