@@ -7,6 +7,9 @@ public struct LevelData
 {
     // Level data should be 12 bytes
     public int id; // unique identifier for each level
+
+
+    // FLAGS
     public bool completed; // whether or not the mission has been completed by the player
     public bool visited; // whether or not the mission has been visited by the player before
     public bool unlocked; // whether or not the mission has been unlocked by the player
@@ -103,7 +106,7 @@ public class GameData
 
     // Finds binary file with matching username, and loads the data into this object if it finds a file. 
     // If not, creates blank save data with the given username.
-    public void LoadData(string name)
+    public void LoadData(string name = "")
     {
         if (System.IO.File.Exists("./" + name))
         {
