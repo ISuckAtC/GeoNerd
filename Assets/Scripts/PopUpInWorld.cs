@@ -7,6 +7,9 @@ public class PopUpInWorld : MonoBehaviour
 {
     [SerializeField] GameObject popUpObject;
     [SerializeField] GameObject exclamationMark;
+
+    private CharacterController cc;
+    
     private void Start()
     {
         if(popUpObject)popUpObject.SetActive(false);
@@ -16,10 +19,12 @@ public class PopUpInWorld : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //if the player is the one who enters
-        if (other.GetComponent<CharacterController>())
+        if (cc = other.GetComponent<CharacterController>())
         {
             if (popUpObject) popUpObject.SetActive(true);
             if (exclamationMark) exclamationMark.SetActive(false);
+            
+            cc.SetLandmark(this.gameObject);
         }
     }
 
@@ -29,6 +34,9 @@ public class PopUpInWorld : MonoBehaviour
         {
             if (popUpObject) popUpObject.SetActive(false);
             if (exclamationMark) exclamationMark.SetActive(true);
+            
+            cc.RemoveLandmark();
+            cc = null;
         }
     }
 

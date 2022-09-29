@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -23,10 +24,18 @@ public class CharacterController : MonoBehaviour
     public int averageStackLength;
 
     private float turnSpeedMultiplier;
+
+    [SerializeField] private GameObject CurrentLandmark;
     
     void Start()
     {
-        turnSpeedMultiplier = 1 / maxSpeed;
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "RuneTestBackup")
+        {
+            if (PlayerData.instance.SpawnPosition() != null)
+                transform.position = PlayerData.instance.SpawnPosition();
+            else
+                transform.position = new Vector3(460.8f, 13.1f, 752.1f);    // Cabin position
+        }
     }
 
     void Update()
@@ -55,10 +64,24 @@ public class CharacterController : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.A))
         {
-            transform.Rotate(Vector3.up, -turnSpeed * (currentSpeed * turnSpeedMultiplier) * Time.deltaTime);
+            if (turnSpeedMultiplier > 0f)
+                turnSpeedMultiplier -= turnAcceleration * 2f * Time.deltaTime;
+            else if (turnSpeedMultiplier >= -1f)
+                turnSpeedMultiplier -= turnAcceleration * Time.deltaTime;
+            else
+                turnSpeedMultiplier = -1f;
+            
+            transform.Rotate(Vector3.up, turnSpeed * (currentSpeed * turnSpeedMultiplier) * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.D))
         {
+            if (turnSpeedMultiplier < 0f)
+                turnSpeedMultiplier += turnAcceleration * 2f * Time.deltaTime;
+            else if (turnSpeedMultiplier <= 1f)
+                turnSpeedMultiplier += turnAcceleration * Time.deltaTime;
+            else
+                turnSpeedMultiplier = 1f;
+            
             transform.Rotate(Vector3.up, turnSpeed * (currentSpeed * turnSpeedMultiplier) * Time.deltaTime);
         }
 
@@ -77,12 +100,34 @@ public class CharacterController : MonoBehaviour
                 currentSpeed = 0f;
             }
         }
+        if (!Input.GetKey(KeyCode.A) && (!Input.GetKey(KeyCode.D)))
+        {
+            if (turnSpeedMultiplier > 0.1f)
+                turnSpeedMultiplier -= turnAcceleration * 0.5f * Time.deltaTime;
+            else if (turnSpeedMultiplier < -0.1f)
+                turnSpeedMultiplier += turnAcceleration * 0.5f * Time.deltaTime;
+            else
+                turnSpeedMultiplier = 0f;
+        }
+
+        if (Input.GetKey(KeyCode.E))
+        {
+            Interact();
+        }
         
         averageFrameTime.Add(Time.deltaTime);
         
         if (averageFrameTime.Count > averageStackLength) averageFrameTime.RemoveAt(0);
         
         Move(currentSpeed);
+    }
+
+    void Interact()
+    {
+        if (CurrentLandmark != null)
+        {
+            CurrentLandmark.GetComponent<Landmark>().Use();
+        }
     }
     
     void Move(float speed)
@@ -92,7 +137,14 @@ public class CharacterController : MonoBehaviour
         //Debug.Log(averageFrame);
         
         transform.position += transform.forward * speed * averageFrame;
-        
-        //transform.Translate(transform.forward * Time.deltaTime * speed, Space.Self);
+    }
+
+    public void SetLandmark(GameObject go)
+    {
+        CurrentLandmark = go;
+    }
+    public void RemoveLandmark()
+    {
+        CurrentLandmark = null;
     }
 }

@@ -6,7 +6,11 @@ using UnityEngine.UI;
 
 public class ClickableObject : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    [SerializeField] Texture2D cursor;
+
+    enum ItemNeeded {MagnifyingGlass, Camera, TNT }
+
+    [SerializeField] ItemNeeded itemNeeded;
+    [SerializeField] Texture2D[] cursors;
     // Start is called before the first frame update
 
 
@@ -23,13 +27,13 @@ public class ClickableObject : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log("Mouse enter");
-        Cursor.SetCursor(cursor, Vector2.zero, CursorMode.Auto);
+        //Debug.Log("Mouse enter");
+        Cursor.SetCursor(cursors[(int)itemNeeded], Vector2.zero, CursorMode.Auto);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        Debug.Log("Mouse exit");
+        //Debug.Log("Mouse exit");
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
     }
 
