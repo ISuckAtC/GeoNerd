@@ -14,7 +14,7 @@ public class ItemUIHandler : MonoBehaviour/*, IDropHandler*/
 
     private void Start()
     {
-        Invoke("GetStartingPosition", 0.01f);
+        Invoke("GetStartingPosition", 0.5f);
        
     }
 
