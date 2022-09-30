@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Linq;
+using System.IO;
 
 public struct LevelData
 {
@@ -83,8 +85,6 @@ public class GameData
 
     public bool globalFlags = true;
 
-    public Dictionary<int,int> missionProgress = new Dictionary<int, int>();
-
     public LevelData GetById(int id)
     {
         foreach (LevelData level in levelData)
@@ -97,25 +97,49 @@ public class GameData
     // Saves the current data of the player to binary file
     public void SaveData()
     {
-        byte[] serialized = new byte[16 + (levelData.Length * 12)];
+        int flagMaps = Flags.Count / 8;
+        int rest = Flags.Count % 8;
+
+        byte[] serialized = new byte[12 + flagMaps + (rest > 0 ? 1 : 0)];
 
         BitConverter.GetBytes(money).CopyTo(serialized, 0);
-        BitConverter.GetBytes(levelData.Length).CopyTo(serialized, 8);
+
+        bool[] flagValues = Flags.Values.ToArray();
+
+
+        for (int i = 0; i < flagMaps; ++i)
+        {
+            byte flagByte = 0;
+            for (int k = 0; k < 8; ++k)
+            {
+                if (flagValues[(i * 8) + k]) flagByte = (byte)(flagByte | 1 << k);
+            }
+            serialized[12 + i] = flagByte;
+        }
+        if (rest > 0)
+        {
+            byte flagByte = 0;
+            for (int k = 0; k < rest; ++k)
+            {
+                if (flagValues[(flagMaps * 8) + k]) flagByte = (byte)(flagByte | 1 << k);
+            }
+            serialized[12 + flagMaps] = flagByte;
+        }
+
+        File.WriteAllBytes("./" + playerName, serialized);
+
+        /*
+        byte[] serialized = new byte[8 + (levelData.Length * 12)];
+
+        BitConverter.GetBytes(money).CopyTo(serialized, 0);
 
         for (int i = 0; i < levelData.Length; ++i)
         {
-            levelData[i].Serialized.CopyTo(serialized, 12 + (12 * i));
-        }
-
-        BitConverter.GetBytes(MissionLogic.MissionLogics.Count).CopyTo(serialized, 12 + (12 * levelData.Length));
-
-        for (int i = 0; i < MissionLogic.MissionLogics.Count; ++i)
-        {
-            BitConverter.GetBytes(i).CopyTo(serialized, 16 + (12 * i));
-            BitConverter.GetBytes(MissionLogic.MissionLogics[i].GetProgress()).CopyTo(serialized, 20 + (12 * i));
+            levelData[i].Serialized.CopyTo(serialized, 8 + (12 * i));
         }
 
         System.IO.File.WriteAllBytes("./" + playerName, serialized);
+        */
     }
 
     // Finds binary file with matching username, and loads the data into this object if it finds a file. 
@@ -142,15 +166,34 @@ public class GameData
 
                 int flagCount = BitConverter.ToInt32(serialized, 8);
 
-                int flagMaps = flagCount / 64;
-                int rest = flagCount % 64;
+                int flagMaps = flagCount / 8;
+                int rest = flagCount % 8;
+
+                for (int i = 0; i < flagMaps; ++i)
+                {
+                    byte flagByte = serialized[12 + i];
+                    for (int k = 0; k < 8; ++k)
+                    {
+                        bool flag = (flagByte & 1 << k) == flagByte;
+                        Flags[(Flag)((i * 8) + k)] = flag;
+                    }
+                }
+                if (rest > 0)
+                {
+                    byte flagByte = serialized[12 + flagMaps];
+                    for (int k = 0; k < rest; ++k)
+                    {
+                        bool flag = (flagByte & 1 << k) == flagByte;
+                        Flags[(Flag)((flagMaps * 8) + k)] = flag;
+                    }
+                }
             }
             else
             {
                 Debug.Log("No name found in local files, assuming new player");
                 playerName = name;
                 money = 0;
-                
+
             }
             return;
         }
@@ -162,24 +205,13 @@ public class GameData
 
             money = BitConverter.ToInt64(serialized, 0);
 
-            int levelCount = BitConverter.ToInt32(serialized, 8);
-
-            levelData = new LevelData[levelCount];
+            levelData = new LevelData[(serialized.Length - 8) / 12];
 
             for (int i = 0; i < levelData.Length; ++i)
             {
                 byte[] sLevel = new byte[12];
                 serialized.AsSpan().Slice(8 + (i * 12), 12).ToArray().CopyTo(sLevel, 0);
                 levelData[i] = LevelData.Deserialize(sLevel);
-            }
-
-            int missionCount = BitConverter.ToInt32(serialized, 12 + (levelCount * 12));
-
-            for (int i = 0; i < missionCount; ++i)
-            {
-                int missionId = BitConverter.ToInt32(serialized, 16 + (levelCount * 12) + (8 * i));
-                int progress = BitConverter.ToInt32(serialized, 20 + (levelCount * 12) + (8 * i));
-                MissionLogic.MissionLogics[missionId].Skip(progress);
             }
         }
         else
