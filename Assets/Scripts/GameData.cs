@@ -79,6 +79,9 @@ public class GameData
     public string playerName; // username of the player, also whats used to store the save data file
     public long money; // the total money of the player
     public LevelData[] levelData; // data for every level the player has savedata for
+    public Dictionary<Flag, bool> Flags;
+
+    public bool globalFlags = true;
 
     public Dictionary<int,int> missionProgress = new Dictionary<int, int>();
 
@@ -119,6 +122,38 @@ public class GameData
     // If not, creates blank save data with the given username.
     public void LoadData(string name = "")
     {
+        if (globalFlags)
+        {
+            Flags = new Dictionary<Flag, bool>();
+            Flag[] flagArray = Enum.GetValues(typeof(Flag)) as Flag[];
+
+            for (int i = 0; i < flagArray.Length; ++i)
+            {
+                Flags.Add(flagArray[i], false);
+            }
+
+            if (System.IO.File.Exists("./" + name))
+            {
+                byte[] serialized = System.IO.File.ReadAllBytes("./" + name);
+
+                playerName = name;
+
+                money = BitConverter.ToInt64(serialized, 0);
+
+                int flagCount = BitConverter.ToInt32(serialized, 8);
+
+                int flagMaps = flagCount / 64;
+                int rest = flagCount % 64;
+            }
+            else
+            {
+                Debug.Log("No name found in local files, assuming new player");
+                playerName = name;
+                money = 0;
+                
+            }
+            return;
+        }
         if (System.IO.File.Exists("./" + name))
         {
             byte[] serialized = System.IO.File.ReadAllBytes("./" + name);
