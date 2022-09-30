@@ -80,6 +80,8 @@ public class GameData
     public long money; // the total money of the player
     public LevelData[] levelData; // data for every level the player has savedata for
 
+    public Dictionary<int,int> missionProgress = new Dictionary<int, int>();
+
     public LevelData GetById(int id)
     {
         foreach (LevelData level in levelData)
@@ -92,13 +94,22 @@ public class GameData
     // Saves the current data of the player to binary file
     public void SaveData()
     {
-        byte[] serialized = new byte[8 + (levelData.Length * 12)];
+        byte[] serialized = new byte[16 + (levelData.Length * 12)];
 
         BitConverter.GetBytes(money).CopyTo(serialized, 0);
+        BitConverter.GetBytes(levelData.Length).CopyTo(serialized, 8);
 
         for (int i = 0; i < levelData.Length; ++i)
         {
-            levelData[i].Serialized.CopyTo(serialized, 8 + (12 * i));
+            levelData[i].Serialized.CopyTo(serialized, 12 + (12 * i));
+        }
+
+        BitConverter.GetBytes(MissionLogic.MissionLogics.Count).CopyTo(serialized, 12 + (12 * levelData.Length));
+
+        for (int i = 0; i < MissionLogic.MissionLogics.Count; ++i)
+        {
+            BitConverter.GetBytes(i).CopyTo(serialized, 16 + (12 * i));
+            BitConverter.GetBytes(MissionLogic.MissionLogics[i].GetProgress()).CopyTo(serialized, 20 + (12 * i));
         }
 
         System.IO.File.WriteAllBytes("./" + playerName, serialized);
@@ -116,13 +127,24 @@ public class GameData
 
             money = BitConverter.ToInt64(serialized, 0);
 
-            levelData = new LevelData[(serialized.Length - 8) / 12];
+            int levelCount = BitConverter.ToInt32(serialized, 8);
+
+            levelData = new LevelData[levelCount];
 
             for (int i = 0; i < levelData.Length; ++i)
             {
                 byte[] sLevel = new byte[12];
                 serialized.AsSpan().Slice(8 + (i * 12), 12).ToArray().CopyTo(sLevel, 0);
                 levelData[i] = LevelData.Deserialize(sLevel);
+            }
+
+            int missionCount = BitConverter.ToInt32(serialized, 12 + (levelCount * 12));
+
+            for (int i = 0; i < missionCount; ++i)
+            {
+                int missionId = BitConverter.ToInt32(serialized, 16 + (levelCount * 12) + (8 * i));
+                int progress = BitConverter.ToInt32(serialized, 20 + (levelCount * 12) + (8 * i));
+                MissionLogic.MissionLogics[missionId].Skip(progress);
             }
         }
         else
