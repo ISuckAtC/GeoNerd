@@ -3,5 +3,6 @@
 public enum Flag
 {
     NULLFLAG,
-    TESTFLAG
+    TESTFLAG,
+    OSLO_FORESTDONE
 }

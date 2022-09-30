@@ -35,6 +35,7 @@ public class FallingRocks : MonoBehaviour
 
         if (timeToChangeScene <= 0)
         {
+            GameManager.GameData.Flags[Flag.OSLO_FORESTDONE] = true;
             GameManager.Instance.LoadScene(leavingScene);
         }
     }
