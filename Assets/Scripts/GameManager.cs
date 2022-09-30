@@ -20,9 +20,8 @@ public class GameManager : MonoBehaviour
                 DontDestroyOnLoad(go);
                 _instance = go.AddComponent<GameManager>();
                 GameData = new GameData();
+                MissionLogic.Initialize();
                 GameData.LoadData();
-
-                
             }
             return _instance;
         }
@@ -35,7 +34,5 @@ public class GameManager : MonoBehaviour
 
         SceneManager.LoadScene(sceneName);
         
-
     }
-
 }
