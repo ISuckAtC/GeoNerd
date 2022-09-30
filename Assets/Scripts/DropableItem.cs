@@ -9,6 +9,8 @@ public class DropableItem : MonoBehaviour/*, IDropHandler*/
     // Start is called before the first frame update
     public GameObject objectToEnable;
     public Item.ItemType unlockableWith = Item.ItemType.NONE;
+    public bool isLoadingScene = false;
+    public string sceneToLoad = "";
     void Start()
     {
         
@@ -28,6 +30,9 @@ public class DropableItem : MonoBehaviour/*, IDropHandler*/
         PointerEventData pointerData = (PointerEventData)data;
         if(pointerData.pointerDrag.gameObject.GetComponent<Item>().itemType == unlockableWith)
         {
+            if (isLoadingScene) GameManager.Instance.LoadScene(sceneToLoad);
+
+
             if (objectToEnable) objectToEnable.SetActive(true);
             Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
             Destroy(gameObject);

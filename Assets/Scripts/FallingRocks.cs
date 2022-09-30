@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using DG.Tweening;
 
 public class FallingRocks : MonoBehaviour
 {
     [SerializeField] GameObject rockPrefab;
     [SerializeField] GameObject rockObstaclePrefab;
     [SerializeField] GameObject ground;
+    [SerializeField] GameObject troll;
     [SerializeField] float timeToChangeScene;
     [SerializeField] TextMeshProUGUI timeText;
     [SerializeField] string leavingScene;
@@ -18,7 +20,11 @@ public class FallingRocks : MonoBehaviour
     void Start()
     {
         StartCoroutine(spawnRock());
-        if(leaving) StartCoroutine(spawnObstacleRock());
+        if (leaving)
+        {
+            StartCoroutine(spawnObstacleRock());
+            troll.transform.DOMoveX(0, timeToChangeScene);
+        }
 
     }
 
@@ -27,7 +33,7 @@ public class FallingRocks : MonoBehaviour
         timeToChangeScene -= Time.deltaTime;
         timeText.text = ((int)timeToChangeScene).ToString();
 
-        if(timeToChangeScene <= 0)
+        if (timeToChangeScene <= 0)
         {
             GameManager.Instance.LoadScene(leavingScene);
         }
@@ -45,7 +51,7 @@ public class FallingRocks : MonoBehaviour
 
             yield return new WaitForSeconds(Random.Range(0.5f, 2f));
         }
-      
+
     }
 
     IEnumerator spawnObstacleRock()
@@ -53,9 +59,9 @@ public class FallingRocks : MonoBehaviour
         while (leaving)
         {
             float xRandPos = -(Camera.main.aspect * Camera.main.orthographicSize) - rockPrefab.transform.localScale.x / 2;
-            float yPos = ground.transform.position.y + ground.transform.localScale.y/2 + rockPrefab.transform.localScale.y / 2;
+            float yPos = ground.transform.position.y + ground.transform.localScale.y / 2 + rockPrefab.transform.localScale.y / 2;
             Vector3 pos = new Vector3(xRandPos, yPos, 0);
-            GameObject rock = Instantiate(rockObstaclePrefab);   
+            GameObject rock = Instantiate(rockObstaclePrefab);
             rock.transform.position = pos;
             Debug.Log("SpawnedRock");
 
