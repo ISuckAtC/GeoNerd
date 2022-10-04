@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.Mathematics;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SearchService;
 using UnityEngine.UIElements;
 
 public class CharacterController : MonoBehaviour
@@ -26,7 +28,10 @@ public class CharacterController : MonoBehaviour
     private float turnSpeedMultiplier;
 
     [SerializeField] private GameObject CurrentLandmark;
-    
+
+    private Vector3 groundNormal;
+    public GameObject carObj;
+    public GameObject rotationObj;
     void Start()
     {
         if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "RuneTestBackup")
@@ -36,6 +41,7 @@ public class CharacterController : MonoBehaviour
             else
                 transform.position = new Vector3(460.8f, 13.1f, 752.1f);    // Cabin position
         }
+        
     }
 
     void Update()
@@ -120,6 +126,8 @@ public class CharacterController : MonoBehaviour
         if (averageFrameTime.Count > averageStackLength) averageFrameTime.RemoveAt(0);
         
         Move(currentSpeed);
+
+        
     }
 
     void Interact()
@@ -135,8 +143,32 @@ public class CharacterController : MonoBehaviour
         float averageFrame = averageFrameTime.Sum() / averageStackLength;
         
         //Debug.Log(averageFrame);
-        
+
         transform.position += transform.forward * speed * averageFrame;
+        
+        RaycastHit hitInfo;
+        Ray ray = new Ray(new Vector3(transform.position.x, 50f, transform.position.z), Vector3.down);
+        if (Physics.Raycast(ray, out hitInfo, 60f, 1 << 3))
+        {
+            transform.position = new Vector3(transform.position.x, hitInfo.point.y, transform.position.z);
+
+            groundNormal = hitInfo.normal;
+        }
+        else
+        {
+            Debug.LogWarning("Character Controller can't find ground.");
+        }
+
+        LerpToNormal();
+    }
+
+    private void LerpToNormal()
+    {
+        Quaternion tempRotation = Quaternion.FromToRotation (rotationObj.transform.up, groundNormal) * rotationObj.transform.rotation;
+
+        rotationObj.transform.eulerAngles = new Vector3(tempRotation.eulerAngles.x, rotationObj.transform.eulerAngles.y, tempRotation.eulerAngles.z);
+
+        carObj.transform.rotation = Quaternion.Slerp(carObj.transform.rotation, rotationObj.transform.rotation, 4f * Time.deltaTime);
     }
 
     public void SetLandmark(GameObject go)
