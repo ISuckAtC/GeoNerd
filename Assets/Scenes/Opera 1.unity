@@ -1790,6 +1790,7 @@ MonoBehaviour:
   scroll: {fileID: 1412509874}
   endButton: {fileID: 832959734}
   director: {fileID: 1127415373}
+  cameraReward: {fileID: 299437920}
   currentlySelected: {fileID: 0}
   wordSlots:
   - {fileID: 680911230}

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class OperaPuzzle : MonoBehaviour
 {
-    public GameObject startButton, scroll, endButton, director;
+    public GameObject startButton, scroll, endButton, director, cameraReward;
     public Transform currentlySelected;
     [Header("Put the slots and words here in matching order")]
     public Transform[] wordSlots;
@@ -59,6 +59,7 @@ public class OperaPuzzle : MonoBehaviour
             scroll.SetActive(false);
             endButton.SetActive(true);
             director.SetActive(true);
+            cameraReward.SetActive(true);
             Cursor.SetCursor(normalCursor, Vector2.zero, CursorMode.Auto);
         }
     }
