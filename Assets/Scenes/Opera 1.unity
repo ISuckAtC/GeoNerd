@@ -1810,6 +1810,8 @@ MonoBehaviour:
   - {fileID: 1861060664}
   - {fileID: 1482658018}
   snapLeniency: 50
+  featherCursor: {fileID: 2800000, guid: d55767ed66cd09d4cbd6394566be5326, type: 3}
+  normalCursor: {fileID: 2800000, guid: 88036680b7b77724186825db48f8a545, type: 3}
   worldSceneName: 
 --- !u!1 &1638463850
 GameObject:

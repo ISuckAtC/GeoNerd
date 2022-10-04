@@ -10,6 +10,9 @@ public class OperaPuzzle : MonoBehaviour
     public Transform[] wordSlots;
     public OperaPuzzleWord[] words;
     public float snapLeniency;
+    public Texture2D featherCursor;
+    public Texture2D normalCursor;
+
 
     public string worldSceneName;
     // Start is called before the first frame update
@@ -32,12 +35,12 @@ public class OperaPuzzle : MonoBehaviour
         startButton.SetActive(false);
         director.SetActive(false);
         scroll.SetActive(true);
+        Cursor.SetCursor(featherCursor, new Vector2(0, 1900f), CursorMode.Auto);
     }
 
     public void End()
     {
         GameManager.Flags[Flag.OSLO_OPERAPUZZLECOMPLETE] = true;
-        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         UnityEngine.SceneManagement.SceneManager.LoadScene(worldSceneName, UnityEngine.SceneManagement.LoadSceneMode.Single);
     }
 
@@ -56,6 +59,7 @@ public class OperaPuzzle : MonoBehaviour
             scroll.SetActive(false);
             endButton.SetActive(true);
             director.SetActive(true);
+            Cursor.SetCursor(normalCursor, Vector2.zero, CursorMode.Auto);
         }
     }
 }
