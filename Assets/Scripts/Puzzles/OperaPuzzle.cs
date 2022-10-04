@@ -13,8 +13,6 @@ public class OperaPuzzle : MonoBehaviour
     public Texture2D featherCursor;
     public Texture2D normalCursor;
 
-
-    public string worldSceneName;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,7 +39,7 @@ public class OperaPuzzle : MonoBehaviour
     public void End()
     {
         GameManager.Flags[Flag.OSLO_OPERAPUZZLECOMPLETE] = true;
-        UnityEngine.SceneManagement.SceneManager.LoadScene(worldSceneName, UnityEngine.SceneManagement.LoadSceneMode.Single);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(WorldMap.WorldMapSceneName, UnityEngine.SceneManagement.LoadSceneMode.Single);
     }
 
     public void CheckPuzzle()

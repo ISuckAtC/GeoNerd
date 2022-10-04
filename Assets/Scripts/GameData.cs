@@ -83,6 +83,8 @@ public class GameData
     public LevelData[] levelData; // data for every level the player has savedata for
     public Dictionary<Flag, bool> Flags;
 
+    public Vector3 overWorldPosition;
+
     public bool globalFlags = true;
 
     public LevelData GetById(int id)
