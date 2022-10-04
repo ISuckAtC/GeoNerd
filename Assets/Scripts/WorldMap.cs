@@ -11,6 +11,7 @@ public class WorldMap : MonoBehaviour
     {
         WorldMapSceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         player.transform.position = GameManager.GameData.overWorldPosition;
+        InvokeRepeating("SavePosition", 10, 10);
     }
 
     public void SavePosition()
