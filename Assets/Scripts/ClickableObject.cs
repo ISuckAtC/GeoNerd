@@ -27,13 +27,13 @@ public class ClickableObject : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log("Mouse enter");
+        //Debug.Log("Mouse enter");
         Cursor.SetCursor(cursors[(int)itemNeeded], Vector2.zero, CursorMode.Auto);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        Debug.Log("Mouse exit");
+        //Debug.Log("Mouse exit");
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
     }
 

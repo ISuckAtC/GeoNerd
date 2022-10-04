@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Linq;
+using System.IO;
 
 public struct LevelData
 {
@@ -79,6 +81,9 @@ public class GameData
     public string playerName; // username of the player, also whats used to store the save data file
     public long money; // the total money of the player
     public LevelData[] levelData; // data for every level the player has savedata for
+    public Dictionary<Flag, bool> Flags;
+
+    public bool globalFlags = true;
 
     public LevelData GetById(int id)
     {
@@ -92,6 +97,38 @@ public class GameData
     // Saves the current data of the player to binary file
     public void SaveData()
     {
+        int flagMaps = Flags.Count / 8;
+        int rest = Flags.Count % 8;
+
+        byte[] serialized = new byte[12 + flagMaps + (rest > 0 ? 1 : 0)];
+
+        BitConverter.GetBytes(money).CopyTo(serialized, 0);
+
+        bool[] flagValues = Flags.Values.ToArray();
+
+
+        for (int i = 0; i < flagMaps; ++i)
+        {
+            byte flagByte = 0;
+            for (int k = 0; k < 8; ++k)
+            {
+                if (flagValues[(i * 8) + k]) flagByte = (byte)(flagByte | 1 << k);
+            }
+            serialized[12 + i] = flagByte;
+        }
+        if (rest > 0)
+        {
+            byte flagByte = 0;
+            for (int k = 0; k < rest; ++k)
+            {
+                if (flagValues[(flagMaps * 8) + k]) flagByte = (byte)(flagByte | 1 << k);
+            }
+            serialized[12 + flagMaps] = flagByte;
+        }
+
+        File.WriteAllBytes("./" + playerName, serialized);
+
+        /*
         byte[] serialized = new byte[8 + (levelData.Length * 12)];
 
         BitConverter.GetBytes(money).CopyTo(serialized, 0);
@@ -102,12 +139,64 @@ public class GameData
         }
 
         System.IO.File.WriteAllBytes("./" + playerName, serialized);
+        */
     }
 
     // Finds binary file with matching username, and loads the data into this object if it finds a file. 
     // If not, creates blank save data with the given username.
     public void LoadData(string name = "")
     {
+        if (globalFlags)
+        {
+            Flags = new Dictionary<Flag, bool>();
+            Flag[] flagArray = Enum.GetValues(typeof(Flag)) as Flag[];
+
+            for (int i = 0; i < flagArray.Length; ++i)
+            {
+                Flags.Add(flagArray[i], false);
+            }
+
+            if (System.IO.File.Exists("./" + name))
+            {
+                byte[] serialized = System.IO.File.ReadAllBytes("./" + name);
+
+                playerName = name;
+
+                money = BitConverter.ToInt64(serialized, 0);
+
+                int flagCount = BitConverter.ToInt32(serialized, 8);
+
+                int flagMaps = flagCount / 8;
+                int rest = flagCount % 8;
+
+                for (int i = 0; i < flagMaps; ++i)
+                {
+                    byte flagByte = serialized[12 + i];
+                    for (int k = 0; k < 8; ++k)
+                    {
+                        bool flag = (flagByte & 1 << k) == flagByte;
+                        Flags[(Flag)((i * 8) + k)] = flag;
+                    }
+                }
+                if (rest > 0)
+                {
+                    byte flagByte = serialized[12 + flagMaps];
+                    for (int k = 0; k < rest; ++k)
+                    {
+                        bool flag = (flagByte & 1 << k) == flagByte;
+                        Flags[(Flag)((flagMaps * 8) + k)] = flag;
+                    }
+                }
+            }
+            else
+            {
+                Debug.Log("No name found in local files, assuming new player");
+                playerName = name;
+                money = 0;
+
+            }
+            return;
+        }
         if (System.IO.File.Exists("./" + name))
         {
             byte[] serialized = System.IO.File.ReadAllBytes("./" + name);

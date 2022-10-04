@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     private static GameManager _instance;
     public static GameData GameData;
+    public static Dictionary<Flag, bool> Flags;
 
 
     public MapManager currentMapManager;
@@ -20,9 +21,9 @@ public class GameManager : MonoBehaviour
                 DontDestroyOnLoad(go);
                 _instance = go.AddComponent<GameManager>();
                 GameData = new GameData();
+                Flags = GameData.Flags;
+                MissionLogic.Initialize();
                 GameData.LoadData();
-
-                
             }
             return _instance;
         }
@@ -35,7 +36,6 @@ public class GameManager : MonoBehaviour
 
         SceneManager.LoadScene(sceneName);
         
-
+    
     }
-
 }
