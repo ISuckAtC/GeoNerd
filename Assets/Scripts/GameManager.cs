@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public static Dictionary<Flag, bool> Flags;
 
 
+    public int currentTask = 0;
+    
     public MapManager currentMapManager;
     public static GameManager Instance
     {
@@ -37,5 +39,10 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(sceneName);
         
     
+    }
+
+    public void Task()
+    {
+        currentTask++;
     }
 }
