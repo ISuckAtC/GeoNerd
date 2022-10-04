@@ -17,11 +17,11 @@ public class PlayerData : MonoBehaviour
         {
             Destroy(this);
         }
-    }
 
-    void Update()
-    {
-        
+        if (PlayerPrefs.GetFloat("PlayerPosX") == null)
+        {
+            
+        }
     }
 
     public void LogPosition(Vector3 pos)

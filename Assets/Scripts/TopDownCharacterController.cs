@@ -14,9 +14,25 @@ public class TopDownCharacterController : MonoBehaviour
 
     [SerializeField] 
     private Vector2 currentSpeed;
+    
+    private bool onHitbox;
+    [SerializeField]
+    private GameObject UI;
+    [SerializeField]
+    private GameObject light;
+
 
     void Update()
     {
+        if (onHitbox)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                light.SetActive(!light.activeSelf);
+                // Some flag thing
+            }
+        }
+        
         direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         direction.Normalize();
         
@@ -59,5 +75,34 @@ public class TopDownCharacterController : MonoBehaviour
             transform.forward = new Vector3(lookDirection.x, 0f, lookDirection.y);
         }
             
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Highlight"))
+        {
+            other.gameObject.GetComponent<ParticleSystem>().Play();
+            Debug.Log("Playing");
+        }
+
+        if (other.CompareTag("Hitbox"))
+        {
+            UI.SetActive(true);
+            onHitbox = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Highlight"))
+        {
+            other.GetComponent<ParticleSystem>().Stop();
+        }
+        
+        if (other.CompareTag("Hitbox"))
+        {
+            UI.SetActive(false);
+            onHitbox = false;
+        }
     }
 }
