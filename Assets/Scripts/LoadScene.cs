@@ -15,6 +15,17 @@ public class LoadScene : MonoBehaviour
 
     private bool didOffice;
     private bool didOslo;
+
+    public GameObject fakeCase, realCase;
+
+    void Start()
+    {
+        if (GameManager.Flags[Flag.OSLO_FORESTDONE] && GameManager.Flags[Flag.OSLO_OPERAPUZZLECOMPLETE] && GameManager.Flags[Flag.OSLO_LIBRARY_DONE])
+        {
+            realCase.SetActive(false);
+            fakeCase.SetActive(true);
+        }
+    }
     
     
     void Update()
