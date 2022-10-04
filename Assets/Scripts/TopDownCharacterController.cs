@@ -29,7 +29,7 @@ public class TopDownCharacterController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 light.SetActive(!light.activeSelf);
-                // Some flag thing
+                GameManager.Flags[Flag.OSLO_LIBRARYDONE] = true;
             }
         }
         
