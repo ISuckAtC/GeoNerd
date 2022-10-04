@@ -4716,6 +4716,7 @@ GameObject:
   - component: {fileID: 1555562276}
   - component: {fileID: 1555562275}
   - component: {fileID: 1555562274}
+  - component: {fileID: 1555562277}
   m_Layer: 5
   m_Name: OperaHouseButton
   m_TagString: Untagged
@@ -4787,10 +4788,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1055783571}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1555562277}
+        m_TargetAssemblyTypeName: LoadScene, Assembly-CSharp
+        m_MethodName: Load
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4837,6 +4838,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1555562272}
   m_CullTransparentMesh: 1
+--- !u!114 &1555562277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555562272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1153fe226f8be9c45a83f38740a5946c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  byKey: 0
+  key: 0
+  sceneName: Opera 1
 --- !u!1 &1616704314
 GameObject:
   m_ObjectHideFlags: 0
@@ -5197,6 +5213,7 @@ GameObject:
   - component: {fileID: 1664476050}
   - component: {fileID: 1664476049}
   - component: {fileID: 1664476048}
+  - component: {fileID: 1664476051}
   m_Layer: 5
   m_Name: LibraryButton
   m_TagString: Untagged
@@ -5268,10 +5285,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 427777124}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1664476051}
+        m_TargetAssemblyTypeName: LoadScene, Assembly-CSharp
+        m_MethodName: Load
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5318,6 +5335,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1664476046}
   m_CullTransparentMesh: 1
+--- !u!114 &1664476051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1664476046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1153fe226f8be9c45a83f38740a5946c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  byKey: 0
+  key: 0
+  sceneName: Library
 --- !u!1 &1728122343
 GameObject:
   m_ObjectHideFlags: 0

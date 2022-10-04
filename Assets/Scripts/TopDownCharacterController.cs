@@ -21,6 +21,8 @@ public class TopDownCharacterController : MonoBehaviour
     [SerializeField]
     private GameObject light;
 
+    public GameObject LibrarianHappy;
+    public GameObject LibrarianUnhappy;
 
     void Update()
     {
@@ -90,6 +92,20 @@ public class TopDownCharacterController : MonoBehaviour
             UI.SetActive(true);
             onHitbox = true;
         }
+
+        if (other.CompareTag("Librarian"))
+        {
+            if (light.activeSelf)
+            {
+                // Light on - mission complete
+                LibrarianHappy.SetActive(true);
+            }
+            else
+            {
+                // Light off - mission incomplete
+                LibrarianUnhappy.SetActive(true);
+            }
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -104,5 +120,21 @@ public class TopDownCharacterController : MonoBehaviour
             UI.SetActive(false);
             onHitbox = false;
         }
+        
+        if (other.CompareTag("Librarian"))
+        {
+            if (light.activeSelf)
+            {
+                // Light on - mission complete
+                LibrarianHappy.SetActive(false);
+                UnityEngine.SceneManagement.SceneManager.LoadScene("RuneTestBackup");
+            }
+            else
+            {
+                // Light off - mission incomplete
+                LibrarianUnhappy.SetActive(false);
+            }
+        }
+        
     }
 }
