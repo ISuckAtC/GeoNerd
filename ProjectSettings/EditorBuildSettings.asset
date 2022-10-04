@@ -9,10 +9,10 @@ EditorBuildSettings:
     path: Assets/Scenes/RuneTestBackup.unity
     guid: 26952dc3ad398fa46a3af9be0a2ed240
   - enabled: 1
-    path: Assets/Scenes/Cities/Oslo.unity
+    path: Assets/Scenes/Cities/Oslo/Oslo.unity
     guid: 45dd75d691551d44eaa21867595e7b4d
   - enabled: 1
-    path: Assets/Scenes/OfficeTestRune.unity
+    path: Assets/Scenes/Not in Use/OfficeTestRune.unity
     guid: fb2696946b2440a49acee4898959f940
   - enabled: 1
     path: Assets/Scenes/Forest/Forest.unity
