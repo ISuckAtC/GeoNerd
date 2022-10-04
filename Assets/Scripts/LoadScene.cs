@@ -10,7 +10,11 @@ public class LoadScene : MonoBehaviour
     public bool byKey;
     public KeyCode key;
     public string sceneName;
-    
+
+    private Scene sc;
+
+    private bool didOffice;
+    private bool didOslo;
     
     
     void Update()
@@ -18,7 +22,26 @@ public class LoadScene : MonoBehaviour
         if (byKey)
         {
             if (Input.GetKey(key))
+            {
+                if (!didOslo && SceneManager.GetActiveScene().name == "OfficeTestRune")
+                {
+                    didOslo = true;
+                    
+                    GameManager.Instance.Task();
+                }
+
+
+                if (!didOffice && SceneManager.GetActiveScene().name == "Oslo")
+                {
+                    didOffice = true;
+                    
+                    GameManager.Instance.Task();
+
+                }
+                
                 SceneManager.LoadScene(sceneName);
+
+            }
         }
     }
 
