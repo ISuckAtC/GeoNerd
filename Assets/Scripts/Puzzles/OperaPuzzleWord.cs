@@ -46,6 +46,7 @@ public class OperaPuzzleWord : MonoBehaviour, IPointerDownHandler, IPointerUpHan
             transform.position = overhead.wordSlots[snapSlot].position;
             currentOrder = snapSlot;
         }
+        else currentOrder = -1;
 
         overhead.CheckPuzzle();
     }
