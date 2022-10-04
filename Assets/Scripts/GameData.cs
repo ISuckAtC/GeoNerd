@@ -195,7 +195,7 @@ public class GameData
                 Debug.Log("No name found in local files, assuming new player");
                 playerName = name;
                 money = 0;
-
+                overWorldPosition = new Vector3(22f, 0f, -8f);
             }
             return;
         }
