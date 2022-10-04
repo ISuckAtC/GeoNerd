@@ -150,6 +150,7 @@ public class GameData
     {
         if (globalFlags)
         {
+            Debug.Log("Loading data using global flags");
             Flags = new Dictionary<Flag, bool>();
             Flag[] flagArray = Enum.GetValues(typeof(Flag)) as Flag[];
 

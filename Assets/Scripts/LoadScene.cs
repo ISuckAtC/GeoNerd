@@ -20,6 +20,7 @@ public class LoadScene : MonoBehaviour
 
     void Start()
     {
+        
         if (GameManager.Flags[Flag.OSLO_FORESTDONE] && GameManager.Flags[Flag.OSLO_OPERAPUZZLECOMPLETE] && GameManager.Flags[Flag.OSLO_LIBRARYDONE])
         {
             realCase.SetActive(false);

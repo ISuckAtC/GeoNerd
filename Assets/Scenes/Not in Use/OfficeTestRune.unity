@@ -616,6 +616,8 @@ MonoBehaviour:
   byKey: 1
   key: 13
   sceneName: RuneTestBackup
+  fakeCase: {fileID: 1292517472}
+  realCase: {fileID: 1803372561}
 --- !u!1 &821767533
 GameObject:
   m_ObjectHideFlags: 0
