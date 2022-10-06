@@ -36,6 +36,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Cities/Oslo/Opera.unity
     guid: 4fcdec6a8cfbd1c4f800898a3ea33e92
   - enabled: 1
+    path: Assets/Scenes/LoadingScreen.unity
+    guid: e8b9b80f4646d7a41a0c0bc7407c1010
+  - enabled: 1
     path: Assets/Scenes/Opera 1.unity
     guid: a4359b2c419b97f4fbf2c87b277b8735
   m_configObjects: {}

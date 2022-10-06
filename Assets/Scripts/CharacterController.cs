@@ -116,7 +116,7 @@ public class CharacterController : MonoBehaviour
                 turnSpeedMultiplier = 0f;
         }
 
-        if (Input.GetKey(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             Interact();
         }

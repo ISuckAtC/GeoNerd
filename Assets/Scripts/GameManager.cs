@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,6 +14,9 @@ public class GameManager : MonoBehaviour
     public int currentTask = 0;
     
     public MapManager currentMapManager;
+
+    [HideInInspector]
+    public string nextScene;
     public static GameManager Instance
     {
         get
@@ -34,10 +38,15 @@ public class GameManager : MonoBehaviour
 
     public void LoadScene(string sceneName)
     {
+        nextScene = sceneName;
+        SceneManager.sceneLoaded += SceneLoaded;
+        SceneManager.LoadSceneAsync("LoadingScreen", LoadSceneMode.Additive);
+    }
 
-        SceneManager.LoadScene(sceneName);
-        
-    
+    public void SceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        SceneManager.sceneLoaded -= SceneLoaded;
+        scene.GetRootGameObjects().First(x => x.name == "LOADER").GetComponent<LoadingScreen>().StartLoading(nextScene, SceneManager.GetSceneAt(0));
     }
 
     public void Task()

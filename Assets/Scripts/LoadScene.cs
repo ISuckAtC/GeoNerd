@@ -13,9 +13,6 @@ public class LoadScene : MonoBehaviour
 
     private Scene sc;
 
-    private bool didOffice;
-    private bool didOslo;
-
     public GameObject fakeCase, realCase;
 
     void Start()
@@ -33,26 +30,9 @@ public class LoadScene : MonoBehaviour
     {
         if (byKey)
         {
-            if (Input.GetKey(key))
+            if (Input.GetKeyDown(key))
             {
-                if (!didOslo && SceneManager.GetActiveScene().name == "OfficeTestRune")
-                {
-                    didOslo = true;
-                    
-                    GameManager.Instance.Task();
-                }
-
-
-                if (!didOffice && SceneManager.GetActiveScene().name == "Oslo")
-                {
-                    didOffice = true;
-                    
-                    GameManager.Instance.Task();
-
-                }
-                
-                SceneManager.LoadScene(sceneName);
-
+                Load();
             }
         }
     }
