@@ -1603,8 +1603,8 @@ MonoBehaviour:
   itemNeeded: 0
   cursors:
   - {fileID: 2800000, guid: 35729e080ac260a4db9675420a6d4bb5, type: 3}
-  - {fileID: 2800000, guid: ea44be83a7a3c4045aae8d12b9918201, type: 3}
-  - {fileID: 2800000, guid: e95435e92c31aa444b2dfbce858b4c7a, type: 3}
+  - {fileID: 2800000, guid: 2c2d570c5992fde4babd47122b51960e, type: 3}
+  - {fileID: 2800000, guid: a6704593301b64a46ad87b0dfbf3190c, type: 3}
 --- !u!114 &506923150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1986,7 +1986,7 @@ PrefabInstance:
     - target: {fileID: 4305851775425891264, guid: 20f63738670995846810ec8ffd0e35cb,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 200
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 4305851775425891264, guid: 20f63738670995846810ec8ffd0e35cb,
         type: 3}
@@ -2052,7 +2052,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 1d30035154a30f1489fbd01fa2319582,
+      objectReference: {fileID: 21300000, guid: 3b54661d0b7c5e6408ee4428ffcce541,
         type: 3}
     - target: {fileID: 4305851775425891267, guid: 20f63738670995846810ec8ffd0e35cb,
         type: 3}
@@ -2097,6 +2097,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentTask: 0
   currentMapManager: {fileID: 0}
+  nextScene: 
 --- !u!4 &779823649
 Transform:
   m_ObjectHideFlags: 0
@@ -2377,8 +2378,8 @@ MonoBehaviour:
   itemNeeded: 2
   cursors:
   - {fileID: 2800000, guid: 35729e080ac260a4db9675420a6d4bb5, type: 3}
-  - {fileID: 2800000, guid: ea44be83a7a3c4045aae8d12b9918201, type: 3}
-  - {fileID: 2800000, guid: e95435e92c31aa444b2dfbce858b4c7a, type: 3}
+  - {fileID: 2800000, guid: 2c2d570c5992fde4babd47122b51960e, type: 3}
+  - {fileID: 2800000, guid: a6704593301b64a46ad87b0dfbf3190c, type: 3}
 --- !u!114 &966825354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4690,8 +4691,8 @@ MonoBehaviour:
   itemNeeded: 1
   cursors:
   - {fileID: 2800000, guid: 35729e080ac260a4db9675420a6d4bb5, type: 3}
-  - {fileID: 2800000, guid: ea44be83a7a3c4045aae8d12b9918201, type: 3}
-  - {fileID: 2800000, guid: e95435e92c31aa444b2dfbce858b4c7a, type: 3}
+  - {fileID: 2800000, guid: 2c2d570c5992fde4babd47122b51960e, type: 3}
+  - {fileID: 2800000, guid: a6704593301b64a46ad87b0dfbf3190c, type: 3}
 --- !u!114 &1895611709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4983,8 +4984,8 @@ MonoBehaviour:
   itemNeeded: 1
   cursors:
   - {fileID: 2800000, guid: 35729e080ac260a4db9675420a6d4bb5, type: 3}
-  - {fileID: 2800000, guid: ea44be83a7a3c4045aae8d12b9918201, type: 3}
-  - {fileID: 2800000, guid: e95435e92c31aa444b2dfbce858b4c7a, type: 3}
+  - {fileID: 2800000, guid: 2c2d570c5992fde4babd47122b51960e, type: 3}
+  - {fileID: 2800000, guid: a6704593301b64a46ad87b0dfbf3190c, type: 3}
 --- !u!114 &1991540770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5124,8 +5125,8 @@ MonoBehaviour:
   itemNeeded: 2
   cursors:
   - {fileID: 2800000, guid: 35729e080ac260a4db9675420a6d4bb5, type: 3}
-  - {fileID: 2800000, guid: ea44be83a7a3c4045aae8d12b9918201, type: 3}
-  - {fileID: 2800000, guid: e95435e92c31aa444b2dfbce858b4c7a, type: 3}
+  - {fileID: 2800000, guid: 2c2d570c5992fde4babd47122b51960e, type: 3}
+  - {fileID: 2800000, guid: a6704593301b64a46ad87b0dfbf3190c, type: 3}
 --- !u!114 &1996376840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5635,7 +5636,7 @@ PrefabInstance:
     - target: {fileID: 4305851775425891264, guid: 20f63738670995846810ec8ffd0e35cb,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 200
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4305851775425891264, guid: 20f63738670995846810ec8ffd0e35cb,
         type: 3}
@@ -5697,6 +5698,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4305851775425891265, guid: 20f63738670995846810ec8ffd0e35cb,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ecb6a25ac30fd654b8debb957496ef03,
+        type: 3}
     - target: {fileID: 4305851775425891265, guid: 20f63738670995846810ec8ffd0e35cb,
         type: 3}
       propertyPath: m_Maskable
