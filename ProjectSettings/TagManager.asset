@@ -8,6 +8,7 @@ TagManager:
   - Highlight
   - Hitbox
   - Librarian
+  - Exit
   layers:
   - Default
   - TransparentFX

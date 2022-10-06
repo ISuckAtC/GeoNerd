@@ -7,12 +7,14 @@ public class CaveMovement : MonoBehaviour
 {
     [SerializeField] float velocity;
     [SerializeField] GameObject hearts;
+    [SerializeField] string leavingScene;
 
     float horizontalInput = 0;
     float verticalInput = 0;
     Rigidbody rb;
 
     int lives = 3;
+    
 
 
    [SerializeField] float jumpForce;
@@ -80,6 +82,15 @@ public class CaveMovement : MonoBehaviour
         if (collision.transform.CompareTag("Ground"))
         {
             canJump = true;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.transform.CompareTag("Exit"))
+        {
+            SceneManager.LoadScene(leavingScene);
+
         }
     }
 }
