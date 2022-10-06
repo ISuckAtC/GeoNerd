@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class FallingRocks : MonoBehaviour
 {
@@ -23,7 +24,8 @@ public class FallingRocks : MonoBehaviour
         if (leaving)
         {
             StartCoroutine(spawnObstacleRock());
-            troll.transform.DOMoveX(0, timeToChangeScene);
+            troll.transform.DOMoveX(-Camera.main.aspect * Camera.main.orthographicSize / 2, timeToChangeScene * 1.25f);
+
         }
 
     }
@@ -35,8 +37,9 @@ public class FallingRocks : MonoBehaviour
 
         if (timeToChangeScene <= 0)
         {
-           if(leaving) GameManager.GameData.Flags[Flag.OSLO_FORESTDONE] = true;
-            GameManager.Instance.LoadScene(leavingScene);
+            //if(leaving) GameManager.GameData.Flags[Flag.OSLO_FORESTDONE] = true;
+            // GameManager.Instance.LoadScene(leavingScene);
+            GameManager.Instance.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
     IEnumerator spawnRock()

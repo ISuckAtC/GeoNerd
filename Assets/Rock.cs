@@ -8,7 +8,7 @@ public class Rock : MonoBehaviour
     float velocity;
     private void Start()
     {
-        velocity = isObstacle ? 1.5f : Random.Range(1f, 3f);
+        velocity = isObstacle ? 2.5f : Random.Range(2f, 4f);
     }
 
     private void Update()
