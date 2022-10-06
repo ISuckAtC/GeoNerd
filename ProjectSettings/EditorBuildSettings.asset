@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/RuneTestBackup.unity
+    path: Assets/Scenes/NorwayMap.unity
     guid: 26952dc3ad398fa46a3af9be0a2ed240
   - enabled: 1
     path: Assets/Scenes/Cities/Oslo/Oslo.unity
@@ -27,7 +27,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Forest/TrollCaveEntering.unity
     guid: 83d8623b2bc5d0946a25919920f3d875
   - enabled: 1
-    path: Assets/Scenes/NorwayMap.unity
+    path: Assets/Scenes/Not in Use/NorwayMapNotInUse.unity
     guid: 954caa2514bc4d04e850d2a62403c82e
   - enabled: 1
     path: Assets/Scenes/Cities/Oslo/Library.unity
