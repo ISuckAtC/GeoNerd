@@ -47,6 +47,7 @@ public class CharacterController : MonoBehaviour
     private void SavePosition()
     {
         GameManager.GameData.overWorldPosition = transform.position;
+        GameManager.GameData.SaveData();
     }
 
     void Update()

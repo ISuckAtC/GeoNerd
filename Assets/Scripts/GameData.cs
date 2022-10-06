@@ -97,14 +97,21 @@ public class GameData
     }
 
     // Saves the current data of the player to binary file
-    public void SaveData()
+    public async void SaveData()
     {
         int flagMaps = Flags.Count / 8;
         int rest = Flags.Count % 8;
+        
 
-        byte[] serialized = new byte[12 + flagMaps + (rest > 0 ? 1 : 0)];
+        byte[] serialized = new byte[24 + flagMaps + (rest > 0 ? 1 : 0)];
 
         BitConverter.GetBytes(money).CopyTo(serialized, 0);
+
+        BitConverter.GetBytes(overWorldPosition.x).CopyTo(serialized, 8);
+        BitConverter.GetBytes(overWorldPosition.y).CopyTo(serialized, 12);
+        BitConverter.GetBytes(overWorldPosition.z).CopyTo(serialized, 16);
+
+        BitConverter.GetBytes(Flags.Count).CopyTo(serialized, 20);
 
         bool[] flagValues = Flags.Values.ToArray();
 
@@ -128,7 +135,7 @@ public class GameData
             serialized[12 + flagMaps] = flagByte;
         }
 
-        File.WriteAllBytes("./" + playerName, serialized);
+        await File.WriteAllBytesAsync("./" + playerName, serialized);
 
         /*
         byte[] serialized = new byte[8 + (levelData.Length * 12)];
@@ -167,14 +174,18 @@ public class GameData
 
                 money = BitConverter.ToInt64(serialized, 0);
 
-                int flagCount = BitConverter.ToInt32(serialized, 8);
+                overWorldPosition.x = BitConverter.ToSingle(serialized, 8);
+                overWorldPosition.y = BitConverter.ToSingle(serialized, 12);
+                overWorldPosition.z = BitConverter.ToSingle(serialized, 16);
+
+                int flagCount = BitConverter.ToInt32(serialized, 20);
 
                 int flagMaps = flagCount / 8;
                 int rest = flagCount % 8;
 
                 for (int i = 0; i < flagMaps; ++i)
                 {
-                    byte flagByte = serialized[12 + i];
+                    byte flagByte = serialized[24 + i];
                     for (int k = 0; k < 8; ++k)
                     {
                         bool flag = (flagByte & 1 << k) == flagByte;
@@ -183,7 +194,7 @@ public class GameData
                 }
                 if (rest > 0)
                 {
-                    byte flagByte = serialized[12 + flagMaps];
+                    byte flagByte = serialized[24 + flagMaps];
                     for (int k = 0; k < rest; ++k)
                     {
                         bool flag = (flagByte & 1 << k) == flagByte;
@@ -196,7 +207,8 @@ public class GameData
                 Debug.Log("No name found in local files, assuming new player");
                 playerName = name;
                 money = 0;
-                overWorldPosition = new Vector3(22f, 0f, -8f);
+                overWorldPosition = new Vector3(444.8f, 13.24f, 758.5f);
+                SaveData();
             }
             return;
         }

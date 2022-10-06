@@ -10,18 +10,5 @@ public class WorldMap : MonoBehaviour
     void Start()
     {
         WorldMapSceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
-        player.transform.position = GameManager.GameData.overWorldPosition;
-        InvokeRepeating("SavePosition", 10, 10);
-    }
-
-    public void SavePosition()
-    {
-        GameManager.GameData.overWorldPosition = player.transform.position;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

@@ -34,6 +34,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void Awake()
+    {
+        // force instancing hack
+        bool enabled = Instance.enabled;
+    }
+
 
 
     public void LoadScene(string sceneName)
