@@ -9,6 +9,7 @@ public class LoadingScreen : MonoBehaviour
     private bool newSceneLoaded;
     public void StartLoading(string sceneToLoad, Scene previous)
     {
+        GameManager.GameData.SaveData();
         this.sceneToLoad = sceneToLoad;
         SceneManager.UnloadSceneAsync(previous);
         SceneManager.sceneLoaded += SceneLoaded;
