@@ -32,16 +32,21 @@ public class CharacterController : MonoBehaviour
     private Vector3 groundNormal;
     public GameObject carObj;
     public GameObject rotationObj;
+
+
+    public bool OVERWORLD = true;
     void Start()
     {
-        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "RuneTestBackup")
+        if (OVERWORLD) 
         {
-            if (PlayerData.instance.SpawnPosition() != null)
-                transform.position = PlayerData.instance.SpawnPosition();
-            else
-                transform.position = new Vector3(460.8f, 13.1f, 752.1f);    // Cabin position
+            transform.position = GameManager.GameData.overWorldPosition;
+            InvokeRepeating("SavePosition", 5f, 5f);
         }
-        
+    }
+
+    private void SavePosition()
+    {
+        GameManager.GameData.overWorldPosition = transform.position;
     }
 
     void Update()
