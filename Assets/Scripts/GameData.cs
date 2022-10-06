@@ -146,7 +146,7 @@ public class GameData
 
     // Finds binary file with matching username, and loads the data into this object if it finds a file. 
     // If not, creates blank save data with the given username.
-    public void LoadData(string name = "")
+    public void LoadData(string name = "TESTPLAYER")
     {
         if (globalFlags)
         {
