@@ -27,6 +27,6 @@ public class Landmark : MonoBehaviour
     {
         PlayerData.instance.LogPosition(GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position);
 
-        SceneManager.LoadScene(sceneName);
+        GameManager.Instance.LoadScene(sceneName);
     }
 }
