@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void Awake()
+    public void Start()
     {
         // force instancing hack
         bool enabled = Instance.enabled;
@@ -44,6 +44,10 @@ public class GameManager : MonoBehaviour
 
     public void LoadScene(string sceneName)
     {
+        // testing
+        Flags[Flag.TESTFLAG] = true;
+
+
         nextScene = sceneName;
         SceneManager.sceneLoaded += SceneLoaded;
         SceneManager.LoadSceneAsync("LoadingScreen", LoadSceneMode.Additive);

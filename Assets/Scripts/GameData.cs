@@ -123,7 +123,7 @@ public class GameData
             {
                 if (flagValues[(i * 8) + k]) flagByte = (byte)(flagByte | 1 << k);
             }
-            serialized[12 + i] = flagByte;
+            serialized[24 + i] = flagByte;
         }
         if (rest > 0)
         {
@@ -132,7 +132,7 @@ public class GameData
             {
                 if (flagValues[(flagMaps * 8) + k]) flagByte = (byte)(flagByte | 1 << k);
             }
-            serialized[12 + flagMaps] = flagByte;
+            serialized[24 + flagMaps] = flagByte;
         }
 
         await File.WriteAllBytesAsync("./" + playerName, serialized);
@@ -183,21 +183,27 @@ public class GameData
                 int flagMaps = flagCount / 8;
                 int rest = flagCount % 8;
 
+                Debug.Log("Loading data from file\nFlagCount: " + flagCount + "\nFlagMaps: " + flagMaps + "\nRest: " + rest);
+
                 for (int i = 0; i < flagMaps; ++i)
                 {
                     byte flagByte = serialized[24 + i];
                     for (int k = 0; k < 8; ++k)
                     {
-                        bool flag = (flagByte & 1 << k) == flagByte;
+                        bool flag = (flagByte & (1 << k)) == (1 << k);
                         Flags[(Flag)((i * 8) + k)] = flag;
                     }
                 }
                 if (rest > 0)
                 {
                     byte flagByte = serialized[24 + flagMaps];
+                    Debug.Log(flagByte);
                     for (int k = 0; k < rest; ++k)
                     {
-                        bool flag = (flagByte & 1 << k) == flagByte;
+                        
+                        bool flag = (flagByte & (1 << k)) == (1 << k);
+
+                        Debug.Log("Flag #" + k + " is " + (flag ? "TRUE" : "FALSE"));
                         Flags[(Flag)((flagMaps * 8) + k)] = flag;
                     }
                 }
