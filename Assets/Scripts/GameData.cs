@@ -202,8 +202,6 @@ public class GameData
                     {
                         
                         bool flag = (flagByte & (1 << k)) == (1 << k);
-
-                        Debug.Log("Flag #" + k + " is " + (flag ? "TRUE" : "FALSE"));
                         Flags[(Flag)((flagMaps * 8) + k)] = flag;
                     }
                 }
@@ -214,8 +212,17 @@ public class GameData
                 playerName = name;
                 money = 0;
                 overWorldPosition = new Vector3(444.8f, 13.24f, 758.5f);
+
+                Flags[Flag.OFFICE_ARROW] = true;
+
                 SaveData();
             }
+
+            foreach (KeyValuePair<Flag, bool> flag in Flags)
+            {
+                Debug.Log("Flag \"" + flag.Key.ToString() + "\" is " + (flag.Value ? "TRUE" : "FALSE"));
+            }
+
             return;
         }
         if (System.IO.File.Exists("./" + name))

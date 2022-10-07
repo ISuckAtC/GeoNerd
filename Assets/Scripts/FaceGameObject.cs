@@ -4,22 +4,41 @@ using UnityEngine;
 
 public class FaceGameObject : MonoBehaviour
 {
-    public GameObject objToFace;
+    private GameObject objToFace;
 
-    public bool isArrow;
-    public GameObject[] positions;
+    private bool isArrow = false;
+
+    public GameObject office, oslo, forest, trondheim;
     
     
-    
+    void Start()
+    {
+        if (GameManager.Flags[Flag.OFFICE_ARROW])
+        {
+            objToFace = office;
+            isArrow = true;
+        }
+        if (GameManager.Flags[Flag.OSLO_ARROW])
+        {
+            objToFace = oslo;
+            isArrow = true;
+        }
+        if (GameManager.Flags[Flag.FOREST_ARROW])
+        {
+            objToFace = forest;
+            isArrow = true;
+        }
+        if (GameManager.Flags[Flag.TRONDHEIM_ARROW])
+        {
+            objToFace = trondheim;
+            isArrow = true;
+        }
+    }
     void FixedUpdate()
     {
-        transform.LookAt(objToFace.transform.position);
-
         if (isArrow)
         {
-            //if (GameManager.Flags)
-            
-            objToFace = positions[GameManager.Instance.currentTask];
+            transform.LookAt(objToFace.transform.position);
         }
     }
 }
