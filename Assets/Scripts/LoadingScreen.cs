@@ -13,6 +13,8 @@ public class LoadingScreen : MonoBehaviour
     private bool newSceneLoaded;
     private GameObject newCanvas;
 
+    public float loadDelay = 0f;
+
     public UnityEngine.UI.Image loadIndicator;
     public float loadIndicatorInterval;
     public Sprite[] loadIndicatorFrames;
@@ -33,6 +35,12 @@ public class LoadingScreen : MonoBehaviour
         GameManager.GameData.SaveData();
         this.sceneToLoad = sceneToLoad;
         SceneManager.UnloadSceneAsync(previous);
+
+        Invoke("DelayedLoad", loadDelay);
+    }
+
+    public void DelayedLoad()
+    {
         SceneManager.sceneLoaded += SceneLoaded;
         SceneManager.LoadSceneAsync(sceneToLoad, LoadSceneMode.Additive);
     }
