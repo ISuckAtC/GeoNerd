@@ -39,7 +39,7 @@ public class OperaPuzzle : MonoBehaviour
     public void End()
     {
         GameManager.Flags[Flag.OSLO_OPERAPUZZLECOMPLETE] = true;
-        UnityEngine.SceneManagement.SceneManager.LoadScene(WorldMap.WorldMapSceneName, UnityEngine.SceneManagement.LoadSceneMode.Single);
+        GameManager.Instance.LoadScene("Oslo");
     }
 
     public void CheckPuzzle()
