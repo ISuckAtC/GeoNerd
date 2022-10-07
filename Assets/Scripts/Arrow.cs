@@ -10,8 +10,14 @@ public class Arrow : MonoBehaviour
 
     public GameObject office, oslo, forest, trondheim;
 
+    void Awake()
+    {
+        bool a = GameManager.Instance.enabled;
+    }
+
     void Start()
     {
+        
         if (GameManager.Flags[Flag.OFFICE_ARROW])
         {
             objToFace = office;

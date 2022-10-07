@@ -7,33 +7,19 @@ public class TopDownCharacterController : MonoBehaviour
 {
     private Vector2 direction;
 
+    [Range(0f, 20f)]
     public float acceleration;
-
+    [Range(0f, 10f)]
     public float maxSpeed;
+    [Range(1f, 1.1f)]
     public float resistance;
 
     [SerializeField] 
     private Vector2 currentSpeed;
-    
-    private bool onHitbox;
-    [SerializeField]
-    private GameObject UI;
-    [SerializeField]
-    private GameObject light;
-
-    public GameObject LibrarianHappy;
-    public GameObject LibrarianUnhappy;
 
     void Update()
     {
-        if (onHitbox)
-        {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                light.SetActive(!light.activeSelf);
-                GameManager.Flags[Flag.OSLO_LIBRARYDONE] = true;
-            }
-        }
+        
         
         direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         direction.Normalize();
@@ -79,62 +65,4 @@ public class TopDownCharacterController : MonoBehaviour
             
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Highlight"))
-        {
-            other.gameObject.GetComponent<ParticleSystem>().Play();
-            Debug.Log("Playing");
-        }
-
-        if (other.CompareTag("Hitbox"))
-        {
-            UI.SetActive(true);
-            onHitbox = true;
-        }
-
-        if (other.CompareTag("Librarian"))
-        {
-            if (light.activeSelf)
-            {
-                // Light on - mission complete
-                LibrarianHappy.SetActive(true);
-            }
-            else
-            {
-                // Light off - mission incomplete
-                LibrarianUnhappy.SetActive(true);
-            }
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Highlight"))
-        {
-            other.GetComponent<ParticleSystem>().Stop();
-        }
-        
-        if (other.CompareTag("Hitbox"))
-        {
-            UI.SetActive(false);
-            onHitbox = false;
-        }
-        
-        if (other.CompareTag("Librarian"))
-        {
-            if (light.activeSelf)
-            {
-                // Light on - mission complete
-                LibrarianHappy.SetActive(false);
-                UnityEngine.SceneManagement.SceneManager.LoadScene("RuneTestBackup");
-            }
-            else
-            {
-                // Light off - mission incomplete
-                LibrarianUnhappy.SetActive(false);
-            }
-        }
-        
-    }
 }
