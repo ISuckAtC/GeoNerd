@@ -19,8 +19,6 @@ public class TopDownCharacterController : MonoBehaviour
 
     void Update()
     {
-        
-        
         direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         direction.Normalize();
         

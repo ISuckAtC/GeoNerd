@@ -6,6 +6,7 @@ public class Library : MonoBehaviour
 {
         
     private bool onHitbox;
+    private bool onExit;
     [SerializeField]
     private GameObject UI;
     [SerializeField]
@@ -15,7 +16,11 @@ public class Library : MonoBehaviour
     public GameObject librarianHappy;
     public GameObject librarianUnhappy;
     public GameObject exitPrompt;
+    public GameObject painting1;
+    public GameObject painting2;
 
+    
+    
     void Update()
     {
         if (onHitbox)
@@ -24,6 +29,14 @@ public class Library : MonoBehaviour
             {
                 light.SetActive(!light.activeSelf);
                 GameManager.Flags[Flag.OSLO_LIBRARYDONE] = light.activeSelf;
+            }
+        }
+
+        if (onExit)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                GameManager.Instance.LoadScene("Oslo");
             }
         }
     }
@@ -56,9 +69,22 @@ public class Library : MonoBehaviour
                 librarianUnhappy.SetActive(true);
             }
         }
+
+        if (other.CompareTag("Painting"))
+        {
+            if (other.gameObject.name == "Deich1")
+            {
+                painting1.SetActive(true);
+            }
+            else if (other.gameObject.name == "Deich2")
+            {
+                painting2.SetActive(true);
+            }
+        }
         
         if (other.CompareTag("Exit"))
         {
+            onExit = true;
             exitPrompt.SetActive(true);
         }
     }
@@ -82,7 +108,6 @@ public class Library : MonoBehaviour
             {
                 // Light on - mission complete
                 librarianHappy.SetActive(false);
-                UnityEngine.SceneManagement.SceneManager.LoadScene("NorwayMap");
             }
             else
             {
@@ -91,8 +116,21 @@ public class Library : MonoBehaviour
             }
         }
         
+        if (other.CompareTag("Painting"))
+        {
+            if (other.gameObject.name == "Deich1")
+            {
+                painting1.SetActive(false);
+            }
+            else if (other.gameObject.name == "Deich2")
+            {
+                painting2.SetActive(false);
+            }
+        }
+        
         if (other.CompareTag("Exit"))
         {
+            onExit = false;
             exitPrompt.SetActive(false);
         }
     }

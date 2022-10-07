@@ -10,9 +10,18 @@ public class OfficeScript : MonoBehaviour
 
     public string norwayScene;
 
+    public GameObject normalFile, completeFile;
+
     void Start()
     {
-        
+        if (GameManager.Flags[Flag.OSLO_FORESTDONE] && GameManager.Flags[Flag.OSLO_LIBRARYDONE] && GameManager.Flags[Flag.OSLO_OPERAPUZZLECOMPLETE])
+        {
+            completeFile.SetActive(true);
+            LightToggle();
+            GameManager.GameData.DeleteData(GameManager.GameData.playerName);
+            normalFile.SetActive(false);
+            
+        }
     }
 
     

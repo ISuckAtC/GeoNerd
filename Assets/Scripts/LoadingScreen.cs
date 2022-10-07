@@ -9,6 +9,7 @@ public class LoadingScreen : MonoBehaviour
     public List<Sprite> loadingScreens;
     public List<string> loadingScreenSceneNames;
     public UnityEngine.UI.Image background;
+    [SerializeField]
     private string sceneToLoad;
     private bool newSceneLoaded;
     private GameObject newCanvas;
@@ -59,7 +60,7 @@ public class LoadingScreen : MonoBehaviour
     {
         if (newSceneLoaded && Input.anyKeyDown)
         {
-            newCanvas.SetActive(true);
+            if (newCanvas) newCanvas.SetActive(true);
             SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
         }
     }
@@ -69,7 +70,8 @@ public class LoadingScreen : MonoBehaviour
         doneLoading = true;
         loadIndicator.sprite = loadCompleteIndicator;
 
-        newCanvas = scene.GetRootGameObjects().First(x => x.name == "Canvas");
+        
+        newCanvas = scene.GetRootGameObjects().FirstOrDefault(x => x.name == "Canvas");
         if (newCanvas)
         {
             newCanvas.SetActive(false);

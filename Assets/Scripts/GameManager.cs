@@ -40,10 +40,18 @@ public class GameManager : MonoBehaviour
         bool enabled = Instance.enabled;
     }
 
-
+    public void QuickLoadScene(string scenename)
+    {
+        SceneManager.LoadScene(scenename);
+    }
 
     public void LoadScene(string sceneName)
     {
+        if (SceneManager.GetActiveScene().name == "NorwayMap")
+        {
+            GameManager.GameData.overWorldPosition = GameObject.Find("Player").transform.position;
+            GameManager.GameData.SaveData();
+        }
         // testing
         Flags[Flag.TESTFLAG] = true;
 

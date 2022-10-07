@@ -151,6 +151,14 @@ public class GameData
         */
     }
 
+    public void DeleteData(string name)
+    {
+        if (System.IO.File.Exists("./" + name))
+        {
+            File.Delete("./" + name);
+        }
+    }
+
     // Finds binary file with matching username, and loads the data into this object if it finds a file. 
     // If not, creates blank save data with the given username.
     public void LoadData(string name = "TESTPLAYER")
