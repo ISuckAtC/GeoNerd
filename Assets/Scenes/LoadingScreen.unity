@@ -501,6 +501,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b61ff9642da1e2f499435c7323941f6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loadingScreens:
+  - {fileID: 21300000, guid: 14d1c5c175ead6042a71e7871ec70a1e, type: 3}
+  - {fileID: 21300000, guid: d084f66531bdb7648b9c7069b516d691, type: 3}
+  - {fileID: 21300000, guid: 80127a66f1bf24e42a831b38da1e4532, type: 3}
+  - {fileID: 21300000, guid: 09f6afbe5ea9f054eb769b595a1837c5, type: 3}
+  - {fileID: 21300000, guid: 42fc8f706025ac74b88725f13e5a8ac7, type: 3}
+  - {fileID: 21300000, guid: dc20a52c2e1923a4da37cd7124626c33, type: 3}
+  - {fileID: 21300000, guid: 5c07810ef705035488329dda57955b5e, type: 3}
+  loadingScreenSceneNames:
+  - Office
+  - NorwayMap
+  - Oslo
+  - Opera
+  - Library
+  - nothing
+  - Forest
+  background: {fileID: 2069824879}
 --- !u!1 &1922406107
 GameObject:
   m_ObjectHideFlags: 0

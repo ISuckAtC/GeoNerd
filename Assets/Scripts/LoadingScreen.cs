@@ -6,19 +6,26 @@ using System.Linq;
 
 public class LoadingScreen : MonoBehaviour
 {
+    public List<Sprite> loadingScreens;
+    public List<string> loadingScreenSceneNames;
+    public UnityEngine.UI.Image background;
     private string sceneToLoad;
     private bool newSceneLoaded;
     private GameObject newCanvas;
     public void StartLoading(string sceneToLoad, Scene previous)
     {
+        int index = loadingScreenSceneNames.IndexOf(sceneToLoad);
+        if (index > -1)
+        {
+            background.sprite = loadingScreens[index];
+        }
+
         GameManager.GameData.SaveData();
         this.sceneToLoad = sceneToLoad;
         SceneManager.UnloadSceneAsync(previous);
         SceneManager.sceneLoaded += SceneLoaded;
         SceneManager.LoadSceneAsync(sceneToLoad, LoadSceneMode.Additive);
     }
-
-    
 
     private void Update()
     {
