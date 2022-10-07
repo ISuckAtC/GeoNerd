@@ -89,7 +89,7 @@ public class CaveMovement : MonoBehaviour
     {
         if (other.transform.CompareTag("Exit"))
         {
-            SceneManager.LoadScene(leavingScene);
+            //SceneManager.LoadScene(leavingScene);
 
         }
     }

@@ -8,7 +8,7 @@ public class FaceGameObject : MonoBehaviour
     
     void Start()
     {
-        objToFace = Camera.main.gameObject;
+        //objToFace = Camera.main.gameObject;
     }
     
     void FixedUpdate()

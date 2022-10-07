@@ -30,7 +30,7 @@ public class DropableItem : MonoBehaviour/*, IDropHandler*/
         PointerEventData pointerData = (PointerEventData)data;
         if(pointerData.pointerDrag.gameObject.GetComponent<Item>().itemType == unlockableWith)
         {
-            if (isLoadingScene) GameManager.Instance.LoadScene(sceneToLoad);
+            if (isLoadingScene) UnityEngine.SceneManagement.SceneManager.LoadScene(sceneToLoad);
 
 
             if (objectToEnable) objectToEnable.SetActive(true);

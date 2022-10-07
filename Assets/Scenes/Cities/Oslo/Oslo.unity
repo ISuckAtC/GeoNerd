@@ -2518,6 +2518,7 @@ GameObject:
   - component: {fileID: 661888166}
   - component: {fileID: 661888165}
   - component: {fileID: 661888164}
+  - component: {fileID: 661888168}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2614,6 +2615,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &661888168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 661888163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84e23f8de194b7948b88bbebb1c4c858, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &680910567
 GameObject:
   m_ObjectHideFlags: 0
@@ -6394,16 +6407,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1990329106}
-        m_TargetAssemblyTypeName: LoadScene, Assembly-CSharp
-        m_MethodName: Load
-        m_Mode: 1
+      - m_Target: {fileID: 661888168}
+        m_TargetAssemblyTypeName: OsloScript, Assembly-CSharp
+        m_MethodName: Exit
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: NorwayMap
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1990329104
@@ -6458,7 +6471,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   byKey: 0
   key: 0
-  sceneName: RuneTestBackup
+  sceneName: NorwayMap
   fakeCase: {fileID: 0}
   realCase: {fileID: 0}
 --- !u!1 &1990699117

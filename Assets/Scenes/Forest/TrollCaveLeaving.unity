@@ -335,7 +335,7 @@ MonoBehaviour:
   troll: {fileID: 996828618}
   timeToChangeScene: 7
   timeText: {fileID: 2091392433}
-  leavingScene: RuneTestBackup
+  leavingScene: NorwayMap
   leaving: 1
 --- !u!1 &616815740
 GameObject:
@@ -1512,7 +1512,7 @@ PrefabInstance:
     - target: {fileID: 8630741081184213221, guid: 5a935c0b6557b0340bad3ddc1db934e8,
         type: 3}
       propertyPath: leavingScene
-      value: RuneTestBackup
+      value: NorwayMap
       objectReference: {fileID: 0}
     - target: {fileID: 8630741081184213223, guid: 5a935c0b6557b0340bad3ddc1db934e8,
         type: 3}

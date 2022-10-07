@@ -17,6 +17,8 @@ public class FallingRocks : MonoBehaviour
     [SerializeField] bool leaving = false;
     bool spawning = true;
 
+    bool dontLoadTheSceneAMillionTimes = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,9 +39,16 @@ public class FallingRocks : MonoBehaviour
 
         if (timeToChangeScene <= 0)
         {
-            //if(leaving) GameManager.GameData.Flags[Flag.OSLO_FORESTDONE] = true;
+            if (dontLoadTheSceneAMillionTimes) return;
+            dontLoadTheSceneAMillionTimes = true;
+            if (leaving)
+            {
+                GameManager.GameData.Flags[Flag.OSLO_FORESTDONE] = true;
+                GameManager.GameData.Flags[Flag.FOREST_ARROW] = false;
+                if (!GameManager.GameData.Flags[Flag.OSLO_ARROW]) GameManager.GameData.Flags[Flag.OFFICE_ARROW] = true;
+            } 
             // GameManager.Instance.LoadScene(leavingScene);
-            GameManager.Instance.LoadScene(SceneManager.GetActiveScene().name);
+            SceneManager.LoadScene(leavingScene);
         }
     }
     IEnumerator spawnRock()
