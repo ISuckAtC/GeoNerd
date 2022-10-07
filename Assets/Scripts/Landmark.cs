@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class Landmark : MonoBehaviour
 {
     public string sceneName;
@@ -10,6 +11,8 @@ public class Landmark : MonoBehaviour
     public bool interactable;
     public bool enterable;
 
+    private Scene scene;
+    
     public void Use()
     {
         if (enterable)
@@ -25,8 +28,6 @@ public class Landmark : MonoBehaviour
     
     private void Enter()
     {
-        PlayerData.instance.LogPosition(GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position);
-
         GameManager.Instance.LoadScene(sceneName);
     }
 }

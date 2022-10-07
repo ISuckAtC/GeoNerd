@@ -9,6 +9,7 @@ TagManager:
   - Hitbox
   - Librarian
   - Exit
+  - Painting
   layers:
   - Default
   - TransparentFX
