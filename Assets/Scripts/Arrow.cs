@@ -6,7 +6,7 @@ public class Arrow : MonoBehaviour
 {
     private GameObject objToFace;
 
-    private bool isArrow = false;
+    private bool isArrow = true;
 
     public GameObject office, oslo, forest, trondheim;
 
@@ -15,23 +15,24 @@ public class Arrow : MonoBehaviour
         if (GameManager.Flags[Flag.OFFICE_ARROW])
         {
             objToFace = office;
-            isArrow = true;
+            return;
         }
         if (GameManager.Flags[Flag.OSLO_ARROW])
         {
             objToFace = oslo;
-            isArrow = true;
+            return;
         }
         if (GameManager.Flags[Flag.FOREST_ARROW])
         {
             objToFace = forest;
-            isArrow = true;
+            return;
         }
         if (GameManager.Flags[Flag.TRONDHEIM_ARROW])
         {
             objToFace = trondheim;
-            isArrow = true;
+            return;
         }
+        isArrow = false;
     }
     void FixedUpdate()
     {

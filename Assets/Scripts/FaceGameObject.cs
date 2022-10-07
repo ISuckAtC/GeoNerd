@@ -6,7 +6,10 @@ public class FaceGameObject : MonoBehaviour
 {
     public GameObject objToFace;
     
-    
+    void Start()
+    {
+        objToFace = Camera.main.gameObject;
+    }
     
     void FixedUpdate()
     {

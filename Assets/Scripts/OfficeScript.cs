@@ -25,6 +25,7 @@ public class OfficeScript : MonoBehaviour
     {
         GameManager.Flags[Flag.OFFICE_ARROW] = false;
         GameManager.Flags[Flag.OSLO_ARROW] = true;
+        GameManager.Flags[Flag.FOREST_ARROW] = true;
         GameManager.Instance.LoadScene(norwayScene);
     }
 
