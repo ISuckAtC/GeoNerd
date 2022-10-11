@@ -12,7 +12,7 @@ public class LoadingScreen : MonoBehaviour
     [SerializeField]
     private string sceneToLoad;
     private bool newSceneLoaded;
-    private GameObject newCanvas;
+    private GameObject[] newCanvas;
 
     public float loadDelay = 0f;
 
@@ -60,7 +60,7 @@ public class LoadingScreen : MonoBehaviour
     {
         if (newSceneLoaded && Input.anyKeyDown)
         {
-            if (newCanvas) newCanvas.SetActive(true);
+            foreach (GameObject canvas in newCanvas) canvas.SetActive(true);
             SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
         }
     }
@@ -70,21 +70,26 @@ public class LoadingScreen : MonoBehaviour
         doneLoading = true;
         loadIndicator.sprite = loadCompleteIndicator;
 
-        newCanvas = scene.GetRootGameObjects().FirstOrDefault(x => x.name == "Canvas");
-        if (newCanvas)
-        {
-            newCanvas.SetActive(false);
-        }
+        newCanvas = FindObjectsInScene(scene, "Canvas", true).ToArray();
+        foreach (GameObject canvas in newCanvas) canvas.SetActive(false);
         SceneManager.sceneLoaded -= SceneLoaded;
         newSceneLoaded = true;
     }
 
-    public static List<GameObject> FindObjectsInScene(Scene scene, string name)
+    public static List<GameObject> FindObjectsInScene(Scene scene, string name, bool onlyActive)
     {
         List<GameObject> objects = new List<GameObject>();
 
+        GameObject[] rootObjects = scene.GetRootGameObjects();
 
+        for (int i = 0; i < rootObjects.Length; ++i) FindObjectsRecursive(rootObjects[i].transform, name, objects, onlyActive);
 
         return objects;
+    }
+
+    private static void FindObjectsRecursive(Transform transform, string name, List<GameObject> storage, bool onlyActive)
+    {
+        if (transform.name == name && (onlyActive ? transform.gameObject.activeSelf : true)) storage.Add(transform.gameObject);
+        for (int i = 0; i < transform.childCount; ++i) FindObjectsRecursive(transform.GetChild(i), name, storage, onlyActive);
     }
 }
