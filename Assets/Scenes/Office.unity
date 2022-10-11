@@ -312,6 +312,8 @@ MonoBehaviour:
   normalFile: {fileID: 593139904}
   completeFile: {fileID: 383202019}
   darkOverlay: {fileID: 0}
+  folderButton: {fileID: 0}
+  missionButton: {fileID: 0}
 --- !u!212 &163208416
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -725,7 +727,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 285713867}
   m_OnClick:
     m_PersistentCalls:
@@ -1494,7 +1496,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 712297855}
   m_OnClick:
     m_PersistentCalls:
@@ -2103,6 +2105,8 @@ MonoBehaviour:
   normalFile: {fileID: 0}
   completeFile: {fileID: 0}
   darkOverlay: {fileID: 1465898831}
+  folderButton: {fileID: 285713864}
+  missionButton: {fileID: 712297852}
 --- !u!1 &1291766485
 GameObject:
   m_ObjectHideFlags: 0

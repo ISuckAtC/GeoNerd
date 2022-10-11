@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.UI;
 
 public class OfficeScript : MonoBehaviour
 {
@@ -10,7 +11,11 @@ public class OfficeScript : MonoBehaviour
 
     public string norwayScene;
 
-    public GameObject normalFile, completeFile, darkOverlay;
+    public GameObject normalFile, completeFile, darkOverlay, folderButton, missionButton;
+
+    
+
+    
 
     void Start()
     {
@@ -43,6 +48,9 @@ public class OfficeScript : MonoBehaviour
         spotlight = !spotlight;
         gameObject.SetActive(spotlight);
         darkOverlay.SetActive(!spotlight);
+
+        folderButton.GetComponent<UnityEngine.UI.Button>().interactable = spotlight;
+        missionButton.GetComponent<UnityEngine.UI.Button>().interactable = spotlight;
         
     }
 
