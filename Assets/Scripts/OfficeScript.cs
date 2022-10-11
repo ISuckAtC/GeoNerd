@@ -10,7 +10,7 @@ public class OfficeScript : MonoBehaviour
 
     public string norwayScene;
 
-    public GameObject normalFile, completeFile;
+    public GameObject normalFile, completeFile, darkOverlay;
 
     void Start()
     {
@@ -42,6 +42,7 @@ public class OfficeScript : MonoBehaviour
     {
         spotlight = !spotlight;
         gameObject.SetActive(spotlight);
+        darkOverlay.SetActive(!spotlight);
         
     }
 
