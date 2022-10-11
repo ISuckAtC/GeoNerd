@@ -2645,6 +2645,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84e23f8de194b7948b88bbebb1c4c858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LibraryMarker: {fileID: 703566420}
+  OperaMarker: {fileID: 1816175524}
+  CastleMarker: {fileID: 264192587}
 --- !u!1 &680910567
 GameObject:
   m_ObjectHideFlags: 0
@@ -6897,6 +6900,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popUpObject: {fileID: 0}
   exclamationMark: {fileID: 0}
+  questMarkerFlag: 0
 --- !u!135 &4063023917471428324
 SphereCollider:
   m_ObjectHideFlags: 0

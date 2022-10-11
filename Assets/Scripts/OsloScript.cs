@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class OsloScript : MonoBehaviour
 {
+    public GameObject LibraryMarker, OperaMarker, CastleMarker;
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (GameManager.Flags[Flag.OSLO_LIBRARYDONE]) LibraryMarker.SetActive(false);
+        if (GameManager.Flags[Flag.OSLO_CASTLEPUZZLECOMPLETE]) CastleMarker.SetActive(false);
+        if (GameManager.Flags[Flag.OSLO_OPERAPUZZLECOMPLETE]) OperaMarker.SetActive(false);
     }
 
     // Update is called once per frame
