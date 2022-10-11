@@ -209,6 +209,7 @@ GameObject:
   - component: {fileID: 96534381}
   - component: {fileID: 96534380}
   - component: {fileID: 96534379}
+  - component: {fileID: 96534382}
   m_Layer: 5
   m_Name: PalaceButton
   m_TagString: Untagged
@@ -280,10 +281,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 520549668}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 96534382}
+        m_TargetAssemblyTypeName: LoadScene, Assembly-CSharp
+        m_MethodName: Load
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -330,6 +331,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 96534377}
   m_CullTransparentMesh: 1
+--- !u!114 &96534382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 96534377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1153fe226f8be9c45a83f38740a5946c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  byKey: 0
+  key: 0
+  sceneName: Castle
+  fakeCase: {fileID: 0}
+  realCase: {fileID: 0}
 --- !u!1 &122272558
 GameObject:
   m_ObjectHideFlags: 0
@@ -4867,7 +4885,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   byKey: 0
   key: 0
-  sceneName: Opera 1
+  sceneName: Opera
   fakeCase: {fileID: 0}
   realCase: {fileID: 0}
 --- !u!1 &1616704314
