@@ -42,11 +42,12 @@ public class CastlePuzzleParts : MonoBehaviour, IPointerDownHandler, IPointerUpH
         // ToList seems excessive but array is missing the method in Linq
 
         List<Transform> sorted = overhead.partSlots.ToList();
+
+        // sort list by distance to puzzle piece, closest slot is first index
         sorted.Sort((a,b) => Vector3.Distance(a.position, transform.position) > Vector3.Distance(b.position, transform.position) ? 1 : -1);
 
-        Debug.Log(Vector3.Distance(sorted[0].position, transform.position));
-        Debug.Log(sorted[0].name);
 
+        // if closest slot is close enough to snap, snap it in place and assign the order
         if (sorted.Count > 0 && Vector3.Distance(sorted[0].position, transform.position) < overhead.snapLeniency)
         {
             transform.position = sorted[0].position;
