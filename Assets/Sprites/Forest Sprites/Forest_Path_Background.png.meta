@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: a4288f0b66db36a4291c77372c9eb9d4
+=======
+guid: 44dbf99aeb91e1d469eb7af79c27ae34
+>>>>>>> 124ae94 (sadfdsf)
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -39,10 +43,17 @@ TextureImporter:
     wrapU: 0
     wrapV: 0
     wrapW: 0
+<<<<<<< HEAD
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
   spriteMode: 1
+=======
+  nPOTScale: 1
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 0
+>>>>>>> 124ae94 (sadfdsf)
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -53,7 +64,11 @@ TextureImporter:
   alphaUsage: 1
   alphaIsTransparency: 0
   spriteTessellationDetail: -1
+<<<<<<< HEAD
   textureType: 8
+=======
+  textureType: 0
+>>>>>>> 124ae94 (sadfdsf)
   textureShape: 1
   singleChannelComponent: 0
   flipbookRows: 1
@@ -101,6 +116,7 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+<<<<<<< HEAD
   - serializedVersion: 3
     buildTarget: Android
     maxTextureSize: 2048
@@ -125,13 +141,19 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+=======
+>>>>>>> 124ae94 (sadfdsf)
   spriteSheet:
     serializedVersion: 2
     sprites: []
     outline: []
     physicsShape: []
     bones: []
+<<<<<<< HEAD
     spriteID: 5e97eb03825dee720800000000000000
+=======
+    spriteID: 
+>>>>>>> 124ae94 (sadfdsf)
     internalID: 0
     vertices: []
     indices: 
