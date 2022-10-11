@@ -9,6 +9,8 @@ public class PopUpInWorld : MonoBehaviour
     [SerializeField] GameObject exclamationMark;
     public Flag questMarkerFlag;
 
+    private bool exclamationMarkActive;
+
     private CharacterController cc;
     
     private void Start()
@@ -16,7 +18,8 @@ public class PopUpInWorld : MonoBehaviour
         if(popUpObject) popUpObject.SetActive(false);
         if (exclamationMark) 
         {
-            exclamationMark.SetActive(GameManager.Flags[questMarkerFlag]);
+            exclamationMarkActive = GameManager.Flags[questMarkerFlag];
+            exclamationMark.SetActive(exclamationMarkActive);
         }
         
     }
@@ -38,7 +41,7 @@ public class PopUpInWorld : MonoBehaviour
         if (other.GetComponent<CharacterController>())
         {
             if (popUpObject) popUpObject.SetActive(false);
-            if (exclamationMark) exclamationMark.SetActive(true);
+            if (exclamationMark) exclamationMark.SetActive(exclamationMarkActive);
             
             cc.RemoveLandmark();
             cc = null;
