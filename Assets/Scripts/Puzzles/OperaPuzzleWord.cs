@@ -7,7 +7,7 @@ using System.Linq;
 public class OperaPuzzleWord : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     [HideInInspector]
-    public int currentOrder;
+    public int currentOrder = -1;
     private bool selected;
     [HideInInspector]
     public OperaPuzzle overhead;
@@ -40,11 +40,18 @@ public class OperaPuzzleWord : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         overhead.currentlySelected = null;
 
         // ToList seems excessive but array is missing the method in Linq
-        int snapSlot = overhead.wordSlots.ToList().FindIndex(x => Vector3.Distance(x.position, transform.position) < overhead.snapLeniency);
-        if (snapSlot != -1)
+
+        List<Transform> sorted = overhead.wordSlots.ToList();
+
+        // sort list by distance to puzzle piece, closest slot is first index
+        sorted.Sort((a,b) => Vector3.Distance(a.position, transform.position) > Vector3.Distance(b.position, transform.position) ? 1 : -1);
+
+
+        // if closest slot is close enough to snap, snap it in place and assign the order
+        if (sorted.Count > 0 && Vector3.Distance(sorted[0].position, transform.position) < overhead.snapLeniency)
         {
-            transform.position = overhead.wordSlots[snapSlot].position;
-            currentOrder = snapSlot;
+            transform.position = sorted[0].position;
+            currentOrder = overhead.wordSlots.ToList().IndexOf(sorted[0]);
         }
         else currentOrder = -1;
 
