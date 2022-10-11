@@ -8,12 +8,20 @@ public class GameManager : MonoBehaviour
 {
     private static GameManager _instance;
     public static GameData GameData;
-    public static Dictionary<Flag, bool> Flags;
+    public static Dictionary<Flag, bool> Flags
+    {
+        get {
+            if (!Instance) 
+            {
+                var a = Instance;
+            }
+            return GameManager.GameData.Flags;
+        }
+        set{}
+    }
 
 
     public int currentTask = 0;
-    
-    public MapManager currentMapManager;
 
     [HideInInspector]
     public string nextScene;

@@ -70,7 +70,6 @@ public class LoadingScreen : MonoBehaviour
         doneLoading = true;
         loadIndicator.sprite = loadCompleteIndicator;
 
-        
         newCanvas = scene.GetRootGameObjects().FirstOrDefault(x => x.name == "Canvas");
         if (newCanvas)
         {
@@ -78,5 +77,14 @@ public class LoadingScreen : MonoBehaviour
         }
         SceneManager.sceneLoaded -= SceneLoaded;
         newSceneLoaded = true;
+    }
+
+    public static List<GameObject> FindObjectsInScene(Scene scene, string name)
+    {
+        List<GameObject> objects = new List<GameObject>();
+
+
+
+        return objects;
     }
 }
