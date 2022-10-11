@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public static Dictionary<Flag, bool> Flags
     {
         get {
+            // Ensures the instance is initialized
             if (!Instance) 
             {
                 var a = Instance;

@@ -76,6 +76,8 @@ public class LoadingScreen : MonoBehaviour
         newSceneLoaded = true;
     }
 
+    // Uses recursive search to find every object of name in a scene, GameObject.Find is weird when it comes to interscene logic so this ensures you grab the needed gameobjects
+    // has the option to only find active ones (as these are usually the only ones you want to touch from the loading screen)
     public static List<GameObject> FindObjectsInScene(Scene scene, string name, bool onlyActive)
     {
         List<GameObject> objects = new List<GameObject>();
@@ -87,6 +89,7 @@ public class LoadingScreen : MonoBehaviour
         return objects;
     }
 
+    // Simple recursive search
     private static void FindObjectsRecursive(Transform transform, string name, List<GameObject> storage, bool onlyActive)
     {
         if (transform.name == name && (onlyActive ? transform.gameObject.activeSelf : true)) storage.Add(transform.gameObject);
