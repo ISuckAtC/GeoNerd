@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -5,7 +6,9 @@ using Unity.Mathematics;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SearchService;
+using UnityEngine.UI;
 using UnityEngine.UIElements;
+using Slider = UnityEngine.UI.Slider;
 
 public class CharacterController : MonoBehaviour
 {
@@ -33,7 +36,8 @@ public class CharacterController : MonoBehaviour
     public GameObject carObj;
     public GameObject rotationObj;
 
-
+    public Slider slider;
+    
     public bool OVERWORLD = true;
     void Start()
     {
@@ -48,6 +52,11 @@ public class CharacterController : MonoBehaviour
     {
         GameManager.GameData.overWorldPosition = transform.position;
         GameManager.GameData.SaveData();
+    }
+
+    private void FixedUpdate()
+    {
+        maxSpeed = slider.value;
     }
 
     void Update()
@@ -126,6 +135,11 @@ public class CharacterController : MonoBehaviour
         {
             Interact();
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            gameObject.GetComponent<PauseMenu>().Pause();
+        }
         
         averageFrameTime.Add(Time.deltaTime);
         
@@ -135,6 +149,13 @@ public class CharacterController : MonoBehaviour
 
         
     }
+
+    public void Unstuck()
+    {
+        transform.position = new Vector3(444.799988f, 13.2399998f, 758.5f);
+    }
+    
+    
 
     void Interact()
     {
