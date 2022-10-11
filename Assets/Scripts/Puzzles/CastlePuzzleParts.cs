@@ -42,7 +42,7 @@ public class CastlePuzzleParts : MonoBehaviour, IPointerDownHandler, IPointerUpH
         // ToList seems excessive but array is missing the method in Linq
 
         List<Transform> sorted = overhead.partSlots.ToList();
-        sorted.Sort((a,b) => Vector3.Distance(a.position, transform.position) > Vector3.Distance(b.position, transform.position) ? 1 : -1);
+        sorted.Sort((a,b) => Vector3.Distance(a.position, transform.position) > Vector3.Distance(b.position, transform.position) ? -1 : 1);
 
         if (sorted.Count > 0 && Vector3.Distance(sorted[0].position, transform.position) > overhead.snapLeniency)
         {
