@@ -40,11 +40,14 @@ public class CastlePuzzleParts : MonoBehaviour, IPointerDownHandler, IPointerUpH
         overhead.currentlySelected = null;
 
         // ToList seems excessive but array is missing the method in Linq
-        int snapSlot = overhead.partSlots.ToList().FindIndex(x => Vector3.Distance(x.position, transform.position) < overhead.snapLeniency);
-        if (snapSlot != -1)
+
+        List<Transform> sorted = overhead.partSlots.ToList();
+        sorted.Sort((a,b) => Vector3.Distance(a.position, transform.position) > Vector3.Distance(b.position, transform.position) ? 1 : -1);
+
+        if (sorted.Count > 0 && Vector3.Distance(sorted[0].position, transform.position) > overhead.snapLeniency)
         {
-            transform.position = overhead.partSlots[snapSlot].position;
-            currentOrder = snapSlot;
+            transform.position = sorted[0].position;
+            currentOrder = overhead.partSlots.ToList().IndexOf(sorted[0]);
         }
         else currentOrder = -1;
 
