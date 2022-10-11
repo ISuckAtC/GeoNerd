@@ -7,7 +7,7 @@ using System.Linq;
 public class CastlePuzzleParts : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     [HideInInspector]
-    public int currentOrder;
+    public int currentOrder = -1;
     private bool selected;
     [HideInInspector]
     public CastlePuzzle overhead;
