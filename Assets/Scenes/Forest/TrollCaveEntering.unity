@@ -345,6 +345,7 @@ GameObject:
   m_Component:
   - component: {fileID: 583229587}
   - component: {fileID: 583229588}
+  - component: {fileID: 583229589}
   m_Layer: 0
   m_Name: CaveFallingRocks
   m_TagString: Untagged
@@ -374,7 +375,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 583229586}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 50b84349fc2d14f4287e9456123f245e, type: 3}
   m_Name: 
@@ -389,6 +390,28 @@ MonoBehaviour:
   timeText: {fileID: 2091392433}
   leavingScene: TrollSleep
   leaving: 0
+--- !u!114 &583229589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583229586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9455da6e625ae7d41beca065e4e73fa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rockPrefab: {fileID: 8592357590390232381, guid: 0bf208b81e577174eab78fed38e491a9,
+    type: 3}
+  rockObstaclePrefab: {fileID: 2039678508542053678, guid: c50e07c8a921ca441bf0b960b2e5847d,
+    type: 3}
+  ground: {fileID: 1984488093}
+  troll: {fileID: 0}
+  timeText: {fileID: 0}
+  leavingScene: TrollSleep
+  leaving: 0
+  cm: {fileID: 808504141}
 --- !u!1 &785878562
 GameObject:
   m_ObjectHideFlags: 0
@@ -465,6 +488,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 785878562}
   m_CullTransparentMesh: 1
+--- !u!114 &808504141 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8630741081184213221, guid: 5a935c0b6557b0340bad3ddc1db934e8,
+    type: 3}
+  m_PrefabInstance: {fileID: 8630741081154565040}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94c5c3ec2b5447c4fb6b609e00963332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1007007542
 GameObject:
   m_ObjectHideFlags: 0
@@ -1263,7 +1298,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2091392432
 RectTransform:
   m_ObjectHideFlags: 0

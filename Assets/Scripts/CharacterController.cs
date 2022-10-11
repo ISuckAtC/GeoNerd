@@ -1,14 +1,8 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.Mathematics;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.SearchService;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
-using Slider = UnityEngine.UI.Slider;
 
 public class CharacterController : MonoBehaviour
 {
@@ -136,7 +130,7 @@ public class CharacterController : MonoBehaviour
             Interact();
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Pause) || Input.GetKeyDown(KeyCode.Tab))
         {
             gameObject.GetComponent<PauseMenu>().Pause();
         }

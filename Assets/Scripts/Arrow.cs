@@ -40,7 +40,7 @@ public class Arrow : MonoBehaviour
         }
         isArrow = false;
     }
-    void FixedUpdate()
+    void Update()
     {
         if (isArrow)
         {

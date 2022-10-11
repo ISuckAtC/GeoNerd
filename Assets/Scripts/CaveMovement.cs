@@ -15,6 +15,8 @@ public class CaveMovement : MonoBehaviour
     Animator animator;
 
     int lives = 3;
+
+    private bool onExit;
     
 
 
@@ -34,6 +36,10 @@ public class CaveMovement : MonoBehaviour
         jumpInput = Input.GetKey(KeyCode.Space);
     }
 
+    public bool CheckExit()
+    {
+        return onExit;
+    }
 
     private void FixedUpdate()
     {
@@ -95,6 +101,16 @@ public class CaveMovement : MonoBehaviour
         {
             //SceneManager.LoadScene(leavingScene);
 
+            onExit = true;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.transform.CompareTag("Exit"))
+        {
+            //SceneManager.LoadScene(leavingScene);
+
+            onExit = false;
         }
     }
 }

@@ -21,7 +21,6 @@ public class PopUpInWorld : MonoBehaviour
             exclamationMarkActive = GameManager.Flags[questMarkerFlag];
             exclamationMark.SetActive(exclamationMarkActive);
         }
-        
     }
 
     private void OnTriggerEnter(Collider other)
