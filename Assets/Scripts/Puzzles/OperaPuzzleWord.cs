@@ -7,7 +7,7 @@ using System.Linq;
 public class OperaPuzzleWord : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     [HideInInspector]
-    public int currentOrder;
+    public int currentOrder = -1;
     private bool selected;
     [HideInInspector]
     public OperaPuzzle overhead;
