@@ -150,7 +150,7 @@ RectTransform:
   m_GameObject: {fileID: 143310262}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5168, y: 0.5168, z: 0.5168}
+  m_LocalScale: {x: 0.52326, y: 0.52326, z: 0.52326}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1044870640}
@@ -159,8 +159,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -624, y: -130.59}
-  m_SizeDelta: {x: 593.2281, y: 593.2281}
+  m_AnchoredPosition: {x: -624, y: -233}
+  m_SizeDelta: {x: 401, y: 603}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &143310264
 MonoBehaviour:
@@ -1926,6 +1926,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4305851775425891264, guid: 20f63738670995846810ec8ffd0e35cb,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.0151517
+      objectReference: {fileID: 0}
+    - target: {fileID: 4305851775425891264, guid: 20f63738670995846810ec8ffd0e35cb,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5037012
+      objectReference: {fileID: 0}
+    - target: {fileID: 4305851775425891264, guid: 20f63738670995846810ec8ffd0e35cb,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.61994
+      objectReference: {fileID: 0}
+    - target: {fileID: 4305851775425891264, guid: 20f63738670995846810ec8ffd0e35cb,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -1984,6 +1999,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4305851775425891265, guid: 20f63738670995846810ec8ffd0e35cb,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1ce8c99249d158548b434fbfe35c0b99,
+        type: 3}
     - target: {fileID: 4305851775425891265, guid: 20f63738670995846810ec8ffd0e35cb,
         type: 3}
       propertyPath: m_Maskable
