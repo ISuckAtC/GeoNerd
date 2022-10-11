@@ -12,6 +12,7 @@ public class CaveMovement : MonoBehaviour
     float horizontalInput = 0;
     float verticalInput = 0;
     Rigidbody rb;
+    Animator animator;
 
     int lives = 3;
     
@@ -23,6 +24,7 @@ public class CaveMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
         canJump = true;
     }
 
@@ -55,6 +57,8 @@ public class CaveMovement : MonoBehaviour
             rb.AddForce(new Vector3(0, jumpForce, 0));
             canJump = false;
         }
+
+        animator.SetBool("right", rb.velocity.x < 0);
     }
 
 
