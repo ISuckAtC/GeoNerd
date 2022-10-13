@@ -11,5 +11,6 @@ public enum Flag
     OFFICE_ARROW,
     OSLO_ARROW,
     TRONDHEIM_ARROW,
-    FOREST_ARROW
+    FOREST_ARROW,
+    OSLO_COMPLETE
 }

@@ -33,24 +33,22 @@ public class FallingRocksV2 : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (cm.CheckExit())
         {
-            if (cm.CheckExit())
+            if (dontLoadTheSceneAMillionTimes)
+                return;
+
+            dontLoadTheSceneAMillionTimes = true;
+
+            if (leaving)
             {
-                if (dontLoadTheSceneAMillionTimes)
-                    return;
-
-                dontLoadTheSceneAMillionTimes = true;
-
-                if (leaving)
-                {
-                    GameManager.GameData.Flags[Flag.OSLO_FORESTDONE] = true;
-                    GameManager.GameData.Flags[Flag.FOREST_ARROW] = false;
-                    if (!GameManager.GameData.Flags[Flag.OSLO_ARROW]) GameManager.GameData.Flags[Flag.OFFICE_ARROW] = true;
-                }
-                // GameManager.Instance.LoadScene(leavingScene);
-                SceneManager.LoadScene(leavingScene);
+                GameManager.GameData.Flags[Flag.OSLO_FORESTDONE] = true;
+                GameManager.GameData.Flags[Flag.FOREST_ARROW] = false;
+                GameManager.GameData.Flags[Flag.OSLO_COMPLETE] = true;
+                if (!GameManager.GameData.Flags[Flag.OSLO_ARROW]) GameManager.GameData.Flags[Flag.OFFICE_ARROW] = true;
             }
+            // GameManager.Instance.LoadScene(leavingScene);
+            SceneManager.LoadScene(leavingScene);
         }
     }
     IEnumerator spawnRock()

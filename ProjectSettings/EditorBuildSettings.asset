@@ -12,9 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Cities/Oslo/Oslo.unity
     guid: 45dd75d691551d44eaa21867595e7b4d
   - enabled: 1
-    path: Assets/Scenes/Not in Use/OfficeTestRune.unity
-    guid: fb2696946b2440a49acee4898959f940
-  - enabled: 1
     path: Assets/Scenes/Forest/Forest.unity
     guid: edb12e3223e19b74ea180f95c716fc85
   - enabled: 1
@@ -29,9 +26,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Forest/TrollCaveEntering.unity
     guid: 83d8623b2bc5d0946a25919920f3d875
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Cities/Oslo/Library.unity
     guid: 6137bdaa02c49964a9a7e92ccb1c6b57

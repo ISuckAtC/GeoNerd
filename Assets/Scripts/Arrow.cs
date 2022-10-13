@@ -17,7 +17,11 @@ public class Arrow : MonoBehaviour
 
     void Start()
     {
-        
+        if (GameManager.Flags[Flag.OSLO_COMPLETE])
+        {
+            objToFace = oslo;
+            return;
+        }
         if (GameManager.Flags[Flag.OFFICE_ARROW])
         {
             objToFace = office;
