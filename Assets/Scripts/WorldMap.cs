@@ -27,7 +27,7 @@ public class WorldMap : MonoBehaviour
         {
             byte[] response = await Network.RequestWorldMessage(i);
             GameObject sign = Instantiate(signPrefab);
-            sign.transform.localScale = new Vector3(3,3,3);
+            //sign.transform.localScale = new Vector3(3,3,3);
             sign.transform.position = new Vector3(System.BitConverter.ToSingle(response, 0), System.BitConverter.ToSingle(response, 4), System.BitConverter.ToSingle(response, 8));
             Vector3 lookPosition = transform.position + downDirection;
             sign.transform.LookAt(lookPosition);
