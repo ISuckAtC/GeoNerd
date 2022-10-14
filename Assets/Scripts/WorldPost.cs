@@ -4,15 +4,25 @@ using UnityEngine;
 
 public class WorldPost : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    public GameObject textArea;
+    public TMPro.TextMeshPro textObject;
+    
     void Update()
     {
-        
+        textArea.transform.LookAt(Camera.main.transform);
+    }
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.name == "Player")
+        {
+            textArea.SetActive(true);
+        }
+    }
+    void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.name == "Player")
+        {
+            textArea.SetActive(false);
+        }
     }
 }

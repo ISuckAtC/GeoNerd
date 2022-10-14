@@ -134,6 +134,16 @@ public class CharacterController : MonoBehaviour
         {
             gameObject.GetComponent<PauseMenu>().Pause();
         }
+
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            if (OVERWORLD)
+            {
+                WorldPoster wp = GetComponent<WorldPoster>();
+                wp.postUI.SetActive(true);
+                Time.timeScale = 1f;
+            }
+        }
         
         averageFrameTime.Add(Time.deltaTime);
         
