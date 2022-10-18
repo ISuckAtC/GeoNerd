@@ -10,18 +10,18 @@ public class ItemUIHandler : MonoBehaviour/*, IDropHandler*/
 {
     [SerializeField]
     private Canvas canvas;
-    Vector2 startingPosition;
+    Vector3 startingPosition;
 
     private void Start()
     {
         Invoke("GetStartingPosition", 0.5f);
-       
+
     }
 
 
     private void GetStartingPosition()
     {
-        startingPosition = transform.position; 
+        startingPosition = transform.position;
     }
 
     
@@ -45,10 +45,12 @@ public class ItemUIHandler : MonoBehaviour/*, IDropHandler*/
         //    Debug.Log("hit");
         //}
         //Debug.Log("Raycast tirado");
+        //GetComponent<RectTransform>().DOMove(startingPosition, 1f);
+        Debug.Log("TNT position: " + startingPosition);
         transform.DOMove(startingPosition, 1f);
+
         GetComponent<Image>().raycastTarget = true;
 
-        //canvasGroup.blocksRaycasts = true;
     }
 
     //public void OnDrop(BaseEventData data)
