@@ -72,3 +72,6 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 TESTPLAYER
+
+# Keeps conflicting, remove later if Water.mat is needed
+Assets/Materials/Water.mat
