@@ -5,6 +5,7 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     // Start is called before the first frame update
+    public GameObject notebookMenu;
     void Start()
     {
         
@@ -14,5 +15,10 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void CloseNotebook()
+    {
+        if (notebookMenu) notebookMenu.SetActive(false);
     }
 }
