@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 65a7204b2201fb04887e28cbc30b9ab2
+guid: 17e410f380676534b828a5ffaf5192ef
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -10,8 +10,7 @@ TrueTypeFontImporter:
   includeFontData: 1
   fontNames:
   - Londrina Solid
-  fallbackFontReferences:
-  - {fileID: 12800000, guid: 34afaf75d24169f4cb82039d8ac0c604, type: 3}
+  fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1
