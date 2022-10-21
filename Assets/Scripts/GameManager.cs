@@ -10,15 +10,16 @@ public class GameManager : MonoBehaviour
     public static GameData GameData;
     public static Dictionary<Flag, bool> Flags
     {
-        get {
+        get
+        {
             // Ensures the instance is initialized
-            if (!Instance) 
+            if (!Instance)
             {
                 var a = Instance;
             }
             return GameManager.GameData.Flags;
         }
-        set{}
+        set { }
     }
 
 
@@ -52,6 +53,12 @@ public class GameManager : MonoBehaviour
     public void QuickLoadScene(string scenename)
     {
         SceneManager.LoadScene(scenename);
+    }
+
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 
     public void LoadScene(string sceneName)
