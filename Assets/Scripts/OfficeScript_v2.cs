@@ -77,11 +77,11 @@ public class OfficeScript_v2 : MonoBehaviour
                 if (currentRightPanel) currentRightPanel.SetActive(false);
                 currentRightPanel = creditsPanel;
                 if (currentRightPanel) currentRightPanel.SetActive(true);
-
-
                 break;
             default:
                 Debug.Log("name of the panle incorrect");
+                if (currentRightPanel) currentRightPanel.SetActive(false);
+                currentRightPanel = null;
                 break;
 
 
