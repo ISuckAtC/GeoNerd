@@ -60,19 +60,7 @@ public class CharacterController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.T))
         {
-            EventInstance play = FMODUnity.RuntimeManager.CreateInstance(toot);
-
-            ATTRIBUTES_3D attributes;
-
-            attributes.position = FMODUnity.RuntimeUtils.ToFMODVector(transform.position);
-            attributes.velocity = FMODUnity.RuntimeUtils.ToFMODVector(Vector3.zero);
-            attributes.forward = FMODUnity.RuntimeUtils.ToFMODVector(Vector3.forward);
-            attributes.up = FMODUnity.RuntimeUtils.ToFMODVector(Vector3.up);
-            
-            play.set3DAttributes(attributes);
-
-            play.start();
-            play.release();
+            GameManager.FMODPlayStatic(toot, transform.position, Vector3.zero);
         }
         if (Input.GetKey(KeyCode.W))
         {

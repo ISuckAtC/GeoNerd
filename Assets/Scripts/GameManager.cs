@@ -87,4 +87,21 @@ public class GameManager : MonoBehaviour
     {
         currentTask++;
     }
+
+    public static void FMODPlayStatic(FMODUnity.EventReference reference, Vector3 position, Vector3 velocity)
+    {
+        FMOD.Studio.EventInstance play = FMODUnity.RuntimeManager.CreateInstance(reference);
+
+        FMOD.ATTRIBUTES_3D attributes;
+
+        attributes.position = FMODUnity.RuntimeUtils.ToFMODVector(position);
+        attributes.velocity = FMODUnity.RuntimeUtils.ToFMODVector(velocity);
+        attributes.forward = FMODUnity.RuntimeUtils.ToFMODVector(Vector3.forward);
+        attributes.up = FMODUnity.RuntimeUtils.ToFMODVector(Vector3.up);
+
+        play.set3DAttributes(attributes);
+
+        play.start();
+        play.release();
+    }
 }

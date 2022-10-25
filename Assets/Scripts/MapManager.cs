@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MapManager : MonoBehaviour
 {
+    public FMODUnity.EventReference backgroundMusic;
 
     protected class CityStruct{
         public bool visited;
@@ -18,6 +19,7 @@ public class MapManager : MonoBehaviour
 
     void Start()
     {
+        GameManager.FMODPlayStatic(backgroundMusic, Vector3.zero, Vector3.zero);
         //citiesInfo = new CityStruct[cities.Length];
         for(int x = 0; x < cities.Length; x++)
         {
