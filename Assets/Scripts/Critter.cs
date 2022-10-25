@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Critter : MonoBehaviour
 {
-    private Rigidbody rigidbody;
+    private Rigidbody rb;
     private GameObject player;
     public float detectionRange;
     public float speed;
@@ -12,7 +12,7 @@ public class Critter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rigidbody = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
         player = GameObject.Find("Player");
     }
 
@@ -21,7 +21,7 @@ public class Critter : MonoBehaviour
     {
         if (player && Vector3.Distance(player.transform.position, transform.position) <= detectionRange)
         {
-            rigidbody.velocity = ((player.transform.position - transform.position).normalized * speed) * (follow ? 1 : -1);
+            rb.velocity = ((player.transform.position - transform.position).normalized * speed) * (follow ? 1 : -1);
         }
     }
 }

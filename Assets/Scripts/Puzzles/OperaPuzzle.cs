@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class OperaPuzzle : MonoBehaviour
 {
@@ -12,6 +13,26 @@ public class OperaPuzzle : MonoBehaviour
     public float snapLeniency;
     public Texture2D featherCursor;
     public Texture2D normalCursor;
+    public RectTransform placementBounds;
+    public float minRandomCloseness;
+
+    void Awake()
+    {
+        for (int i = 0; i < words.Length; ++i) 
+        {
+            Debug.Log(placementBounds.sizeDelta);
+            int overflow = 0;
+            do
+            {
+                if (overflow++ > 50) throw new System.OverflowException("lol");
+                words[i].transform.position = new Vector3(
+                    Random.Range(placementBounds.position.x, placementBounds.position.x + placementBounds.sizeDelta.x),
+                    Random.Range(placementBounds.position.y, placementBounds.position.y + placementBounds.sizeDelta.y),
+                    words[i].transform.position.z);
+            }
+            while(words.Take(i).Any(x => Vector3.Distance(words[i].transform.position, x.transform.position) <= minRandomCloseness));
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
