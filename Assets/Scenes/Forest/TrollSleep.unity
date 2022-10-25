@@ -1093,6 +1093,20 @@ MonoBehaviour:
   unlockableWith: 1
   isLoadingScene: 1
   sceneToLoad: TrollCaveLeaving
+  cameraFlashSound:
+    Guid:
+      Data1: -197621650
+      Data2: 1128257436
+      Data3: -1097032832
+      Data4: -1279177129
+    Path: event:/Camera_Blitz
+  tntExplosionSound:
+    Guid:
+      Data1: -634606047
+      Data2: 1101737893
+      Data3: 1193520770
+      Data4: 1615654572
+    Path: event:/TNT_Explosion
 --- !u!114 &966825357
 MonoBehaviour:
   m_ObjectHideFlags: 0

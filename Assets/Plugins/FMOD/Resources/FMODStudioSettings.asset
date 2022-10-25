@@ -308,6 +308,7 @@ MonoBehaviour:
   MasterBanks:
   - Desktop/Master
   Banks:
+  - Desktop/AMBX
   - Desktop/Music
   - Desktop/SFX
   BanksToLoad: []

@@ -770,11 +770,11 @@ MonoBehaviour:
   forestDimension: 3
   ambience:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -553632963
+      Data2: 1150031943
+      Data3: 179593658
+      Data4: -1259216667
+    Path: event:/Ambience_Forest
   forestPositions:
   - panel: {fileID: 1286277079}
     position: {x: 1, y: 2}
