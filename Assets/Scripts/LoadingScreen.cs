@@ -37,6 +37,12 @@ public class LoadingScreen : MonoBehaviour
         this.sceneToLoad = sceneToLoad;
         SceneManager.UnloadSceneAsync(previous);
 
+        while (0 < GameManager.fmodInstances.Count)
+        {
+            GameManager.fmodInstances[0].stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            GameManager.fmodInstances.RemoveAt(0);
+        }
+
         Invoke("DelayedLoad", loadDelay);
     }
 

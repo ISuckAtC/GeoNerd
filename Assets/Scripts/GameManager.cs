@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
         set { }
     }
 
+    public static List<FMOD.Studio.EventInstance> fmodInstances = new List<FMOD.Studio.EventInstance>();
 
     public int currentTask = 0;
 
@@ -107,7 +108,7 @@ public class GameManager : MonoBehaviour
 
         FMOD.RESULT res = play.setVolume(volume);
 
-        Debug.Log(res.ToString());
+        fmodInstances.Add(play);
 
         play.start();
         play.release();

@@ -19,7 +19,7 @@ public class MapManager : MonoBehaviour
 
     void Start()
     {
-        GameManager.FMODPlayStatic(backgroundMusic, Vector3.zero, Vector3.zero);
+        GameManager.FMODPlayStatic(backgroundMusic, Vector3.zero, Vector3.zero, 0.5f);
         //citiesInfo = new CityStruct[cities.Length];
         for(int x = 0; x < cities.Length; x++)
         {
