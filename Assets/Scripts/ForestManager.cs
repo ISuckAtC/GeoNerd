@@ -18,7 +18,7 @@ public class ForestManager : MonoBehaviour
     [SerializeField]
     int forestDimension;
 
-
+    public FMODUnity.EventReference ambience;
     
 
     [System.Serializable]
@@ -39,6 +39,7 @@ public class ForestManager : MonoBehaviour
 
     void Start()
     {
+        GameManager.FMODPlayStatic(ambience, Vector3.zero, Vector3.zero);
 
         playerPos = new ForestPosition();
         //Array initialization

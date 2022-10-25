@@ -768,6 +768,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items: 
   forestDimension: 3
+  ambience:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   forestPositions:
   - panel: {fileID: 1286277079}
     position: {x: 1, y: 2}
@@ -1383,7 +1390,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -152, y: 0}
+  m_AnchoredPosition: {x: -151.99994, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &506923147
@@ -1498,6 +1505,20 @@ MonoBehaviour:
   unlockableWith: 0
   isLoadingScene: 0
   sceneToLoad: 
+  cameraFlashSound:
+    Guid:
+      Data1: -197621650
+      Data2: 1128257436
+      Data3: -1097032832
+      Data4: -1279177129
+    Path: event:/Camera_Blitz
+  tntExplosionSound:
+    Guid:
+      Data1: -634606047
+      Data2: 1101737893
+      Data3: 1193520770
+      Data4: 1615654572
+    Path: event:/TNT_Explosion
 --- !u!114 &506923154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2272,6 +2293,20 @@ MonoBehaviour:
   unlockableWith: 2
   isLoadingScene: 0
   sceneToLoad: 
+  cameraFlashSound:
+    Guid:
+      Data1: -197621650
+      Data2: 1128257436
+      Data3: -1097032832
+      Data4: -1279177129
+    Path: event:/Camera_Blitz
+  tntExplosionSound:
+    Guid:
+      Data1: -634606047
+      Data2: 1101737893
+      Data3: 1193520770
+      Data4: 1615654572
+    Path: event:/TNT_Explosion
 --- !u!114 &966825357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4514,6 +4549,20 @@ MonoBehaviour:
   unlockableWith: 1
   isLoadingScene: 0
   sceneToLoad: 
+  cameraFlashSound:
+    Guid:
+      Data1: -197621650
+      Data2: 1128257436
+      Data3: -1097032832
+      Data4: -1279177129
+    Path: event:/Camera_Blitz
+  tntExplosionSound:
+    Guid:
+      Data1: -634606047
+      Data2: 1101737893
+      Data3: 1193520770
+      Data4: 1615654572
+    Path: event:/TNT_Explosion
 --- !u!114 &1895611708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4807,6 +4856,20 @@ MonoBehaviour:
   unlockableWith: 1
   isLoadingScene: 0
   sceneToLoad: 
+  cameraFlashSound:
+    Guid:
+      Data1: -197621650
+      Data2: 1128257436
+      Data3: -1097032832
+      Data4: -1279177129
+    Path: event:/Camera_Blitz
+  tntExplosionSound:
+    Guid:
+      Data1: -634606047
+      Data2: 1101737893
+      Data3: 1193520770
+      Data4: 1615654572
+    Path: event:/TNT_Explosion
 --- !u!114 &1991540769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4948,6 +5011,20 @@ MonoBehaviour:
   unlockableWith: 2
   isLoadingScene: 0
   sceneToLoad: 
+  cameraFlashSound:
+    Guid:
+      Data1: -197621650
+      Data2: 1128257436
+      Data3: -1097032832
+      Data4: -1279177129
+    Path: event:/Camera_Blitz
+  tntExplosionSound:
+    Guid:
+      Data1: -634606047
+      Data2: 1101737893
+      Data3: 1193520770
+      Data4: 1615654572
+    Path: event:/TNT_Explosion
 --- !u!114 &1996376839
 MonoBehaviour:
   m_ObjectHideFlags: 0

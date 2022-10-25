@@ -88,7 +88,7 @@ public class GameManager : MonoBehaviour
         currentTask++;
     }
 
-    public static void FMODPlayStatic(FMODUnity.EventReference reference, Vector3 position, Vector3 velocity)
+    public static void FMODPlayStatic(FMODUnity.EventReference reference, Vector3 position, Vector3 velocity, float volume = 1f)
     {
         FMOD.Studio.EventInstance play = FMODUnity.RuntimeManager.CreateInstance(reference);
 
@@ -100,6 +100,14 @@ public class GameManager : MonoBehaviour
         attributes.up = FMODUnity.RuntimeUtils.ToFMODVector(Vector3.up);
 
         play.set3DAttributes(attributes);
+
+        float v;
+        play.getVolume(out v);
+        Debug.Log("Volume: " + v);
+
+        FMOD.RESULT res = play.setVolume(volume);
+
+        Debug.Log(res.ToString());
 
         play.start();
         play.release();

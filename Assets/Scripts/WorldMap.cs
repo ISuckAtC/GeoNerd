@@ -8,9 +8,11 @@ public class WorldMap : MonoBehaviour
     public GameObject player;
     public bool loadMessages;
     public GameObject signPrefab;
+    public FMODUnity.EventReference backgroundMusic;
     // Start is called before the first frame update
     void Start()
     {
+        GameManager.FMODPlayStatic(backgroundMusic, Vector3.zero, Vector3.zero, 0.1f);
         if (loadMessages) LoadMessages();
         WorldMapSceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
     }

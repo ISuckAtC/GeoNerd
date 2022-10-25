@@ -11,6 +11,9 @@ public class DropableItem : MonoBehaviour/*, IDropHandler*/
     public Item.ItemType unlockableWith = Item.ItemType.NONE;
     public bool isLoadingScene = false;
     public string sceneToLoad = "";
+
+    public FMODUnity.EventReference cameraFlashSound;
+    public FMODUnity.EventReference tntExplosionSound;
     void Start()
     {
         
@@ -28,10 +31,19 @@ public class DropableItem : MonoBehaviour/*, IDropHandler*/
     {
         Debug.Log("BaseEventDrop");
         PointerEventData pointerData = (PointerEventData)data;
-        if(pointerData.pointerDrag.gameObject.GetComponent<Item>().itemType == unlockableWith)
+        Item item = pointerData.pointerDrag.gameObject.GetComponent<Item>();
+        if(item.itemType == unlockableWith)
         {
             if (isLoadingScene) UnityEngine.SceneManagement.SceneManager.LoadScene(sceneToLoad);
 
+            if (item.itemType == Item.ItemType.Camera)
+            {
+                GameManager.FMODPlayStatic(cameraFlashSound, Vector3.zero, Vector3.zero);
+            }
+            if (item.itemType == Item.ItemType.TNT)
+            {
+                GameManager.FMODPlayStatic(tntExplosionSound, Vector3.zero, Vector3.zero);
+            }
 
             if (objectToEnable) objectToEnable.SetActive(true);
             Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
