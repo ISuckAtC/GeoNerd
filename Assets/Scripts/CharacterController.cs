@@ -3,6 +3,8 @@ using System.Linq;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
+using FMOD;
+using FMOD.Studio;
 
 public class CharacterController : MonoBehaviour
 {
@@ -33,6 +35,7 @@ public class CharacterController : MonoBehaviour
     public Slider slider;
     
     public bool OVERWORLD = true;
+    public FMODUnity.EventReference toot;
     void Start()
     {
         if (OVERWORLD) 
@@ -55,6 +58,12 @@ public class CharacterController : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            EventInstance play = FMODUnity.RuntimeManager.CreateInstance(toot);
+            play.start();
+            play.release();
+        }
         if (Input.GetKey(KeyCode.W))
         {
             if (currentSpeed < maxSpeed)
@@ -187,7 +196,7 @@ public class CharacterController : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Character Controller can't find ground.");
+            UnityEngine.Debug.LogWarning("Character Controller can't find ground.");
         }
 
         LerpToNormal();
