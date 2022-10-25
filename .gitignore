@@ -75,3 +75,6 @@ TESTPLAYER
 
 # Keeps conflicting, remove later if Water.mat is needed
 Assets/Materials/Water.mat
+
+Assets/Plugins/FMOD/Cache/*
+fmod_editor.log

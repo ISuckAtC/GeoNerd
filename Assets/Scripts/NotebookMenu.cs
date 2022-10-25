@@ -79,5 +79,10 @@ public class NotebookMenu : MonoBehaviour
         }
     }
 
+
+    public void Quit()
+    {
+        GameManager.Instance.QuitGame();
+    }
    
 }
