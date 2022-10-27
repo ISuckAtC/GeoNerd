@@ -8,15 +8,24 @@ public class UIManager : MonoBehaviour
     public GameObject notebookMenu;
     void Start()
     {
-        
+        //notebookMenu.SetActive(!notebookMenu.activeSelf);
+        notebookMenu.SetActive(false);
+        //Invoke("DisableNotebook", 6f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            notebookMenu.SetActive(!notebookMenu.activeSelf);
+        }
     }
 
+    private void DisableNotebook()
+    {
+        notebookMenu.SetActive(false);
+    }
     public void CloseNotebook()
     {
         if (notebookMenu) notebookMenu.SetActive(false);

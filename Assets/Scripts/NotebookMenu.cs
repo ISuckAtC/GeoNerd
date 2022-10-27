@@ -20,14 +20,21 @@ public class NotebookMenu : MonoBehaviour
 
 
 
-
-
+    public bool debugMode = false;
+    public GameObject cheatsMenu;
 
     void Start()
     {
+
     }
 
-    
+    private void OnEnable()
+    {
+        if (debugMode)
+        {
+            cheatsMenu.SetActive(true);
+        }
+    }
     void Update()
     {
     }
