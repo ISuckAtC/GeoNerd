@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class OsloScript : MonoBehaviour
 {
+    public FMODUnity.EventReference cityAmbience;
     public GameObject LibraryMarker, OperaMarker, CastleMarker, reward;
     // Start is called before the first frame update
     void Start()
     {
+        GameManager.FMODPlayStatic(cityAmbience, Vector3.zero, Vector3.zero);
         if (GameManager.Flags[Flag.OSLO_LIBRARYDONE]) LibraryMarker.SetActive(false);
         if (GameManager.Flags[Flag.OSLO_CASTLEPUZZLECOMPLETE]) CastleMarker.SetActive(false);
         if (GameManager.Flags[Flag.OSLO_OPERAPUZZLECOMPLETE]) OperaMarker.SetActive(false);
