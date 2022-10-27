@@ -636,7 +636,7 @@ MonoBehaviour:
   - Forest
   background: {fileID: 2069824879}
   sceneToLoad: 
-  loadDelay: 0
+  loadDelay: 1
   loadIndicator: {fileID: 1703950589}
   loadIndicatorInterval: 0.2
   loadIndicatorFrames:
@@ -652,7 +652,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ffa7205de9d438247ac7d4ebf56a9c09, type: 3}
   - {fileID: 21300000, guid: ec86fb39f656cd741be870ed4ca21b0f, type: 3}
   - {fileID: 21300000, guid: e76decda00020fe44a9a0771aa60b3c2, type: 3}
-  loadCompleteIndicator: {fileID: 21300000, guid: 12fca0181e030da4c9f14419d976d783,
+  loadCompleteIndicator: {fileID: 21300000, guid: 37caa8eb86e33d64a92e79f95defe678,
     type: 3}
 --- !u!1 &1922406107
 GameObject:

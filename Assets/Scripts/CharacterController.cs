@@ -36,10 +36,13 @@ public class CharacterController : MonoBehaviour
     
     public bool OVERWORLD = true;
     public FMODUnity.EventReference toot;
+    public float useDelay = 2f; // to avoid instantly entering a place after going to the map
+    private float currentUseDelay;
     void Start()
     {
         if (OVERWORLD) 
         {
+            currentUseDelay = useDelay;
             transform.position = GameManager.GameData.overWorldPosition;
             InvokeRepeating("SavePosition", 5f, 5f);
         }
@@ -132,10 +135,13 @@ public class CharacterController : MonoBehaviour
                 turnSpeedMultiplier = 0f;
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (currentUseDelay <= 0)
         {
-            Interact();
-        }
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                Interact();
+            }
+        } else currentUseDelay -= Time.deltaTime;
 
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Pause) || Input.GetKeyDown(KeyCode.Tab))
         {
