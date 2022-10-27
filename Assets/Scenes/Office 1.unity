@@ -974,7 +974,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4283128691
+    rgba: 4286352286
   m_fontColor: {r: 0.61960787, g: 0.54509807, b: 0.48627454, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -1111,7 +1111,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4283128691
+    rgba: 4286352286
   m_fontColor: {r: 0.61960787, g: 0.54509807, b: 0.48627454, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -2055,7 +2055,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4283128691
+    rgba: 4286352286
   m_fontColor: {r: 0.61960787, g: 0.54509807, b: 0.48627454, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -2309,6 +2309,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d08a7227f3f193e4cac9aa9ece3d2142, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movement: 0
+  initialSelected: 0
 --- !u!114 &998070794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2328,7 +2330,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 998070793}
           m_TargetAssemblyTypeName: ButtonInteraction, Assembly-CSharp
-          m_MethodName: OnMouseEnter
+          m_MethodName: OnMouseEnterSize
           m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -2344,7 +2346,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 998070793}
           m_TargetAssemblyTypeName: ButtonInteraction, Assembly-CSharp
-          m_MethodName: onMouseLeaves
+          m_MethodName: OnMouseLeavesSize
           m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -3232,6 +3234,8 @@ GameObject:
   - component: {fileID: 1098224771}
   - component: {fileID: 1098224770}
   - component: {fileID: 1098224769}
+  - component: {fileID: 1098224773}
+  - component: {fileID: 1098224772}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -3257,7 +3261,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 310.3, y: 322}
+  m_AnchoredPosition: {x: 310.3, y: 369}
   m_SizeDelta: {x: 115.7, y: 57.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1098224769
@@ -3316,6 +3320,18 @@ MonoBehaviour:
           m_StringArgument: ControlsPanel
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1098224773}
+        m_TargetAssemblyTypeName: ButtonInteraction, Assembly-CSharp
+        m_MethodName: NewOneSelected
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1098224770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3354,6 +3370,65 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1098224767}
   m_CullTransparentMesh: 1
+--- !u!114 &1098224772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1098224767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1098224773}
+          m_TargetAssemblyTypeName: ButtonInteraction, Assembly-CSharp
+          m_MethodName: OnMouseEnterHorizontalSlide
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1098224773}
+          m_TargetAssemblyTypeName: ButtonInteraction, Assembly-CSharp
+          m_MethodName: OnMouseLeavesHorizontalSlide
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &1098224773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1098224767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d08a7227f3f193e4cac9aa9ece3d2142, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movement: 15
+  initialSelected: 0
 --- !u!1 &1145139616
 GameObject:
   m_ObjectHideFlags: 0
@@ -3792,6 +3867,8 @@ GameObject:
   - component: {fileID: 1407220020}
   - component: {fileID: 1407220019}
   - component: {fileID: 1407220018}
+  - component: {fileID: 1407220022}
+  - component: {fileID: 1407220021}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -3876,6 +3953,18 @@ MonoBehaviour:
           m_StringArgument: GeneralPanel
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1407220022}
+        m_TargetAssemblyTypeName: ButtonInteraction, Assembly-CSharp
+        m_MethodName: NewOneSelected
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1407220019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3914,6 +4003,65 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1407220016}
   m_CullTransparentMesh: 1
+--- !u!114 &1407220021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407220016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1407220022}
+          m_TargetAssemblyTypeName: ButtonInteraction, Assembly-CSharp
+          m_MethodName: OnMouseEnterHorizontalSlide
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1407220022}
+          m_TargetAssemblyTypeName: ButtonInteraction, Assembly-CSharp
+          m_MethodName: OnMouseLeavesHorizontalSlide
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &1407220022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407220016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d08a7227f3f193e4cac9aa9ece3d2142, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movement: 15
+  initialSelected: 1
 --- !u!1 &1418090039
 GameObject:
   m_ObjectHideFlags: 0
@@ -3982,7 +4130,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4283128947
+    rgba: 4286352286
   m_fontColor: {r: 0.61960787, g: 0.54509807, b: 0.48627454, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -4203,7 +4351,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1465898832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4967,7 +5115,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4283128691
+    rgba: 4286352286
   m_fontColor: {r: 0.61960787, g: 0.54509807, b: 0.48627454, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
