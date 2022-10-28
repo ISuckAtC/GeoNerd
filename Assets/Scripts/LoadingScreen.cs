@@ -22,16 +22,21 @@ public class LoadingScreen : MonoBehaviour
     private int loadIndicatorIndex = 0;
     private bool doneLoading;
     public Sprite loadCompleteIndicator;
+    public UnityEngine.UI.Button continueButton;
+    private int index;
 
     public void StartLoading(string sceneToLoad, Scene previous)
     {
-        int index = loadingScreenSceneNames.IndexOf(sceneToLoad);
+        index = loadingScreenSceneNames.IndexOf(sceneToLoad);
         if (index > -1)
         {
             background.sprite = loadingScreens[index];
+
+            continueButton.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text = "Loading...";
         }
 
-        InvokeRepeating("LoadIndicator", 0f, loadIndicatorInterval);
+
+        //InvokeRepeating("LoadIndicator", 0f, loadIndicatorInterval);
 
         GameManager.GameData.SaveData();
         this.sceneToLoad = sceneToLoad;
@@ -71,10 +76,22 @@ public class LoadingScreen : MonoBehaviour
         }
     }
 
+    public void OnContinueConfirmed()
+    {
+        if (newSceneLoaded)
+        {
+            foreach (GameObject canvas in newCanvas) canvas.SetActive(true);
+            SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
+        }
+    }
+
     public void SceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        continueButton.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text = "Continue to: " + loadingScreenSceneNames[index];
+        continueButton.enabled = true;
+
         doneLoading = true;
-        loadIndicator.sprite = loadCompleteIndicator;
+        //loadIndicator.sprite = loadCompleteIndicator;
 
         newCanvas = FindObjectsInScene(scene, "Canvas", true).ToArray();
         foreach (GameObject canvas in newCanvas) canvas.SetActive(false);
