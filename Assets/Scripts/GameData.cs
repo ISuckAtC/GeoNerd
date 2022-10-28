@@ -219,7 +219,7 @@ public class GameData
                 Debug.Log("No name found in local files, assuming new player");
                 playerName = name;
                 money = 0;
-                overWorldPosition = new Vector3(444.8f, 13.24f, 758.5f);
+                overWorldPosition = new Vector3(519f, 46f, 1208f);
 
                 Flags[Flag.OFFICE_ARROW] = true;
 

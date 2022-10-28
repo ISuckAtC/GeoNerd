@@ -32,7 +32,7 @@ public class CharacterController : MonoBehaviour
     public GameObject carObj;
     public GameObject rotationObj;
 
-    public Slider slider;
+    //public Slider slider;
     
     public bool OVERWORLD = true;
     public FMODUnity.EventReference toot;
@@ -56,7 +56,7 @@ public class CharacterController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        maxSpeed = slider.value;
+        //maxSpeed = slider.value;
     }
 
     void Update()
@@ -188,10 +188,18 @@ public class CharacterController : MonoBehaviour
         
         //Debug.Log(averageFrame);
 
-        transform.position += transform.forward * speed * averageFrame;
+        Vector3 movement = transform.forward;
+        movement.y = 0f;
+        movement = movement * speed * averageFrame;
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position + new Vector3(0f, 2.5f, 0f), movement.normalized, out hit, movement.magnitude))
+        {
+
+        }
+        else transform.position += movement;
         
         RaycastHit hitInfo;
-        Ray ray = new Ray(new Vector3(transform.position.x, 50f, transform.position.z), Vector3.down);
+        Ray ray = new Ray(new Vector3(transform.position.x, transform.position.y + 30f, transform.position.z), Vector3.down);
         if (Physics.Raycast(ray, out hitInfo, 60f, 1 << 3))
         {
             transform.position = new Vector3(transform.position.x, hitInfo.point.y, transform.position.z);
