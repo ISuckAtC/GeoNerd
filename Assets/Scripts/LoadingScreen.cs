@@ -24,12 +24,15 @@ public class LoadingScreen : MonoBehaviour
     public Sprite loadCompleteIndicator;
     public UnityEngine.UI.Button continueButton;
     public TMPro.TextMeshProUGUI nextSceneText;
+    public UnityEngine.UI.Slider slider;
     private int index;
+    private bool loading;
 
     public void StartLoading(string sceneToLoad, Scene previous)
     {
         index = loadingScreenSceneNames.IndexOf(sceneToLoad);
-        nextSceneText.text = "...on your way to: " + sceneToLoad;
+        nextSceneText.text = "...ON YOUR WAY TO: " + sceneToLoad.ToUpper();
+        continueButton.image.color = new Color32(100, 100, 100, 150);
         if (index > -1)
         {
             background.sprite = loadingScreens[index];
@@ -49,6 +52,8 @@ public class LoadingScreen : MonoBehaviour
             GameManager.fmodInstances[0].stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             GameManager.fmodInstances.RemoveAt(0);
         }
+
+        loading = true;
 
         Invoke("DelayedLoad", loadDelay);
     }
@@ -71,6 +76,11 @@ public class LoadingScreen : MonoBehaviour
 
     private void Update()
     {
+        if (loading)
+        {
+            slider.value += (Time.deltaTime / loadDelay);
+            if (slider.value > 1f) slider.value = 1f;
+        }
         if (newSceneLoaded && Input.anyKeyDown)
         {
             foreach (GameObject canvas in newCanvas) canvas.SetActive(true);
@@ -89,8 +99,9 @@ public class LoadingScreen : MonoBehaviour
 
     public void SceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        continueButton.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text = "Continue to: " + loadingScreenSceneNames[index];
+        //continueButton.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text = "Continue to: " + loadingScreenSceneNames[index];
         continueButton.enabled = true;
+        continueButton.image.color = new Color32(255, 255, 255, 255);
 
         doneLoading = true;
         //loadIndicator.sprite = loadCompleteIndicator;
