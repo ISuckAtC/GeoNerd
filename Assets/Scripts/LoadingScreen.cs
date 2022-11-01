@@ -23,11 +23,13 @@ public class LoadingScreen : MonoBehaviour
     private bool doneLoading;
     public Sprite loadCompleteIndicator;
     public UnityEngine.UI.Button continueButton;
+    public TMPro.TextMeshProUGUI nextSceneText;
     private int index;
 
     public void StartLoading(string sceneToLoad, Scene previous)
     {
         index = loadingScreenSceneNames.IndexOf(sceneToLoad);
+        nextSceneText.text = "...on your way to: " + sceneToLoad;
         if (index > -1)
         {
             background.sprite = loadingScreens[index];
