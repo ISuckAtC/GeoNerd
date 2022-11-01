@@ -37,7 +37,7 @@ public class LoadingScreen : MonoBehaviour
         {
             background.sprite = loadingScreens[index];
 
-            continueButton.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text = "Loading...";
+            //continueButton.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text = "Loading...";
         }
 
 

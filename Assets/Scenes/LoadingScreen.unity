@@ -1865,7 +1865,7 @@ MonoBehaviour:
   - Forest
   background: {fileID: 73046540}
   sceneToLoad: 
-  loadDelay: 1
+  loadDelay: 5
   loadIndicator: {fileID: 0}
   loadIndicatorInterval: 0.2
   loadIndicatorFrames:
@@ -1884,7 +1884,7 @@ MonoBehaviour:
   loadCompleteIndicator: {fileID: 21300000, guid: 37caa8eb86e33d64a92e79f95defe678,
     type: 3}
   continueButton: {fileID: 1692076426}
-  nextSceneText: {fileID: 1172864134}
+  nextSceneText: {fileID: 1099018639}
   slider: {fileID: 1526273193}
 --- !u!1 &1922406107
 GameObject:
