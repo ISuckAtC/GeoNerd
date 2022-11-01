@@ -24,13 +24,16 @@ public class LoadingScreen : MonoBehaviour
     public Sprite loadCompleteIndicator;
     public UnityEngine.UI.Button continueButton;
     public TMPro.TextMeshProUGUI nextSceneText;
+    public GameObject continueTextObject;
     public UnityEngine.UI.Slider slider;
     private int index;
     private bool loading;
+    private GameObject sceneGlobalVolume;
 
     public void StartLoading(string sceneToLoad, Scene previous)
     {
         index = loadingScreenSceneNames.IndexOf(sceneToLoad);
+        continueTextObject.SetActive(false);
         nextSceneText.text = "...ON YOUR WAY TO: " + sceneToLoad.ToUpper();
         continueButton.image.color = new Color32(100, 100, 100, 150);
         if (index > -1)
@@ -93,6 +96,7 @@ public class LoadingScreen : MonoBehaviour
         if (newSceneLoaded)
         {
             foreach (GameObject canvas in newCanvas) canvas.SetActive(true);
+            if (sceneGlobalVolume) sceneGlobalVolume.SetActive(true);
             SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
         }
     }
@@ -103,11 +107,22 @@ public class LoadingScreen : MonoBehaviour
         continueButton.enabled = true;
         continueButton.image.color = new Color32(255, 255, 255, 255);
 
+        continueTextObject.SetActive(true);
+
         doneLoading = true;
         //loadIndicator.sprite = loadCompleteIndicator;
 
         newCanvas = FindObjectsInScene(scene, "Canvas", true).ToArray();
         foreach (GameObject canvas in newCanvas) canvas.SetActive(false);
+        
+        GameObject[] volumes = FindObjectsInScene(scene, "Global Volume", true).ToArray();
+        if (volumes.Length > 0)
+        {
+            sceneGlobalVolume = volumes[0];
+            sceneGlobalVolume.SetActive(false);
+        }
+        
+
         SceneManager.sceneLoaded -= SceneLoaded;
         newSceneLoaded = true;
     }

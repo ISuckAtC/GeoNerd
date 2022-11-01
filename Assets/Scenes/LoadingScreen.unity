@@ -1885,6 +1885,7 @@ MonoBehaviour:
     type: 3}
   continueButton: {fileID: 1692076426}
   nextSceneText: {fileID: 1099018639}
+  continueTextObject: {fileID: 1372022124}
   slider: {fileID: 1526273193}
 --- !u!1 &1922406107
 GameObject:
