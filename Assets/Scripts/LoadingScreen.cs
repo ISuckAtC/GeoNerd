@@ -29,6 +29,7 @@ public class LoadingScreen : MonoBehaviour
     private int index;
     private bool loading;
     private GameObject sceneGlobalVolume;
+    public TMPro.TextMeshProUGUI countiuneText;
 
     public void StartLoading(string sceneToLoad, Scene previous)
     {
@@ -36,6 +37,7 @@ public class LoadingScreen : MonoBehaviour
         continueTextObject.SetActive(false);
         nextSceneText.text = "...ON YOUR WAY TO: " + sceneToLoad.ToUpper();
         continueButton.image.color = new Color32(100, 100, 100, 150);
+        countiuneText.color = new Color32(100, 100, 100, 150);
         if (index > -1)
         {
             background.sprite = loadingScreens[index];
@@ -106,6 +108,7 @@ public class LoadingScreen : MonoBehaviour
         //continueButton.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text = "Continue to: " + loadingScreenSceneNames[index];
         continueButton.enabled = true;
         continueButton.image.color = new Color32(255, 255, 255, 255);
+        countiuneText.color = new Color32(255, 255, 255, 255);
 
         continueTextObject.SetActive(true);
 

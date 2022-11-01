@@ -1887,6 +1887,7 @@ MonoBehaviour:
   nextSceneText: {fileID: 1099018639}
   continueTextObject: {fileID: 1372022124}
   slider: {fileID: 1526273193}
+  countiuneText: {fileID: 1172864134}
 --- !u!1 &1922406107
 GameObject:
   m_ObjectHideFlags: 0
