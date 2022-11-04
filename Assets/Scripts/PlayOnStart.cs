@@ -8,7 +8,7 @@ public class PlayOnStart : MonoBehaviour
     public FMODUnity.EventReference reference;
     public Vector3 velocity;
     public float volume;
-    public int persist;
+    public int persist = 1;
     private FMOD.Studio.EventInstance instance;
     // Start is called before the first frame update
     void Start()
@@ -23,7 +23,7 @@ public class PlayOnStart : MonoBehaviour
 
     void Persist(Scene scene, LoadSceneMode mode)
     {
-        if (--persist == 0)
+        if (--persist <= 0)
         {
             instance.release();
             Destroy(gameObject);
