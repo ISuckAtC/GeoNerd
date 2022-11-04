@@ -11,7 +11,7 @@ public class ForestManager : MonoBehaviour
     [System.Serializable]
     public enum Direction { Up, Down, Right, Left};
 
-    private Vector2Int[] DirectionVector = { new Vector2Int(0, -1), new Vector2Int(0, 1), new Vector2Int(1, 0), new Vector2Int(-1, 0)};
+    private Vector2Int[] DirectionVector = { new Vector2Int(0, 1), new Vector2Int(0, -1), new Vector2Int(1, 0), new Vector2Int(-1, 0)};
 
     [SerializeField]
     private GameObject[][] gridOfPanels;
