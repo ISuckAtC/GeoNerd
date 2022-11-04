@@ -18666,21 +18666,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1164156997}
     m_Modifications:
-    - target: {fileID: 6278648681055614366, guid: b032febb8626fa242b4ee4d8ee17df6e,
-        type: 3}
-      propertyPath: slideMax
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 6278648681245851135, guid: b032febb8626fa242b4ee4d8ee17df6e,
-        type: 3}
-      propertyPath: slideMax
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 6278648681834521783, guid: b032febb8626fa242b4ee4d8ee17df6e,
-        type: 3}
-      propertyPath: slideMax
-      value: 500
-      objectReference: {fileID: 0}
     - target: {fileID: 6278648681979820133, guid: b032febb8626fa242b4ee4d8ee17df6e,
         type: 3}
       propertyPath: m_Name
@@ -18790,16 +18775,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7226716855614463799, guid: b032febb8626fa242b4ee4d8ee17df6e,
-        type: 3}
-      propertyPath: slideMax
-      value: 400
-      objectReference: {fileID: 0}
-    - target: {fileID: 7226716855614463799, guid: b032febb8626fa242b4ee4d8ee17df6e,
-        type: 3}
-      propertyPath: slideMin
-      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b032febb8626fa242b4ee4d8ee17df6e, type: 3}
