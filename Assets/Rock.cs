@@ -6,6 +6,7 @@ public class Rock : MonoBehaviour
 {
     [SerializeField] bool isObstacle = false;
     float velocity;
+    public FMODUnity.EventReference rockHitSound;
     private void Start()
     {
         velocity = isObstacle ? 2.5f : Random.Range(2f, 4f);
@@ -24,10 +25,12 @@ public class Rock : MonoBehaviour
         {
             if (other.transform.CompareTag("Ground"))
             {
+                GameManager.FMODPlayStatic(rockHitSound, transform.position, Vector3.zero, 1f, false);
                 Destroy(gameObject);
             }
             else if (other.GetComponent<CaveMovement>())
             {
+                GameManager.FMODPlayStatic(rockHitSound, transform.position, Vector3.zero, 1f, false);
                 Destroy(gameObject);
                 other.GetComponent<CaveMovement>().loseLife();
             }

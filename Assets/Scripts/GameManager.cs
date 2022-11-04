@@ -89,7 +89,7 @@ public class GameManager : MonoBehaviour
         currentTask++;
     }
 
-    public static FMOD.Studio.EventInstance FMODPlayStatic(FMODUnity.EventReference reference, Vector3 position, Vector3 velocity, float volume = 1f, bool registerForRelease = true)
+    public static FMOD.Studio.EventInstance FMODPlayStatic(FMODUnity.EventReference reference, Vector3 position, Vector3 velocity, float volume = 1f, bool registerForDelete = true, bool autoRelease = true)
     {
         FMOD.Studio.EventInstance play = FMODUnity.RuntimeManager.CreateInstance(reference);
 
@@ -108,10 +108,10 @@ public class GameManager : MonoBehaviour
 
         FMOD.RESULT res = play.setVolume(volume);
 
-        if (registerForRelease) fmodInstances.Add(play);
+        if (registerForDelete) fmodInstances.Add(play);
 
         play.start();
-        play.release();
+        if (autoRelease) play.release();
 
         return play;
     }

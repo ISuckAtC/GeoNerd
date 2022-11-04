@@ -17,7 +17,7 @@ public class CharacterController : MonoBehaviour
     public float turnAcceleration = 5f;
 
     public float maxReverseSpeed = 3.8f;
-    
+
     public float acceleration = 12f;
     public float stopSpeed = 9f;
 
@@ -33,15 +33,19 @@ public class CharacterController : MonoBehaviour
     public GameObject rotationObj;
 
     //public Slider slider;
-    
+
     public bool OVERWORLD = true;
     public FMODUnity.EventReference toot;
+    public FMODUnity.EventReference engine;
+    public float engineVolume;
+    private FMOD.Studio.EventInstance engineInstance;
     public float useDelay = 2f; // to avoid instantly entering a place after going to the map
     private float currentUseDelay;
     void Start()
     {
-        if (OVERWORLD) 
+        if (OVERWORLD)
         {
+            engineInstance = GameManager.FMODPlayStatic(engine, transform.position, Vector3.zero, engineVolume, true, false);
             currentUseDelay = useDelay;
             transform.position = GameManager.GameData.overWorldPosition;
             InvokeRepeating("SavePosition", 5f, 5f);
@@ -95,7 +99,7 @@ public class CharacterController : MonoBehaviour
                 turnSpeedMultiplier -= turnAcceleration * Time.deltaTime;
             else
                 turnSpeedMultiplier = -1f;
-            
+
             transform.Rotate(Vector3.up, turnSpeed * (currentSpeed * turnSpeedMultiplier) * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.D))
@@ -106,7 +110,7 @@ public class CharacterController : MonoBehaviour
                 turnSpeedMultiplier += turnAcceleration * Time.deltaTime;
             else
                 turnSpeedMultiplier = 1f;
-            
+
             transform.Rotate(Vector3.up, turnSpeed * (currentSpeed * turnSpeedMultiplier) * Time.deltaTime);
         }
 
@@ -141,7 +145,8 @@ public class CharacterController : MonoBehaviour
             {
                 Interact();
             }
-        } else currentUseDelay -= Time.deltaTime;
+        }
+        else currentUseDelay -= Time.deltaTime;
 
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Pause) || Input.GetKeyDown(KeyCode.Tab))
         {
@@ -157,22 +162,33 @@ public class CharacterController : MonoBehaviour
                 Time.timeScale = 1f;
             }
         }
-        
+
         averageFrameTime.Add(Time.deltaTime);
-        
+
         if (averageFrameTime.Count > averageStackLength) averageFrameTime.RemoveAt(0);
-        
+
         Move(currentSpeed);
 
-        
+        if (OVERWORLD)
+        {
+            FMOD.ATTRIBUTES_3D attributes;
+            engineInstance.get3DAttributes(out attributes);
+            attributes.position = FMODUnity.RuntimeUtils.ToFMODVector(transform.position);
+            engineInstance.set3DAttributes(attributes);
+            if (currentSpeed > 0.1f || currentSpeed < -0.1f)
+            {
+                engineInstance.setParameterByName("CarState", 1f);
+            }
+            else engineInstance.setParameterByName("CarState", 0f);
+        }
     }
 
     public void Unstuck()
     {
         transform.position = new Vector3(444.799988f, 13.2399998f, 758.5f);
     }
-    
-    
+
+
 
     void Interact()
     {
@@ -181,11 +197,11 @@ public class CharacterController : MonoBehaviour
             CurrentLandmark.GetComponent<Landmark>().Use();
         }
     }
-    
+
     void Move(float speed)
     {
         float averageFrame = averageFrameTime.Sum() / averageStackLength;
-        
+
         //Debug.Log(averageFrame);
 
         Vector3 movement = transform.forward;
@@ -197,7 +213,7 @@ public class CharacterController : MonoBehaviour
 
         }
         else transform.position += movement;
-        
+
         RaycastHit hitInfo;
         Ray ray = new Ray(new Vector3(transform.position.x, transform.position.y + 30f, transform.position.z), Vector3.down);
         if (Physics.Raycast(ray, out hitInfo, 60f, 1 << 3))
@@ -216,7 +232,7 @@ public class CharacterController : MonoBehaviour
 
     private void LerpToNormal()
     {
-        Quaternion tempRotation = Quaternion.FromToRotation (rotationObj.transform.up, groundNormal) * rotationObj.transform.rotation;
+        Quaternion tempRotation = Quaternion.FromToRotation(rotationObj.transform.up, groundNormal) * rotationObj.transform.rotation;
 
         rotationObj.transform.eulerAngles = new Vector3(tempRotation.eulerAngles.x, rotationObj.transform.eulerAngles.y, tempRotation.eulerAngles.z);
 

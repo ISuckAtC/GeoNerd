@@ -144,3 +144,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isObstacle: 0
+  rockHitSound:
+    Guid:
+      Data1: 130596004
+      Data2: 1227132233
+      Data3: -1489370219
+      Data4: 972287775
+    Path: event:/TrollCave_RockFall
