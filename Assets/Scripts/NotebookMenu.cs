@@ -39,12 +39,21 @@ public class NotebookMenu : MonoBehaviour
     {
     }
 
-   
-   
+    public void OpenNotebook()
+    {
+        gameObject.SetActive(true);
+    }
+    
+    public void CloseNotebook()
+    {
+        gameObject.SetActive(false);
+    }
+
 
     public void ChangeRightPanel(string panel)
     {
-        switch (panel){
+        switch (panel)
+        {
             case "SettingsPanel":
                 if (currentRightPanel) currentRightPanel.SetActive(false);
                 currentRightPanel = settingsPanel;
@@ -59,13 +68,14 @@ public class NotebookMenu : MonoBehaviour
 
         }
     }
-    
-    
+
+
     public void ChangeSettingstPanel(string panel)
     {
-        switch (panel){
+        switch (panel)
+        {
             case "GeneralPanel":
-                if(settingsPanel.transform.GetChild(settingsPanel.transform.childCount - 1))
+                if (settingsPanel.transform.GetChild(settingsPanel.transform.childCount - 1))
                 {
                     generalSettingsPanel.transform.SetAsLastSibling();
                 }
@@ -77,7 +87,7 @@ public class NotebookMenu : MonoBehaviour
                     controlsSettingsPanel.transform.SetAsLastSibling();
                 }
                 break;
-            
+
             default:
                 Debug.Log("name of the panle incorrect");
                 break;
@@ -91,5 +101,5 @@ public class NotebookMenu : MonoBehaviour
     {
         GameManager.Instance.QuitGame();
     }
-   
+
 }
