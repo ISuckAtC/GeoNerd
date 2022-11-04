@@ -18,14 +18,12 @@ public class UISlideInBar : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     {
         over = true;
         transform.DOMoveX(origin.x + (moveLeft ? -slideMax : slideMax), 0.5f);
-
     }
 
     virtual public void OnPointerExit(PointerEventData eventData)
     {
         over = false;
         transform.DOMoveX(origin.x, 0.5f);
-
     }
 
     // Start is called before the first frame update
