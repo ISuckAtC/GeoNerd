@@ -15,7 +15,7 @@ public class ItemUIHandler : MonoBehaviour, IBeginDragHandler/*, IDropHandler*/
     public float draggingScale = 1.25f;
     public float timeToScale = 1f;
     private Vector3 initialScale;
-
+    public bool isInteractable = false;
 
     private void Start()
     {
@@ -24,6 +24,8 @@ public class ItemUIHandler : MonoBehaviour, IBeginDragHandler/*, IDropHandler*/
 
     public void OnBeginDrag(PointerEventData w)
     {
+        if (!isInteractable) return;
+
         transform.DOScale(initialScale * draggingScale, timeToScale);
 
     }
@@ -35,6 +37,8 @@ public class ItemUIHandler : MonoBehaviour, IBeginDragHandler/*, IDropHandler*/
     }
     public void DragHandler(BaseEventData data)
     {
+        if (!isInteractable) return;
+
         //canvasGroup.blocksRaycasts = false;
         GetComponent<Image>().raycastTarget = false;
         PointerEventData pointerData = (PointerEventData)data;
@@ -46,6 +50,8 @@ public class ItemUIHandler : MonoBehaviour, IBeginDragHandler/*, IDropHandler*/
 
     public void OnGrabRelease(BaseEventData data)
     {
+        if (!isInteractable) return;
+
         //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         //RaycastHit hit;
         //if (Physics.Raycast(ray, out hit, LayerMask.NameToLayer("DropableObject")))
