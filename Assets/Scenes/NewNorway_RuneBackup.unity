@@ -802,7 +802,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 84467008}
-  m_LocalRotation: {x: 0.27059847, y: 0.65328056, z: -0.27059767, w: 0.6532824}
+  m_LocalRotation: {x: 0.27059805, y: 0.6532815, z: -0.27059805, w: 0.6532815}
   m_LocalPosition: {x: 67, y: 274, z: 1041}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -857,6 +857,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 621922495}
   offset: {x: -20, y: 30, z: 0}
+  targetOffice: 0
+  officeTransform: {fileID: 0}
 --- !u!114 &84467015
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4743,6 +4745,21 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1146916928}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &621922496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 621922487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef5164def0480ce48a4caa8d7cd75bf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  accSpeed: 0
+  maxSpeed: 5
+  rotSpeed: 0
 --- !u!1001 &624696577
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8324,7 +8341,11 @@ PrefabInstance:
       propertyPath: toot.Guid.Data4
       value: -1724076289
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7375208217028332279, guid: ceb5504484629774b85cdf1f7e2009c4, type: 3}
+    - {fileID: 7375208217028332278, guid: ceb5504484629774b85cdf1f7e2009c4, type: 3}
+    - {fileID: 7375208217028332277, guid: ceb5504484629774b85cdf1f7e2009c4, type: 3}
+    - {fileID: 7375208217028332276, guid: ceb5504484629774b85cdf1f7e2009c4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ceb5504484629774b85cdf1f7e2009c4, type: 3}
 --- !u!1 &1148962911 stripped
 GameObject:
