@@ -76,6 +76,6 @@ public class NewOpera : MonoBehaviour
         yield return null;
 
         GameManager.GameData.Flags[Flag.OSLO_OPERAPUZZLECOMPLETE] = true;
-        GameManager.Instance.LoadScene("NewNorway");
+        GameManager.Instance.LoadScene("Oslo");
     }
 }
