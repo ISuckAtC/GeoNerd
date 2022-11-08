@@ -32,6 +32,10 @@ public class CharacterController : MonoBehaviour
     public GameObject carObj;
     public GameObject rotationObj;
 
+    public GameObject patio;
+
+    private bool inOffice = false;
+
     //public Slider slider;
 
     public bool OVERWORLD = true;
@@ -61,125 +65,137 @@ public class CharacterController : MonoBehaviour
     private void FixedUpdate()
     {
         //maxSpeed = slider.value;
+
+        if (currentSpeed == 0)
+        {
+            patio.SetActive(true);
+        }
+        else
+        {
+            patio.SetActive(false);
+        }
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T))
+        if (!inOffice)
         {
-            GameManager.FMODPlayStatic(toot, transform.position, Vector3.zero);
-        }
-        if (Input.GetKey(KeyCode.W))
-        {
-            if (currentSpeed < maxSpeed)
+            if (Input.GetKeyDown(KeyCode.T))
             {
-                currentSpeed += acceleration;
+                GameManager.FMODPlayStatic(toot, transform.position, Vector3.zero);
             }
-            else
+            if (Input.GetKey(KeyCode.W))
             {
-                currentSpeed = maxSpeed;
+                if (currentSpeed < maxSpeed)
+                {
+                    currentSpeed += acceleration;
+                }
+                else
+                {
+                    currentSpeed = maxSpeed;
+                }
             }
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            if (currentSpeed > -maxReverseSpeed)
+            if (Input.GetKey(KeyCode.S))
             {
-                currentSpeed -= acceleration;
+                if (currentSpeed > -maxReverseSpeed)
+                {
+                    currentSpeed -= acceleration;
+                }
+                else
+                {
+                    currentSpeed = -maxReverseSpeed;
+                }
             }
-            else
+            if (Input.GetKey(KeyCode.A))
             {
-                currentSpeed = -maxReverseSpeed;
-            }
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            if (turnSpeedMultiplier > 0f)
-                turnSpeedMultiplier -= turnAcceleration * 2f * Time.deltaTime;
-            else if (turnSpeedMultiplier >= -1f)
-                turnSpeedMultiplier -= turnAcceleration * Time.deltaTime;
-            else
-                turnSpeedMultiplier = -1f;
+                if (turnSpeedMultiplier > 0f)
+                    turnSpeedMultiplier -= turnAcceleration * 2f * Time.deltaTime;
+                else if (turnSpeedMultiplier >= -1f)
+                    turnSpeedMultiplier -= turnAcceleration * Time.deltaTime;
+                else
+                    turnSpeedMultiplier = -1f;
 
-            transform.Rotate(Vector3.up, turnSpeed * (currentSpeed * turnSpeedMultiplier) * Time.deltaTime);
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            if (turnSpeedMultiplier < 0f)
-                turnSpeedMultiplier += turnAcceleration * 2f * Time.deltaTime;
-            else if (turnSpeedMultiplier <= 1f)
-                turnSpeedMultiplier += turnAcceleration * Time.deltaTime;
-            else
-                turnSpeedMultiplier = 1f;
-
-            transform.Rotate(Vector3.up, turnSpeed * (currentSpeed * turnSpeedMultiplier) * Time.deltaTime);
-        }
-
-        if (!Input.GetKey(KeyCode.W) && (!Input.GetKey(KeyCode.S)))
-        {
-            if (currentSpeed > 0.1f)
-            {
-                currentSpeed -= stopSpeed * Time.deltaTime;
+                transform.Rotate(Vector3.up, turnSpeed * (currentSpeed * turnSpeedMultiplier) * Time.deltaTime);
             }
-            else if (currentSpeed < -0.1f)
+            if (Input.GetKey(KeyCode.D))
             {
-                currentSpeed += stopSpeed * Time.deltaTime;
+                if (turnSpeedMultiplier < 0f)
+                    turnSpeedMultiplier += turnAcceleration * 2f * Time.deltaTime;
+                else if (turnSpeedMultiplier <= 1f)
+                    turnSpeedMultiplier += turnAcceleration * Time.deltaTime;
+                else
+                    turnSpeedMultiplier = 1f;
+
+                transform.Rotate(Vector3.up, turnSpeed * (currentSpeed * turnSpeedMultiplier) * Time.deltaTime);
             }
-            else
+
+            if (!Input.GetKey(KeyCode.W) && (!Input.GetKey(KeyCode.S)))
             {
-                currentSpeed = 0f;
+                if (currentSpeed > 0.1f)
+                {
+                    currentSpeed -= stopSpeed * Time.deltaTime;
+                }
+                else if (currentSpeed < -0.1f)
+                {
+                    currentSpeed += stopSpeed * Time.deltaTime;
+                }
+                else
+                {
+                    currentSpeed = 0f;
+                }
             }
-        }
-        if (!Input.GetKey(KeyCode.A) && (!Input.GetKey(KeyCode.D)))
-        {
-            if (turnSpeedMultiplier > 0.1f)
-                turnSpeedMultiplier -= turnAcceleration * 0.5f * Time.deltaTime;
-            else if (turnSpeedMultiplier < -0.1f)
-                turnSpeedMultiplier += turnAcceleration * 0.5f * Time.deltaTime;
-            else
-                turnSpeedMultiplier = 0f;
-        }
-
-        if (currentUseDelay <= 0)
-        {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (!Input.GetKey(KeyCode.A) && (!Input.GetKey(KeyCode.D)))
             {
-                Interact();
+                if (turnSpeedMultiplier > 0.1f)
+                    turnSpeedMultiplier -= turnAcceleration * 0.5f * Time.deltaTime;
+                else if (turnSpeedMultiplier < -0.1f)
+                    turnSpeedMultiplier += turnAcceleration * 0.5f * Time.deltaTime;
+                else
+                    turnSpeedMultiplier = 0f;
             }
-        }
-        else currentUseDelay -= Time.deltaTime;
 
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Pause) || Input.GetKeyDown(KeyCode.Tab))
-        {
-            gameObject.GetComponent<PauseMenu>().Pause();
-        }
+            if (currentUseDelay <= 0)
+            {
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    Interact();
+                }
+            }
+            else currentUseDelay -= Time.deltaTime;
 
-        if (Input.GetKeyDown(KeyCode.M))
-        {
+            if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Pause) || Input.GetKeyDown(KeyCode.Tab))
+            {
+                gameObject.GetComponent<PauseMenu>().Pause();
+            }
+
+            if (Input.GetKeyDown(KeyCode.M))
+            {
+                if (OVERWORLD)
+                {
+                    WorldPoster wp = GetComponent<WorldPoster>();
+                    wp.postUI.SetActive(true);
+                    Time.timeScale = 1f;
+                }
+            }
+
+            averageFrameTime.Add(Time.deltaTime);
+
+            if (averageFrameTime.Count > averageStackLength) averageFrameTime.RemoveAt(0);
+
+            Move(currentSpeed);
+
             if (OVERWORLD)
             {
-                WorldPoster wp = GetComponent<WorldPoster>();
-                wp.postUI.SetActive(true);
-                Time.timeScale = 1f;
+                FMOD.ATTRIBUTES_3D attributes;
+                engineInstance.get3DAttributes(out attributes);
+                attributes.position = FMODUnity.RuntimeUtils.ToFMODVector(transform.position);
+                engineInstance.set3DAttributes(attributes);
+                if (currentSpeed > 0.1f || currentSpeed < -0.1f)
+                {
+                    engineInstance.setParameterByName("CarState", 1f);
+                }
+                else engineInstance.setParameterByName("CarState", 0f);
             }
-        }
-
-        averageFrameTime.Add(Time.deltaTime);
-
-        if (averageFrameTime.Count > averageStackLength) averageFrameTime.RemoveAt(0);
-
-        Move(currentSpeed);
-
-        if (OVERWORLD)
-        {
-            FMOD.ATTRIBUTES_3D attributes;
-            engineInstance.get3DAttributes(out attributes);
-            attributes.position = FMODUnity.RuntimeUtils.ToFMODVector(transform.position);
-            engineInstance.set3DAttributes(attributes);
-            if (currentSpeed > 0.1f || currentSpeed < -0.1f)
-            {
-                engineInstance.setParameterByName("CarState", 1f);
-            }
-            else engineInstance.setParameterByName("CarState", 0f);
         }
     }
 
@@ -188,7 +204,10 @@ public class CharacterController : MonoBehaviour
         transform.position = new Vector3(444.799988f, 13.2399998f, 758.5f);
     }
 
-
+    public void ToggleOffice(bool i)
+    {
+        inOffice = i;
+    }
 
     void Interact()
     {
@@ -210,7 +229,6 @@ public class CharacterController : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position + new Vector3(0f, 2.5f, 0f), movement.normalized, out hit, movement.magnitude))
         {
-
         }
         else transform.position += movement;
 
@@ -248,3 +266,5 @@ public class CharacterController : MonoBehaviour
         CurrentLandmark = null;
     }
 }
+
+

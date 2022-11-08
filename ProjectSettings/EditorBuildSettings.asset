@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/NorwayMap.unity
-    guid: 26952dc3ad398fa46a3af9be0a2ed240
+    path: Assets/Scenes/NewNorway.unity
+    guid: 2b6ab34c0675d924899c911f6e10de16
   - enabled: 1
     path: Assets/Scenes/Cities/Oslo/Oslo.unity
     guid: 45dd75d691551d44eaa21867595e7b4d
@@ -41,4 +41,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Cities/Oslo/Castle.unity
     guid: a4359b2c419b97f4fbf2c87b277b8735
+  - enabled: 0
+    path: Assets/Scenes/NorwayMap.unity
+    guid: 26952dc3ad398fa46a3af9be0a2ed240
   m_configObjects: {}
