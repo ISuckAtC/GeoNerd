@@ -76,6 +76,7 @@ public class NewLibraryPuzzle : MonoBehaviour
         speechBubble2.Run(() => {
             speechBubble2.transform.parent.GetComponent<UnityEngine.UI.Button>().enabled = true;
         });
+        GameManager.GameData.Flags[Flag.OSLO_LIBRARYDONE] = true;
         yield return null;
 
         GameManager.GameData.Flags[Flag.OSLO_LIBRARYDONE] = true;
