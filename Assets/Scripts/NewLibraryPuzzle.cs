@@ -3,36 +3,46 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class NewOpera : MonoBehaviour
+public class NewLibraryPuzzle : MonoBehaviour
 {
-    public SpeechBubble firstBubble;
-    public SpeechBubble secondBubble;
+    public SpeechBubble speechBubble1;
+    public SpeechBubble speechBubble2;
     public GameObject part1;
     public GameObject part2;
     public GameObject part3;
+    public GameObject universal;
 
     public Transform currentlySelected;
     [Header("Put the slots and words here in matching order")]
     public Transform[] wordSlots;
-    public NewOperaPuzzleWord[] words;
+    public LibraryBook[] words;
     public float snapLeniency;
     public GameObject winButton;
 
-    public bool startSequenceImmediately;
-
     private IEnumerator enumerator;
 
-    public void Start()
+    // Start is called before the first frame update
+    void Start()
     {
+        speechBubble1.Run(() => {
+            speechBubble1.transform.parent.GetComponent<UnityEngine.UI.Button>().enabled = true;
+        });
+        enumerator = LibrarySequence().GetEnumerator();
         for (int i = 0; i < words.Length; ++i) 
         {
             words[i].overhead = this;
         }
-        enumerator = OperaSequence().GetEnumerator();
-        if (startSequenceImmediately)
-        {
-            MoveNext();
-        }
+    }
+
+    public void MoveNext()
+    {
+        enumerator.MoveNext();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
     }
 
     public void CheckPuzzle()
@@ -47,35 +57,26 @@ public class NewOpera : MonoBehaviour
         {
             // you win, do stuff
             Debug.Log("WIN");
-            winButton.SetActive(true);
+            MoveNext();
         }
     }
 
-    public void MoveNext()
+    public IEnumerable LibrarySequence()
     {
-        enumerator.MoveNext();
-    }
-
-    public IEnumerable OperaSequence()
-    {
-        Debug.Log("started");
-        firstBubble.Run(() => {
-            firstBubble.transform.parent.GetComponent<UnityEngine.UI.Button>().enabled = true;
-        });
-        yield return null;
-
         part1.SetActive(false);
+        universal.SetActive(false);
         part2.SetActive(true);
         yield return null;
 
         part2.SetActive(false);
         part3.SetActive(true);
-        secondBubble.Run(() => {
-            secondBubble.transform.parent.GetComponent<UnityEngine.UI.Button>().enabled = true;
+        universal.SetActive(true);
+        speechBubble2.Run(() => {
+            speechBubble2.transform.parent.GetComponent<UnityEngine.UI.Button>().enabled = true;
         });
         yield return null;
 
-        GameManager.GameData.Flags[Flag.OSLO_OPERAPUZZLECOMPLETE] = true;
+        GameManager.GameData.Flags[Flag.OSLO_LIBRARYDONE] = true;
         GameManager.Instance.LoadScene("NewNorway");
     }
 }
