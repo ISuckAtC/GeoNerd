@@ -11,6 +11,7 @@ public class NewLibraryPuzzle : MonoBehaviour
     public GameObject part2;
     public GameObject part3;
     public GameObject universal;
+    public UISlideItemBar itemSlideBar;
 
     public Transform currentlySelected;
     [Header("Put the slots and words here in matching order")]
@@ -18,6 +19,7 @@ public class NewLibraryPuzzle : MonoBehaviour
     public LibraryBook[] words;
     public float snapLeniency;
     public GameObject winButton;
+    public GameObject exitButton;
 
     private IEnumerator enumerator;
 
@@ -77,6 +79,21 @@ public class NewLibraryPuzzle : MonoBehaviour
         yield return null;
 
         GameManager.GameData.Flags[Flag.OSLO_LIBRARYDONE] = true;
-        GameManager.Instance.LoadScene("NewNorway");
+        
+        StartCoroutine(ShowItemAquired());
+    }
+    public IEnumerator ShowItemAquired()
+    {
+        itemSlideBar.Select();
+        yield return new WaitForSeconds(0.5f);
+        exitButton.SetActive(true);
+        universal.GetComponent<UniversalMenu>().UpdateUI();
+        yield return new WaitForSeconds(0.5f);
+        itemSlideBar.Select();
+    }
+
+    public void Exit()
+    {
+        GameManager.Instance.LoadScene("Oslo");
     }
 }
