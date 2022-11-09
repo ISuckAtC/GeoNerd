@@ -221,7 +221,8 @@ public class GameData
                 money = 0;
                 overWorldPosition = new Vector3(519f, 46f, 1208f);
 
-                Flags[Flag.OFFICE_ARROW] = true;
+                Flags[Flag.OSLO_ARROW] = true;
+                Flags[Flag.FOREST_ARROW] = true;
 
                 SaveData();
             }

@@ -8,6 +8,7 @@ public class PopUpInWorld : MonoBehaviour
     [SerializeField] GameObject popUpObject;
     [SerializeField] GameObject exclamationMark;
     public Flag questMarkerFlag;
+    public bool not;
 
     private bool exclamationMarkActive;
 
@@ -18,7 +19,7 @@ public class PopUpInWorld : MonoBehaviour
         if(popUpObject) popUpObject.SetActive(false);
         if (exclamationMark) 
         {
-            exclamationMarkActive = GameManager.Flags[questMarkerFlag];
+            exclamationMarkActive = GameManager.Flags[questMarkerFlag] != not;
             exclamationMark.SetActive(exclamationMarkActive);
         }
     }

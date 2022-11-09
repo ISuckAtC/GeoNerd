@@ -105,6 +105,11 @@ public class CameraFollow : MonoBehaviour
         //transform.LookAt(target.position);
     }
 
+    public bool CheckOfficeToggled()
+    {
+        return targetOffice;
+    }
+
 
     public void ToggleOffice()
     {
