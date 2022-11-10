@@ -52,9 +52,28 @@ public class DialogueManager : MonoBehaviour
             return;
 
         displayingText.text = sentences.Dequeue();
+
+
+        StopAllCoroutines();
+        StartCoroutine("AnimateDialogue");
       
     }
 
+
+    IEnumerator AnimateDialogue()
+    {
+
+        char[] myChars = displayingText.text.ToCharArray();
+        displayingText.text = "";
+
+
+        for(int x = 0; x < myChars.Length; x++)
+        {
+            Debug.Log("adding letter");
+            displayingText.text = displayingText.text + myChars[x];
+            yield return null;
+        }
+    }
     private bool EndDialogue()
     {
         if(sentences.Count <= 0)

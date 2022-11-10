@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class ClickableObject : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
 
-    enum ItemNeeded {MagnifyingGlass, Camera, TNT }
+    enum ItemNeeded {MagnifyingGlass, Camera, TNT}
 
     [SerializeField] ItemNeeded itemNeeded;
     [SerializeField] Texture2D[] cursors;
