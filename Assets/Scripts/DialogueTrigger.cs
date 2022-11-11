@@ -7,11 +7,13 @@ public class DialogueTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExit
 {
     // Start is called before the first frame update
     [SerializeField] Texture2D cursor;
+    [SerializeField] DialogueType type = DialogueType.Default;
+    [SerializeField] GameObject enableObject = null; 
     public Dialogue dialogue;
 
     public void TriggerDialogue()
     {
-        DialogueManager.GetInstance().StartDialogue(dialogue);
+        DialogueManager.GetInstance().StartDialogue(dialogue, type);
     }
 
     public void OnPointerClick(PointerEventData eventData)
