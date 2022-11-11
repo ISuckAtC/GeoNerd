@@ -5359,6 +5359,7 @@ MonoBehaviour:
   popUpObject: {fileID: 1401048546}
   exclamationMark: {fileID: 1550759186}
   questMarkerFlag: 7
+  not: 0
 --- !u!1001 &455213037
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14240,6 +14241,7 @@ MonoBehaviour:
   popUpObject: {fileID: 1822777800}
   exclamationMark: {fileID: 2116571166}
   questMarkerFlag: 9
+  not: 0
 --- !u!114 &1331542218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17700,7 +17702,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1655313963}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 32, z: 0}
+  m_LocalPosition: {x: 0, y: 37.4, z: 0}
   m_LocalScale: {x: 400, y: 400, z: 400}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -26132,7 +26134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d36ca3115957fc4fa65beb78b60a430, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 11
+  maxSpeed: 12
   turnSpeed: 9
   direction: {x: 0, y: 0}
   currentSpeed: 0

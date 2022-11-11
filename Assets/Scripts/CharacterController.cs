@@ -49,6 +49,8 @@ public class CharacterController : MonoBehaviour
     {
         if (OVERWORLD)
         {
+            GameManager.Flags[Flag.OFFICE_ARROW] = false;
+            //GameManager.Flags[Flag.OSLO_ARROW] = true;
             engineInstance = GameManager.FMODPlayStatic(engine, transform.position, Vector3.zero, engineVolume, true, false);
             currentUseDelay = useDelay;
             transform.position = GameManager.GameData.overWorldPosition;
@@ -163,10 +165,12 @@ public class CharacterController : MonoBehaviour
             }
             else currentUseDelay -= Time.deltaTime;
 
+            /*
             if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Pause) || Input.GetKeyDown(KeyCode.Tab))
             {
                 gameObject.GetComponent<PauseMenu>().Pause();
             }
+            */
 
             if (Input.GetKeyDown(KeyCode.M))
             {

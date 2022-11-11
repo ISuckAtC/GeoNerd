@@ -7,7 +7,7 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/NewNorway.unity
-    guid: 2b6ab34c0675d924899c911f6e10de16
+    guid: 8e5af835c5d72e64fb972c0dccc53858
   - enabled: 1
     path: Assets/Scenes/Cities/Oslo/Oslo.unity
     guid: 45dd75d691551d44eaa21867595e7b4d
@@ -21,27 +21,18 @@ EditorBuildSettings:
     path: Assets/Scenes/Forest/TrollCaveLeaving.unity
     guid: 79e95c7f49737b14eb568b4d04df8770
   - enabled: 1
-    path: Assets/Scenes/Office.unity
-    guid: 4bfbca265af2ae74fac87127f674ee7d
-  - enabled: 1
     path: Assets/Scenes/Forest/TrollCaveEntering.unity
     guid: 83d8623b2bc5d0946a25919920f3d875
-  - enabled: 1
-    path: Assets/Scenes/Cities/Oslo/Library.unity
-    guid: 6137bdaa02c49964a9a7e92ccb1c6b57
-  - enabled: 1
-    path: Assets/Scenes/Cities/Oslo/Opera.unity
-    guid: 4fcdec6a8cfbd1c4f800898a3ea33e92
   - enabled: 1
     path: Assets/Scenes/LoadingScreen.unity
     guid: e8b9b80f4646d7a41a0c0bc7407c1010
   - enabled: 1
-    path: Assets/Scenes/NewNorway.unity
-    guid: 2b6ab34c0675d924899c911f6e10de16
-  - enabled: 1
     path: Assets/Scenes/Cities/Oslo/Castle.unity
     guid: a4359b2c419b97f4fbf2c87b277b8735
-  - enabled: 0
-    path: Assets/Scenes/NorwayMap.unity
-    guid: 26952dc3ad398fa46a3af9be0a2ed240
+  - enabled: 1
+    path: Assets/Scenes/Cities/Oslo/NewOpera.unity
+    guid: eb52598230e6a7342b7e42ec2c37bf58
+  - enabled: 1
+    path: Assets/Scenes/Cities/Oslo/NewLibrary.unity
+    guid: cdc779f82c5b8904aa837c3cc2ac1b99
   m_configObjects: {}
