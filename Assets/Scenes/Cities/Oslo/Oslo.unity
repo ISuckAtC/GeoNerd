@@ -537,6 +537,7 @@ GameObject:
   - component: {fileID: 68094661}
   - component: {fileID: 68094660}
   - component: {fileID: 68094659}
+  - component: {fileID: 68094662}
   m_Layer: 0
   m_Name: LibraryMark
   m_TagString: Untagged
@@ -609,6 +610,24 @@ Transform:
   m_Father: {fileID: 1389408723}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &68094662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68094658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b9dbb76d6978434983952bc8131a8ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  punchDuration: 7
+  rotationPeriod: 5
+  height: 2.25
+  vibration: 0
+  elasticity: 0.25
+  rotation: 60
 --- !u!1 &96534377
 GameObject:
   m_ObjectHideFlags: 0
@@ -2256,24 +2275,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 32223377}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &703566421
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 703566420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b9dbb76d6978434983952bc8131a8ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  punchDuration: 5
-  rotationPeriod: 4
-  height: 1
-  vibration: 0
-  elasticity: 0
-  rotation: 60
 --- !u!1 &711561040
 GameObject:
   m_ObjectHideFlags: 0
@@ -5734,24 +5735,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 911753916}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1816175525
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1816175524}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b9dbb76d6978434983952bc8131a8ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  punchDuration: 5
-  rotationPeriod: 4
-  height: 1
-  vibration: 0
-  elasticity: 0
-  rotation: 60
 --- !u!1 &1818997808
 GameObject:
   m_ObjectHideFlags: 0
@@ -6355,6 +6338,7 @@ GameObject:
   - component: {fileID: 979771309353893216}
   - component: {fileID: 4194825176315556549}
   - component: {fileID: 2149329780556137999}
+  - component: {fileID: 4194825176315556550}
   m_Layer: 0
   m_Name: OperaMark
   m_TagString: Untagged
@@ -6427,3 +6411,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 491746113210558426}
   m_Mesh: {fileID: -5750084716789328873, guid: ec2c9a3a7957ba34e87aaeae7a416c16, type: 3}
+--- !u!114 &4194825176315556550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 491746113210558426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b9dbb76d6978434983952bc8131a8ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  punchDuration: 7
+  rotationPeriod: 5
+  height: 2.25
+  vibration: 0
+  elasticity: 0.25
+  rotation: 60

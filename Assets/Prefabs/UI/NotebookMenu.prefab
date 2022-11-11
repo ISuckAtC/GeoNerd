@@ -2746,10 +2746,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: OfficeScript_v2, Assembly-CSharp
-        m_MethodName: ChangeRightPanel
-        m_Mode: 5
+      - m_Target: {fileID: 1225105281275115833}
+        m_TargetAssemblyTypeName: NotebookMenu, Assembly-CSharp
+        m_MethodName: CloseNotebook
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
