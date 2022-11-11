@@ -46,10 +46,13 @@ public class DropableItem : MonoBehaviour/*, IDropHandler*/
             }
 
             if (objectToEnable) objectToEnable.SetActive(true);
-            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
             Destroy(gameObject);
         }
-        
+        else if(item.itemType != Item.ItemType.MagnifyingGlass){
+            ForestManager.Instance.GoToStartpoint();
+        }
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+
 
     }
 }

@@ -5,6 +5,24 @@ using UnityEngine;
 public class ForestManager : MonoBehaviour
 {
     // Start is called before the first frame update
+    private static ForestManager _instance;
+    public static ForestManager Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                GameObject go = new GameObject("ForestManager");
+                _instance.restartingPanel = GameObject.FindGameObjectWithTag("RestartScreen");
+                _instance.restartingPanel.SetActive(false);
+
+
+                DontDestroyOnLoad(go);
+                _instance = go.AddComponent<ForestManager>();
+            }
+            return _instance;
+        }
+    }
     public bool[] items;
 
 
@@ -19,7 +37,6 @@ public class ForestManager : MonoBehaviour
     int forestDimension;
 
     public FMODUnity.EventReference ambience;
-    
 
     [System.Serializable]
     public class ForestPosition
@@ -29,6 +46,7 @@ public class ForestManager : MonoBehaviour
     }
 
 
+    GameObject restartingPanel;
    
 
     [SerializeField] ForestPosition[] forestPositions;
@@ -40,7 +58,7 @@ public class ForestManager : MonoBehaviour
     void Start()
     {
         GameManager.FMODPlayStatic(ambience, Vector3.zero, Vector3.zero);
-
+        _instance = this;
         playerPos = new ForestPosition();
         //Array initialization
         gridOfPanels = new GameObject[forestDimension][];
@@ -48,7 +66,8 @@ public class ForestManager : MonoBehaviour
         {
             gridOfPanels[x] = new GameObject[forestDimension];
         }
-
+        restartingPanel = GameObject.FindGameObjectWithTag("RestartScreen");
+        restartingPanel.SetActive(false);
 
        for(int x = 0; x < forestPositions.Length; x++)
         {
@@ -83,16 +102,37 @@ public class ForestManager : MonoBehaviour
         
     }
 
+    public void GoToStartpoint()
+    {
+        for (int x = 0; x < forestPositions.Length; x++)
+        {
+            Vector2Int panelPos = forestPositions[x].position;
+            if (initialPos != panelPos)
+            {
+                forestPositions[x].panel.SetActive(false);
+            }
+            else
+            {
+                playerPos.panel = forestPositions[x].panel;
+                playerPos.position = initialPos;
+                playerPos.panel.SetActive(true);
+            }
+        }
+
+
+        restartingPanel.SetActive(true);
+
+    }
 
     public void TraverseForest(string dirString)
     {
         //Direction dir = Direction.Up;
         //since the array looks like this:
         //   0 1 2 3 4 
-        // 0
-        // 1 
-        // 2  
-        // 3  x
+        // 3
+        // 2 
+        // 1  
+        // 0  x
         //If the player is on the x ([1][3]), going up is going to be [1][2]
         Direction dir;
         switch (dirString)
