@@ -731,7 +731,7 @@ Canvas:
   m_RenderMode: 0
   m_Camera: {fileID: 430400885}
   m_PlaneDistance: 100
-  m_PixelPerfect: 0
+  m_PixelPerfect: 1
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
@@ -2613,6 +2613,11 @@ PrefabInstance:
       value: Someone messed with the books, can you help me put them in the right
         sections and alphabetically
       objectReference: {fileID: 0}
+    - target: {fileID: 9147797638957686044, guid: 357d141fb4f7eea4abcb3cfac3b243e1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 9147797638957686046, guid: 357d141fb4f7eea4abcb3cfac3b243e1,
         type: 3}
       propertyPath: text
@@ -2633,6 +2638,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 9147797639521603920, guid: 357d141fb4f7eea4abcb3cfac3b243e1,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 81727c52db310d3489fcbf32a23eada1,
+        type: 3}
+    - target: {fileID: 9147797639521603920, guid: 357d141fb4f7eea4abcb3cfac3b243e1,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9147797639521603921, guid: 357d141fb4f7eea4abcb3cfac3b243e1,
         type: 3}
@@ -2681,6 +2697,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9147797639521603921, guid: 357d141fb4f7eea4abcb3cfac3b243e1,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9147797639521603921, guid: 357d141fb4f7eea4abcb3cfac3b243e1,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9147797639521603921, guid: 357d141fb4f7eea4abcb3cfac3b243e1,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9147797639521603921, guid: 357d141fb4f7eea4abcb3cfac3b243e1,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -2697,32 +2728,32 @@ PrefabInstance:
     - target: {fileID: 9147797639521603921, guid: 357d141fb4f7eea4abcb3cfac3b243e1,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9147797639521603921, guid: 357d141fb4f7eea4abcb3cfac3b243e1,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9147797639521603921, guid: 357d141fb4f7eea4abcb3cfac3b243e1,
-        type: 3}
-      propertyPath: m_LocalRotation.y
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9147797639521603921, guid: 357d141fb4f7eea4abcb3cfac3b243e1,
         type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9147797639521603921, guid: 357d141fb4f7eea4abcb3cfac3b243e1,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9147797639521603921, guid: 357d141fb4f7eea4abcb3cfac3b243e1,
+        type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 9147797639521603921, guid: 357d141fb4f7eea4abcb3cfac3b243e1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 690.59
+      value: 690.58997
       objectReference: {fileID: 0}
     - target: {fileID: 9147797639521603921, guid: 357d141fb4f7eea4abcb3cfac3b243e1,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 181.1
+      value: 181.10004
       objectReference: {fileID: 0}
     - target: {fileID: 9147797639521603921, guid: 357d141fb4f7eea4abcb3cfac3b243e1,
         type: 3}
@@ -2732,12 +2763,22 @@ PrefabInstance:
     - target: {fileID: 9147797639521603921, guid: 357d141fb4f7eea4abcb3cfac3b243e1,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9147797639521603921, guid: 357d141fb4f7eea4abcb3cfac3b243e1,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9147797639521603921, guid: 357d141fb4f7eea4abcb3cfac3b243e1,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9147797639521603922, guid: 357d141fb4f7eea4abcb3cfac3b243e1,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9147797639521603922, guid: 357d141fb4f7eea4abcb3cfac3b243e1,
         type: 3}
