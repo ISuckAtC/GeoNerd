@@ -6,6 +6,8 @@ using UnityEngine.UI;
 using FMOD;
 using FMOD.Studio;
 
+
+
 public class CharacterController : MonoBehaviour
 {
     public float maxSpeed = 6f;
@@ -45,8 +47,10 @@ public class CharacterController : MonoBehaviour
     private FMOD.Studio.EventInstance engineInstance;
     public float useDelay = 2f; // to avoid instantly entering a place after going to the map
     private float currentUseDelay;
+    
     void Start()
     {
+
         if (OVERWORLD)
         {
             GameManager.Flags[Flag.OFFICE_ARROW] = false;
