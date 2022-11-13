@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class ForestManager : MonoBehaviour
 {
@@ -102,7 +104,7 @@ public class ForestManager : MonoBehaviour
         
     }
 
-    public void GoToStartpoint()
+    public void GoToStartpoint(RestartForestBoxData restartData)
     {
         for (int x = 0; x < forestPositions.Length; x++)
         {
@@ -120,6 +122,8 @@ public class ForestManager : MonoBehaviour
         }
 
 
+        restartingPanel.GetComponentInChildren<TextMeshProUGUI>().text = restartData.text;
+        restartingPanel.GetComponentsInChildren<Image>()[1].sprite = restartData.image;
         restartingPanel.SetActive(true);
 
     }

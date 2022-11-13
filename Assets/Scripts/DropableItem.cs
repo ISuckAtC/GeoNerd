@@ -12,6 +12,8 @@ public class DropableItem : MonoBehaviour/*, IDropHandler*/
     public bool isLoadingScene = false;
     public string sceneToLoad = "";
 
+    public RestartForestBoxData restartData;
+
     public FMODUnity.EventReference cameraFlashSound;
     public FMODUnity.EventReference tntExplosionSound;
     void Start()
@@ -49,7 +51,7 @@ public class DropableItem : MonoBehaviour/*, IDropHandler*/
             Destroy(gameObject);
         }
         else if(item.itemType != Item.ItemType.MagnifyingGlass){
-            ForestManager.Instance.GoToStartpoint();
+            ForestManager.Instance.GoToStartpoint(restartData);
         }
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
 
