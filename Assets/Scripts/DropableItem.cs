@@ -42,19 +42,19 @@ public class DropableItem : MonoBehaviour/*, IDropHandler*/
             {
                 GameManager.FMODPlayStatic(cameraFlashSound, Vector3.zero, Vector3.zero);
             }
-            if (item.itemType == Item.ItemType.TNT)
+            else if (item.itemType == Item.ItemType.TNT)
             {
                 GameManager.FMODPlayStatic(tntExplosionSound, Vector3.zero, Vector3.zero);
             }
 
-            if (objectToEnable) objectToEnable.SetActive(true);
-            Destroy(gameObject);
+            if (objectToEnable || item.itemType != Item.ItemType.MagnifyingGlass) objectToEnable.SetActive(true);
+
+            if(item.itemType != Item.ItemType.MagnifyingGlass)
+                Destroy(gameObject);
         }
         else if(item.itemType != Item.ItemType.MagnifyingGlass){
             ForestManager.Instance.GoToStartpoint(restartData);
         }
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-
-
     }
 }
