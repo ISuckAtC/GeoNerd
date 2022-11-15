@@ -104,7 +104,16 @@ public class ForestManager : MonoBehaviour
         
     }
 
-    public void GoToStartpoint(RestartForestBoxData restartData)
+
+    public void ChangeAndShowPopUpData(PopUpForestBoxData restartData)
+    {
+        restartingPanel.GetComponentInChildren<TextMeshProUGUI>().text = restartData.text;
+        restartingPanel.GetComponentsInChildren<Image>()[1].sprite = restartData.image;
+        restartingPanel.SetActive(true);
+    }
+
+
+    public void GoToStartpoint(PopUpForestBoxData restartData)
     {
         for (int x = 0; x < forestPositions.Length; x++)
         {
@@ -122,9 +131,7 @@ public class ForestManager : MonoBehaviour
         }
 
 
-        restartingPanel.GetComponentInChildren<TextMeshProUGUI>().text = restartData.text;
-        restartingPanel.GetComponentsInChildren<Image>()[1].sprite = restartData.image;
-        restartingPanel.SetActive(true);
+        ChangeAndShowPopUpData(restartData);
 
     }
 

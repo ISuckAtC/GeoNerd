@@ -13,9 +13,9 @@ public class NewOpera : MonoBehaviour
 
     public Transform currentlySelected;
     [Header("Put the slots and words here in matching order")]
-    public Transform[] wordSlots;
     public NewOperaPuzzleWord[] words;
     public float snapLeniency;
+    public float connectionGap;
     public GameObject winButton;
 
     public bool startSequenceImmediately;
@@ -27,6 +27,7 @@ public class NewOpera : MonoBehaviour
         for (int i = 0; i < words.Length; ++i) 
         {
             words[i].overhead = this;
+            words[i].correctOrder = i;
         }
         enumerator = OperaSequence().GetEnumerator();
         if (startSequenceImmediately)
@@ -38,9 +39,22 @@ public class NewOpera : MonoBehaviour
     public void CheckPuzzle()
     {
         bool win = true;
+        
+        NewOperaPuzzleWord current = words[0];
         for (int i = 0; i < words.Length; ++i)
         {
-            if (words[i].currentOrder != i) win = false;
+            if (current.correctOrder != i)
+            {
+                win = false;
+                break;
+            }
+            if (i == words.Length - 1) break;
+            if (current.under == null)
+            {
+                win = false;
+                break;
+            }
+            current = current.under;
         }
 
         if (win)
