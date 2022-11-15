@@ -91,7 +91,15 @@ public class GameManager : MonoBehaviour
 
     public static FMOD.Studio.EventInstance FMODPlayStatic(FMODUnity.EventReference reference, Vector3 position, Vector3 velocity, float volume = 1f, bool registerForDelete = true, bool autoRelease = true)
     {
-        FMOD.Studio.EventInstance play = FMODUnity.RuntimeManager.CreateInstance(reference);
+        FMOD.Studio.EventInstance play;
+        try
+        {
+            play = FMODUnity.RuntimeManager.CreateInstance(reference);
+        } catch (FMODUnity.EventNotFoundException e)
+        {
+            Debug.Log("Caught FMODUnity.EventNotFoundException\n\n" + e.Message + "\n" + e.StackTrace + "\n\n\nIf you see this message, thank Henrik for not making the entire code die");
+            return new FMOD.Studio.EventInstance();
+        }
 
         FMOD.ATTRIBUTES_3D attributes;
 
