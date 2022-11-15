@@ -7,10 +7,12 @@ using System.Linq;
 public class NewOperaPuzzleWord : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     [HideInInspector]
-    public int currentOrder = -1;
+    public int correctOrder;
     private bool selected;
     [HideInInspector]
     public NewOpera overhead;
+    public NewOperaPuzzleWord over;
+    public NewOperaPuzzleWord under;
     
     // Start is called before the first frame update
     void Start()
@@ -33,6 +35,16 @@ public class NewOperaPuzzleWord : MonoBehaviour, IPointerDownHandler, IPointerUp
         {
             overhead.currentlySelected = transform;
             selected = true;
+            if (over)
+            {
+                over.under = null;
+                over = null;
+            }
+            if (under)
+            {
+                under.over = null;
+                under = null;
+            }
         }
     }
     public void OnPointerUp(PointerEventData e)
@@ -42,19 +54,37 @@ public class NewOperaPuzzleWord : MonoBehaviour, IPointerDownHandler, IPointerUp
 
         // ToList seems excessive but array is missing the method in Linq
 
-        List<Transform> sorted = overhead.wordSlots.ToList();
+        List<NewOperaPuzzleWord> sorted = overhead.words.ToList();
+        sorted.Remove(this);
 
-        // sort list by distance to puzzle piece, closest slot is first index
-        sorted.Sort((a,b) => Vector3.Distance(a.position, transform.position) > Vector3.Distance(b.position, transform.position) ? 1 : -1);
+        // sort list by distance to puzzle piece, closest word is first index
+        sorted.Sort((a,b) => Vector3.Distance(a.transform.position, transform.position) > Vector3.Distance(b.transform.position, transform.position) ? 1 : -1);
 
+        //foreach (NewOperaPuzzleWord word in sorted) Debug.Log(Vector3.Distance(word.transform.position, transform.position));
 
-        // if closest slot is close enough to snap, snap it in place and assign the order
-        if (sorted.Count > 0 && Vector3.Distance(sorted[0].position, transform.position) < overhead.snapLeniency)
+        // if closest word is close enough to snap, snap it in place and assign the order
+        if (sorted.Count > 0 && Vector3.Distance(sorted[0].transform.position, transform.position) < overhead.snapLeniency)
         {
-            transform.position = sorted[0].position;
-            currentOrder = overhead.wordSlots.ToList().IndexOf(sorted[0]);
+            if (sorted[0].transform.position.y > transform.position.y)
+            {
+                if (sorted[0].under == null)
+                {
+                    sorted[0].under = this;
+                    over = sorted[0];
+                    transform.position = sorted[0].transform.position + new Vector3(0, -overhead.connectionGap, 0);
+                }
+            }
+            else
+            {
+                if (sorted[0].over == null)
+                {
+                    sorted[0].over = this;
+                    under = sorted[0];
+                    transform.position = sorted[0].transform.position + new Vector3(0, overhead.connectionGap, 0);
+                }
+            }
+            
         }
-        else currentOrder = -1;
 
         overhead.CheckPuzzle();
     }

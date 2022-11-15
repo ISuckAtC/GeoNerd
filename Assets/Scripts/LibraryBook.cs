@@ -39,6 +39,7 @@ public class LibraryBook : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         if (overhead.currentlySelected == null)
         {
             overhead.currentlySelected = transform;
+            transform.SetAsLastSibling();
             selected = true;
             image.sprite = frontSprite;
             image.SetNativeSize();
