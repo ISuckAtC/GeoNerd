@@ -2564,6 +2564,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c2d95d3363185d47913618c06222ded, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  klink:
+    Guid:
+      Data1: 1576303543
+      Data2: 1123324364
+      Data3: 1506640571
+      Data4: -153976218
+    Path: event:/CastlePuzzle_MetalClinc
   startButton: {fileID: 42722238}
   table: {fileID: 1412509874}
   endButton: {fileID: 348619474}

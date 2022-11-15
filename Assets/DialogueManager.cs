@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+public enum DialogueType { Default, Button}
 public class DialogueManager : MonoBehaviour
 {
     static DialogueManager instance = null;
@@ -15,7 +16,8 @@ public class DialogueManager : MonoBehaviour
     public Queue<string> sentences;
     public TextMeshProUGUI myNPCName;
     public TextMeshProUGUI displayingText;
-
+    public GameObject extraButtons;
+    DialogueType currentDType = DialogueType.Default;
 
     // Start is called before the first frame update
     void Start()
@@ -33,11 +35,12 @@ public class DialogueManager : MonoBehaviour
     }
 
 
-    public void StartDialogue(Dialogue dialogue)
+    public void StartDialogue(Dialogue dialogue, DialogueType type)
     {
         chatBox.SetActive(true);
         sentences.Clear();
         myNPCName.text = dialogue.name;
+        currentDType = type;
         foreach(string sentence in dialogue.sentences)
         {
             sentences.Enqueue(sentence);
@@ -79,12 +82,28 @@ public class DialogueManager : MonoBehaviour
         if(sentences.Count <= 0)
         {
             Debug.Log("No more sentences");
-            chatBox.SetActive(false);
+            switch (currentDType)
+            {
+                case DialogueType.Default:
+                    CloseAndResetDialogueBox();
+                    break;
+                case DialogueType.Button:
+                    extraButtons.SetActive(true);
+                    break;
+            }
 
             //Disable things
             return true;
         }
 
         return false;
+    }
+
+
+
+    public void CloseAndResetDialogueBox()
+    {
+        extraButtons.SetActive(false);
+        chatBox.SetActive(false);
     }
 }

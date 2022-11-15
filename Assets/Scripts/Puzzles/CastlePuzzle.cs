@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CastlePuzzle : MonoBehaviour
 {
+    public FMODUnity.EventReference klink;
     public GameObject startButton, table, endButton, king, reward, initialBackground, finalBackground;
     public Transform currentlySelected;
     [Header("Put the slots and words here in matching order")]

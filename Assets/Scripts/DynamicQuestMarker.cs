@@ -25,8 +25,8 @@ public class DynamicQuestMarker : MonoBehaviour
     // Update is called once per frame
     void Punch()
     {
-        //divided by 1000 to avoid decimals in inspector
-        transform.DOPunchPosition(transform.up + new Vector3(0, height / 1000, 0), punchDuration, vibration, elasticity, false); 
+        //divided by 10 to avoid decimals in inspector
+        transform.DOPunchPosition(new Vector3(0, height/10, 0), punchDuration, vibration, elasticity, false); 
     }
     
     void Rotate()

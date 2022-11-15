@@ -3,8 +3,8 @@ using System.Linq;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
-using FMOD;
-using FMOD.Studio;
+
+
 
 public class CharacterController : MonoBehaviour
 {
@@ -45,14 +45,17 @@ public class CharacterController : MonoBehaviour
     private FMOD.Studio.EventInstance engineInstance;
     public float useDelay = 2f; // to avoid instantly entering a place after going to the map
     private float currentUseDelay;
+    
     void Start()
     {
+        Debug.Log("SDOIJFOSHDUF");
         if (OVERWORLD)
         {
             GameManager.Flags[Flag.OFFICE_ARROW] = false;
             //GameManager.Flags[Flag.OSLO_ARROW] = true;
             engineInstance = GameManager.FMODPlayStatic(engine, transform.position, Vector3.zero, engineVolume, true, false);
             currentUseDelay = useDelay;
+            Debug.Log("Setting position to: " + GameManager.GameData.overWorldPosition);
             transform.position = GameManager.GameData.overWorldPosition;
             InvokeRepeating("SavePosition", 5f, 5f);
         }
