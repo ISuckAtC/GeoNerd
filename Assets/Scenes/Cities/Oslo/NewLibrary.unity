@@ -313,6 +313,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: f6f4ea3017ec1cc4ca08e94b12a0daf2,
         type: 3}
+    - target: {fileID: 1681900183436353409, guid: b3aaf66588399454da1fccf854ee78e7,
+        type: 3}
+      propertyPath: m_UseSpriteMesh
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1681900183436353411, guid: b3aaf66588399454da1fccf854ee78e7,
         type: 3}
       propertyPath: backSprite
@@ -468,6 +473,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 0e871d5c7024b254da5da3d467def171,
         type: 3}
+    - target: {fileID: 1681900183436353409, guid: b3aaf66588399454da1fccf854ee78e7,
+        type: 3}
+      propertyPath: m_UseSpriteMesh
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1681900183436353411, guid: b3aaf66588399454da1fccf854ee78e7,
         type: 3}
       propertyPath: backSprite
@@ -623,6 +633,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 3836c07295032a74f968b0f8adada87d,
         type: 3}
+    - target: {fileID: 1681900183436353409, guid: b3aaf66588399454da1fccf854ee78e7,
+        type: 3}
+      propertyPath: m_UseSpriteMesh
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1681900183436353411, guid: b3aaf66588399454da1fccf854ee78e7,
         type: 3}
       propertyPath: backSprite
@@ -880,6 +895,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 81e05d82538ecc049880e79eb545e4c9,
         type: 3}
+    - target: {fileID: 1681900183436353409, guid: b3aaf66588399454da1fccf854ee78e7,
+        type: 3}
+      propertyPath: m_UseSpriteMesh
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1681900183436353411, guid: b3aaf66588399454da1fccf854ee78e7,
         type: 3}
       propertyPath: backSprite
@@ -2007,6 +2027,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: ab798210f58eca140be5078251a1b9dc,
         type: 3}
+    - target: {fileID: 1681900183436353409, guid: b3aaf66588399454da1fccf854ee78e7,
+        type: 3}
+      propertyPath: m_UseSpriteMesh
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1681900183436353411, guid: b3aaf66588399454da1fccf854ee78e7,
         type: 3}
       propertyPath: backSprite
@@ -2199,6 +2224,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: d139bceaf7286da4e9dac355a60c5354,
         type: 3}
+    - target: {fileID: 1681900183436353409, guid: b3aaf66588399454da1fccf854ee78e7,
+        type: 3}
+      propertyPath: m_UseSpriteMesh
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1681900183436353411, guid: b3aaf66588399454da1fccf854ee78e7,
         type: 3}
       propertyPath: backSprite
@@ -2942,6 +2972,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 344b080f22c620844b8f8c16ece99382,
         type: 3}
+    - target: {fileID: 1681900183436353409, guid: b3aaf66588399454da1fccf854ee78e7,
+        type: 3}
+      propertyPath: m_UseSpriteMesh
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1681900183436353411, guid: b3aaf66588399454da1fccf854ee78e7,
         type: 3}
       propertyPath: backSprite
@@ -4120,6 +4155,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: badb4618a2effc7449b0eb6bb43b6cc8,
         type: 3}
+    - target: {fileID: 1681900183436353409, guid: b3aaf66588399454da1fccf854ee78e7,
+        type: 3}
+      propertyPath: m_UseSpriteMesh
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1681900183436353411, guid: b3aaf66588399454da1fccf854ee78e7,
         type: 3}
       propertyPath: backSprite
@@ -4402,6 +4442,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1681900183436353409, guid: b3aaf66588399454da1fccf854ee78e7,
+        type: 3}
+      propertyPath: m_UseSpriteMesh
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1681900183436353411, guid: b3aaf66588399454da1fccf854ee78e7,
         type: 3}
