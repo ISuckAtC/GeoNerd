@@ -1249,6 +1249,7 @@ MonoBehaviour:
       Data3: 1741141168
       Data4: -1203706196
     Path: event:/Forest_AMBX
+  popUpPanel: {fileID: 2019550082}
   forestPositions:
   - panel: {fileID: 1286277079}
     position: {x: 2, y: 1}
@@ -9348,7 +9349,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ffed4bfbce9cc845bee0b951b7f28ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToEnable: {fileID: 342503158}
+  objectToEnable: {fileID: 1649589992}
   unlockableWith: 2
   restartData:
   - restart: 0
@@ -9753,7 +9754,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2019550083
 RectTransform:
   m_ObjectHideFlags: 0

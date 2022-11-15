@@ -48,7 +48,7 @@ public class ForestManager : MonoBehaviour
     }
 
 
-    GameObject popUpPanel;
+    public GameObject popUpPanel;
    
 
     [SerializeField] ForestPosition[] forestPositions;
@@ -68,8 +68,6 @@ public class ForestManager : MonoBehaviour
         {
             gridOfPanels[x] = new GameObject[forestDimension];
         }
-        popUpPanel = GameObject.FindGameObjectWithTag("PopUpScreen");
-        popUpPanel.SetActive(false);
 
        for(int x = 0; x < forestPositions.Length; x++)
         {
