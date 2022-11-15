@@ -12,6 +12,9 @@ TagManager:
   - Painting
   - Office
   - CaseFile
+  - Opera
+  - Library
+  - Castle
   layers:
   - Default
   - TransparentFX

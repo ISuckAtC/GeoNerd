@@ -51,7 +51,7 @@ public class CameraFollow : MonoBehaviour
     private void Start()
     {
         initialRotation = transform.rotation;
-
+        
         cc = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController>();
 
         //transform.LookAt(target.position);
