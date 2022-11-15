@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 
-public class DropableItem : MonoBehaviour/*, IDropHandler*/
+public class DropableItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     // Start is called before the first frame update
     public GameObject objectToEnable;
@@ -14,13 +15,14 @@ public class DropableItem : MonoBehaviour/*, IDropHandler*/
 
     public FMODUnity.EventReference cameraFlashSound;
     public FMODUnity.EventReference tntExplosionSound;
-    
+
+    private Outline outline;
     
     public bool isLoadingScene = false;
     public string sceneToLoad = "";
     void Start()
     {
-        
+        outline = GetComponent<Outline>();
     }
 
     // Update is called once per frame
@@ -29,7 +31,18 @@ public class DropableItem : MonoBehaviour/*, IDropHandler*/
         
     }
 
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        //Debug.Log("Mouse enter");
+        if (outline) outline.enabled = true;
+    }
 
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        //Debug.Log("Mouse exit");
+        if (outline) outline.enabled = false;
+
+    }
 
     public void OnDrop(BaseEventData data)
     {
