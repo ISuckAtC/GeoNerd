@@ -15,8 +15,8 @@ public class ForestManager : MonoBehaviour
             if (_instance == null)
             {
                 GameObject go = new GameObject("ForestManager");
-                _instance.restartingPanel = GameObject.FindGameObjectWithTag("RestartScreen");
-                _instance.restartingPanel.SetActive(false);
+                _instance.popUpPanel = GameObject.FindGameObjectWithTag("RestartScreen");
+                _instance.popUpPanel.SetActive(false);
 
 
                 DontDestroyOnLoad(go);
@@ -48,7 +48,7 @@ public class ForestManager : MonoBehaviour
     }
 
 
-    GameObject restartingPanel;
+    GameObject popUpPanel;
    
 
     [SerializeField] ForestPosition[] forestPositions;
@@ -68,8 +68,8 @@ public class ForestManager : MonoBehaviour
         {
             gridOfPanels[x] = new GameObject[forestDimension];
         }
-        restartingPanel = GameObject.FindGameObjectWithTag("RestartScreen");
-        restartingPanel.SetActive(false);
+        popUpPanel = GameObject.FindGameObjectWithTag("PopUpScreen");
+        popUpPanel.SetActive(false);
 
        for(int x = 0; x < forestPositions.Length; x++)
         {
@@ -107,9 +107,9 @@ public class ForestManager : MonoBehaviour
 
     public void ChangeAndShowPopUpData(PopUpForestBoxData restartData)
     {
-        restartingPanel.GetComponentInChildren<TextMeshProUGUI>().text = restartData.text;
-        restartingPanel.GetComponentsInChildren<Image>()[1].sprite = restartData.image;
-        restartingPanel.SetActive(true);
+        popUpPanel.GetComponentInChildren<TextMeshProUGUI>().text = restartData.text;
+        popUpPanel.GetComponentsInChildren<Image>()[1].sprite = restartData.image;
+        popUpPanel.SetActive(true);
     }
 
 

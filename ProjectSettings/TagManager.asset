@@ -12,7 +12,7 @@ TagManager:
   - Painting
   - Office
   - CaseFile
-  - RestartScreen
+  - PopUpScreen
   layers:
   - Default
   - TransparentFX
