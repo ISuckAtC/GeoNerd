@@ -205,7 +205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ffed4bfbce9cc845bee0b951b7f28ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToEnable: {fileID: 2019550082}
+  objectToEnable: {fileID: 1640474346}
   unlockableWith: 0
   isLoadingScene: 0
   sceneToLoad: 
