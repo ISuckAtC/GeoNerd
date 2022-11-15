@@ -186,6 +186,8 @@ public class GameData
                 overWorldPosition.y = BitConverter.ToSingle(serialized, 12);
                 overWorldPosition.z = BitConverter.ToSingle(serialized, 16);
 
+                Debug.Log("Loaded overworld position at: " + overWorldPosition);
+
                 int flagCount = BitConverter.ToInt32(serialized, 20);
 
                 int flagMaps = flagCount / 8;
