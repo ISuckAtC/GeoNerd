@@ -50,6 +50,7 @@ public class CastlePuzzleParts : MonoBehaviour, IPointerDownHandler, IPointerUpH
         // if closest slot is close enough to snap, snap it in place and assign the order
         if (sorted.Count > 0 && Vector3.Distance(sorted[0].position, transform.position) < overhead.snapLeniency)
         {
+            GameManager.FMODPlayStatic(overhead.klink, transform.position, Vector3.zero);
             transform.position = sorted[0].position;
             currentOrder = overhead.partSlots.ToList().IndexOf(sorted[0]);
         }
