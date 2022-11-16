@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using System.Linq;
 using System.IO;
+using System.Threading.Tasks;
 
 public struct LevelData
 {
@@ -78,6 +79,7 @@ public struct LevelData
 }
 public class GameData
 {
+    public string playerId;
     public string playerName; // username of the player, also whats used to store the save data file
     public long money; // the total money of the player
     public LevelData[] levelData; // data for every level the player has savedata for
@@ -96,22 +98,24 @@ public class GameData
         return new LevelData();
     }
 
-    // Saves the current data of the player to binary file
-    public async void SaveData()
+    public byte[] GetSerializedData()
     {
         int flagMaps = Flags.Count / 8;
         int rest = Flags.Count % 8;
-        
 
-        byte[] serialized = new byte[24 + flagMaps + (rest > 0 ? 1 : 0)];
+        byte[] nameBytes = playerName.Select(x => (byte)x).ToArray();
 
-        BitConverter.GetBytes(money).CopyTo(serialized, 0);
+        byte[] serialized = new byte[nameBytes.Length + 24 + flagMaps + (rest > 0 ? 1 : 0)];
 
-        BitConverter.GetBytes(overWorldPosition.x).CopyTo(serialized, 8);
-        BitConverter.GetBytes(overWorldPosition.y).CopyTo(serialized, 12);
-        BitConverter.GetBytes(overWorldPosition.z).CopyTo(serialized, 16);
+        nameBytes.CopyTo(nameBytes, 0);
 
-        BitConverter.GetBytes(Flags.Count).CopyTo(serialized, 20);
+        BitConverter.GetBytes(money).CopyTo(serialized, nameBytes.Length + 1);
+
+        BitConverter.GetBytes(overWorldPosition.x).CopyTo(serialized, nameBytes.Length + 1 + 8);
+        BitConverter.GetBytes(overWorldPosition.y).CopyTo(serialized, nameBytes.Length + 1 + 12);
+        BitConverter.GetBytes(overWorldPosition.z).CopyTo(serialized, nameBytes.Length + 1 + 16);
+
+        BitConverter.GetBytes(Flags.Count).CopyTo(serialized, nameBytes.Length + 1 + 20);
 
         bool[] flagValues = Flags.Values.ToArray();
 
@@ -123,7 +127,7 @@ public class GameData
             {
                 if (flagValues[(i * 8) + k]) flagByte = (byte)(flagByte | 1 << k);
             }
-            serialized[24 + i] = flagByte;
+            serialized[nameBytes.Length + 1 + 24 + i] = flagByte;
         }
         if (rest > 0)
         {
@@ -132,10 +136,18 @@ public class GameData
             {
                 if (flagValues[(flagMaps * 8) + k]) flagByte = (byte)(flagByte | 1 << k);
             }
-            serialized[24 + flagMaps] = flagByte;
+            serialized[nameBytes.Length + 1 + 24 + flagMaps] = flagByte;
         }
 
-        await File.WriteAllBytesAsync("./" + playerName, serialized);
+        return serialized;
+    }
+
+    // Saves the current data of the player to binary file
+    public async void SaveData()
+    {
+
+
+        await File.WriteAllBytesAsync("./" + playerName, GetSerializedData());
 
         /*
         byte[] serialized = new byte[8 + (levelData.Length * 12)];
@@ -157,6 +169,100 @@ public class GameData
         {
             File.Delete("./" + name);
         }
+    }
+
+    public async void OnlineSaveData()
+    {
+        await Network.SaveUser(playerId);
+    }
+
+    public async Task OnlineLoadData()
+    {
+        Console.WriteLine("Attempting to load user with id=" + playerId);
+
+        Flags = new Dictionary<Flag, bool>();
+        Flag[] flagArray = Enum.GetValues(typeof(Flag)) as Flag[];
+
+        for (int i = 0; i < flagArray.Length; ++i)
+        {
+            Flags.Add(flagArray[i], false);
+        }
+
+        byte[] serialized = await Network.LoadUser(playerId);
+
+        byte[] nameBytes = serialized.Skip(1).Take((int)serialized[0]).ToArray();
+
+        playerName = nameBytes.Select(x => (char)x).ToArray().ToString();
+
+        money = BitConverter.ToInt64(serialized, nameBytes.Length + 1);
+
+        overWorldPosition.x = BitConverter.ToSingle(serialized, nameBytes.Length + 1 + 8);
+        overWorldPosition.y = BitConverter.ToSingle(serialized, nameBytes.Length + 1 + 12);
+        overWorldPosition.z = BitConverter.ToSingle(serialized, nameBytes.Length + 1 + 16);
+
+        Debug.Log("Loaded overworld position at: " + overWorldPosition);
+
+        int flagCount = BitConverter.ToInt32(serialized, nameBytes.Length + 1 + 20);
+
+        int flagMaps = flagCount / 8;
+        int rest = flagCount % 8;
+
+        Debug.Log("Loading data from file\nFlagCount: " + flagCount + "\nFlagMaps: " + flagMaps + "\nRest: " + rest);
+
+        for (int i = 0; i < flagMaps; ++i)
+        {
+            byte flagByte = serialized[nameBytes.Length + 1 + 24 + i];
+            for (int k = 0; k < 8; ++k)
+            {
+                bool flag = (flagByte & (1 << k)) == (1 << k);
+                Flags[(Flag)((i * 8) + k)] = flag;
+            }
+        }
+        if (rest > 0)
+        {
+            byte flagByte = serialized[nameBytes.Length + 1 + 24 + flagMaps];
+            Debug.Log(flagByte);
+            for (int k = 0; k < rest; ++k)
+            {
+
+                bool flag = (flagByte & (1 << k)) == (1 << k);
+                Flags[(Flag)((flagMaps * 8) + k)] = flag;
+            }
+        }
+
+        Console.WriteLine("Loaded online data");
+        Console.WriteLine("Name is " + playerName);
+        Console.WriteLine("Money is " + money);
+
+        foreach (KeyValuePair<Flag, bool> flag in Flags)
+        {
+            Debug.Log("Flag \"" + flag.Key.ToString() + "\" is " + (flag.Value ? "TRUE" : "FALSE"));
+        }
+    }
+
+    public async Task OnlineCreateNewUser(string name)
+    {
+        (int statusCode, string userId) ret = await Network.CreateUser();
+        Debug.Log("Created user, code is " + ret.statusCode);
+        if (ret.statusCode != 200) 
+        {
+            throw new System.Net.WebException();
+        }
+        
+        playerId = ret.userId;
+        playerName = name;
+        money = 0;
+        overWorldPosition = new Vector3(519f, 46f, 1208f);
+
+        Flags[Flag.OSLO_ARROW] = true;
+        Flags[Flag.FOREST_ARROW] = true;
+
+        Debug.Log("Created new online user");
+        Debug.Log("Id is " + playerId);
+        Debug.Log("Name is " + playerName);
+
+        OnlineSaveData();
+        return;
     }
 
     // Finds binary file with matching username, and loads the data into this object if it finds a file. 
@@ -210,7 +316,7 @@ public class GameData
                     Debug.Log(flagByte);
                     for (int k = 0; k < rest; ++k)
                     {
-                        
+
                         bool flag = (flagByte & (1 << k)) == (1 << k);
                         Flags[(Flag)((flagMaps * 8) + k)] = flag;
                     }

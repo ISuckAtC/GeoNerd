@@ -3,10 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using Unity.Mathematics;
-using UnityEngine;
 
 public class OsloFollow : MonoBehaviour
 {

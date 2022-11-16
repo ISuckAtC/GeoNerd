@@ -38,7 +38,8 @@ public class GameManager : MonoBehaviour
                 DontDestroyOnLoad(go);
                 _instance = go.AddComponent<GameManager>();
                 GameData = new GameData();
-                GameData.LoadData();
+                GameData.OnlineCreateNewUser("Henrik");
+                //GameData.OnlineLoadData();
                 Flags = GameData.Flags;
             }
             return _instance;
