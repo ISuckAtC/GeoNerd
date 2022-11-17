@@ -10,20 +10,12 @@ public class ClickableObject : MonoBehaviour, IPointerEnterHandler, IPointerExit
     enum ItemNeeded {MagnifyingGlass, Camera, TNT}
 
     [SerializeField] ItemNeeded itemNeeded;
-    [SerializeField] Texture2D[] cursors;
-    // Start is called before the first frame update
+    Texture2D[] cursors;
 
-
-    //private void OnMouseEnter()
-    //{
-    //    Debug.Log("Enters");
-    //    Cursor.SetCursor(cursor, Vector2.zero, CursorMode.Auto);
-    //}
-
-    //private void OnMouseExit()
-    //{
-    //    Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-    //}
+    private void Start()
+    {
+        cursors = GameObject.Find("ForestManager").GetComponent<CursorsManager>().GetCursors();
+    }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -39,11 +31,5 @@ public class ClickableObject : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
 
 
-    //private void Update()
-    //{
-    //    if(EventSystem.current.IsPointerOverGameObject())
-    //        Cursor.SetCursor(cursor, Vector2.zero, CursorMode.Auto);
-    //    else
-    //        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-    //}
+    
 }
