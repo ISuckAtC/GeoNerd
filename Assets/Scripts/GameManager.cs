@@ -80,6 +80,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public static void EnsureInstance()
+    {
+        bool enabled = GameManager.Instance.enabled;
+    }
+
     public void Start()
     {
         // force instancing hack
