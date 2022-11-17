@@ -103,11 +103,15 @@ public class GameData
         int flagMaps = Flags.Count / 8;
         int rest = Flags.Count % 8;
 
+        playerName = new string(playerName);
+
+        Debug.Log(playerName);
         byte[] nameBytes = playerName.Select(x => (byte)x).ToArray();
 
-        byte[] serialized = new byte[nameBytes.Length + 24 + flagMaps + (rest > 0 ? 1 : 0)];
+        byte[] serialized = new byte[nameBytes.Length + 1 + 24 + flagMaps + (rest > 0 ? 1 : 0)];
 
-        nameBytes.CopyTo(nameBytes, 0);
+        serialized[0] = (byte)nameBytes.Length;
+        nameBytes.CopyTo(serialized, 1);
 
         BitConverter.GetBytes(money).CopyTo(serialized, nameBytes.Length + 1);
 
@@ -143,11 +147,16 @@ public class GameData
     }
 
     // Saves the current data of the player to binary file
-    public async void SaveData()
+    public async Task SaveData()
     {
-
-
-        await File.WriteAllBytesAsync("./" + playerName, GetSerializedData());
+        if (GameManager.Instance.online)
+        {
+            await OnlineSaveData();
+        }
+        else
+        {
+            await File.WriteAllBytesAsync("./TESTPLAYER", GetSerializedData());
+        }
 
         /*
         byte[] serialized = new byte[8 + (levelData.Length * 12)];
@@ -171,13 +180,15 @@ public class GameData
         }
     }
 
-    public async void OnlineSaveData()
+    public async Task OnlineSaveData()
     {
         await Network.SaveUser(playerId);
     }
 
     public async Task OnlineLoadData()
     {
+        try
+        {
         Console.WriteLine("Attempting to load user with id=" + playerId);
 
         Flags = new Dictionary<Flag, bool>();
@@ -190,9 +201,14 @@ public class GameData
 
         byte[] serialized = await Network.LoadUser(playerId);
 
+        File.WriteAllBytes("./TESTLOAD", serialized);
+
+        Debug.Log("User loaded");
+        Debug.Log("Data length is " + serialized.Length);
+
         byte[] nameBytes = serialized.Skip(1).Take((int)serialized[0]).ToArray();
 
-        playerName = nameBytes.Select(x => (char)x).ToArray().ToString();
+        playerName = new string(nameBytes.Select(x => (char)x).ToArray());
 
         money = BitConverter.ToInt64(serialized, nameBytes.Length + 1);
 
@@ -238,17 +254,26 @@ public class GameData
         {
             Debug.Log("Flag \"" + flag.Key.ToString() + "\" is " + (flag.Value ? "TRUE" : "FALSE"));
         }
+        } catch (Exception e) { Debug.Log(e.Message + "\n\n" + e.StackTrace); }
     }
 
     public async Task OnlineCreateNewUser(string name)
     {
+        Flags = new Dictionary<Flag, bool>();
+        Flag[] flagArray = Enum.GetValues(typeof(Flag)) as Flag[];
+
+        for (int i = 0; i < flagArray.Length; ++i)
+        {
+            Flags.Add(flagArray[i], false);
+        }
+
         (int statusCode, string userId) ret = await Network.CreateUser();
         Debug.Log("Created user, code is " + ret.statusCode);
-        if (ret.statusCode != 200) 
+        if (ret.statusCode != 200)
         {
             throw new System.Net.WebException();
         }
-        
+
         playerId = ret.userId;
         playerName = name;
         money = 0;
@@ -261,14 +286,20 @@ public class GameData
         Debug.Log("Id is " + playerId);
         Debug.Log("Name is " + playerName);
 
-        OnlineSaveData();
+        await OnlineSaveData();
+        await OnlineLoadData();
         return;
     }
 
     // Finds binary file with matching username, and loads the data into this object if it finds a file. 
     // If not, creates blank save data with the given username.
-    public void LoadData(string name = "TESTPLAYER")
+    public async Task LoadData(string name = "TESTPLAYER")
     {
+        if (GameManager.Instance.online) 
+        {
+            await OnlineLoadData();
+            return;
+        }
         if (globalFlags)
         {
             Debug.Log("Loading data using global flags");

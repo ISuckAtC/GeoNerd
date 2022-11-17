@@ -45,26 +45,30 @@ public class CharacterController : MonoBehaviour
     private FMOD.Studio.EventInstance engineInstance;
     public float useDelay = 2f; // to avoid instantly entering a place after going to the map
     private float currentUseDelay;
-    
     void Start()
     {
         Debug.Log("SDOIJFOSHDUF");
         if (OVERWORLD)
         {
+            Debug.Log("About to check instance");
+            bool check = GameManager.Instance.enabled;
+            Debug.Log("Checked instance");
             GameManager.Flags[Flag.OFFICE_ARROW] = false;
             //GameManager.Flags[Flag.OSLO_ARROW] = true;
             engineInstance = GameManager.FMODPlayStatic(engine, transform.position, Vector3.zero, engineVolume, true, false);
             currentUseDelay = useDelay;
             Debug.Log("Setting position to: " + GameManager.GameData.overWorldPosition);
             transform.position = GameManager.GameData.overWorldPosition;
-            InvokeRepeating("SavePosition", 5f, 5f);
+            InvokeRepeating("SavePosition", 15f, 5f);
         }
     }
 
     private void SavePosition()
     {
         GameManager.GameData.overWorldPosition = transform.position;
-        GameManager.GameData.SaveData();
+        Debug.Log("AUTOSAVING");
+        System.Threading.Thread save = new System.Threading.Thread(async () => await GameManager.GameData.SaveData());
+        save.Start();
     }
 
     private void FixedUpdate()

@@ -17,12 +17,12 @@ public class Network : MonoBehaviour
         List<byte> input = new List<byte>();
         input.AddRange(System.BitConverter.GetBytes(System.DateTimeOffset.UtcNow.ToUnixTimeMilliseconds()));
         byte[] rawHash = sha.ComputeHash(input.ToArray());
-        return System.Convert.ToBase64String(rawHash);
+        return System.Convert.ToBase64String(rawHash).Substring(1, 9).Replace('/',')').Replace('\\','(').Replace('+','&');
     }
     public static async Task<(int statusCode, string userId)> CreateUser()
     {
-        Debug.Log("Attempting to request user creation");
         string userId = CreateUserHash();
+        Debug.Log("Attempting to request user creation with id \"" + userId + "\"");
         HttpResponseMessage response = await httpClient.GetAsync(baseUri + "/create?userId=" + userId);
         Debug.Log("Recieved message from server: " + (await response.Content.ReadAsStringAsync()));
         return ((int)response.StatusCode, userId);
@@ -31,6 +31,8 @@ public class Network : MonoBehaviour
     {
         Debug.Log("Attempting to post user save");
         byte[] saveData = GameManager.GameData.GetSerializedData();
+        System.IO.File.WriteAllBytes("./TESTSAVE", saveData);
+        Debug.Log("Data length is " + saveData.Length);
         HttpContent content = new ByteArrayContent(saveData);
         HttpResponseMessage response = await httpClient.PostAsync(baseUri + "/save?userId=" + id, content);
         Debug.Log("Recieved message from server: " + (await response.Content.ReadAsStringAsync()));
@@ -39,6 +41,7 @@ public class Network : MonoBehaviour
     {
         HttpResponseMessage response = await httpClient.GetAsync(baseUri + "/load?userId=" + id);
         Debug.Log("Recieved message from server: " + (await response.Content.ReadAsStringAsync()));
+        if (response.StatusCode == HttpStatusCode.BadRequest) throw new System.Net.WebException();
         return await response.Content.ReadAsByteArrayAsync();
     }
     public static async Task<byte[]> RequestLibraryMessage()
@@ -54,6 +57,18 @@ public class Network : MonoBehaviour
         }
         HttpContent content = new ByteArrayContent(bytes);
         HttpResponseMessage response = await httpClient.PostAsync(baseUri + "/libraryMessage", content);
+    }
+    public static async Task<bool> ServerAlive()
+    {
+        try
+        {
+            HttpResponseMessage response = await httpClient.GetAsync(baseUri + "/worldMessageCount");
+        }
+        catch (System.Exception e)
+        {
+            return false;
+        }
+        return true;
     }
     public static async Task<byte[]> RequestWorldMessage(int index = -1)
     {
