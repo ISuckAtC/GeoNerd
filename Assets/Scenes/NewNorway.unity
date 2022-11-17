@@ -25674,6 +25674,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1164156997}
     m_Modifications:
+    - target: {fileID: 1710123860, guid: b032febb8626fa242b4ee4d8ee17df6e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1710123860, guid: b032febb8626fa242b4ee4d8ee17df6e, type: 3}
+      propertyPath: startingPosition
+      value: 
+      objectReference: {fileID: 1164156997}
+    - target: {fileID: 4305851774849426973, guid: b032febb8626fa242b4ee4d8ee17df6e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4305851774849426973, guid: b032febb8626fa242b4ee4d8ee17df6e,
+        type: 3}
+      propertyPath: startingPosition
+      value: 
+      objectReference: {fileID: 1164156997}
+    - target: {fileID: 4305851775658189967, guid: b032febb8626fa242b4ee4d8ee17df6e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4305851775658189967, guid: b032febb8626fa242b4ee4d8ee17df6e,
+        type: 3}
+      propertyPath: startingPosition
+      value: 
+      objectReference: {fileID: 1164156997}
     - target: {fileID: 6278648681055614366, guid: b032febb8626fa242b4ee4d8ee17df6e,
         type: 3}
       propertyPath: slideMax
@@ -25809,7 +25837,10 @@ PrefabInstance:
       propertyPath: slideMin
       value: 50
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1710123863, guid: b032febb8626fa242b4ee4d8ee17df6e, type: 3}
+    - {fileID: 4305851775658189964, guid: b032febb8626fa242b4ee4d8ee17df6e, type: 3}
+    - {fileID: 4305851774849426974, guid: b032febb8626fa242b4ee4d8ee17df6e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b032febb8626fa242b4ee4d8ee17df6e, type: 3}
 --- !u!1 &6505744680026814594
 GameObject:

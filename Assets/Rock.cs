@@ -34,8 +34,14 @@ public class Rock : MonoBehaviour
                 Destroy(gameObject);
                 other.GetComponent<CaveMovement>().loseLife();
             }
+             
         }
-        
+
+        if (other.GetComponent<Troll>())
+        {
+            Destroy(gameObject);
+        }
+
     }
     //private void OnCollisionEnter(Collision collision)
     //{

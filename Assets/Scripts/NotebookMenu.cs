@@ -42,11 +42,14 @@ public class NotebookMenu : MonoBehaviour
     public void OpenNotebook()
     {
         gameObject.SetActive(true);
+        Time.timeScale = 0;
     }
     
     public void CloseNotebook()
     {
         gameObject.SetActive(false);
+        Time.timeScale = 1;
+
     }
 
 

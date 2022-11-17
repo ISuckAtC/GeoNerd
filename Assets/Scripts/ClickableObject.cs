@@ -14,7 +14,7 @@ public class ClickableObject : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     private void Start()
     {
-        cursors = GameObject.Find("ForestManager").GetComponent<CursorsManager>().GetCursors();
+        cursors = GameObject.Find("CursorsManager").GetComponent<CursorsManager>().GetCursors();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
