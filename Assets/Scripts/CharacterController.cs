@@ -48,7 +48,6 @@ public class CharacterController : MonoBehaviour
     
     void Start()
     {
-        Debug.Log("SDOIJFOSHDUF");
         if (OVERWORLD)
         {
             GameManager.Flags[Flag.OFFICE_ARROW] = false;
