@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
 
     [HideInInspector]
     public string nextScene;
+    public bool online = true;
+    public string onlineId = "P75jc4rRh";
     public static GameManager Instance
     {
         get
@@ -38,11 +40,49 @@ public class GameManager : MonoBehaviour
                 DontDestroyOnLoad(go);
                 _instance = go.AddComponent<GameManager>();
                 GameData = new GameData();
-                GameData.LoadData();
+
+                if (!System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable()) 
+                {
+                    Debug.Log("NO INTERNET CONNECTION, SETTING ONLINE TO FALSE");
+                    _instance.online = false;
+                }
+                else if (_instance.online)
+                {
+                    if (!System.Threading.Tasks.Task.Run(() => Network.ServerAlive()).Result) 
+                    {
+                        Debug.Log("CANNOT REACH SERVER, SETTING ONLINE TO FALSE");
+                        _instance.online = false;
+                    }
+                }
+                
+                if (_instance.online)
+                {
+                    Debug.Log("instance is online, id is " + _instance.onlineId.Length);
+                    if (_instance.onlineId.Length == 0)
+                    {
+                        Debug.Log("id is empty");
+                        System.Threading.Tasks.Task.Run(() => GameData.OnlineCreateNewUser("DEV")).Wait();
+                    }
+                    else
+                    {
+                        GameData.playerId = _instance.onlineId;
+                        Debug.Log("About to load online data");
+                        System.Threading.Tasks.Task.Run(() => GameData.OnlineLoadData()).Wait();
+                    }
+                }
+                else
+                {
+                    GameData.LoadData("TESTPLAYER");
+                }
                 Flags = GameData.Flags;
             }
             return _instance;
         }
+    }
+
+    public static void EnsureInstance()
+    {
+        bool enabled = GameManager.Instance.enabled;
     }
 
     public void Start()
@@ -95,7 +135,8 @@ public class GameManager : MonoBehaviour
         try
         {
             play = FMODUnity.RuntimeManager.CreateInstance(reference);
-        } catch (FMODUnity.EventNotFoundException e)
+        }
+        catch (FMODUnity.EventNotFoundException e)
         {
             Debug.Log("Caught FMODUnity.EventNotFoundException\n\n" + e.Message + "\n" + e.StackTrace + "\n\n\nIf you see this message, thank Henrik for not making the entire code die");
             return new FMOD.Studio.EventInstance();
