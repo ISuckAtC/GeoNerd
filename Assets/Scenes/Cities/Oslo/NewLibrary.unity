@@ -491,7 +491,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 0e871d5c7024b254da5da3d467def171,
+      objectReference: {fileID: 21300000, guid: 3086c447a9340f04c8c5f11f8c313cfc,
         type: 3}
     - target: {fileID: 1681900183436353409, guid: b3aaf66588399454da1fccf854ee78e7,
         type: 3}
@@ -508,7 +508,7 @@ PrefabInstance:
         type: 3}
       propertyPath: frontSprite
       value: 
-      objectReference: {fileID: 21300000, guid: 0e871d5c7024b254da5da3d467def171,
+      objectReference: {fileID: 21300000, guid: 3086c447a9340f04c8c5f11f8c313cfc,
         type: 3}
     - target: {fileID: 1681900183436353415, guid: b3aaf66588399454da1fccf854ee78e7,
         type: 3}
@@ -1099,7 +1099,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &311261666
 RectTransform:
   m_ObjectHideFlags: 0
