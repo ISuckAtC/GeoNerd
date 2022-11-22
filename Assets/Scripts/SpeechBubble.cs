@@ -26,7 +26,7 @@ public class SpeechBubble : MonoBehaviour
         }
     }
 
-    public void Run(System.Action<object> action = null)
+    public void Run(System.Action<object> action = null, object param = null)
     {
         nextAction = action;
         textLength = text.Length;
