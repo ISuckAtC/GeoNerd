@@ -1099,7 +1099,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &311261666
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3826,7 +3826,6 @@ MonoBehaviour:
   part3: {fileID: 1240826969}
   universal: {fileID: 719828337}
   itemSlideBar: {fileID: 0}
-  bookParent: {fileID: 0}
   currentlySelected: {fileID: 0}
   wordSlots:
   - {fileID: 658306735}

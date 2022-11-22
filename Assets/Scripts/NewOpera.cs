@@ -16,6 +16,7 @@ public class NewOpera : MonoBehaviour
     public NewOperaPuzzleWord[] words;
     public float snapLeniency;
     public float connectionGap;
+    public int realAmount;
     public GameObject winButton;
 
     public bool startSequenceImmediately;
@@ -55,6 +56,11 @@ public class NewOpera : MonoBehaviour
                 break;
             }
             current = current.under;
+            if (i >= realAmount)
+            {
+                win = false;
+                break;
+            }
         }
 
         if (win)
