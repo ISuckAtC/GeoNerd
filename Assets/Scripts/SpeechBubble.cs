@@ -9,7 +9,7 @@ public class SpeechBubble : MonoBehaviour
     public float characterCD;
     public float spaceCD;
     public float periodCD;
-    private bool running;
+    [HideInInspector] public bool running;
     private float currentCD;
     private TMPro.TextMeshProUGUI textComponent;
     private string currentText = "";

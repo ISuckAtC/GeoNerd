@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class MooseAnimationScript : MonoBehaviour
 {
-    [HideInInspector] public Schmoose parent;
+    /*[HideInInspector] */public Schmoose parent;
 
     public void WalkCompleted()
     {
-        Debug.Log("WalkCommpleted for " + gameObject.name);
         if (parent.walkingSchmoose.Contains(transform)) parent.walkingSchmoose.Remove(transform);
     }
     

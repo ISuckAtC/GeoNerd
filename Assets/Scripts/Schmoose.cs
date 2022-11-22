@@ -23,10 +23,11 @@ public class Schmoose : MonoBehaviour
     
     void Awake()
     {
-            actions = new [] { eatAnimationName, eatAnimationName, eatAnimationName, walkAnimationName, walkAnimationName, jumpAnimationName };
+            actions = new [] { eatAnimationName, eatAnimationName, eatAnimationName, eatAnimationName, eatAnimationName, walkAnimationName, walkAnimationName, jumpAnimationName };
     }
     void Start()
     {
+        /*
         Debug.Log("HELLOWORLD");
         GameObject map = GameObject.Find("GeoNerdMap_NewVersion");
         MeshFilter filter = map.GetComponent<MeshFilter>();
@@ -50,9 +51,9 @@ public class Schmoose : MonoBehaviour
 
         MeshRenderer renderer = map.GetComponent<MeshRenderer>();
         
-        
+        */
         foreach (Animator s in schmeese) s.GetComponent<MooseAnimationScript>().parent = this;
-        InvokeRepeating("PlayRandomAnimation", 1f, 1.5f / schmeese.Length);
+        InvokeRepeating("PlayRandomAnimation", 1f, 6f / schmeese.Length);
         InvokeRepeating("MoveSchmoose", 1f, 0.02f);
     }
 
@@ -62,7 +63,7 @@ public class Schmoose : MonoBehaviour
         int timeout = 0;
         do
         {
-            if (timeout++ > 1000000) return;
+            if (timeout++ > 1000) return;
             youInParticular = Random.Range(0, schmeese.Length);
         } while (walkingSchmoose.Contains(schmeese[youInParticular].transform) || jumpingSchmoose.Contains((schmeese[youInParticular].transform)));
             
@@ -74,12 +75,15 @@ public class Schmoose : MonoBehaviour
         if (Physics.Raycast(ray, out hit, float.MaxValue, 1 << 3))
         {
             curr.position = new Vector3(curr.position.x, hit.point.y, curr.position.z);
+            /*
             int triangleIndex = hit.triangleIndex;
             MeshFilter f = hit.transform.GetComponent<MeshFilter>();
             Mesh m = f.mesh;
             int vert = m.triangles[triangleIndex];
 
             string bitPrint = "";
+            */
+            
             //for (int i = 0; i < 32; ++i) bitPrint += (vert & (1 << i)) == (1 << i) ? "1" : "0";
             //Debug.Log(bitPrint);
             
@@ -87,15 +91,15 @@ public class Schmoose : MonoBehaviour
             //f.mesh = m;
         }
         
-        int action = Random.Range(0, 6);
+        int action = Random.Range(0, 8);
 
         Animator current = schmeese[youInParticular];
 
-        if (action == 4 || action == 3)    // Walking
+        if (action == 5 || action == 6)    // Walking
         {
             walkingSchmoose.Add(current.gameObject.transform);
         }
-        else if (action == 5)   // Jumping
+        else if (action == 7)   // Jumping
         {
             jumpingSchmoose.Add(current.gameObject.transform);
         }
