@@ -41,7 +41,8 @@ public class OsloFollow : MonoBehaviour
                 GameObject hitObject = hit.transform.gameObject;
             
                 if (!testing)
-                    hitObject.GetComponent<LoadScene>().Load();
+                    if (!hit.transform.CompareTag("Hitbox"))
+                        hitObject.GetComponent<LoadScene>().Load();
                 /*
                 if (hit.transform.CompareTag("Exit"))
                 {

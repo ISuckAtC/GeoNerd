@@ -9,25 +9,30 @@ public class ThirdPersonController : MonoBehaviour
     public float moveSpd;
     public float moveAcc;
 
-    private Vector2 movement;
+    private Vector3 movement;
 
     [SerializeField]
     private Transform cam;
 
     private bool move = false;
     
+    private Animator anim;
+    
     void Start()
     {
-        
+        anim = GetComponent<Animator>();
     }
 
     void Update()
     {
         move = false;
 
+        
+
         if (Input.GetKey(KeyCode.W))
         {
-            transform.forward = cam.forward;
+            movement = transform.forward;
+            //transform.forward = cam.forward;
 
             move = true;
         }
@@ -35,7 +40,8 @@ public class ThirdPersonController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.S))
         {
-            transform.forward = -cam.forward;
+            movement = -transform.forward;
+            //transform.forward = -cam.forward;
             
             move = true;
         }
@@ -43,18 +49,33 @@ public class ThirdPersonController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.A))
         {
-            transform.forward = -cam.right;
+            transform.RotateAround(transform.position, Vector3.up, -rotSpd * Time.deltaTime);
+        
+            //transform.forward = -cam.right;
             
-            move = true;
+            //move = true;
         }
         if (Input.GetKey(KeyCode.D))
         {
-            transform.forward = cam.right;
+            transform.RotateAround(transform.position, Vector3.up, rotSpd * Time.deltaTime);
+        
+            //transform.forward = cam.right;
             
-            move = true;
+            //move = true;
         }
 
-        transform.forward = new Vector3(transform.forward.x, 0f, transform.forward.z);
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            moveSpdMax *= 2f;
+            anim.speed *= 2f;
+        }
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            moveSpdMax *= 0.5f;
+            anim.speed *= 0.5f;
+        }
+
+        //transform.forward = new Vector3(transform.forward.x, 0f, transform.forward.z);
 
         if (move)
         {
@@ -62,15 +83,17 @@ public class ThirdPersonController : MonoBehaviour
         }
         else
         {
-            moveSpd -= moveAcc * Time.deltaTime;
+            moveSpd -= moveAcc * moveSpdMax * Time.deltaTime;
         }
         moveSpd = Mathf.Clamp(moveSpd, 0f, moveSpdMax);
+        
+        anim.SetBool("Move", move);
         
         Move();
     }
 
     private void Move()
     {
-        transform.position +=  transform.forward * (moveSpd * Time.deltaTime);
+        transform.position +=  movement * (moveSpd * Time.deltaTime);
     }
 }
