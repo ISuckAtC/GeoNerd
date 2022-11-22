@@ -13,10 +13,17 @@ public class CaveMovement : MonoBehaviour
     float verticalInput = 0;
     Rigidbody rb;
     Animator animator;
+    SpriteRenderer sr;
 
     int lives = 3;
 
     private bool onExit;
+
+    public bool running;
+
+    public string sceneToLoad = "";
+
+    public FMODUnity.EventReference cameraFlashSound;
     
 
 
@@ -27,6 +34,7 @@ public class CaveMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+        sr = GetComponent<SpriteRenderer>();
         canJump = true;
     }
 
@@ -64,7 +72,18 @@ public class CaveMovement : MonoBehaviour
             canJump = false;
         }
 
-        animator.SetBool("right", rb.velocity.x < 0);
+        animator.SetBool(running ? "run" : "walk", rb.velocity.x > 0.05f);
+        sr.flipX = rb.velocity.x > 0;
+    }
+
+    public void CameraFlash()
+    {
+        GameManager.FMODPlayStatic(cameraFlashSound, Vector3.zero, Vector3.zero);
+    }
+
+    public void Leave()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneToLoad);
     }
 
 

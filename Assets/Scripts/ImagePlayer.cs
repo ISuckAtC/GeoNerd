@@ -5,6 +5,7 @@ using UnityEngine;
 public class ImagePlayer : MonoBehaviour
 {
     public List<Sprite> frames;
+    [Tooltip("In seconds")]
     public float frameInterval;
     public bool playOnAwake;
     public float delay;

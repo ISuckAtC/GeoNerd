@@ -3826,7 +3826,6 @@ MonoBehaviour:
   part3: {fileID: 1240826969}
   universal: {fileID: 719828337}
   itemSlideBar: {fileID: 0}
-  bookParent: {fileID: 0}
   currentlySelected: {fileID: 0}
   wordSlots:
   - {fileID: 658306735}
@@ -4261,7 +4260,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: badb4618a2effc7449b0eb6bb43b6cc8,
+      objectReference: {fileID: 21300000, guid: ad97eda5cb7270949a7c429a6832b419,
         type: 3}
     - target: {fileID: 1681900183436353409, guid: b3aaf66588399454da1fccf854ee78e7,
         type: 3}
@@ -4278,7 +4277,7 @@ PrefabInstance:
         type: 3}
       propertyPath: frontSprite
       value: 
-      objectReference: {fileID: 21300000, guid: badb4618a2effc7449b0eb6bb43b6cc8,
+      objectReference: {fileID: 21300000, guid: ad97eda5cb7270949a7c429a6832b419,
         type: 3}
     - target: {fileID: 1681900183436353415, guid: b3aaf66588399454da1fccf854ee78e7,
         type: 3}
