@@ -725,9 +725,11 @@ MonoBehaviour:
   - {fileID: 1127623137}
   - {fileID: 1547826738}
   - {fileID: 1450897090}
+  - {fileID: 1404735196}
+  - {fileID: 1008900752}
   snapLeniency: 120
   connectionGap: 80
-  realAmount: 0
+  realAmount: 6
   winButton: {fileID: 101325928}
   startSequenceImmediately: 1
 --- !u!1 &271334489
@@ -2073,6 +2075,7 @@ MonoBehaviour:
   characterCD: 0.05
   spaceCD: 0.2
   periodCD: 0.7
+  running: 0
 --- !u!114 &1886404877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2614,7 +2617,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2073467997
 RectTransform:
   m_ObjectHideFlags: 0

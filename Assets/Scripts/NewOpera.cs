@@ -49,7 +49,7 @@ public class NewOpera : MonoBehaviour
                 win = false;
                 break;
             }
-            if (i == words.Length - 1) break;
+            if (i == realAmount - 1) break;
             if (current.under == null)
             {
                 win = false;
