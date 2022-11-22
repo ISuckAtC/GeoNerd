@@ -869,7 +869,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &348619475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1440,10 +1440,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: An iron key based on an original found in Grave 511 at Repton, Derbyshire. 
-    Iron keys were not only practical items but also symbols of status. Women were
-    often given keys to the families chests of valuables. They also are often buried
-    with keys, representing their authority in the household.
+  m_text: An iron key based on an original found in Grave 511 in a viking village
+    at Repton, Derbyshire.  Iron keys were not only practical items but also symbols
+    of status. Women were often given keys to the families chests of valuables. They
+    also are often buried with keys, representing their authority in the household.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
