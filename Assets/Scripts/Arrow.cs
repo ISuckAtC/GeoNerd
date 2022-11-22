@@ -48,7 +48,8 @@ public class Arrow : MonoBehaviour
     {
         if (isArrow)
         {
-            transform.LookAt(objToFace.transform.position);
+            
+            if (objToFace) transform.LookAt(objToFace.transform.position);
         }
     }
 }
