@@ -22,6 +22,9 @@ public class DirectionalCharacterController : MonoBehaviour
 
     private Vector3 groundNormal;
 
+    [SerializeField] private GameObject CurrentLandmark;
+
+    
     [SerializeField]
     private Transform rotObj;
     [SerializeField]
@@ -62,10 +65,29 @@ public class DirectionalCharacterController : MonoBehaviour
             desiredDirection.x = 0;
         }
 
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Interact();
+        }
+        
 
         if (desiredDirection != Vector2.zero) transform.forward = new Vector3(direction.x, 0f, direction.y).normalized;
 
         Move();
+    }
+    
+    
+    void Interact()
+    {
+        if (CurrentLandmark != null)
+        {
+            CurrentLandmark.GetComponent<Landmark>().Use();
+        }
+    }
+    
+    public void SetLandmark(GameObject go)
+    {
+        CurrentLandmark = go;
     }
 
     private void Move()
@@ -96,6 +118,11 @@ public class DirectionalCharacterController : MonoBehaviour
         
         LerpToNormal();
 
+    }
+    
+    public void RemoveLandmark()
+    {
+        CurrentLandmark = null;
     }
     
     private void LerpToNormal()

@@ -79,7 +79,7 @@ public class NewOpera : MonoBehaviour
     public IEnumerable OperaSequence()
     {
         Debug.Log("started");
-        firstBubble.Run(() => {
+        firstBubble.Run((object obj) => {
             firstBubble.transform.parent.GetComponent<UnityEngine.UI.Button>().enabled = true;
         });
         yield return null;
@@ -90,7 +90,7 @@ public class NewOpera : MonoBehaviour
 
         part2.SetActive(false);
         part3.SetActive(true);
-        secondBubble.Run(() => {
+        secondBubble.Run((object obj) => {
             secondBubble.transform.parent.GetComponent<UnityEngine.UI.Button>().enabled = true;
         });
         yield return null;

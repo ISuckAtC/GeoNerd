@@ -26,7 +26,7 @@ public class NewLibraryPuzzle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        speechBubble1.Run(() => {
+        speechBubble1.Run((object obj) => {
             speechBubble1.transform.parent.GetComponent<UnityEngine.UI.Button>().enabled = true;
         });
         enumerator = LibrarySequence().GetEnumerator();
@@ -73,7 +73,7 @@ public class NewLibraryPuzzle : MonoBehaviour
         part2.SetActive(false);
         part3.SetActive(true);
         universal.SetActive(true);
-        speechBubble2.Run(() => {
+        speechBubble2.Run((object obj) => {
             speechBubble2.transform.parent.GetComponent<UnityEngine.UI.Button>().enabled = true;
         });
         GameManager.GameData.Flags[Flag.OSLO_LIBRARYDONE] = true;

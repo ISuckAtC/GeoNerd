@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/NewNorway_RuneBackup.unity
+    guid: cbc3ff1cbededcd4691579a8e0ff6204
+  - enabled: 1
     path: Assets/Scenes/NewNorway.unity
     guid: 8e5af835c5d72e64fb972c0dccc53858
   - enabled: 1

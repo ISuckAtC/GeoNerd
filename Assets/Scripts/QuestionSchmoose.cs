@@ -89,25 +89,40 @@ public class QuestionSchmoose : MonoBehaviour
                 GameManager.Flags[pair.Key] = true;
                 facts.Remove(pair.Key);
                 
-                speechBubble.Run(((QuestionSchmoose sender) =>
+                speechBubble.Run(((object schmoose) =>
                 {
-                    speechBubble.transform.GetComponent<QuestionSchmoose>().ready = true;
                     
+                    ((QuestionSchmoose)schmoose).ready = true;
+                    /*
                     void DisableActive()
                     {
                         speechBubble.transform.parent.gameObject.SetActive(false);
 
                         speechBubble.running = false;
                     }
-                    
-                    Invoke(nameof(DisableActive), 8f);
-                }));
+                    */
+
+                    ((QuestionSchmoose)schmoose).DelayDisableBubble(7f);
+
+                }), this);
             }
         }
     }
-    
-    
 
+
+    public void DelayDisableBubble(float delay)
+    {
+        Invoke(nameof(DisableBubble), delay);
+    }
+
+    private void DisableBubble()
+    {
+        speechBubble.running = false;
+        
+        speechBubble.transform.parent.gameObject.SetActive(false);
+    }
+        
+        
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Hit");
