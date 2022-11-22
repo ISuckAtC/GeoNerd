@@ -15,7 +15,8 @@ public class SpeechBubble : MonoBehaviour
     private string currentText = "";
     private int index;
     private int textLength;
-    private System.Action nextAction;
+    private System.Action<object> nextAction;
+    private object actionParameter;
 
     public void Start()
     {
@@ -25,7 +26,7 @@ public class SpeechBubble : MonoBehaviour
         }
     }
 
-    public void Run(System.Action action = null)
+    public void Run(System.Action<object> action = null)
     {
         nextAction = action;
         textLength = text.Length;
@@ -42,7 +43,7 @@ public class SpeechBubble : MonoBehaviour
                 if (index == textLength)
                 {
                     running = false;
-                    if (nextAction != null) nextAction.Invoke();
+                    if (nextAction != null) nextAction(actionParameter);
                     return;
                 }
                 textComponent.text = currentText;
