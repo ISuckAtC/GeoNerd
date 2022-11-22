@@ -28,6 +28,7 @@ public class SpeechBubble : MonoBehaviour
 
     public void Run(System.Action<object> action = null, object param = null)
     {
+        actionParameter = param;
         nextAction = action;
         textLength = text.Length;
         textComponent = GetComponent<TMPro.TextMeshProUGUI>();
