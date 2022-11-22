@@ -35,7 +35,7 @@ public class DirectionalCharacterController : MonoBehaviour
     private void Update()
     {
         desiredDirection.x = 0;
-        desiredDirection.y = 0;
+        desiredDirection.y = 1;
 
         if (Input.GetKey(KeyCode.D))
         {
@@ -63,7 +63,7 @@ public class DirectionalCharacterController : MonoBehaviour
         }
 
 
-        transform.forward = new Vector3(direction.x, 0f, direction.y).normalized;
+        if (desiredDirection != Vector2.zero) transform.forward = new Vector3(direction.x, 0f, direction.y).normalized;
 
         Move();
     }
