@@ -9,17 +9,18 @@ public class DropableItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 {
     // Start is called before the first frame update
     public GameObject objectToEnable;
+    public GameObject objectToDisable;
     public Item.ItemType unlockableWith = Item.ItemType.NONE;
 
     public PopUpForestBoxData[] restartData;
 
-    public FMODUnity.EventReference cameraFlashSound;
+    
     public FMODUnity.EventReference tntExplosionSound;
 
     private Outline outline;
     
     public bool isLoadingScene = false;
-    public string sceneToLoad = "";
+    
     void Start()
     {
         outline = GetComponent<Outline>();
@@ -44,6 +45,8 @@ public class DropableItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     }
 
+    
+
     public void OnDrop(BaseEventData data)
     {
         Debug.Log("BaseEventDrop");
@@ -51,11 +54,11 @@ public class DropableItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         Item item = pointerData.pointerDrag.gameObject.GetComponent<Item>();
         if (item.itemType == unlockableWith)
         {
-            if (isLoadingScene) UnityEngine.SceneManagement.SceneManager.LoadScene(sceneToLoad);
+            if (isLoadingScene) 
 
             if (item.itemType == Item.ItemType.Camera)
             {
-                GameManager.FMODPlayStatic(cameraFlashSound, Vector3.zero, Vector3.zero);
+                
             }
             else if (item.itemType == Item.ItemType.TNT)
             {
@@ -63,6 +66,7 @@ public class DropableItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
             }
 
             if (objectToEnable) objectToEnable.SetActive(true);
+            if (objectToDisable) objectToDisable.SetActive(false);
 
 
 
