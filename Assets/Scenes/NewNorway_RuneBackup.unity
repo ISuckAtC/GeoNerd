@@ -10280,9 +10280,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef5164def0480ce48a4caa8d7cd75bf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  accSpeed: 2
-  maxSpeed: 15
-  rotSpeed: 0
+  accSpeed: 30
+  maxSpeed: 20
+  rotSpeed: 4
+  currSpeed: 0
   CurrentLandmark: {fileID: 0}
   rotObj: {fileID: 667925166}
   carObj: {fileID: 2034878415}

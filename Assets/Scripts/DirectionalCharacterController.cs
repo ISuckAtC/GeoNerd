@@ -4,19 +4,17 @@ using System.Linq;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
-using FMOD;
-using FMOD.Studio;
 
 public class DirectionalCharacterController : MonoBehaviour
 {
     private Vector2 direction;
     private Vector2 desiredDirection;
-
     private Vector2 speed;
-
+    
     public float accSpeed;
     public float maxSpeed;
     public float rotSpeed;
+    [SerializeField] private float currSpeed;
 
     private Rigidbody rb;
 
@@ -24,6 +22,7 @@ public class DirectionalCharacterController : MonoBehaviour
 
     [SerializeField] private GameObject CurrentLandmark;
 
+    private bool moving;
     
     [SerializeField]
     private Transform rotObj;
@@ -33,28 +32,35 @@ public class DirectionalCharacterController : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        currSpeed = 0f;
     }
 
     private void Update()
     {
         desiredDirection.x = 0;
         desiredDirection.y = 1;
-
+        moving = false;
+        
+        
         if (Input.GetKey(KeyCode.D))
         {
             desiredDirection.y = -1;
+            moving = true;
         }
         if (Input.GetKey(KeyCode.S))
         {
             desiredDirection.x = -1;
+            moving = true;
         }
         if (Input.GetKey(KeyCode.A))
         {
             desiredDirection.y = 1;
+            moving = true;
         }
         if (Input.GetKey(KeyCode.W))
         {
             desiredDirection.x = 1;
+            moving = true;
         }
         if (!Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A))
         {
@@ -92,14 +98,22 @@ public class DirectionalCharacterController : MonoBehaviour
 
     private void Move()
     {
-
+        if (moving)
+        {
+            currSpeed += accSpeed * Time.deltaTime;
+        }
+        else
+        {
+            currSpeed -= accSpeed * 2f * Time.deltaTime;
+        }
+        currSpeed = Mathf.Clamp(currSpeed, 0f, maxSpeed);
         
-        direction = Vector2.Lerp(direction, desiredDirection, accSpeed * Time.deltaTime);
+        direction = Vector2.Lerp(direction, desiredDirection, rotSpeed * Time.deltaTime);
 
-        if (direction.x > 0.2f && direction.y > 0.2f)
+        if (Mathf.Abs(direction.x) > 0.2f || Mathf.Abs(direction.y) > 0.2f)
             direction.Normalize();
 
-        transform.position += (new Vector3(direction.x, 0f, direction.y) * maxSpeed * Time.deltaTime);
+        transform.position += (new Vector3(direction.x, 0f, direction.y) * currSpeed * Time.deltaTime);
         
         
         RaycastHit hitInfo;

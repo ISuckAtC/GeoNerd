@@ -5,9 +5,10 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-
 public class CharacterController : MonoBehaviour
 {
+
+    #region Standard Character Controller
     public float maxSpeed = 6f;
     public float turnSpeed = 90f;
     public Vector2 direction;
@@ -45,6 +46,28 @@ public class CharacterController : MonoBehaviour
     private FMOD.Studio.EventInstance engineInstance;
     public float useDelay = 2f; // to avoid instantly entering a place after going to the map
     private float currentUseDelay;
+    #endregion
+
+     
+    
+    #region Directional Character Controller
+    [Space(100)]
+    private Vector2 dirDirection;
+    private Vector2 desiredDirection;
+    private Vector2 speed;
+
+    public float dirAccSpeed;
+    public float dirMaxSpeed;
+    public float dirRotSpeed;
+    [SerializeField] private float currSpeed;
+
+    private Rigidbody rb;
+
+    private bool moving;
+    #endregion
+
+    public bool useDirectionalMovement;
+
     void Start()
     {
         if (OVERWORLD)
@@ -74,7 +97,7 @@ public class CharacterController : MonoBehaviour
     {
         //maxSpeed = slider.value;
 
-        if (currentSpeed == 0)
+        if (currentSpeed == 0 && currSpeed == 0)
         {
             patio.SetActive(true);
         }
@@ -92,74 +115,124 @@ public class CharacterController : MonoBehaviour
             {
                 GameManager.FMODPlayStatic(toot, transform.position, Vector3.zero);
             }
-            if (Input.GetKey(KeyCode.W))
+            if (!useDirectionalMovement)
             {
-                if (currentSpeed < maxSpeed)
+                if (Input.GetKey(KeyCode.W))
                 {
-                    currentSpeed += acceleration;
+                    if (currentSpeed < maxSpeed)
+                    {
+                        currentSpeed += acceleration;
+                    }
+                    else
+                    {
+                        currentSpeed = maxSpeed;
+                    }
                 }
-                else
+                if (Input.GetKey(KeyCode.S))
                 {
-                    currentSpeed = maxSpeed;
+                    if (currentSpeed > -maxReverseSpeed)
+                    {
+                        currentSpeed -= acceleration;
+                    }
+                    else
+                    {
+                        currentSpeed = -maxReverseSpeed;
+                    }
                 }
-            }
-            if (Input.GetKey(KeyCode.S))
-            {
-                if (currentSpeed > -maxReverseSpeed)
+                if (Input.GetKey(KeyCode.A))
                 {
-                    currentSpeed -= acceleration;
-                }
-                else
-                {
-                    currentSpeed = -maxReverseSpeed;
-                }
-            }
-            if (Input.GetKey(KeyCode.A))
-            {
-                if (turnSpeedMultiplier > 0f)
-                    turnSpeedMultiplier -= turnAcceleration * 2f * Time.deltaTime;
-                else if (turnSpeedMultiplier >= -1f)
-                    turnSpeedMultiplier -= turnAcceleration * Time.deltaTime;
-                else
-                    turnSpeedMultiplier = -1f;
+                    if (turnSpeedMultiplier > 0f)
+                        turnSpeedMultiplier -= turnAcceleration * 2f * Time.deltaTime;
+                    else if (turnSpeedMultiplier >= -1f)
+                        turnSpeedMultiplier -= turnAcceleration * Time.deltaTime;
+                    else
+                        turnSpeedMultiplier = -1f;
 
-                transform.Rotate(Vector3.up, turnSpeed * (currentSpeed * turnSpeedMultiplier) * Time.deltaTime);
-            }
-            if (Input.GetKey(KeyCode.D))
-            {
-                if (turnSpeedMultiplier < 0f)
-                    turnSpeedMultiplier += turnAcceleration * 2f * Time.deltaTime;
-                else if (turnSpeedMultiplier <= 1f)
-                    turnSpeedMultiplier += turnAcceleration * Time.deltaTime;
-                else
-                    turnSpeedMultiplier = 1f;
+                    transform.Rotate(Vector3.up, turnSpeed * (currentSpeed * turnSpeedMultiplier) * Time.deltaTime);
+                }
+                if (Input.GetKey(KeyCode.D))
+                {
+                    if (turnSpeedMultiplier < 0f)
+                        turnSpeedMultiplier += turnAcceleration * 2f * Time.deltaTime;
+                    else if (turnSpeedMultiplier <= 1f)
+                        turnSpeedMultiplier += turnAcceleration * Time.deltaTime;
+                    else
+                        turnSpeedMultiplier = 1f;
 
-                transform.Rotate(Vector3.up, turnSpeed * (currentSpeed * turnSpeedMultiplier) * Time.deltaTime);
-            }
+                    transform.Rotate(Vector3.up, turnSpeed * (currentSpeed * turnSpeedMultiplier) * Time.deltaTime);
+                }
 
-            if (!Input.GetKey(KeyCode.W) && (!Input.GetKey(KeyCode.S)))
-            {
-                if (currentSpeed > 0.1f)
+                if (!Input.GetKey(KeyCode.W) && (!Input.GetKey(KeyCode.S)))
                 {
-                    currentSpeed -= stopSpeed * Time.deltaTime;
+                    if (currentSpeed > 0.1f)
+                    {
+                        currentSpeed -= stopSpeed * Time.deltaTime;
+                    }
+                    else if (currentSpeed < -0.1f)
+                    {
+                        currentSpeed += stopSpeed * Time.deltaTime;
+                    }
+                    else
+                    {
+                        currentSpeed = 0f;
+                    }
                 }
-                else if (currentSpeed < -0.1f)
+                if (!Input.GetKey(KeyCode.A) && (!Input.GetKey(KeyCode.D)))
                 {
-                    currentSpeed += stopSpeed * Time.deltaTime;
+                    if (turnSpeedMultiplier > 0.1f)
+                        turnSpeedMultiplier -= turnAcceleration * 0.5f * Time.deltaTime;
+                    else if (turnSpeedMultiplier < -0.1f)
+                        turnSpeedMultiplier += turnAcceleration * 0.5f * Time.deltaTime;
+                    else
+                        turnSpeedMultiplier = 0f;
                 }
-                else
-                {
-                    currentSpeed = 0f;
-                }
+                Move(currentSpeed);
             }
-            if (!Input.GetKey(KeyCode.A) && (!Input.GetKey(KeyCode.D)))
+            else
             {
-                if (turnSpeedMultiplier > 0.1f)
-                    turnSpeedMultiplier -= turnAcceleration * 0.5f * Time.deltaTime;
-                else if (turnSpeedMultiplier < -0.1f)
-                    turnSpeedMultiplier += turnAcceleration * 0.5f * Time.deltaTime;
-                else
-                    turnSpeedMultiplier = 0f;
+                desiredDirection.x = 0;
+                desiredDirection.y = 1;
+                moving = false;
+
+
+                if (Input.GetKey(KeyCode.D))
+                {
+                    desiredDirection.y = -1;
+                    moving = true;
+                }
+                if (Input.GetKey(KeyCode.S))
+                {
+                    desiredDirection.x = -1;
+                    moving = true;
+                }
+                if (Input.GetKey(KeyCode.A))
+                {
+                    desiredDirection.y = 1;
+                    moving = true;
+                }
+                if (Input.GetKey(KeyCode.W))
+                {
+                    desiredDirection.x = 1;
+                    moving = true;
+                }
+                if (!Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A))
+                {
+                    desiredDirection.y = 0;
+                }
+                if (!Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.W))
+                {
+                    desiredDirection.x = 0;
+                }
+
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    Interact();
+                }
+
+
+                if (desiredDirection != Vector2.zero) transform.forward = new Vector3(direction.x, 0f, direction.y).normalized;
+
+                DirectionalMove();
             }
 
             if (currentUseDelay <= 0)
@@ -192,7 +265,6 @@ public class CharacterController : MonoBehaviour
 
             if (averageFrameTime.Count > averageStackLength) averageFrameTime.RemoveAt(0);
 
-            Move(currentSpeed);
 
             if (OVERWORLD)
             {
@@ -225,6 +297,44 @@ public class CharacterController : MonoBehaviour
         {
             CurrentLandmark.GetComponent<Landmark>().Use();
         }
+    }
+    
+    private void DirectionalMove()
+    {
+        if (moving)
+        {
+            currSpeed += dirAccSpeed * Time.deltaTime;
+        }
+        else
+        {
+            currSpeed -= dirAccSpeed * 2f * Time.deltaTime;
+        }
+        currSpeed = Mathf.Clamp(currSpeed, 0f, dirMaxSpeed);
+        
+        direction = Vector2.Lerp(direction, desiredDirection, dirRotSpeed * Time.deltaTime);
+
+        if (Mathf.Abs(direction.x) > 0.2f || Mathf.Abs(direction.y) > 0.2f)
+            direction.Normalize();
+
+        transform.position += (new Vector3(direction.x, 0f, direction.y) * currSpeed * Time.deltaTime);
+        
+        
+        RaycastHit hitInfo;
+        Ray ray = new Ray(new Vector3(transform.position.x, transform.position.y + 30f, transform.position.z), Vector3.down);
+        if (Physics.Raycast(ray, out hitInfo, 60f, 1 << 3))
+        {
+            transform.position = new Vector3(transform.position.x, hitInfo.point.y, transform.position.z);
+
+            groundNormal = hitInfo.normal;
+        }
+        else
+        {
+            UnityEngine.Debug.LogWarning("Character Controller can't find ground.");
+        }
+        
+        
+        LerpToNormal();
+
     }
 
     void Move(float speed)
@@ -276,5 +386,3 @@ public class CharacterController : MonoBehaviour
         CurrentLandmark = null;
     }
 }
-
-
