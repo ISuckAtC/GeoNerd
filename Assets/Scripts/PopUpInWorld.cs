@@ -12,7 +12,7 @@ public class PopUpInWorld : MonoBehaviour
 
     private bool exclamationMarkActive;
 
-    private DirectionalCharacterController cc;
+    private CharacterController cc;
     
     private void Start()
     {
@@ -27,7 +27,7 @@ public class PopUpInWorld : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //if the player is the one who enters
-        if (cc = other.GetComponent<DirectionalCharacterController>())
+        if (cc = other.GetComponent<CharacterController>())
         {
             if (popUpObject) popUpObject.SetActive(true);
             if (exclamationMark) exclamationMark.SetActive(false);
@@ -38,7 +38,7 @@ public class PopUpInWorld : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.GetComponent<DirectionalCharacterController>())
+        if (other.GetComponent<CharacterController>())
         {
             if (popUpObject) popUpObject.SetActive(false);
             if (exclamationMark) exclamationMark.SetActive(exclamationMarkActive);
