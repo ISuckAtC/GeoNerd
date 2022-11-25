@@ -4747,7 +4747,7 @@ MonoBehaviour:
   - {fileID: 2080623728}
   - {fileID: 767168124}
   - {fileID: 906620875}
-  speed: 15
+  speed: 16
   startDelay: 5
   hitForce: 1000
 --- !u!65 &1206269203
