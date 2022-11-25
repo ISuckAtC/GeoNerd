@@ -224,11 +224,6 @@ public class CharacterController : MonoBehaviour
                     desiredDirection.x = 0;
                 }
 
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    Interact();
-                }
-
 
                 if (desiredDirection != Vector2.zero) transform.forward = new Vector3(direction.x, 0f, direction.y).normalized;
 
