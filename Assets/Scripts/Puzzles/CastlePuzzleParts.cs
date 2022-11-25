@@ -6,7 +6,7 @@ using System.Linq;
 
 public class CastlePuzzleParts : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    [HideInInspector]
+    //[HideInInspector]
     public int currentOrder = -1;
     private bool selected;
     [HideInInspector]
