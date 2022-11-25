@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CityCar : MonoBehaviour
 {
-    public List<Transform> travelPoints;
+    public List<CarTravelPoints> travelPoints;
     public float speed;
     public float startDelay;
     public float hitForce;
@@ -36,27 +36,21 @@ public class CityCar : MonoBehaviour
             }
             col.rigidbody.AddForce((transform.forward + new Vector3(0, 1f, 0)).normalized * hitForce, ForceMode.Force);
             col.rigidbody.AddTorque(new Vector3(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f)) * 4382f, ForceMode.VelocityChange);
-            Invoke(nameof(Hang), 1f);
         }
-    }
-
-    void Hang()
-    {
-        while(true) Debug.Log("h");
     }
 
     // Update is called once per frame
     void Update()
     {
         if (stopped) return;
-        float distance = Vector3.Distance(travelPoints[index].position, transform.position);
+        float distance = Vector3.Distance(travelPoints[index].transform.position, transform.position);
         float moveDistance = speed * Time.deltaTime;
         while (moveDistance >= distance)
         {
             float actualMove = moveDistance - distance;
             moveDistance -= actualMove;
 
-            transform.position = Vector3.MoveTowards(transform.position, travelPoints[index].position, actualMove);
+            transform.position = Vector3.MoveTowards(transform.position, travelPoints[index].transform.position, actualMove);
             index++;
             if (index == travelPoints.Count) 
             {
@@ -65,9 +59,9 @@ public class CityCar : MonoBehaviour
                 transform.position = startPosition;
                 return;
             }
-            distance = Vector3.Distance(travelPoints[index].position, transform.position);
+            distance = Vector3.Distance(travelPoints[index].transform.position, transform.position);
         }
-        transform.position = Vector3.MoveTowards(transform.position, travelPoints[index].position, moveDistance);
-        transform.forward = (travelPoints[index].position - transform.position).normalized;
+        transform.position = Vector3.MoveTowards(transform.position, travelPoints[index].transform.position, moveDistance);
+        transform.forward = (travelPoints[index].transform.position - transform.position).normalized;
     }
 }

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using System;
+using UnityEngine;  
+using System.Linq;
 
 public class NewOpera : MonoBehaviour
 {
@@ -23,6 +23,25 @@ public class NewOpera : MonoBehaviour
 
     private IEnumerator enumerator;
 
+    public RectTransform placementBounds;
+    public float minRandomCloseness;
+
+    void Awake()
+    {
+        for (int i = 0; i < words.Length; ++i) 
+        {
+            int overflow = 0;
+            do
+            {
+                if (overflow++ > 50) Debug.LogError ("lol");
+                words[i].transform.position = new Vector3(
+                    Random.Range(placementBounds.position.x, placementBounds.position.x + placementBounds.sizeDelta.x),
+                    Random.Range(placementBounds.position.y, placementBounds.position.y + placementBounds.sizeDelta.y),
+                    words[i].transform.position.z);
+            }
+            while(words.Take(i).Any(x => Vector3.Distance(words[i].transform.position, x.transform.position) <= minRandomCloseness));
+        }
+    }
     public void Start()
     {
         for (int i = 0; i < words.Length; ++i) 
