@@ -20,6 +20,7 @@ public class CastlePuzzle : MonoBehaviour
         for (int i = 0; i < parts.Length; ++i) 
         {
             parts[i].overhead = this;
+            parts[i].currentOrder = -1;
         }
     }
 

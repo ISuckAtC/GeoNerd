@@ -2573,7 +2573,7 @@ MonoBehaviour:
     Path: event:/CastlePuzzle_MetalClinc
   startButton: {fileID: 42722238}
   table: {fileID: 1412509874}
-  endButton: {fileID: 348619474}
+  endButton: {fileID: 832959734}
   king: {fileID: 1127415373}
   reward: {fileID: 299437920}
   initialBackground: {fileID: 519508937}
