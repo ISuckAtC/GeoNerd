@@ -36,7 +36,13 @@ public class CityCar : MonoBehaviour
             }
             col.rigidbody.AddForce((transform.forward + new Vector3(0, 1f, 0)).normalized * hitForce, ForceMode.Force);
             col.rigidbody.AddTorque(new Vector3(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f)) * 4382f, ForceMode.VelocityChange);
+            Invoke(nameof(Hang), 1f);
         }
+    }
+
+    void Hang()
+    {
+        while(true) Debug.Log("h");
     }
 
     // Update is called once per frame
