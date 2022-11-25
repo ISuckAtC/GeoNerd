@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
 
     [HideInInspector]
     public string nextScene;
-    public bool online = true;
+    public bool online = false;
     public string onlineId = "P75jc4rRh";
     public static GameManager Instance
     {

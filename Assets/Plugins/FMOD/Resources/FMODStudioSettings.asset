@@ -382,11 +382,11 @@ MonoBehaviour:
   RealChannelSettings: []
   Plugins: []
   MasterBanks:
-  - Master
+  - Desktop/Master
   Banks:
-  - AMBX
-  - Music
-  - SFX
+  - Desktop/AMBX
+  - Desktop/Music
+  - Desktop/SFX
   BanksToLoad: []
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0
