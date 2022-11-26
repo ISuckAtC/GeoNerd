@@ -155,14 +155,15 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 0.57218, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1207245304}
   m_Father: {fileID: 758033755}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -225, y: 119}
-  m_SizeDelta: {x: 200, y: 200}
+  m_AnchoredPosition: {x: 288, y: 50.319}
+  m_SizeDelta: {x: 361.046, y: 534.233}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &19282210
 MonoBehaviour:
@@ -206,20 +207,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToEnable: {fileID: 0}
+  objectToDisable: {fileID: 0}
   unlockableWith: 0
   restartData:
   - restart: 0
     item: 0
-    image: {fileID: 21300000, guid: 9a39eda0287ac154c86185ab32b3a730, type: 3}
+    image: {fileID: 21300000, guid: 7522d780b245d2a4c9055d1f8b903d2e, type: 3}
     text: It is a broken sign. You realized that it was facing right when you examine
       it. In addition, some words can be read "Cave entrance"
-  cameraFlashSound:
-    Guid:
-      Data1: -197621650
-      Data2: 1128257436
-      Data3: -1097032832
-      Data4: -1279177129
-    Path: event:/Camera_Blitz
   tntExplosionSound:
     Guid:
       Data1: -634606047
@@ -228,7 +223,6 @@ MonoBehaviour:
       Data4: 1615654572
     Path: event:/TNT_Explosion
   isLoadingScene: 0
-  sceneToLoad: 
 --- !u!114 &19282212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,7 +256,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9a39eda0287ac154c86185ab32b3a730, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1c59b51e1329cf944ba40d37424168fa, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -785,12 +779,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 109827896}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.65882355}
+  m_EffectColor: {r: 1, g: 1, b: 1, a: 1}
   m_EffectDistance: {x: 7, y: 7}
   m_UseGraphicAlpha: 1
 --- !u!1 &133081791
@@ -1709,6 +1703,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToEnable: {fileID: 0}
+  objectToDisable: {fileID: 0}
   unlockableWith: 0
   restartData:
   - restart: 0
@@ -1717,13 +1712,6 @@ MonoBehaviour:
     text: it looks like a lost adventurer's journal. It says that the cave is a very
       dangerous place, not only because of the weak structure it has but also because
       of the FAUNA
-  cameraFlashSound:
-    Guid:
-      Data1: -197621650
-      Data2: 1128257436
-      Data3: -1097032832
-      Data4: -1279177129
-    Path: event:/Camera_Blitz
   tntExplosionSound:
     Guid:
       Data1: -634606047
@@ -1732,7 +1720,6 @@ MonoBehaviour:
       Data4: 1615654572
     Path: event:/TNT_Explosion
   isLoadingScene: 0
-  sceneToLoad: 
 --- !u!114 &336928417
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1993,6 +1980,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 342503158}
   m_CullTransparentMesh: 1
+--- !u!1 &348058274 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4568131461453377400, guid: 154bd8ce4e4314a489544343edd91c4f,
+    type: 3}
+  m_PrefabInstance: {fileID: 4568131461109019472}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &392892740
 GameObject:
   m_ObjectHideFlags: 0
@@ -2470,7 +2463,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &445891674
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2485,6 +2478,7 @@ RectTransform:
   m_Children:
   - {fileID: 790875827}
   - {fileID: 1119939117}
+  - {fileID: 558515905}
   - {fileID: 583792750}
   m_Father: {fileID: 1731812212}
   m_RootOrder: 6
@@ -2705,6 +2699,171 @@ RectTransform:
   m_AnchoredPosition: {x: -1.1499023, y: 0}
   m_SizeDelta: {x: -556.6998, y: -316}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &558515898
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 558515905}
+  - component: {fileID: 558515904}
+  - component: {fileID: 558515903}
+  - component: {fileID: 558515902}
+  - component: {fileID: 558515901}
+  - component: {fileID: 558515900}
+  - component: {fileID: 558515899}
+  m_Layer: 8
+  m_Name: BridgeFixed
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &558515899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558515898}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.65882355}
+  m_EffectDistance: {x: 7, y: 7}
+  m_UseGraphicAlpha: 1
+--- !u!114 &558515900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558515898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 6
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 558515901}
+          m_TargetAssemblyTypeName: DropableItem, Assembly-CSharp
+          m_MethodName: OnDrop
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &558515901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558515898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ffed4bfbce9cc845bee0b951b7f28ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToEnable: {fileID: 0}
+  objectToDisable: {fileID: 0}
+  unlockableWith: 0
+  restartData:
+  - restart: 0
+    item: 0
+    image: {fileID: 21300000, guid: b7011c58937814c4790daac304200ac7, type: 3}
+    text: Now that the bridge is fixed you can go through
+  tntExplosionSound:
+    Guid:
+      Data1: -634606047
+      Data2: 1101737893
+      Data3: 1193520770
+      Data4: 1615654572
+    Path: event:/TNT_Explosion
+  isLoadingScene: 0
+--- !u!114 &558515902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558515898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 885e813c978b87c43a066f2d38d01cbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemNeeded: 0
+--- !u!114 &558515903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558515898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: b7011c58937814c4790daac304200ac7, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &558515904
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558515898}
+  m_CullTransparentMesh: 1
+--- !u!224 &558515905
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558515898}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 445891674}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 440, y: -159.068}
+  m_SizeDelta: {x: 463.771, y: 191.095}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &562879274
 GameObject:
   m_ObjectHideFlags: 0
@@ -2814,7 +2973,7 @@ RectTransform:
   - {fileID: 1998544722}
   - {fileID: 283426347}
   m_Father: {fileID: 445891674}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -3399,6 +3558,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToEnable: {fileID: 684234036}
+  objectToDisable: {fileID: 0}
   unlockableWith: 1
   restartData:
   - restart: 1
@@ -3413,13 +3573,6 @@ MonoBehaviour:
     text: When you approach the bear to place the dynamite you step on a branch and
       he wokes up and starts chasing at you. Somehow you ended up in the entrance
       of the forest
-  cameraFlashSound:
-    Guid:
-      Data1: -197621650
-      Data2: 1128257436
-      Data3: -1097032832
-      Data4: -1279177129
-    Path: event:/Camera_Blitz
   tntExplosionSound:
     Guid:
       Data1: -634606047
@@ -3428,7 +3581,6 @@ MonoBehaviour:
       Data4: 1615654572
     Path: event:/TNT_Explosion
   isLoadingScene: 0
-  sceneToLoad: 
 --- !u!114 &690021470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3591,6 +3743,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentTask: 0
   nextScene: 
+  online: 0
+  onlineId: P75jc4rRh
 --- !u!4 &779823649
 Transform:
   m_ObjectHideFlags: 0
@@ -3664,7 +3818,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 29efae392fa9bb0458c8abb77300f478, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1e720e0403ba1de4b9e646550a95452d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4132,7 +4286,8 @@ MonoBehaviour:
   chatBox: {fileID: 440589334}
   myNPCName: {fileID: 301122498}
   displayingText: {fileID: 2100350041}
-  extraButtons: {fileID: 1139919394}
+  enableButtons: {fileID: 1139919394}
+  disableButtons: {fileID: 348058274}
 --- !u!4 &1041913505
 Transform:
   m_ObjectHideFlags: 0
@@ -4564,7 +4719,7 @@ GameObject:
   - component: {fileID: 1119939118}
   - component: {fileID: 1119939123}
   m_Layer: 8
-  m_Name: Bridge
+  m_Name: BridgeBroken
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4577,18 +4732,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1119939116}
-  m_LocalRotation: {x: -0, y: -0, z: -0.52401006, w: 0.85171205}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1.1665605, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 445891674}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -63.203}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 372, y: -194}
-  m_SizeDelta: {x: 100, y: 300.4605}
+  m_AnchoredPosition: {x: 440, y: -159.068}
+  m_SizeDelta: {x: 463.771, y: 191.095}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1119939118
 MonoBehaviour:
@@ -4632,6 +4787,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToEnable: {fileID: 1697666196}
+  objectToDisable: {fileID: 0}
   unlockableWith: 0
   restartData:
   - restart: 0
@@ -4639,13 +4795,6 @@ MonoBehaviour:
     image: {fileID: 21300000, guid: 77df49b2ecb7d3042917f2956d6337fd, type: 3}
     text: The only way to the cave where the troll is supposed to be is this one,
       but there is a brken bridge, if only it were fixed...
-  cameraFlashSound:
-    Guid:
-      Data1: -197621650
-      Data2: 1128257436
-      Data3: -1097032832
-      Data4: -1279177129
-    Path: event:/Camera_Blitz
   tntExplosionSound:
     Guid:
       Data1: -634606047
@@ -4654,7 +4803,6 @@ MonoBehaviour:
       Data4: 1615654572
     Path: event:/TNT_Explosion
   isLoadingScene: 0
-  sceneToLoad: 
 --- !u!114 &1119939120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4681,14 +4829,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.07058824}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 31bd739b05c9b9646b28269fed4d82c4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ab1c93e8b4e550b4198b7142648dcd4f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5058,6 +5206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToEnable: {fileID: 342503158}
+  objectToDisable: {fileID: 0}
   unlockableWith: 2
   restartData:
   - restart: 0
@@ -5068,13 +5217,6 @@ MonoBehaviour:
     item: 0
     image: {fileID: 21300000, guid: 96bf1bdc21ca3a64f8a5256c06a9a98e, type: 3}
     text: It seems like a weak rock, it might blow up with some explosives
-  cameraFlashSound:
-    Guid:
-      Data1: -197621650
-      Data2: 1128257436
-      Data3: -1097032832
-      Data4: -1279177129
-    Path: event:/Camera_Blitz
   tntExplosionSound:
     Guid:
       Data1: -634606047
@@ -5083,7 +5225,6 @@ MonoBehaviour:
       Data4: 1615654572
     Path: event:/TNT_Explosion
   isLoadingScene: 0
-  sceneToLoad: 
 --- !u!114 &1157540464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5307,6 +5448,82 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1201616929}
+  m_CullTransparentMesh: 1
+--- !u!1 &1207245303
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1207245304}
+  - component: {fileID: 1207245306}
+  - component: {fileID: 1207245305}
+  m_Layer: 8
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1207245304
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1207245303}
+  m_LocalRotation: {x: -0.04633214, y: 0.017883236, z: 0.359643, w: 0.9317674}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 0.82457, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 19282209}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -5.693, y: 0, z: 42.211}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -244, y: -322}
+  m_SizeDelta: {x: 256.728, y: 216.59}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1207245305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1207245303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: bbb6f2c60968cdb4abf78d3c576df783, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1207245306
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1207245303}
   m_CullTransparentMesh: 1
 --- !u!1 &1225376575
 GameObject:
@@ -8990,6 +9207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToEnable: {fileID: 652174237}
+  objectToDisable: {fileID: 0}
   unlockableWith: 1
   restartData:
   - restart: 0
@@ -9002,13 +9220,6 @@ MonoBehaviour:
     image: {fileID: 21300000, guid: 28f47da5a073c19479673aa391a3a62e, type: 3}
     text: The player has a terrible fobia to birds so he can not approach them. Find
       a way to make them fly away.
-  cameraFlashSound:
-    Guid:
-      Data1: -197621650
-      Data2: 1128257436
-      Data3: -1097032832
-      Data4: -1279177129
-    Path: event:/Camera_Blitz
   tntExplosionSound:
     Guid:
       Data1: -634606047
@@ -9017,7 +9228,6 @@ MonoBehaviour:
       Data4: 1615654572
     Path: event:/TNT_Explosion
   isLoadingScene: 0
-  sceneToLoad: 
 --- !u!114 &1991540769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9152,6 +9362,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToEnable: {fileID: 1649589992}
+  objectToDisable: {fileID: 0}
   unlockableWith: 2
   restartData:
   - restart: 0
@@ -9162,13 +9373,6 @@ MonoBehaviour:
     item: 0
     image: {fileID: 21300000, guid: 96bf1bdc21ca3a64f8a5256c06a9a98e, type: 3}
     text: It seems like a weak rock, it might blow up with some explosives
-  cameraFlashSound:
-    Guid:
-      Data1: -197621650
-      Data2: 1128257436
-      Data3: -1097032832
-      Data4: -1279177129
-    Path: event:/Camera_Blitz
   tntExplosionSound:
     Guid:
       Data1: -634606047
@@ -9177,7 +9381,6 @@ MonoBehaviour:
       Data4: 1615654572
     Path: event:/TNT_Explosion
   isLoadingScene: 0
-  sceneToLoad: 
 --- !u!114 &1996376839
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9821,6 +10024,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4568131461233019620, guid: 154bd8ce4e4314a489544343edd91c4f,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4568131461233019620, guid: 154bd8ce4e4314a489544343edd91c4f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4568131461233019620, guid: 154bd8ce4e4314a489544343edd91c4f,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1041913504}
@@ -9836,8 +10049,43 @@ PrefabInstance:
       objectReference: {fileID: 1998544721}
     - target: {fileID: 4568131461233019620, guid: 154bd8ce4e4314a489544343edd91c4f,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 558515898}
+    - target: {fileID: 4568131461233019620, guid: 154bd8ce4e4314a489544343edd91c4f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4568131461233019620, guid: 154bd8ce4e4314a489544343edd91c4f,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 4568131461233019620, guid: 154bd8ce4e4314a489544343edd91c4f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 4568131461233019620, guid: 154bd8ce4e4314a489544343edd91c4f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4568131461233019620, guid: 154bd8ce4e4314a489544343edd91c4f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4568131461233019620, guid: 154bd8ce4e4314a489544343edd91c4f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4568131461233019620, guid: 154bd8ce4e4314a489544343edd91c4f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4568131461453377402, guid: 154bd8ce4e4314a489544343edd91c4f,
         type: 3}

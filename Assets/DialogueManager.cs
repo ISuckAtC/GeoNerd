@@ -16,7 +16,8 @@ public class DialogueManager : MonoBehaviour
     public Queue<string> sentences;
     public TextMeshProUGUI myNPCName;
     public TextMeshProUGUI displayingText;
-    public GameObject extraButtons;
+    public GameObject enableButtons;
+    public GameObject disableButtons;
     DialogueType currentDType = DialogueType.Default;
 
     // Start is called before the first frame update
@@ -88,7 +89,8 @@ public class DialogueManager : MonoBehaviour
                     CloseAndResetDialogueBox();
                     break;
                 case DialogueType.Button:
-                    extraButtons.SetActive(true);
+                    enableButtons.SetActive(true);
+                    disableButtons.SetActive(false);
                     break;
             }
 
@@ -103,7 +105,8 @@ public class DialogueManager : MonoBehaviour
 
     public void CloseAndResetDialogueBox()
     {
-        extraButtons.SetActive(false);
+        enableButtons.SetActive(false);
+        disableButtons.SetActive(true);
         chatBox.SetActive(false);
     }
 }
