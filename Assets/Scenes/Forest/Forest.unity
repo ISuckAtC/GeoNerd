@@ -209,6 +209,7 @@ MonoBehaviour:
   objectToEnable: {fileID: 0}
   objectToDisable: {fileID: 0}
   unlockableWith: 0
+  animated: 0
   restartData:
   - restart: 0
     item: 0
@@ -1705,6 +1706,7 @@ MonoBehaviour:
   objectToEnable: {fileID: 0}
   objectToDisable: {fileID: 0}
   unlockableWith: 0
+  animated: 0
   restartData:
   - restart: 0
     item: 0
@@ -2780,6 +2782,7 @@ MonoBehaviour:
   objectToEnable: {fileID: 0}
   objectToDisable: {fileID: 0}
   unlockableWith: 0
+  animated: 0
   restartData:
   - restart: 0
     item: 0
@@ -3430,6 +3433,7 @@ MonoBehaviour:
   objectToEnable: {fileID: 652174237}
   objectToDisable: {fileID: 0}
   unlockableWith: 1
+  animated: 1
   restartData:
   - restart: 0
     item: 2
@@ -3688,6 +3692,7 @@ MonoBehaviour:
   objectToEnable: {fileID: 684234036}
   objectToDisable: {fileID: 0}
   unlockableWith: 1
+  animated: 0
   restartData:
   - restart: 1
     item: 0
@@ -4917,6 +4922,7 @@ MonoBehaviour:
   objectToEnable: {fileID: 1697666196}
   objectToDisable: {fileID: 0}
   unlockableWith: 0
+  animated: 0
   restartData:
   - restart: 0
     item: 0
@@ -5336,6 +5342,7 @@ MonoBehaviour:
   objectToEnable: {fileID: 342503158}
   objectToDisable: {fileID: 0}
   unlockableWith: 2
+  animated: 0
   restartData:
   - restart: 0
     item: 1
@@ -8183,7 +8190,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -9.05}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 259, y: 285}
+  m_AnchoredPosition: {x: 277, y: 280}
   m_SizeDelta: {x: 245.271, y: 249.514}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1662276650
@@ -9523,7 +9530,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -9.05}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -185, y: -140}
+  m_AnchoredPosition: {x: -175, y: -127}
   m_SizeDelta: {x: 269.707, y: 226.234}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1991540770
@@ -9688,6 +9695,7 @@ MonoBehaviour:
   objectToEnable: {fileID: 1649589992}
   objectToDisable: {fileID: 0}
   unlockableWith: 2
+  animated: 0
   restartData:
   - restart: 0
     item: 1
@@ -10253,7 +10261,7 @@ GameObject:
   - component: {fileID: 2093094259}
   - component: {fileID: 2093094258}
   m_Layer: 5
-  m_Name: Bird1 (1)
+  m_Name: Bird4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

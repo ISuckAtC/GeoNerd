@@ -12,6 +12,8 @@ public class DropableItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     public GameObject objectToDisable;
     public Item.ItemType unlockableWith = Item.ItemType.NONE;
 
+    [SerializeField] bool animated = false;
+
     public PopUpForestBoxData[] restartData;
 
     
@@ -73,7 +75,25 @@ public class DropableItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
 
             if (item.itemType != Item.ItemType.MagnifyingGlass)
-                Destroy(gameObject);
+            {
+                
+
+                if (!animated)
+                    Destroy(gameObject);
+                else
+                {
+                    foreach(Animator an in transform.GetComponentsInChildren<Animator>())
+                    {
+                        an.SetBool("endTransition", true);
+                    }
+
+                    Animator anim = GetComponent<Animator>();
+                    if(anim)    
+                        anim.SetBool("endTransition", true);
+                }
+                   
+
+            }
             else
                 foreach(PopUpForestBoxData forestData in restartData)
                     if(forestData.item == item.itemType) ForestManager.Instance.ChangeAndShowPopUpData(forestData);
