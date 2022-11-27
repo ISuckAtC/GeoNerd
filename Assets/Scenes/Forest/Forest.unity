@@ -3621,6 +3621,7 @@ GameObject:
   - component: {fileID: 690021470}
   - component: {fileID: 690021469}
   - component: {fileID: 690021468}
+  - component: {fileID: 690021473}
   m_Layer: 5
   m_Name: Bear
   m_TagString: Untagged
@@ -3637,8 +3638,8 @@ RectTransform:
   m_GameObject: {fileID: 690021466}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.4832811, y: 1.4832811, z: 1.4832811}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: -1.483281, y: 1.4832811, z: 1.4832811}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1698914546}
   m_RootOrder: 1
@@ -3692,7 +3693,7 @@ MonoBehaviour:
   objectToEnable: {fileID: 684234036}
   objectToDisable: {fileID: 0}
   unlockableWith: 1
-  animated: 0
+  animated: 1
   restartData:
   - restart: 1
     item: 0
@@ -3747,7 +3748,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c5444d01961578f4689e2664d191a1ba, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8c12d0aeb8cf9de41bb702c01d60e5d6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3765,6 +3766,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 690021466}
   m_CullTransparentMesh: 1
+--- !u!95 &690021473
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 690021466}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 49999604112e5df48a84f74dbd31cbc9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &758033754
 GameObject:
   m_ObjectHideFlags: 0
@@ -8428,7 +8449,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1698914546
 RectTransform:
   m_ObjectHideFlags: 0
