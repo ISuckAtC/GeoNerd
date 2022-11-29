@@ -277,7 +277,7 @@ public class GameData
         playerId = ret.userId;
         playerName = name;
         money = 0;
-        overWorldPosition = new Vector3(519f, 46f, 1208f);
+        overWorldPosition = new Vector3(80f, 97f, 294f);
 
         Flags[Flag.OSLO_ARROW] = true;
         Flags[Flag.FOREST_ARROW] = true;
@@ -358,7 +358,7 @@ public class GameData
                 Debug.Log("No name found in local files, assuming new player");
                 playerName = name;
                 money = 0;
-                overWorldPosition = new Vector3(519f, 46f, 1208f);
+                overWorldPosition = new Vector3(80f, 97f, 294f);
 
                 Flags[Flag.OSLO_ARROW] = true;
                 Flags[Flag.FOREST_ARROW] = true;
