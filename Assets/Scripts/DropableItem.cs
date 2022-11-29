@@ -61,7 +61,6 @@ public class DropableItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     }
     public void OnDrop(BaseEventData data)
     {
-        Debug.Log("BaseEventDrop");
         PointerEventData pointerData = (PointerEventData)data;
         Item item = pointerData.pointerDrag.gameObject.GetComponent<Item>();
         if (item.itemType == unlockableWith)
@@ -81,11 +80,13 @@ public class DropableItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
             {
                 foreach (GameObject gO in objectsToEnable)
                 {
-                    gO.SetActive(true);
+                    if(gO)
+                        gO.SetActive(true);
                 }
                 foreach (GameObject gO in objectsToDisable)
                 {
-                    gO.SetActive(false);
+                    if (gO)
+                        gO.SetActive(false);
                 }
             }
 
