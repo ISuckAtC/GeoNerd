@@ -81,6 +81,9 @@ public class CharacterController : MonoBehaviour
             currentUseDelay = useDelay;
             Debug.Log("Setting position to: " + GameManager.GameData.overWorldPosition);
             transform.position = GameManager.GameData.overWorldPosition;
+            
+            transform.position = new Vector3(80.4f, 86.46f, 294f);
+            
             InvokeRepeating("SavePosition", 15f, 5f);
         }
     }
