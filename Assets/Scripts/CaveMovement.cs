@@ -72,8 +72,8 @@ public class CaveMovement : MonoBehaviour
             canJump = false;
         }
 
-        animator.SetBool(running ? "run" : "walk", rb.velocity.x > 0.05f);
-        sr.flipX = rb.velocity.x > 0;
+        animator.SetBool(running ? "run" : "walk", rb.velocity.x > 0.02f);
+        sr.flipX = rb.velocity.x < 0;
     }
 
     public void CameraFlash()
