@@ -215,7 +215,7 @@ MonoBehaviour:
     item: 0
     image: {fileID: 21300000, guid: 7522d780b245d2a4c9055d1f8b903d2e, type: 3}
     text: It is a broken sign. You realized that it was facing right when you examine
-      it. In addition, some words can be read "Cave entrance"
+      it. In addition, some words can be read "Troll cave"
   tntExplosionSound:
     Guid:
       Data1: -634606047
@@ -2942,6 +2942,14 @@ MonoBehaviour:
     item: 0
     image: {fileID: 21300000, guid: b7011c58937814c4790daac304200ac7, type: 3}
     text: Now that the bridge is fixed you can go through
+  - restart: 0
+    item: 2
+    image: {fileID: 21300000, guid: b7011c58937814c4790daac304200ac7, type: 3}
+    text: You have just get it fixed, the builder would be sad if you destroy it
+  - restart: 0
+    item: 1
+    image: {fileID: 21300000, guid: b7011c58937814c4790daac304200ac7, type: 3}
+    text: You took a photo of the bridge to remember this adventure
   tntExplosionSound:
     Guid:
       Data1: -634606047
@@ -3852,13 +3860,15 @@ MonoBehaviour:
   - restart: 1
     item: 0
     image: {fileID: 21300000, guid: 26445457ed233884b8a79089c956e8f0, type: 3}
-    text: Bears are very territorial animals, he might not be as gentle as the crows
+    text: When you approach the bear to take a look at it you step on a branch and
+      he wakes up and starts chasing you. Somehow you ended up in the entrance of
+      the forest
   - restart: 1
     item: 2
     image: {fileID: 21300000, guid: 26445457ed233884b8a79089c956e8f0, type: 3}
     text: When you approach the bear to place the dynamite you step on a branch and
-      he wokes up and starts chasing at you. Somehow you ended up in the entrance
-      of the forest
+      he wakes up and starts chasing you. Somehow you ended up in the entrance of
+      the forest
   tntExplosionSound:
     Guid:
       Data1: -634606047
@@ -5102,6 +5112,14 @@ MonoBehaviour:
     image: {fileID: 21300000, guid: 77df49b2ecb7d3042917f2956d6337fd, type: 3}
     text: The only way to the cave where the troll is supposed to be is this one,
       but there is a brken bridge, if only it were fixed...
+  - restart: 0
+    item: 2
+    image: {fileID: 21300000, guid: ab1c93e8b4e550b4198b7142648dcd4f, type: 3}
+    text: It is already broken
+  - restart: 0
+    item: 1
+    image: {fileID: 21300000, guid: ab1c93e8b4e550b4198b7142648dcd4f, type: 3}
+    text: You took a photo of the broken bridge
   tntExplosionSound:
     Guid:
       Data1: -634606047
@@ -9918,18 +9936,6 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 421849234}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: SetActive
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
         - m_Target: {fileID: 1996376838}
           m_TargetAssemblyTypeName: DropableItem, Assembly-CSharp
           m_MethodName: OnDrop
