@@ -8,21 +8,21 @@ using UnityEngine.EventSystems;
 public class DropableItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     // Start is called before the first frame update
-    public GameObject objectToEnable;
-    public GameObject objectToDisable;
+    public GameObject[] objectsToEnable;
+    public GameObject[] objectsToDisable;
     public Item.ItemType unlockableWith = Item.ItemType.NONE;
 
     [SerializeField] bool animated = false;
 
     public PopUpForestBoxData[] restartData;
 
-    
+
     public FMODUnity.EventReference tntExplosionSound;
 
     private Outline outline;
-    
+
     public bool isLoadingScene = false;
-    
+
     void Start()
     {
         outline = GetComponent<Outline>();
@@ -31,7 +31,7 @@ public class DropableItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -47,28 +47,49 @@ public class DropableItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     }
 
-    
 
+    public void EndAnimation()
+    {
+        foreach (GameObject gO in objectsToEnable)
+        {
+            gO.SetActive(true);
+        }
+        foreach (GameObject gO in objectsToDisable)
+        {
+            gO.SetActive(false);
+        }
+    }
     public void OnDrop(BaseEventData data)
     {
-        Debug.Log("BaseEventDrop");
         PointerEventData pointerData = (PointerEventData)data;
         Item item = pointerData.pointerDrag.gameObject.GetComponent<Item>();
         if (item.itemType == unlockableWith)
         {
-            if (isLoadingScene) 
+            if (isLoadingScene)
 
-            if (item.itemType == Item.ItemType.Camera)
+                if (item.itemType == Item.ItemType.Camera)
+                {
+
+                }
+                else if (item.itemType == Item.ItemType.TNT)
+                {
+                    GameManager.FMODPlayStatic(tntExplosionSound, Vector3.zero, Vector3.zero);
+                }
+
+            if (!animated)
             {
-                
-            }
-            else if (item.itemType == Item.ItemType.TNT)
-            {
-                GameManager.FMODPlayStatic(tntExplosionSound, Vector3.zero, Vector3.zero);
+                foreach (GameObject gO in objectsToEnable)
+                {
+                    if(gO)
+                        gO.SetActive(true);
+                }
+                foreach (GameObject gO in objectsToDisable)
+                {
+                    if (gO)
+                        gO.SetActive(false);
+                }
             }
 
-            if (objectToEnable) objectToEnable.SetActive(true);
-            if (objectToDisable) objectToDisable.SetActive(false);
 
 
 
@@ -76,27 +97,27 @@ public class DropableItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
             if (item.itemType != Item.ItemType.MagnifyingGlass)
             {
-                
+
 
                 if (!animated)
                     Destroy(gameObject);
                 else
                 {
-                    foreach(Animator an in transform.GetComponentsInChildren<Animator>())
+                    foreach (Animator an in transform.GetComponentsInChildren<Animator>())
                     {
                         an.SetBool("endTransition", true);
                     }
 
                     Animator anim = GetComponent<Animator>();
-                    if(anim)    
+                    if (anim)
                         anim.SetBool("endTransition", true);
                 }
-                   
+
 
             }
             else
-                foreach(PopUpForestBoxData forestData in restartData)
-                    if(forestData.item == item.itemType) ForestManager.Instance.ChangeAndShowPopUpData(forestData);
+                foreach (PopUpForestBoxData forestData in restartData)
+                    if (forestData.item == item.itemType) ForestManager.Instance.ChangeAndShowPopUpData(forestData);
 
         }
         else

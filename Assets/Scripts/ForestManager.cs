@@ -106,7 +106,7 @@ public class ForestManager : MonoBehaviour
     public void ChangeAndShowPopUpData(PopUpForestBoxData restartData)
     {
         popUpPanel.GetComponentInChildren<TextMeshProUGUI>().text = restartData.text;
-        popUpPanel.GetComponentsInChildren<Image>()[1].sprite = restartData.image;
+        popUpPanel.GetComponentsInChildren<Image>()[2].sprite = restartData.image;
         popUpPanel.SetActive(true);
     }
 

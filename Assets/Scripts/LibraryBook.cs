@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using System.Linq;
 
-public class LibraryBook : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+public class LibraryBook : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler
 {
     [HideInInspector]
     public int currentOrder = -1;
@@ -17,12 +17,15 @@ public class LibraryBook : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public Sprite backSprite;
     public float floorLevel;
 
+    public UnityEngine.UI.Image glow;
+
     private UnityEngine.UI.Image image;
     // Start is called before the first frame update
     void Start()
     {
         image = GetComponent<UnityEngine.UI.Image>();
         flatAngle = transform.rotation.eulerAngles;
+        
     }
 
     // Update is called once per frame
@@ -32,6 +35,22 @@ public class LibraryBook : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         {
             transform.position = Input.mousePosition;
         }
+    }
+
+    public void OnPointerEnter(PointerEventData e)
+    {
+        if (currentOrder == -1) return;
+        glow.transform.position = transform.position + new Vector3(-3f, 0f, 0f);
+        Vector2 sizeD = GetComponent<RectTransform>().sizeDelta;
+        sizeD.x *= 1.5f;
+        sizeD.y *= 1.1f;
+        glow.rectTransform.sizeDelta = sizeD;
+        glow.gameObject.SetActive(true);
+    }
+
+    public void OnPointerExit(PointerEventData e)
+    {
+        glow.gameObject.SetActive(false);
     }
 
     public void OnPointerDown(PointerEventData e)
