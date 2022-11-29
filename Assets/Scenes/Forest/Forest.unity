@@ -206,8 +206,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ffed4bfbce9cc845bee0b951b7f28ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToEnable: {fileID: 0}
-  objectToDisable: {fileID: 0}
+  objectsToEnable: []
+  objectsToDisable: []
   unlockableWith: 0
   animated: 0
   restartData:
@@ -802,8 +802,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ffed4bfbce9cc845bee0b951b7f28ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToEnable: {fileID: 0}
-  objectToDisable: {fileID: 0}
+  objectsToEnable: []
+  objectsToDisable: []
   unlockableWith: 3
   animated: 0
   restartData:
@@ -1773,8 +1773,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ffed4bfbce9cc845bee0b951b7f28ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToEnable: {fileID: 0}
-  objectToDisable: {fileID: 0}
+  objectsToEnable: []
+  objectsToDisable: []
   unlockableWith: 0
   animated: 0
   restartData:
@@ -2412,7 +2412,7 @@ RectTransform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1303036509}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 6.294}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2933,8 +2933,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ffed4bfbce9cc845bee0b951b7f28ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToEnable: {fileID: 0}
-  objectToDisable: {fileID: 0}
+  objectsToEnable: []
+  objectsToDisable: []
   unlockableWith: 0
   animated: 0
   restartData:
@@ -3592,8 +3592,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ffed4bfbce9cc845bee0b951b7f28ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToEnable: {fileID: 652174237}
-  objectToDisable: {fileID: 0}
+  objectsToEnable:
+  - {fileID: 652174237}
+  objectsToDisable: []
   unlockableWith: 1
   animated: 1
   restartData:
@@ -3852,8 +3853,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ffed4bfbce9cc845bee0b951b7f28ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToEnable: {fileID: 684234036}
-  objectToDisable: {fileID: 0}
+  objectsToEnable:
+  - {fileID: 684234036}
+  objectsToDisable: []
   unlockableWith: 1
   animated: 1
   restartData:
@@ -5102,8 +5104,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ffed4bfbce9cc845bee0b951b7f28ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToEnable: {fileID: 1697666196}
-  objectToDisable: {fileID: 0}
+  objectsToEnable:
+  - {fileID: 1697666196}
+  objectsToDisable: []
   unlockableWith: 0
   animated: 0
   restartData:
@@ -5530,8 +5533,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ffed4bfbce9cc845bee0b951b7f28ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToEnable: {fileID: 342503158}
-  objectToDisable: {fileID: 0}
+  objectsToEnable:
+  - {fileID: 342503158}
+  objectsToDisable: []
   unlockableWith: 2
   animated: 0
   restartData:
@@ -6274,9 +6278,9 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 300206722}
-  - {fileID: 1714851154}
   - {fileID: 1996376836}
   - {fileID: 421849235}
+  - {fileID: 1714851154}
   m_Father: {fileID: 1731812212}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8791,7 +8795,7 @@ RectTransform:
   - {fileID: 1649589996}
   - {fileID: 1981104362}
   m_Father: {fileID: 1303036509}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -9912,7 +9916,7 @@ RectTransform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1303036509}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 6.294}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -9960,8 +9964,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ffed4bfbce9cc845bee0b951b7f28ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToEnable: {fileID: 1649589992}
-  objectToDisable: {fileID: 0}
+  objectsToEnable:
+  - {fileID: 1649589992}
+  - {fileID: 421849234}
+  objectsToDisable:
+  - {fileID: 1996376835}
   unlockableWith: 2
   animated: 0
   restartData:

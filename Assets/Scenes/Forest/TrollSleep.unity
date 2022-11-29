@@ -1282,8 +1282,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ffed4bfbce9cc845bee0b951b7f28ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToEnable: {fileID: 968451264}
-  objectToDisable: {fileID: 571395620}
+  objectsToEnable:
+  - {fileID: 968451264}
+  objectsToDisable:
+  - {fileID: 571395620}
   unlockableWith: 1
   animated: 0
   restartData: []
