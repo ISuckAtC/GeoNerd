@@ -18,9 +18,16 @@ public class FlyingAwayAnim : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        DropableItem dI = animator.gameObject.GetComponent<DropableItem>();
+        DropableItem dI = animator.gameObject.transform.parent.GetComponent<DropableItem>();
         if(dI)
             dI.EndAnimation();
+        else
+        {
+            dI = animator.gameObject.GetComponent<DropableItem>();
+            if (dI)
+                dI.EndAnimation();
+        }
+        
         Destroy(animator.gameObject);
     }
 
