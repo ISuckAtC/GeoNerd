@@ -687,6 +687,8 @@ GameObject:
   - component: {fileID: 109827899}
   - component: {fileID: 109827898}
   - component: {fileID: 109827901}
+  - component: {fileID: 109827902}
+  - component: {fileID: 109827903}
   m_Layer: 5
   m_Name: Builder
   m_TagString: Untagged
@@ -788,6 +790,74 @@ MonoBehaviour:
   m_EffectColor: {r: 1, g: 1, b: 1, a: 1}
   m_EffectDistance: {x: 7, y: 7}
   m_UseGraphicAlpha: 1
+--- !u!114 &109827902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 109827896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ffed4bfbce9cc845bee0b951b7f28ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToEnable: {fileID: 0}
+  objectToDisable: {fileID: 0}
+  unlockableWith: 3
+  animated: 0
+  restartData:
+  - restart: 0
+    item: 0
+    image: {fileID: 0}
+    text: "It seems like a friendly person, let\u2019s try to talk to him (click
+      on him)"
+  - restart: 0
+    item: 2
+    image: {fileID: 0}
+    text: "It seems like a friendly person, let\u2019s try to talk to him before
+      blowing him up"
+  - restart: 0
+    item: 1
+    image: {fileID: 0}
+    text: You took a photo of the builder when he wasn't paying attention
+  tntExplosionSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  isLoadingScene: 0
+--- !u!114 &109827903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 109827896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 6
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 109827902}
+          m_TargetAssemblyTypeName: DropableItem, Assembly-CSharp
+          m_MethodName: OnDrop
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &133081791
 GameObject:
   m_ObjectHideFlags: 0
@@ -1714,6 +1784,14 @@ MonoBehaviour:
     text: it looks like a lost adventurer's journal. It says that the cave is a very
       dangerous place, not only because of the weak structure it has but also because
       of the FAUNA
+  - restart: 0
+    item: 2
+    image: {fileID: 21300000, guid: b674f3cb9439549448e6b72b790e0106, type: 3}
+    text: Blowing up a journal might not be the solution
+  - restart: 0
+    item: 1
+    image: {fileID: 21300000, guid: b674f3cb9439549448e6b72b790e0106, type: 3}
+    text: You took a photo of a lost journal, it might be useful to check inside
   tntExplosionSound:
     Guid:
       Data1: -634606047
@@ -3514,13 +3592,13 @@ MonoBehaviour:
   - restart: 0
     item: 2
     image: {fileID: 21300000, guid: 4a57690c997905845a8a835c1e7befbf, type: 3}
-    text: 'The player has a terrible fobia to birds so he can not approach them.
-      Find a way to make them fly away. '
+    text: 'The crows are not going to let you get close to plant the TNT, try another
+      way. '
   - restart: 0
     item: 0
     image: {fileID: 21300000, guid: 4a57690c997905845a8a835c1e7befbf, type: 3}
-    text: The player has a terrible fobia to birds so he can not approach them. Find
-      a way to make them fly away.
+    text: Beware the crows, they might attack you if you try to get very close to
+      them.
   tntExplosionSound:
     Guid:
       Data1: -634606047
@@ -3773,13 +3851,11 @@ MonoBehaviour:
   restartData:
   - restart: 1
     item: 0
-    image: {fileID: 21300000, guid: c5444d01961578f4689e2664d191a1ba, type: 3}
-    text: When you approach the bear to take a look at it you step on a branch and
-      he wokes up and starts chasing at you. Somehow you ended up in the entrance
-      of the forest
+    image: {fileID: 21300000, guid: 26445457ed233884b8a79089c956e8f0, type: 3}
+    text: Bears are very territorial animals, he might not be as gentle as the crows
   - restart: 1
     item: 2
-    image: {fileID: 21300000, guid: c5444d01961578f4689e2664d191a1ba, type: 3}
+    image: {fileID: 21300000, guid: 26445457ed233884b8a79089c956e8f0, type: 3}
     text: When you approach the bear to place the dynamite you step on a branch and
       he wokes up and starts chasing at you. Somehow you ended up in the entrance
       of the forest
@@ -4832,12 +4908,12 @@ RectTransform:
   m_Children:
   - {fileID: 1544056373}
   m_Father: {fileID: 2019550083}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 229.1, y: -301}
-  m_SizeDelta: {x: -520.574, y: -691.6}
+  m_AnchoredPosition: {x: 209.58002, y: -363}
+  m_SizeDelta: {x: -1765.703, y: -1010.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1092101561
 MonoBehaviour:
@@ -7410,7 +7486,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
+    rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -8368,6 +8444,82 @@ MonoBehaviour:
     second: 0.8
   - first: 3
     second: 8
+--- !u!1 &1682736419
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1682736420}
+  - component: {fileID: 1682736422}
+  - component: {fileID: 1682736421}
+  m_Layer: 5
+  m_Name: Background
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1682736420
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1682736419}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2019550083}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 48.75702, y: 6.7109985}
+  m_SizeDelta: {x: -1205.44, y: -155.752}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1682736421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1682736419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: c41c2dcf5cb113e41b4b87ad385bdfb2, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1682736422
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1682736419}
+  m_CullTransparentMesh: 1
 --- !u!1 &1692320961
 GameObject:
   m_ObjectHideFlags: 0
@@ -8399,12 +8551,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2019550083}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -205}
-  m_SizeDelta: {x: -120, y: -516.43}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 48.75702, y: -200.76999}
+  m_SizeDelta: {x: 575.875, y: 254.56}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1692320963
 MonoBehaviour:
@@ -9010,12 +9162,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2019550083}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 121.80002}
-  m_SizeDelta: {x: -120, y: -343.59998}
+  m_AnchoredPosition: {x: 48.75702, y: 165}
+  m_SizeDelta: {x: -1444.048, y: -668.668}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1790302939
 MonoBehaviour:
@@ -9814,7 +9966,7 @@ MonoBehaviour:
   - restart: 0
     item: 0
     image: {fileID: 21300000, guid: 96bf1bdc21ca3a64f8a5256c06a9a98e, type: 3}
-    text: It seems like a weak rock, it might blow up with some explosives
+    text: There are some rocks in the way, they seem pretty fragile
   tntExplosionSound:
     Guid:
       Data1: -634606047
@@ -10210,6 +10362,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1682736420}
   - {fileID: 1790302938}
   - {fileID: 1692320962}
   - {fileID: 1092101560}
@@ -10218,8 +10371,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -31.399902}
-  m_SizeDelta: {x: -1200, y: -337.19995}
+  m_AnchoredPosition: {x: 0, y: -0.000061035156}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2019550084
 MonoBehaviour:
@@ -10234,14 +10387,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.1764706}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c41c2dcf5cb113e41b4b87ad385bdfb2, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
