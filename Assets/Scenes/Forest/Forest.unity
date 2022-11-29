@@ -713,7 +713,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -21, y: -140}
+  m_AnchoredPosition: {x: -76, y: -119}
   m_SizeDelta: {x: 585.356, y: 390.116}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &109827898
@@ -757,9 +757,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 96bf1bdc21ca3a64f8a5256c06a9a98e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6f4b8d596fd1c02419df0cc5c260e2af, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -788,7 +788,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 1, g: 1, b: 1, a: 1}
-  m_EffectDistance: {x: 7, y: 7}
+  m_EffectDistance: {x: 2, y: 2}
   m_UseGraphicAlpha: 1
 --- !u!114 &109827902
 MonoBehaviour:
@@ -2635,6 +2635,7 @@ RectTransform:
   m_Children:
   - {fileID: 790875827}
   - {fileID: 1119939117}
+  - {fileID: 2007704809}
   - {fileID: 558515905}
   - {fileID: 583792750}
   m_Father: {fileID: 1731812212}
@@ -3023,7 +3024,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 445891674}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3139,7 +3140,7 @@ RectTransform:
   - {fileID: 1998544722}
   - {fileID: 283426347}
   m_Father: {fileID: 445891674}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -5308,7 +5309,7 @@ MonoBehaviour:
   restartData:
   - restart: 0
     item: 0
-    image: {fileID: 21300000, guid: 77df49b2ecb7d3042917f2956d6337fd, type: 3}
+    image: {fileID: 21300000, guid: b82d4743f4562d449b48941ec7f498a7, type: 3}
     text: The only way to the cave where the troll is supposed to be is this one,
       but there is a brken bridge, if only it were fixed...
   - restart: 0
@@ -6461,7 +6462,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1303036509
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9439,7 +9440,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1826120099
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10552,6 +10553,82 @@ RectTransform:
   m_AnchoredPosition: {x: 30, y: 0}
   m_SizeDelta: {x: -556.6998, y: -316}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &2007704806
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2007704809}
+  - component: {fileID: 2007704808}
+  - component: {fileID: 2007704807}
+  m_Layer: 5
+  m_Name: Builder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &2007704807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2007704806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 6f4b8d596fd1c02419df0cc5c260e2af, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &2007704808
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2007704806}
+  m_CullTransparentMesh: 1
+--- !u!224 &2007704809
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2007704806}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 445891674}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 457, y: -63.146}
+  m_SizeDelta: {x: 185.072, y: 126.292}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2019550082
 GameObject:
   m_ObjectHideFlags: 0
@@ -11124,11 +11201,16 @@ PrefabInstance:
     - target: {fileID: 4568131461233019620, guid: 154bd8ce4e4314a489544343edd91c4f,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4568131461233019620, guid: 154bd8ce4e4314a489544343edd91c4f,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4568131461233019620, guid: 154bd8ce4e4314a489544343edd91c4f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4568131461233019620, guid: 154bd8ce4e4314a489544343edd91c4f,
@@ -11153,7 +11235,17 @@ PrefabInstance:
       objectReference: {fileID: 558515898}
     - target: {fileID: 4568131461233019620, guid: 154bd8ce4e4314a489544343edd91c4f,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Target
+      value: 
+      objectReference: {fileID: 2007704806}
+    - target: {fileID: 4568131461233019620, guid: 154bd8ce4e4314a489544343edd91c4f,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4568131461233019620, guid: 154bd8ce4e4314a489544343edd91c4f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4568131461233019620, guid: 154bd8ce4e4314a489544343edd91c4f,
@@ -11168,7 +11260,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4568131461233019620, guid: 154bd8ce4e4314a489544343edd91c4f,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 4568131461233019620, guid: 154bd8ce4e4314a489544343edd91c4f,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4568131461233019620, guid: 154bd8ce4e4314a489544343edd91c4f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_TargetAssemblyTypeName
       value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4568131461233019620, guid: 154bd8ce4e4314a489544343edd91c4f,
@@ -11183,7 +11285,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4568131461233019620, guid: 154bd8ce4e4314a489544343edd91c4f,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4568131461233019620, guid: 154bd8ce4e4314a489544343edd91c4f,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4568131461233019620, guid: 154bd8ce4e4314a489544343edd91c4f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4568131461233019621, guid: 154bd8ce4e4314a489544343edd91c4f,
