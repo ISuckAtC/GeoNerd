@@ -48,8 +48,8 @@ public class CharacterController : MonoBehaviour
     private float currentUseDelay;
     #endregion
 
-     
-    
+    public float stepHeight;
+
     #region Directional Character Controller
     [Space(100)]
     private Vector2 dirDirection;
@@ -68,6 +68,8 @@ public class CharacterController : MonoBehaviour
 
     public bool useDirectionalMovement;
 
+    private bool stopped;
+
     void Start()
     {
         if (OVERWORLD)
@@ -80,10 +82,12 @@ public class CharacterController : MonoBehaviour
             engineInstance = GameManager.FMODPlayStatic(engine, transform.position, Vector3.zero, engineVolume, true, false);
             currentUseDelay = useDelay;
             Debug.Log("Setting position to: " + GameManager.GameData.overWorldPosition);
-            transform.position = GameManager.GameData.overWorldPosition;
-            
-            //transform.position = new Vector3(80.4f, 86.46f, 294f);
-            
+
+            if (GameManager.GameData.overWorldPosition != null)
+                transform.position = GameManager.GameData.overWorldPosition;
+            else
+                transform.position = new Vector3(931.8f, 41.1f, 502.3f);
+
             InvokeRepeating("SavePosition", 15f, 5f);
         }
     }
@@ -279,6 +283,20 @@ public class CharacterController : MonoBehaviour
         }
     }
 
+    private void CheckHeight()
+    {
+        RaycastHit hitInfo;
+        Ray ray = new Ray(new Vector3(transform.position.x + transform.forward.x, transform.position.y + 30f, transform.position.z + transform.forward.z), Vector3.down);
+        if (Physics.Raycast(ray, out hitInfo, 60f, 1 << 3))
+        {
+            if (Mathf.Abs(hitInfo.point.y - transform.position.y) < stepHeight)
+            {
+                stopped = false;
+                transform.position = new Vector3(transform.position.x, hitInfo.point.y, transform.position.z);
+            }
+        }
+    }
+
     public void Unstuck()
     {
         transform.position = new Vector3(444.799988f, 13.2399998f, 758.5f);
@@ -296,7 +314,7 @@ public class CharacterController : MonoBehaviour
             CurrentLandmark.GetComponent<Landmark>().Use();
         }
     }
-    
+
     private void DirectionalMove()
     {
         if (moving)
@@ -308,20 +326,31 @@ public class CharacterController : MonoBehaviour
             currSpeed -= dirAccSpeed * 2f * Time.deltaTime;
         }
         currSpeed = Mathf.Clamp(currSpeed, 0f, dirMaxSpeed);
-        
+
         direction = Vector2.Lerp(direction, desiredDirection, dirRotSpeed * Time.deltaTime);
 
         if (Mathf.Abs(direction.x) > 0.2f || Mathf.Abs(direction.y) > 0.2f)
             direction.Normalize();
 
-        transform.position += (new Vector3(direction.x, 0f, direction.y) * currSpeed * Time.deltaTime);
-        
-        
+        if (!stopped)
+            transform.position += (new Vector3(direction.x, 0f, direction.y) * currSpeed * Time.deltaTime);
+        else
+        {
+            CheckHeight();
+
+            return;
+        }
+
         RaycastHit hitInfo;
         Ray ray = new Ray(new Vector3(transform.position.x, transform.position.y + 30f, transform.position.z), Vector3.down);
         if (Physics.Raycast(ray, out hitInfo, 60f, 1 << 3))
         {
-            transform.position = new Vector3(transform.position.x, hitInfo.point.y, transform.position.z);
+            if (Mathf.Abs(hitInfo.point.y - transform.position.y) < stepHeight)
+            {
+                transform.position = new Vector3(transform.position.x, hitInfo.point.y, transform.position.z);
+            }
+            else
+                stopped = true;
 
             groundNormal = hitInfo.normal;
         }
@@ -329,10 +358,9 @@ public class CharacterController : MonoBehaviour
         {
             UnityEngine.Debug.LogWarning("Character Controller can't find ground.");
         }
-        
-        
-        LerpToNormal();
 
+
+        LerpToNormal();
     }
 
     void Move(float speed)
