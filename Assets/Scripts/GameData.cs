@@ -189,72 +189,73 @@ public class GameData
     {
         try
         {
-        Console.WriteLine("Attempting to load user with id=" + playerId);
+            Console.WriteLine("Attempting to load user with id=" + playerId);
 
-        Flags = new Dictionary<Flag, bool>();
-        Flag[] flagArray = Enum.GetValues(typeof(Flag)) as Flag[];
+            Flags = new Dictionary<Flag, bool>();
+            Flag[] flagArray = Enum.GetValues(typeof(Flag)) as Flag[];
 
-        for (int i = 0; i < flagArray.Length; ++i)
-        {
-            Flags.Add(flagArray[i], false);
-        }
-
-        byte[] serialized = await Network.LoadUser(playerId);
-
-        File.WriteAllBytes("./TESTLOAD", serialized);
-
-        Debug.Log("User loaded");
-        Debug.Log("Data length is " + serialized.Length);
-
-        byte[] nameBytes = serialized.Skip(1).Take((int)serialized[0]).ToArray();
-
-        playerName = new string(nameBytes.Select(x => (char)x).ToArray());
-
-        money = BitConverter.ToInt64(serialized, nameBytes.Length + 1);
-
-        overWorldPosition.x = BitConverter.ToSingle(serialized, nameBytes.Length + 1 + 8);
-        overWorldPosition.y = BitConverter.ToSingle(serialized, nameBytes.Length + 1 + 12);
-        overWorldPosition.z = BitConverter.ToSingle(serialized, nameBytes.Length + 1 + 16);
-
-        Debug.Log("Loaded overworld position at: " + overWorldPosition);
-
-        int flagCount = BitConverter.ToInt32(serialized, nameBytes.Length + 1 + 20);
-
-        int flagMaps = flagCount / 8;
-        int rest = flagCount % 8;
-
-        Debug.Log("Loading data from file\nFlagCount: " + flagCount + "\nFlagMaps: " + flagMaps + "\nRest: " + rest);
-
-        for (int i = 0; i < flagMaps; ++i)
-        {
-            byte flagByte = serialized[nameBytes.Length + 1 + 24 + i];
-            for (int k = 0; k < 8; ++k)
+            for (int i = 0; i < flagArray.Length; ++i)
             {
-                bool flag = (flagByte & (1 << k)) == (1 << k);
-                Flags[(Flag)((i * 8) + k)] = flag;
+                Flags.Add(flagArray[i], false);
+            }
+
+            byte[] serialized = await Network.LoadUser(playerId);
+
+            File.WriteAllBytes("./TESTLOAD", serialized);
+
+            Debug.Log("User loaded");
+            Debug.Log("Data length is " + serialized.Length);
+
+            byte[] nameBytes = serialized.Skip(1).Take((int)serialized[0]).ToArray();
+
+            playerName = new string(nameBytes.Select(x => (char)x).ToArray());
+
+            money = BitConverter.ToInt64(serialized, nameBytes.Length + 1);
+
+            overWorldPosition.x = BitConverter.ToSingle(serialized, nameBytes.Length + 1 + 8);
+            overWorldPosition.y = BitConverter.ToSingle(serialized, nameBytes.Length + 1 + 12);
+            overWorldPosition.z = BitConverter.ToSingle(serialized, nameBytes.Length + 1 + 16);
+
+            Debug.Log("Loaded overworld position at: " + overWorldPosition);
+
+            int flagCount = BitConverter.ToInt32(serialized, nameBytes.Length + 1 + 20);
+
+            int flagMaps = flagCount / 8;
+            int rest = flagCount % 8;
+
+            Debug.Log("Loading data from file\nFlagCount: " + flagCount + "\nFlagMaps: " + flagMaps + "\nRest: " + rest);
+
+            for (int i = 0; i < flagMaps; ++i)
+            {
+                byte flagByte = serialized[nameBytes.Length + 1 + 24 + i];
+                for (int k = 0; k < 8; ++k)
+                {
+                    bool flag = (flagByte & (1 << k)) == (1 << k);
+                    Flags[(Flag)((i * 8) + k)] = flag;
+                }
+            }
+            if (rest > 0)
+            {
+                byte flagByte = serialized[nameBytes.Length + 1 + 24 + flagMaps];
+                Debug.Log(flagByte);
+                for (int k = 0; k < rest; ++k)
+                {
+
+                    bool flag = (flagByte & (1 << k)) == (1 << k);
+                    Flags[(Flag)((flagMaps * 8) + k)] = flag;
+                }
+            }
+
+            Console.WriteLine("Loaded online data");
+            Console.WriteLine("Name is " + playerName);
+            Console.WriteLine("Money is " + money);
+
+            foreach (KeyValuePair<Flag, bool> flag in Flags)
+            {
+                Debug.Log("Flag \"" + flag.Key.ToString() + "\" is " + (flag.Value ? "TRUE" : "FALSE"));
             }
         }
-        if (rest > 0)
-        {
-            byte flagByte = serialized[nameBytes.Length + 1 + 24 + flagMaps];
-            Debug.Log(flagByte);
-            for (int k = 0; k < rest; ++k)
-            {
-
-                bool flag = (flagByte & (1 << k)) == (1 << k);
-                Flags[(Flag)((flagMaps * 8) + k)] = flag;
-            }
-        }
-
-        Console.WriteLine("Loaded online data");
-        Console.WriteLine("Name is " + playerName);
-        Console.WriteLine("Money is " + money);
-
-        foreach (KeyValuePair<Flag, bool> flag in Flags)
-        {
-            Debug.Log("Flag \"" + flag.Key.ToString() + "\" is " + (flag.Value ? "TRUE" : "FALSE"));
-        }
-        } catch (Exception e) { Debug.Log(e.Message + "\n\n" + e.StackTrace); }
+        catch (Exception e) { Debug.Log(e.Message + "\n\n" + e.StackTrace); }
     }
 
     public async Task OnlineCreateNewUser(string name)
@@ -277,7 +278,7 @@ public class GameData
         playerId = ret.userId;
         playerName = name;
         money = 0;
-        overWorldPosition = new Vector3(80f, 97f, 294f);
+        overWorldPosition = new Vector3(934f, 41f, 367f);
 
         Flags[Flag.OSLO_ARROW] = true;
         Flags[Flag.FOREST_ARROW] = true;
@@ -295,7 +296,7 @@ public class GameData
     // If not, creates blank save data with the given username.
     public async Task LoadData(string name = "TESTPLAYER")
     {
-        if (GameManager.Instance.online) 
+        if (GameManager.Instance.online)
         {
             await OnlineLoadData();
             return;
@@ -315,17 +316,19 @@ public class GameData
             {
                 byte[] serialized = System.IO.File.ReadAllBytes("./" + name);
 
-                playerName = name;
+                byte[] nameBytes = serialized.Skip(1).Take((int)serialized[0]).ToArray();
 
-                money = BitConverter.ToInt64(serialized, 0);
+                playerName = new string(nameBytes.Select(x => (char)x).ToArray());
 
-                overWorldPosition.x = BitConverter.ToSingle(serialized, 8);
-                overWorldPosition.y = BitConverter.ToSingle(serialized, 12);
-                overWorldPosition.z = BitConverter.ToSingle(serialized, 16);
+                money = BitConverter.ToInt64(serialized, nameBytes.Length + 1);
+
+                overWorldPosition.x = BitConverter.ToSingle(serialized, nameBytes.Length + 1 + 8);
+                overWorldPosition.y = BitConverter.ToSingle(serialized, nameBytes.Length + 1 + 12);
+                overWorldPosition.z = BitConverter.ToSingle(serialized, nameBytes.Length + 1 + 16);
 
                 Debug.Log("Loaded overworld position at: " + overWorldPosition);
 
-                int flagCount = BitConverter.ToInt32(serialized, 20);
+                int flagCount = BitConverter.ToInt32(serialized, nameBytes.Length + 1 + 20);
 
                 int flagMaps = flagCount / 8;
                 int rest = flagCount % 8;
@@ -334,7 +337,7 @@ public class GameData
 
                 for (int i = 0; i < flagMaps; ++i)
                 {
-                    byte flagByte = serialized[24 + i];
+                    byte flagByte = serialized[nameBytes.Length + 1 + 24 + i];
                     for (int k = 0; k < 8; ++k)
                     {
                         bool flag = (flagByte & (1 << k)) == (1 << k);
@@ -343,7 +346,7 @@ public class GameData
                 }
                 if (rest > 0)
                 {
-                    byte flagByte = serialized[24 + flagMaps];
+                    byte flagByte = serialized[nameBytes.Length + 1 + 24 + flagMaps];
                     Debug.Log(flagByte);
                     for (int k = 0; k < rest; ++k)
                     {
@@ -352,13 +355,22 @@ public class GameData
                         Flags[(Flag)((flagMaps * 8) + k)] = flag;
                     }
                 }
+
+                Console.WriteLine("Loaded local data");
+                Console.WriteLine("Name is " + playerName);
+                Console.WriteLine("Money is " + money);
+
+                foreach (KeyValuePair<Flag, bool> flag in Flags)
+                {
+                    Debug.Log("Flag \"" + flag.Key.ToString() + "\" is " + (flag.Value ? "TRUE" : "FALSE"));
+                }
             }
             else
             {
                 Debug.Log("No name found in local files, assuming new player");
                 playerName = name;
                 money = 0;
-                overWorldPosition = new Vector3(80f, 97f, 294f);
+                overWorldPosition = new Vector3(934f, 41f, 367f);
 
                 Flags[Flag.OSLO_ARROW] = true;
                 Flags[Flag.FOREST_ARROW] = true;
