@@ -91,8 +91,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentOrder: -1
   overhead: {fileID: 0}
-  flatAngle: 70
-  pickupAngle: 0
+  pickupAngle: {x: 0, y: 0, z: 0}
   frontSprite: {fileID: 0}
   backSprite: {fileID: 0}
   floorLevel: -450
