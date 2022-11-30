@@ -65,11 +65,12 @@ public class DropableItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         Item item = pointerData.pointerDrag.gameObject.GetComponent<Item>();
         if (item.itemType == unlockableWith)
         {
-            if (isLoadingScene)
+            //if (isLoadingScene)
 
                 if (item.itemType == Item.ItemType.Camera)
                 {
-
+                    Debug.Log("se llama 1");
+                    StartCoroutine(UniversalMenu.GetInstance().ActivateCamera());
                 }
                 else if (item.itemType == Item.ItemType.TNT)
                 {

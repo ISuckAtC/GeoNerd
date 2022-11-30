@@ -809,17 +809,17 @@ MonoBehaviour:
   restartData:
   - restart: 0
     item: 0
-    image: {fileID: 0}
+    image: {fileID: 21300000, guid: 6f4b8d596fd1c02419df0cc5c260e2af, type: 3}
     text: "It seems like a friendly person, let\u2019s try to talk to him (click
       on him)"
   - restart: 0
     item: 2
-    image: {fileID: 0}
+    image: {fileID: 21300000, guid: 6f4b8d596fd1c02419df0cc5c260e2af, type: 3}
     text: "It seems like a friendly person, let\u2019s try to talk to him before
       blowing him up"
   - restart: 0
     item: 1
-    image: {fileID: 0}
+    image: {fileID: 21300000, guid: 6f4b8d596fd1c02419df0cc5c260e2af, type: 3}
     text: You took a photo of the builder when he wasn't paying attention
   tntExplosionSound:
     Guid:
@@ -2946,7 +2946,7 @@ MonoBehaviour:
     text: Now that the bridge is fixed you can go through
   - restart: 0
     item: 2
-    image: {fileID: 21300000, guid: b7011c58937814c4790daac304200ac7, type: 3}
+    image: {fileID: 21300000, guid: 6f4b8d596fd1c02419df0cc5c260e2af, type: 3}
     text: You have just get it fixed, the builder would be sad if you destroy it
   - restart: 0
     item: 1
@@ -9440,7 +9440,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1826120099
 RectTransform:
   m_ObjectHideFlags: 0

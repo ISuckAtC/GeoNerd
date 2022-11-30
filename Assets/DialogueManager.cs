@@ -73,7 +73,6 @@ public class DialogueManager : MonoBehaviour
 
         for(int x = 0; x < myChars.Length; x++)
         {
-            Debug.Log("adding letter");
             displayingText.text = displayingText.text + myChars[x];
             yield return null;
         }
