@@ -11,6 +11,9 @@ public class CityCar : MonoBehaviour
     private int index;
     private Vector3 startPosition;
     private bool stopped = true;
+
+    public GameObject retry;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +30,9 @@ public class CityCar : MonoBehaviour
     {
         if (col.gameObject.tag == "Hitbox")
         {
+            col.gameObject.GetComponent<ThirdPersonController>().moveSpdMax = 0.001f;
+            Invoke(nameof(RetryButton), 1f);
+            
             SkinnedMeshRenderer[] r = col.transform.GetComponentsInChildren<SkinnedMeshRenderer>();
             foreach (SkinnedMeshRenderer rend in r) 
             {
@@ -37,6 +43,11 @@ public class CityCar : MonoBehaviour
             col.rigidbody.AddForce((transform.forward + new Vector3(0, 1f, 0)).normalized * hitForce, ForceMode.Force);
             col.rigidbody.AddTorque(new Vector3(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f)) * 4382f, ForceMode.VelocityChange);
         }
+    }
+
+    private void RetryButton()
+    {
+        retry.SetActive(true);
     }
 
     // Update is called once per frame

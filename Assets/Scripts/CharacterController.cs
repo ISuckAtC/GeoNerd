@@ -83,6 +83,7 @@ public class CharacterController : MonoBehaviour
             currentUseDelay = useDelay;
             Debug.Log("Setting position to: " + GameManager.GameData.overWorldPosition);
 
+            
             if (GameManager.GameData.overWorldPosition != null)
                 transform.position = GameManager.GameData.overWorldPosition;
             else
