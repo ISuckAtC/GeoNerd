@@ -15,6 +15,8 @@ public class LoadScene : MonoBehaviour
 
     public GameObject fakeCase, realCase;
 
+    public bool quickload;
+    
     void Start()
     {
         if (GameManager.Flags[Flag.OSLO_FORESTDONE] && GameManager.Flags[Flag.OSLO_OPERAPUZZLECOMPLETE] && GameManager.Flags[Flag.OSLO_LIBRARYDONE])
@@ -40,6 +42,9 @@ public class LoadScene : MonoBehaviour
 
     public void Load()
     {
-        GameManager.Instance.LoadScene(sceneName);
+        if (!quickload)
+            GameManager.Instance.LoadScene(sceneName);
+        else
+            GameManager.Instance.QuickLoadScene(sceneName);
     }
 }
