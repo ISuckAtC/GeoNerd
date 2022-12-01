@@ -60,6 +60,7 @@ public class NewLibraryPuzzle : MonoBehaviour
             // you win, do stuff
             Debug.Log("WIN");
             MoveNext();
+           
         }
     }
 
@@ -68,6 +69,7 @@ public class NewLibraryPuzzle : MonoBehaviour
         part1.SetActive(false);
         universal.SetActive(false);
         part2.SetActive(true);
+        Debug.Log("Part2");
         yield return null;
 
         part2.SetActive(false);
@@ -77,6 +79,8 @@ public class NewLibraryPuzzle : MonoBehaviour
             speechBubble2.transform.parent.GetComponent<UnityEngine.UI.Button>().enabled = true;
         });
         GameManager.GameData.Flags[Flag.OSLO_LIBRARYDONE] = true;
+        Debug.Log("Part3");
+
         yield return null;
 
         GameManager.GameData.Flags[Flag.OSLO_LIBRARYDONE] = true;
