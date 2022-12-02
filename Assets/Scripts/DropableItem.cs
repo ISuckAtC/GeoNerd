@@ -10,6 +10,7 @@ public class DropableItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     // Start is called before the first frame update
     public GameObject[] objectsToEnable;
     public GameObject[] objectsToDisable;
+    [SerializeField] bool destroyable = true;
     public Item.ItemType unlockableWith = Item.ItemType.NONE;
 
     [SerializeField] bool animated = false;
@@ -100,7 +101,7 @@ public class DropableItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
             {
 
 
-                if (!animated)
+                if (!animated && destroyable)
                     Destroy(gameObject);
                 else
                 {
