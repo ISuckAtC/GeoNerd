@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1296431907}
     m_Modifications:
+    - target: {fileID: 1551699955, guid: b032febb8626fa242b4ee4d8ee17df6e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1710123860, guid: b032febb8626fa242b4ee4d8ee17df6e, type: 3}
       propertyPath: canvas
       value: 
@@ -162,7 +166,7 @@ PrefabInstance:
     - target: {fileID: 6278648681979820134, guid: b032febb8626fa242b4ee4d8ee17df6e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6278648681979820134, guid: b032febb8626fa242b4ee4d8ee17df6e,
         type: 3}
@@ -887,6 +891,7 @@ MonoBehaviour:
   - {fileID: 968451264}
   objectsToDisable:
   - {fileID: 571395620}
+  destroyable: 0
   unlockableWith: 1
   animated: 0
   restartData: []
@@ -1331,7 +1336,7 @@ PrefabInstance:
     - target: {fileID: 4534694164869879817, guid: 4376ffe6fa645e840a92d3bbaca1e9b3,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4534694164869879817, guid: 4376ffe6fa645e840a92d3bbaca1e9b3,
         type: 3}
