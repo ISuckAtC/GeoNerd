@@ -128,6 +128,7 @@ public class LoadingScreen : MonoBehaviour
 
         SceneManager.sceneLoaded -= SceneLoaded;
         newSceneLoaded = true;
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
     }
 
     // Uses recursive search to find every object of name in a scene, GameObject.Find is weird when it comes to interscene logic so this ensures you grab the needed gameobjects
