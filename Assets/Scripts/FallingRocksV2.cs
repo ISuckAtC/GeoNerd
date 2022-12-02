@@ -75,7 +75,7 @@ public class FallingRocksV2 : MonoBehaviour
             Vector3 pos = new Vector3(xRandPos, yPos, 0);
             GameObject rock = Instantiate(rockObstaclePrefab);
             rock.transform.position = pos;
-            Debug.Log("SpawnedRock");
+            //Debug.Log("SpawnedRock");
 
             yield return new WaitForSeconds(Random.Range(5f, 12f));
         }

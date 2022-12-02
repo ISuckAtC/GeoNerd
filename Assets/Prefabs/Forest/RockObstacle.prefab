@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 847026923564509826}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.08, y: 0.08, z: 0.08}
+  m_LocalScale: {x: 0.145312, y: 0.145312, z: 0.145312}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2039678508542053675}
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 56b605203e69628418ec3eb716d792dc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f86cdf7d847e4db4f9e25ff75905cd20, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -131,8 +131,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.2395229, y: 1.1796427, z: 1}
+  m_Center: {x: 0.019960403, y: -0.009980202, z: 0}
 --- !u!54 &2039678508542053679
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -162,6 +162,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isObstacle: 1
+  rockHitSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!95 &6745960865033963811
 Animator:
   serializedVersion: 4
