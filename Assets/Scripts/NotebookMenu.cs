@@ -11,6 +11,7 @@ public class NotebookMenu : MonoBehaviour
 
     [Header("Panels")]
     [SerializeField] GameObject settingsPanel;
+    [SerializeField] GameObject missionsPanel;
 
     private GameObject currentRightPanel = null;
 
@@ -62,8 +63,15 @@ public class NotebookMenu : MonoBehaviour
                 currentRightPanel = settingsPanel;
                 if (currentRightPanel) currentRightPanel.SetActive(true);
                 break;
+
+            case "MissionsPanel":
+                if (currentRightPanel) currentRightPanel.SetActive(false);
+                currentRightPanel = missionsPanel;
+                if (currentRightPanel) currentRightPanel.SetActive(true);
+                break;
+
             default:
-                Debug.Log("name of the panle incorrect");
+                Debug.Log("name of the panel incorrect");
                 if (currentRightPanel) currentRightPanel.SetActive(false);
                 currentRightPanel = null;
                 break;
@@ -92,7 +100,7 @@ public class NotebookMenu : MonoBehaviour
                 break;
 
             default:
-                Debug.Log("name of the panle incorrect");
+                Debug.Log("name of the panel incorrect");
                 break;
 
 

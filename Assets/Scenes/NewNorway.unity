@@ -1627,6 +1627,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 7375208216027241137}
   offset: {x: -25, y: 30, z: 7}
+  player: {fileID: 7375208216027241134}
   targetOffice: 0
   officeTransform: {fileID: 471623379}
 --- !u!114 &84467015
@@ -19406,6 +19407,12 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 8}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &885920456 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1225105281754846396, guid: b032febb8626fa242b4ee4d8ee17df6e,
+    type: 3}
+  m_PrefabInstance: {fileID: 6278648681115865704}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &903164283 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6652901325203419049, guid: 43dfba61c23058b4490e769e6c910d74,
@@ -20662,6 +20669,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 7375208216027241137}
   offset: {x: -20, y: 30, z: 0}
+  player: {fileID: 0}
   targetOffice: 0
   officeTransform: {fileID: 471623379}
 --- !u!114 &946396833
@@ -59815,6 +59823,11 @@ PrefabInstance:
       propertyPath: startingPosition
       value: 
       objectReference: {fileID: 1164156997}
+    - target: {fileID: 551866732503008683, guid: b032febb8626fa242b4ee4d8ee17df6e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4305851774849426973, guid: b032febb8626fa242b4ee4d8ee17df6e,
         type: 3}
       propertyPath: m_Enabled
@@ -59840,10 +59853,30 @@ PrefabInstance:
       propertyPath: slideMax
       value: 300
       objectReference: {fileID: 0}
+    - target: {fileID: 6278648681055614367, guid: b032febb8626fa242b4ee4d8ee17df6e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 84467014}
+    - target: {fileID: 6278648681055614367, guid: b032febb8626fa242b4ee4d8ee17df6e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleOffice
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278648681055614367, guid: b032febb8626fa242b4ee4d8ee17df6e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: CameraFollow, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 6278648681245851135, guid: b032febb8626fa242b4ee4d8ee17df6e,
         type: 3}
       propertyPath: slideMax
       value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278648681791985375, guid: b032febb8626fa242b4ee4d8ee17df6e,
+        type: 3}
+      propertyPath: m_text
+      value: VAN OFFICE
       objectReference: {fileID: 0}
     - target: {fileID: 6278648681834521783, guid: b032febb8626fa242b4ee4d8ee17df6e,
         type: 3}
@@ -61158,7 +61191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 84467011}
-  file: {fileID: 1877763992}
+  file: {fileID: 885920456}
 --- !u!23 &7375208216478018264
 MeshRenderer:
   m_ObjectHideFlags: 0

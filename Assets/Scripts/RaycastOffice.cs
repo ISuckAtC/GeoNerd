@@ -26,12 +26,12 @@ public class RaycastOffice : MonoBehaviour
             {
                 Debug.Log(hit.collider.name);
             
-                if (hit.collider.CompareTag("Office"))
-                {
-                    if(!file.activeSelf)
-                        cf.ToggleOffice();
-                }
-                else if (hit.collider.CompareTag("CaseFile"))
+                //if (hit.collider.CompareTag("Office"))
+                //{
+                //    if(!file.activeSelf)
+                //        cf.ToggleOffice();
+                //}
+                if (hit.collider.CompareTag("CaseFile"))
                 {
                     file.gameObject.SetActive(true);
                 }
