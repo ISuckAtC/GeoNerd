@@ -67,7 +67,7 @@ public class NewLibraryPuzzle : MonoBehaviour
     public IEnumerable LibrarySequence()
     {
         part1.SetActive(false);
-        universal.SetActive(false);
+        universal.SetActive(true);
         part2.SetActive(true);
         Debug.Log("Part2");
         yield return null;
