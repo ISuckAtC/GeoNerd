@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 using System;
+using TMPro;
 using Unity.Mathematics;
 
 public class OsloFollow : MonoBehaviour
@@ -16,10 +16,17 @@ public class OsloFollow : MonoBehaviour
     public bool testing;
 
     private Ray ray;
-    
+
+    public float hitRange;
+
+    public GameObject enterObject;
+    private TextMeshPro enterText;
+
     private void Start()
     {
         initialRotation = transform.rotation;
+
+        enterText = enterObject.GetComponent<TextMeshPro>();
     }
 
     void Update()
@@ -28,21 +35,62 @@ public class OsloFollow : MonoBehaviour
 
         transform.position = target.position + offset;
 
+        RaycastHit hit;
+        ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out hit, hitRange))
+        {
+            enterObject.transform.position = hit.point;
+            
+            if (!hit.transform.CompareTag("Hitbox"))
+            {
+                switch (hit.collider.tag)
+                {
+                    case "Opera":
+                        {
+                            enterText.text = "Enter Opera";
+
+                            break;
+                        }
+                    case "Library":
+                        {
+                            enterText.text = "Enter Library";
+
+                            break;
+                        }
+                    case "Castle":
+                        {
+                            enterText.text = "Enter Castle";
+
+                            break;
+                        }
+                    default:
+                        {
+                            enterText.text = "";
+                            break;
+                        }
+                }
+            }
+            else
+            {
+                enterText.text = "";
+            }
+            
+        }
 
         if (Input.GetKeyDown(KeyCode.Mouse0) || testing)
         {
-            RaycastHit hit;
-
-            ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-
             if (Physics.Raycast(ray, out hit, Mathf.Infinity))
             {
-                GameObject hitObject = hit.transform.gameObject;
-            
-                if (!testing)
-                    if (!hit.transform.CompareTag("Hitbox"))
-                        hitObject.GetComponent<LoadScene>().Load();
+                if (Vector3.Distance(transform.position, hit.point) < hitRange)
+                {
+                    GameObject hitObject = hit.transform.gameObject;
+
+                    if (!testing)
+                        if (!hit.transform.CompareTag("Hitbox"))
+                            hitObject.GetComponent<LoadScene>().Load();
+                }
+
                 /*
                 if (hit.transform.CompareTag("Exit"))
                 {
@@ -66,5 +114,5 @@ public class OsloFollow : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawRay(ray);
     }
-    
-} 
+
+}
