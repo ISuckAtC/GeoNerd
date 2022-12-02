@@ -15,6 +15,7 @@ TagManager:
   - Opera
   - Library
   - Castle
+  - CabinLight
   layers:
   - Default
   - TransparentFX
