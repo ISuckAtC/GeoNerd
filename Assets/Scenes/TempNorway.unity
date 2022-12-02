@@ -33734,7 +33734,7 @@ PrefabInstance:
     - target: {fileID: 1596178266409520671, guid: 28e0d6fdefefe214083ff619d1e9903f,
         type: 3}
       propertyPath: allFacts.Array.data[19]
-      value: Creating a video game is a whole lot of work!
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1938705617124341959, guid: 28e0d6fdefefe214083ff619d1e9903f,
         type: 3}

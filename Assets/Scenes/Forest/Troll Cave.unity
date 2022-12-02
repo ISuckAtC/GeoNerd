@@ -381,7 +381,7 @@ MonoBehaviour:
   hearts: {fileID: 0}
   leavingScene: 
   running: 0
-  sceneToLoad: TrollCaveLeaving
+  sceneToLoad: Leaving Troll Cave
   cameraFlashSound:
     Guid:
       Data1: -197621650
@@ -1085,7 +1085,7 @@ MonoBehaviour:
   hearts: {fileID: 0}
   leavingScene: 
   running: 0
-  sceneToLoad: TrollCaveLeaving
+  sceneToLoad: Leaving Troll Cave
   cameraFlashSound:
     Guid:
       Data1: -197621650

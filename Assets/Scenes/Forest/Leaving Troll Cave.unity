@@ -281,7 +281,7 @@ MonoBehaviour:
   ground: {fileID: 1984488093}
   troll: {fileID: 996828618}
   timeText: {fileID: 0}
-  leavingScene: NewNorway
+  leavingScene: Norway
   leaving: 1
   cm: {fileID: 8987074891353733979}
 --- !u!1 &616815740
@@ -1833,7 +1833,7 @@ PrefabInstance:
     - target: {fileID: 8630741081184213221, guid: 5a935c0b6557b0340bad3ddc1db934e8,
         type: 3}
       propertyPath: leavingScene
-      value: NorwayMap
+      value: Norway
       objectReference: {fileID: 0}
     - target: {fileID: 8630741081184213223, guid: 5a935c0b6557b0340bad3ddc1db934e8,
         type: 3}

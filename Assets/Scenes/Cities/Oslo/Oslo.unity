@@ -6610,7 +6610,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   byKey: 0
   key: 0
-  sceneName: NewLibrary
+  sceneName: Library
   fakeCase: {fileID: 0}
   realCase: {fileID: 0}
   quickload: 0
@@ -6813,7 +6813,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   byKey: 0
   key: 0
-  sceneName: NewOpera
+  sceneName: Opera
   fakeCase: {fileID: 0}
   realCase: {fileID: 0}
   quickload: 0
@@ -7453,7 +7453,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   byKey: 0
   key: 0
-  sceneName: NewNorway
+  sceneName: Norway
   fakeCase: {fileID: 0}
   realCase: {fileID: 0}
   quickload: 0

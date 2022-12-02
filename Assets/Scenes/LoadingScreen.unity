@@ -1857,10 +1857,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: aa2bffa1e417d5641820c1ee1833dd2d, type: 3}
   loadingScreenSceneNames:
   - Office
-  - NorwayMap
+  - Norway
   - Oslo
-  - NewOpera
-  - NewLibrary
+  - Opera
+  - Library
   - nothing
   - Forest
   background: {fileID: 73046540}

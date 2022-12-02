@@ -208,6 +208,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectsToEnable: []
   objectsToDisable: []
+  destroyable: 1
   unlockableWith: 0
   animated: 0
   restartData:
@@ -804,6 +805,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectsToEnable: []
   objectsToDisable: []
+  destroyable: 1
   unlockableWith: 3
   animated: 0
   restartData:
@@ -1775,6 +1777,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectsToEnable: []
   objectsToDisable: []
+  destroyable: 1
   unlockableWith: 0
   animated: 0
   restartData:
@@ -2937,6 +2940,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectsToEnable: []
   objectsToDisable: []
+  destroyable: 1
   unlockableWith: 0
   animated: 0
   restartData:
@@ -3694,6 +3698,7 @@ MonoBehaviour:
   objectsToEnable:
   - {fileID: 652174237}
   objectsToDisable: []
+  destroyable: 1
   unlockableWith: 1
   animated: 1
   restartData:
@@ -3955,6 +3960,7 @@ MonoBehaviour:
   objectsToEnable:
   - {fileID: 684234036}
   objectsToDisable: []
+  destroyable: 1
   unlockableWith: 1
   animated: 1
   restartData:
@@ -5304,6 +5310,7 @@ MonoBehaviour:
   objectsToEnable:
   - {fileID: 1697666196}
   objectsToDisable: []
+  destroyable: 1
   unlockableWith: 0
   animated: 0
   restartData:
@@ -5734,6 +5741,7 @@ MonoBehaviour:
   - {fileID: 342503158}
   - {fileID: 2133126646}
   objectsToDisable: []
+  destroyable: 1
   unlockableWith: 2
   animated: 0
   restartData:
@@ -6145,7 +6153,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: NewNorway
+          m_StringArgument: Norway
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1225376578
@@ -8416,7 +8424,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: TrollCaveEntering
+          m_StringArgument: Entering Troll Cave
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1649589994
@@ -10177,6 +10185,7 @@ MonoBehaviour:
   - {fileID: 421849234}
   objectsToDisable:
   - {fileID: 1996376835}
+  destroyable: 1
   unlockableWith: 2
   animated: 0
   restartData:

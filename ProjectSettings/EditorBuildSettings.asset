@@ -6,10 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Scenes/Not in Use/NewNorway_RuneBackup.unity
+    path: Assets/Scenes/Not in Use/OLDNewNorway_RuneBackup.unity
     guid: cbc3ff1cbededcd4691579a8e0ff6204
   - enabled: 1
-    path: Assets/Scenes/NewNorway.unity
+    path: Assets/Scenes/TempNorway.unity
     guid: 8e5af835c5d72e64fb972c0dccc53858
   - enabled: 1
     path: Assets/Scenes/Cities/Oslo/Oslo.unity
@@ -18,13 +18,13 @@ EditorBuildSettings:
     path: Assets/Scenes/Forest/Forest.unity
     guid: edb12e3223e19b74ea180f95c716fc85
   - enabled: 1
-    path: Assets/Scenes/Forest/TrollSleep.unity
+    path: Assets/Scenes/Forest/Troll Cave.unity
     guid: 6075109ed17e3bf459e9b2ae2cd85917
   - enabled: 1
-    path: Assets/Scenes/Forest/TrollCaveLeaving.unity
+    path: Assets/Scenes/Forest/Leaving Troll Cave.unity
     guid: 79e95c7f49737b14eb568b4d04df8770
   - enabled: 1
-    path: Assets/Scenes/Forest/TrollCaveEntering.unity
+    path: Assets/Scenes/Forest/Entering Troll Cave.unity
     guid: 83d8623b2bc5d0946a25919920f3d875
   - enabled: 1
     path: Assets/Scenes/LoadingScreen.unity
@@ -33,9 +33,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Cities/Oslo/Castle.unity
     guid: a4359b2c419b97f4fbf2c87b277b8735
   - enabled: 1
-    path: Assets/Scenes/Cities/Oslo/NewOpera.unity
+    path: Assets/Scenes/Cities/Oslo/Opera.unity
     guid: eb52598230e6a7342b7e42ec2c37bf58
   - enabled: 1
-    path: Assets/Scenes/Cities/Oslo/NewLibrary.unity
+    path: Assets/Scenes/Cities/Oslo/Library.unity
     guid: cdc779f82c5b8904aa837c3cc2ac1b99
   m_configObjects: {}

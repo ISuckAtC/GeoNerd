@@ -695,7 +695,7 @@ MonoBehaviour:
   ground: {fileID: 1984488093}
   troll: {fileID: 0}
   timeText: {fileID: 0}
-  leavingScene: TrollSleep
+  leavingScene: Troll Cave
   leaving: 0
   cm: {fileID: 808504141}
 --- !u!224 &647660934 stripped
@@ -1961,7 +1961,7 @@ PrefabInstance:
     - target: {fileID: 8630741081184213221, guid: 5a935c0b6557b0340bad3ddc1db934e8,
         type: 3}
       propertyPath: leavingScene
-      value: TrollSleep
+      value: Troll Cave
       objectReference: {fileID: 0}
     - target: {fileID: 8630741081184213225, guid: 5a935c0b6557b0340bad3ddc1db934e8,
         type: 3}
