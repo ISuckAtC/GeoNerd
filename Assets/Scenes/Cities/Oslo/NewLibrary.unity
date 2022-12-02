@@ -3090,7 +3090,7 @@ PrefabInstance:
     - target: {fileID: 9147797638957686046, guid: 357d141fb4f7eea4abcb3cfac3b243e1,
         type: 3}
       propertyPath: text
-      value: Great job, have this magnifying glass as a reward
+      value: Great job, have this magnifying glass as a reward!.
       objectReference: {fileID: 0}
     - target: {fileID: 9147797638957686047, guid: 357d141fb4f7eea4abcb3cfac3b243e1,
         type: 3}
