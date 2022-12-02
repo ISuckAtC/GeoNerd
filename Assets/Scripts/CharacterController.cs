@@ -360,7 +360,6 @@ public class CharacterController : MonoBehaviour
             UnityEngine.Debug.LogWarning("Character Controller can't find ground.");
         }
 
-
         LerpToNormal();
     }
 

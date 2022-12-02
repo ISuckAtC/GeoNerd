@@ -19,6 +19,8 @@ public class QuestionSchmoose : MonoBehaviour
 
     public bool ready = true;
 
+    public FaceObjectByVector face;
+    
     void Start()
     {
         //speechBubble = GetComponent<SpeechBubble>();
@@ -125,10 +127,10 @@ public class QuestionSchmoose : MonoBehaviour
         
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Hit");
-        
         if (other.CompareTag("Player"))
         {
+            face.lookAt = true;
+            
             if (!GameManager.Flags[Flag.SCHMOOSE_ASKED])
             {
                 GameManager.Flags[Flag.SCHMOOSE_ASKED] = true;
@@ -143,6 +145,14 @@ public class QuestionSchmoose : MonoBehaviour
                 ChanceToSetActive(0.2f);
             }
 
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            face.lookAt = false;
         }
     }
 }

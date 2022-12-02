@@ -52,7 +52,11 @@ public class CameraFollow : MonoBehaviour
         
         cc = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController>();
 
-        //transform.LookAt(target.position);
+        moveCamera = true;
+
+        targetOffice = !targetOffice;
+            
+        cc.ToggleOffice(targetOffice);
     }
 
     void Update()
@@ -108,12 +112,24 @@ public class CameraFollow : MonoBehaviour
         return targetOffice;
     }
 
+    public void LeaveOffice()
+    {
+        moveCamera = true;
+
+        targetOffice = !targetOffice;
+            
+        cc.ToggleOffice(targetOffice);
+    }
 
     public void ToggleOffice()
     {
         moveCamera = true;
         targetOffice = !targetOffice;
-        player.GetComponent<CharacterController>().enabled = !targetOffice;
+        
+        if (!targetOffice)
+            player.GetComponent<CharacterController>().enabled = true;
+        else
+            player.GetComponent<CharacterController>().enabled = false;
 
         /*
         if (targetOffice)
@@ -129,4 +145,5 @@ public class CameraFollow : MonoBehaviour
         }
         */
     }
+    
 }
