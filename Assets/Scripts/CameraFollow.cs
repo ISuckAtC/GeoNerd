@@ -36,6 +36,7 @@ public class CameraFollow : MonoBehaviour
     public Transform target;
     private Quaternion initialRotation;
     public Vector3 offset;
+    public GameObject player;
 
     public bool targetOffice = false;
     public Transform officeTransform;
@@ -112,6 +113,8 @@ public class CameraFollow : MonoBehaviour
     {
         moveCamera = true;
         targetOffice = !targetOffice;
+        player.GetComponent<CharacterController>().enabled = !targetOffice;
+
         /*
         if (targetOffice)
         {
