@@ -10,6 +10,8 @@ public class FaceObjectByVector : MonoBehaviour
     public bool rightDirection;
     public bool upDirection;
 
+    public bool negativeForward;
+    
     public bool lookAt;
     
     void Start()
@@ -32,6 +34,10 @@ public class FaceObjectByVector : MonoBehaviour
             else if (upDirection)
             {
                 transform.LookAt(objToFace.transform.position, Vector3.right);
+            }
+            else if (negativeForward)
+            {
+                transform.LookAt(objToFace.transform.position, -Vector3.up);
             }
         }
     }
