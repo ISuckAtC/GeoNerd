@@ -50,4 +50,10 @@ public class UniversalMenu : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         flash.SetActive(false);
     }
-}
+
+
+    public void RestartScene()
+    {
+        GameManager.Instance.QuickRestartScene();
+    }
+}   
