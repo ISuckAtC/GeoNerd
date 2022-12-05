@@ -7,7 +7,15 @@ using System.Linq;
 public class GameManager : MonoBehaviour
 {
     private static GameManager _instance;
-    public static GameData GameData;
+    private static GameData gameData;
+    public static GameData GameData
+    {
+        get 
+        {
+            EnsureInstance();
+            return gameData;
+        }
+    }
     public static Dictionary<Flag, bool> Flags
     {
         get
@@ -39,7 +47,7 @@ public class GameManager : MonoBehaviour
                 GameObject go = new GameObject("GameManager");
                 DontDestroyOnLoad(go);
                 _instance = go.AddComponent<GameManager>();
-                GameData = new GameData();
+                gameData = new GameData();
 
                 if (!System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable()) 
                 {
