@@ -55,5 +55,10 @@ public class UniversalMenu : MonoBehaviour
     public void RestartScene()
     {
         GameManager.Instance.QuickRestartScene();
+    }  
+    
+    public void LoadScene(string name)
+    {
+        GameManager.Instance.QuickLoadScene(name);
     }
 }   
