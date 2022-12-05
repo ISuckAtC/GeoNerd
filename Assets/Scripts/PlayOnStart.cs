@@ -26,6 +26,7 @@ public class PlayOnStart : MonoBehaviour
         if (--persist <= 0)
         {
             instance.release();
+            SceneManager.sceneLoaded -= Persist;
             Destroy(gameObject);
         }
     }

@@ -38,7 +38,7 @@ public class PopUpInWorld : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.GetComponent<CharacterController>())
+        if (cc = other.GetComponent<CharacterController>())
         {
             if (popUpObject) popUpObject.SetActive(false);
             if (exclamationMark) exclamationMark.SetActive(exclamationMarkActive);
