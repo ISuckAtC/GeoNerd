@@ -95,3 +95,11 @@ MonoBehaviour:
   frontSprite: {fileID: 0}
   backSprite: {fileID: 0}
   floorLevel: -450
+  glow: {fileID: 0}
+  bookPlaced:
+    Guid:
+      Data1: 997242513
+      Data2: 1099134550
+      Data3: -576801866
+      Data4: -1624290108
+    Path: event:/Cursor_Highligt

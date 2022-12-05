@@ -284,6 +284,100 @@ MonoBehaviour:
   leavingScene: Norway
   leaving: 1
   cm: {fileID: 8987074891353733979}
+--- !u!1001 &609832032
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4534694164869879817, guid: 4376ffe6fa645e840a92d3bbaca1e9b3,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4534694164869879817, guid: 4376ffe6fa645e840a92d3bbaca1e9b3,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4534694164869879817, guid: 4376ffe6fa645e840a92d3bbaca1e9b3,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4534694164869879817, guid: 4376ffe6fa645e840a92d3bbaca1e9b3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4534694164869879817, guid: 4376ffe6fa645e840a92d3bbaca1e9b3,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4534694164869879817, guid: 4376ffe6fa645e840a92d3bbaca1e9b3,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4534694164869879817, guid: 4376ffe6fa645e840a92d3bbaca1e9b3,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4534694164869879817, guid: 4376ffe6fa645e840a92d3bbaca1e9b3,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4534694164869879817, guid: 4376ffe6fa645e840a92d3bbaca1e9b3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4534694164869879817, guid: 4376ffe6fa645e840a92d3bbaca1e9b3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4534694164869879817, guid: 4376ffe6fa645e840a92d3bbaca1e9b3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6719528212442776613, guid: 4376ffe6fa645e840a92d3bbaca1e9b3,
+        type: 3}
+      propertyPath: reference.Path
+      value: event:/TrollCave_AMBX
+      objectReference: {fileID: 0}
+    - target: {fileID: 6719528212442776613, guid: 4376ffe6fa645e840a92d3bbaca1e9b3,
+        type: 3}
+      propertyPath: reference.Guid.Data1
+      value: -2077812633
+      objectReference: {fileID: 0}
+    - target: {fileID: 6719528212442776613, guid: 4376ffe6fa645e840a92d3bbaca1e9b3,
+        type: 3}
+      propertyPath: reference.Guid.Data2
+      value: 1157509874
+      objectReference: {fileID: 0}
+    - target: {fileID: 6719528212442776613, guid: 4376ffe6fa645e840a92d3bbaca1e9b3,
+        type: 3}
+      propertyPath: reference.Guid.Data3
+      value: -1225706877
+      objectReference: {fileID: 0}
+    - target: {fileID: 6719528212442776613, guid: 4376ffe6fa645e840a92d3bbaca1e9b3,
+        type: 3}
+      propertyPath: reference.Guid.Data4
+      value: 627793842
+      objectReference: {fileID: 0}
+    - target: {fileID: 8250402449691344805, guid: 4376ffe6fa645e840a92d3bbaca1e9b3,
+        type: 3}
+      propertyPath: m_Name
+      value: FMOD Start Player (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4376ffe6fa645e840a92d3bbaca1e9b3, type: 3}
 --- !u!1 &616815740
 GameObject:
   m_ObjectHideFlags: 0

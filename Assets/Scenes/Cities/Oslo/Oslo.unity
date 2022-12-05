@@ -3051,11 +3051,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cityAmbience:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1983519381
+      Data2: 1179262934
+      Data3: -1775325817
+      Data4: 591384074
+    Path: event:/CityAMBX_Oslo
   LibraryMarker: {fileID: 0}
   OperaMarker: {fileID: 0}
   CastleMarker: {fileID: 0}

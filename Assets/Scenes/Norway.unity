@@ -1548,6 +1548,7 @@ GameObject:
   - component: {fileID: 84467015}
   - component: {fileID: 84467017}
   - component: {fileID: 84467018}
+  - component: {fileID: 84467019}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1727,6 +1728,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attenuationObject: {fileID: 0}
+--- !u!114 &84467019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 84467008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b1f95da8bb50374cbbe25dcc38f2f27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reference:
+    Guid:
+      Data1: -740255812
+      Data2: 1226176162
+      Data3: 1741141168
+      Data4: -1203706196
+    Path: event:/Forest_AMBX
+  velocity: {x: 0, y: 0, z: 0}
+  volume: 0.63
+  persist: 1
 --- !u!1 &95517025
 GameObject:
   m_ObjectHideFlags: 0
@@ -22822,6 +22845,7 @@ MonoBehaviour:
   forwardDirection: 1
   rightDirection: 0
   upDirection: 0
+  negativeForward: 0
   lookAt: 0
 --- !u!1 &1004077707
 GameObject:
