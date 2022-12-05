@@ -5669,6 +5669,7 @@ GameObject:
   - component: {fileID: 1157540464}
   - component: {fileID: 1157540463}
   - component: {fileID: 1157540462}
+  - component: {fileID: 1157540467}
   m_Layer: 5
   m_Name: Rock
   m_TagString: Untagged
@@ -5812,6 +5813,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1157540460}
   m_CullTransparentMesh: 1
+--- !u!114 &1157540467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1157540460}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: 1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1189359368
 GameObject:
   m_ObjectHideFlags: 0
@@ -6470,7 +6486,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1303036509
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10112,6 +10128,7 @@ GameObject:
   - component: {fileID: 1996376839}
   - component: {fileID: 1996376838}
   - component: {fileID: 1996376837}
+  - component: {fileID: 1996376842}
   m_Layer: 5
   m_Name: Rock
   m_TagString: Untagged
@@ -10256,6 +10273,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1996376835}
   m_CullTransparentMesh: 1
+--- !u!114 &1996376842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1996376835}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: 1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1998544721
 GameObject:
   m_ObjectHideFlags: 0
