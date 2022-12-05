@@ -6,12 +6,14 @@ public class NotebookMenu : MonoBehaviour
 {
 
     [SerializeField] private bool folder = true; //Is case file object active
+    [SerializeField] private string sceneName;
+
 
 
 
     [Header("Panels")]
     [SerializeField] GameObject settingsPanel;
-    [SerializeField] GameObject missionsPanel;
+    [SerializeField] GameObject loadPanel;
 
     private GameObject currentRightPanel = null;
 
@@ -58,15 +60,17 @@ public class NotebookMenu : MonoBehaviour
     {
         switch (panel)
         {
+
+
             case "SettingsPanel":
                 if (currentRightPanel) currentRightPanel.SetActive(false);
                 currentRightPanel = settingsPanel;
                 if (currentRightPanel) currentRightPanel.SetActive(true);
                 break;
 
-            case "MissionsPanel":
+            case "LoadPanel":
                 if (currentRightPanel) currentRightPanel.SetActive(false);
-                currentRightPanel = missionsPanel;
+                currentRightPanel = loadPanel;
                 if (currentRightPanel) currentRightPanel.SetActive(true);
                 break;
 
@@ -113,4 +117,8 @@ public class NotebookMenu : MonoBehaviour
         GameManager.Instance.QuitGame();
     }
 
+    public void LoadScene()
+    {
+        GameManager.Instance.LoadScene("Norway");
+    }
 }
