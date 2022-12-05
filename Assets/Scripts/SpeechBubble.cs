@@ -43,13 +43,14 @@ public class SpeechBubble : MonoBehaviour
         {
             if (currentCD <= 0)
             {
+                textComponent.text = currentText;
                 if (index == textLength)
                 {
                     running = false;
                     if (nextAction != null) nextAction(actionParameter);
                     return;
                 }
-                textComponent.text = currentText;
+                
 
                 if (text[index] == ' ')
                 {
