@@ -37,7 +37,7 @@ public class OsloScript : MonoBehaviour
 
     public void Exit(string sceneToLoad)
     {
-        if (GameManager.Flags[Flag.OSLO_LIBRARYDONE] && GameManager.Flags[Flag.OSLO_OPERAPUZZLECOMPLETE])
+        if (GameManager.Flags[Flag.OSLO_LIBRARYDONE] && GameManager.Flags[Flag.OSLO_OPERAPUZZLECOMPLETE] && GameManager.Flags[Flag.OSLO_CASTLEPUZZLECOMPLETE])
         {
             GameManager.Flags[Flag.OSLO_ARROW] = false;
             if (!GameManager.Flags[Flag.FOREST_ARROW]) GameManager.Flags[Flag.FOREST_ARROW] = true;
