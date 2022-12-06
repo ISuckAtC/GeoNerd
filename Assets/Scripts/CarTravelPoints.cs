@@ -4,16 +4,28 @@ using UnityEngine;
 
 public class CarTravelPoints : MonoBehaviour
 {
-    public bool playerCrossing;
-    // Start is called before the first frame update
-    void Start()
+    public bool crossing;
+    private int index;
+    public void Start()
     {
-        
+        index = transform.GetSiblingIndex();
     }
-
-    // Update is called once per frame
-    void Update()
+    public void OnTriggerEnter(Collider col)
     {
-        
+        if (!crossing) return;
+        if (col.TryGetComponent<ThirdPersonController>(out ThirdPersonController a))
+        {
+            Debug.Log("Cars will stop at index " + index);
+            CityCar.stopAt = index;
+        }
+    }
+    public void OnTriggerExit(Collider col)
+    {
+        if (!crossing) return;
+        if (col.TryGetComponent<ThirdPersonController>(out ThirdPersonController a))
+        {
+            Debug.Log("Cars are no longer stopping");
+            CityCar.stopAt = -1;
+        }
     }
 }
