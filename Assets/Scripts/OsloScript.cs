@@ -40,7 +40,7 @@ public class OsloScript : MonoBehaviour
         if (GameManager.Flags[Flag.OSLO_LIBRARYDONE] && GameManager.Flags[Flag.OSLO_OPERAPUZZLECOMPLETE])
         {
             GameManager.Flags[Flag.OSLO_ARROW] = false;
-            if (!GameManager.Flags[Flag.FOREST_ARROW]) GameManager.Flags[Flag.OFFICE_ARROW] = true;
+            if (!GameManager.Flags[Flag.FOREST_ARROW]) GameManager.Flags[Flag.FOREST_ARROW] = true;
         }
         GameManager.Instance.LoadScene(sceneToLoad);
     }
