@@ -8,11 +8,15 @@ public class CityCar : MonoBehaviour
     public float speed;
     public float startDelay;
     public float hitForce;
+    public float stopDistance;
     private int index;
     private Vector3 startPosition;
-    private bool stopped = true;
+    private bool stopped;
+    private bool delayStop = true;
 
     public GameObject retry;
+    public static int stopAt;
+    private static int amountStopped;
     
     // Start is called before the first frame update
     void Start()
@@ -23,7 +27,7 @@ public class CityCar : MonoBehaviour
 
     void DelayedStart()
     {
-        stopped = false;
+        delayStop = false;
     }
 
     public void OnCollisionEnter(Collision col)
@@ -53,8 +57,30 @@ public class CityCar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (stopped) return;
+        if (delayStop) return;
         float distance = Vector3.Distance(travelPoints[index].transform.position, transform.position);
+        if (index == 3)
+        {
+            //Debug.Log(distance + " < " + (stopDistance + (amountStopped * 3f)) + (stopped ? "true" : "false") + " | " + stopAt + " | " + amountStopped);
+        }
+        if (index == stopAt && distance < stopDistance + (amountStopped * 3.5f))
+        {
+            if (!stopped)
+            {
+                Debug.Log(distance + " | " + amountStopped);
+                stopped = true;
+                amountStopped++;
+            }
+        }
+        else
+        {
+            if (stopped)
+            {
+                stopped = false;
+                amountStopped--;
+            }
+        }
+        if (stopped) return;
         float moveDistance = speed * Time.deltaTime;
         while (moveDistance >= distance)
         {
