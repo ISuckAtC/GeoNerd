@@ -1398,13 +1398,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea5681e64e4c9e5428c18ea052b80a66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  magGlass: {fileID: 6278648681314365732}
-  panasonic: {fileID: 6278648681669313890}
-  tnt: {fileID: 6278648680620399538}
   flash: {fileID: 1551699953}
-  magGlassAquired: {fileID: 21300000, guid: 67eb89c4a71bb9343b51bb6728b496a5, type: 3}
-  panasonicAquired: {fileID: 21300000, guid: 60b2ae257e7db464d8499e405590acc8, type: 3}
-  tntAquired: {fileID: 21300000, guid: 386fa767003180c49989b10cbde6ddb9, type: 3}
+  magGlassAquired: {fileID: 4305851774849426962}
+  panasonicAquired: {fileID: 4305851775658189952}
+  tntAquired: {fileID: 1710123867}
 --- !u!1001 &1042919235
 PrefabInstance:
   m_ObjectHideFlags: 0

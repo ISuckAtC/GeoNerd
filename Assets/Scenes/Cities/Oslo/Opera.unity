@@ -2751,7 +2751,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runOnStart: 0
-  text: Thank you for fixing our lore
+  text: Thank you for fixing our lore, get the camera
   characterCD: 0.05
   spaceCD: 0.2
   periodCD: 0.7
