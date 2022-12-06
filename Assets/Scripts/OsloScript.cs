@@ -9,7 +9,7 @@ public class OsloScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameManager.Flags[Flag.OSLO_CASTLEPUZZLECOMPLETE] = true; // TEMP REMOVE
+        //GameManager.Flags[Flag.OSLO_CASTLEPUZZLECOMPLETE] = true; // TEMP REMOVE
 
         if (GameManager.Flags[Flag.OSLO_CASTLEPUZZLECOMPLETE] && GameManager.Flags[Flag.OSLO_LIBRARYDONE] && GameManager.Flags[Flag.OSLO_OPERAPUZZLECOMPLETE]) 
         {

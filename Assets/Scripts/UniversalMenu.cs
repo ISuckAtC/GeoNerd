@@ -5,14 +5,12 @@ using UnityEngine.UI;
 
 public class UniversalMenu : MonoBehaviour
 {
-    public Image magGlass;
-    public Image panasonic;
-    public Image tnt;
+   
     public GameObject flash;
 
-    public Sprite magGlassAquired;
-    public Sprite panasonicAquired;
-    public Sprite tntAquired;
+    public GameObject magGlassAquired;
+    public GameObject panasonicAquired;
+    public GameObject tntAquired;
 
 
 
@@ -38,9 +36,9 @@ public class UniversalMenu : MonoBehaviour
 
     public void UpdateUI()
     {
-        if (GameManager.GameData.Flags[Flag.OSLO_LIBRARYDONE]) magGlass.sprite = magGlassAquired;
-        if (GameManager.GameData.Flags[Flag.OSLO_OPERAPUZZLECOMPLETE]) panasonic.sprite = panasonicAquired;
-        if (GameManager.GameData.Flags[Flag.OSLO_CASTLEPUZZLECOMPLETE]) tnt.sprite = tntAquired;
+        magGlassAquired.SetActive(GameManager.GameData.Flags[Flag.OSLO_LIBRARYDONE] ? true : false); 
+        panasonicAquired.SetActive(GameManager.GameData.Flags[Flag.OSLO_OPERAPUZZLECOMPLETE] ? true : false);
+        tntAquired.SetActive(GameManager.GameData.Flags[Flag.OSLO_CASTLEPUZZLECOMPLETE] ? true : false);
     }
 
     public IEnumerator ActivateCamera()
