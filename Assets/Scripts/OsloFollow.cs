@@ -42,9 +42,11 @@ public class OsloFollow : MonoBehaviour
         {
             enterObject.transform.position = hit.point;
             
-            if (!hit.transform.CompareTag("Hitbox"))
+            if (hit.transform.CompareTag("Enterable"))
             {
-                switch (hit.collider.tag)
+                string sceneName = hit.transform.GetComponent<LoadScene>().sceneName;
+                
+                switch (sceneName)
                 {
                     case "Opera":
                         {
@@ -87,7 +89,7 @@ public class OsloFollow : MonoBehaviour
                     GameObject hitObject = hit.transform.gameObject;
 
                     if (!testing)
-                        if (!hit.transform.CompareTag("Hitbox"))
+                        if (hit.transform.CompareTag("Enterable"))
                             hitObject.GetComponent<LoadScene>().Load();
                 }
 

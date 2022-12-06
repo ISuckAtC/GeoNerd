@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using Unity.Mathematics;
 using UnityEngine;
@@ -69,6 +70,13 @@ public class CharacterController : MonoBehaviour
     public bool useDirectionalMovement;
 
     private bool stopped;
+
+    [SerializeField]
+    private Transform leftWheel;
+    [SerializeField]
+    private Transform rightWheel;
+    [SerializeField]
+    private Transform wheelLookpoint;
 
     void Start()
     {
@@ -316,6 +324,30 @@ public class CharacterController : MonoBehaviour
         }
     }
 
+    private void TurnWheel()
+    {
+        if (desiredDirection.magnitude == 0f)
+            return;
+        // Always in front of car.
+        /*
+        wheelLookpoint.position = new Vector3(transform.position.x + transform.forward.x * 20f, 
+            transform.position.y + transform.forward.y * 20f, 
+            transform.position.z + transform.forward.z * 20f);
+*/
+
+        leftWheel.LookAt(wheelLookpoint);
+        rightWheel.LookAt(wheelLookpoint);
+        
+        
+        wheelLookpoint.position = new Vector3(
+            transform.position.x + desiredDirection.x * 20f, 
+              transform.position.y, 
+            transform.position.z + desiredDirection.y * 20f);
+        //wheelLookpointParent.localRotation = Quaternion.Euler(0f, desiredDirection.y * 90f, 0f);
+
+
+    }
+
     private void DirectionalMove()
     {
         if (moving)
@@ -333,6 +365,8 @@ public class CharacterController : MonoBehaviour
         if (Mathf.Abs(direction.x) > 0.2f || Mathf.Abs(direction.y) > 0.2f)
             direction.Normalize();
 
+        TurnWheel();
+        
         if (!stopped)
             transform.position += (new Vector3(direction.x, 0f, direction.y) * currSpeed * Time.deltaTime);
         else

@@ -16,6 +16,7 @@ TagManager:
   - Library
   - Castle
   - CabinLight
+  - Enterable
   layers:
   - Default
   - TransparentFX

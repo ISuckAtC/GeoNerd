@@ -81,7 +81,7 @@ public class QuestionSchmoose : MonoBehaviour
 
             if (fact == -1)
             {
-                speechBubble.text = "You have exhausted my knowledge. Now suck off, plebe.";
+                speechBubble.text = "You have exhausted my knowledge.";
             }
             else
             {
