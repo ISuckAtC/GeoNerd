@@ -44,4 +44,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Cities/Oslo/Library.unity
     guid: cdc779f82c5b8904aa837c3cc2ac1b99
+  - enabled: 1
+    path: Assets/Scenes/Forest/Ending Game.unity
+    guid: d2eeaf61ccb99b642bcbd2a56ba7186e
   m_configObjects: {}
