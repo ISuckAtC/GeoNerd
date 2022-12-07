@@ -1146,7 +1146,7 @@ MonoBehaviour:
   target: {fileID: 1932796672}
   offset: {x: -25, y: 30, z: 7}
   player: {fileID: 1932796671}
-  targetOffice: 1
+  targetOffice: 0
   officeTransform: {fileID: 1050464173}
 --- !u!114 &84467015
 MonoBehaviour:
