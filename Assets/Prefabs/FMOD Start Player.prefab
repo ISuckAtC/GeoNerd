@@ -52,5 +52,5 @@ MonoBehaviour:
       Data4: 722546038
     Path: event:/TrollCave_TrollChase
   velocity: {x: 0, y: 0, z: 0}
-  volume: 0
+  volume: 1
   persist: 1

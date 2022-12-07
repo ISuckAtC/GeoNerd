@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028346, g: 0.22571373, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -266,6 +266,105 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 290170018}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &375680655
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4534694164869879817, guid: 4376ffe6fa645e840a92d3bbaca1e9b3,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4534694164869879817, guid: 4376ffe6fa645e840a92d3bbaca1e9b3,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4534694164869879817, guid: 4376ffe6fa645e840a92d3bbaca1e9b3,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4534694164869879817, guid: 4376ffe6fa645e840a92d3bbaca1e9b3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4534694164869879817, guid: 4376ffe6fa645e840a92d3bbaca1e9b3,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4534694164869879817, guid: 4376ffe6fa645e840a92d3bbaca1e9b3,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4534694164869879817, guid: 4376ffe6fa645e840a92d3bbaca1e9b3,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4534694164869879817, guid: 4376ffe6fa645e840a92d3bbaca1e9b3,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4534694164869879817, guid: 4376ffe6fa645e840a92d3bbaca1e9b3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4534694164869879817, guid: 4376ffe6fa645e840a92d3bbaca1e9b3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4534694164869879817, guid: 4376ffe6fa645e840a92d3bbaca1e9b3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6719528212442776613, guid: 4376ffe6fa645e840a92d3bbaca1e9b3,
+        type: 3}
+      propertyPath: volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6719528212442776613, guid: 4376ffe6fa645e840a92d3bbaca1e9b3,
+        type: 3}
+      propertyPath: reference.Path
+      value: event:/TrollCave_AMBX
+      objectReference: {fileID: 0}
+    - target: {fileID: 6719528212442776613, guid: 4376ffe6fa645e840a92d3bbaca1e9b3,
+        type: 3}
+      propertyPath: reference.Guid.Data1
+      value: -2077812633
+      objectReference: {fileID: 0}
+    - target: {fileID: 6719528212442776613, guid: 4376ffe6fa645e840a92d3bbaca1e9b3,
+        type: 3}
+      propertyPath: reference.Guid.Data2
+      value: 1157509874
+      objectReference: {fileID: 0}
+    - target: {fileID: 6719528212442776613, guid: 4376ffe6fa645e840a92d3bbaca1e9b3,
+        type: 3}
+      propertyPath: reference.Guid.Data3
+      value: -1225706877
+      objectReference: {fileID: 0}
+    - target: {fileID: 6719528212442776613, guid: 4376ffe6fa645e840a92d3bbaca1e9b3,
+        type: 3}
+      propertyPath: reference.Guid.Data4
+      value: 627793842
+      objectReference: {fileID: 0}
+    - target: {fileID: 8250402449691344805, guid: 4376ffe6fa645e840a92d3bbaca1e9b3,
+        type: 3}
+      propertyPath: m_Name
+      value: FMOD Start Player (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4376ffe6fa645e840a92d3bbaca1e9b3, type: 3}
 --- !u!1001 &571395619
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1387,6 +1486,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6719528212442776613, guid: 4376ffe6fa645e840a92d3bbaca1e9b3,
+        type: 3}
+      propertyPath: volume
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6719528212442776613, guid: 4376ffe6fa645e840a92d3bbaca1e9b3,
         type: 3}
