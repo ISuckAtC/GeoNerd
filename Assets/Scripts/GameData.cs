@@ -168,9 +168,16 @@ public class GameData
         }
         else
         {
+            try
+            {
             Debug.Log("Writing bytes locally");
-            await File.WriteAllBytesAsync(".saves/" + playerId, GetSerializedData());
+            await File.WriteAllBytesAsync("./saves/" + playerId, GetSerializedData());
             Debug.Log("Written");
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e.Message + "\n\n" + e.StackTrace);
+            }
         }
 
         /*
