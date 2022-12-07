@@ -80,9 +80,10 @@ public class LibraryBook : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         // sort list by distance to puzzle piece, closest slot is first index
         sorted.Sort((a,b) => Vector3.Distance(a.position, transform.position) > Vector3.Distance(b.position, transform.position) ? 1 : -1);
 
-
+        int index = -1;
+        if (sorted.Count > 0) index = overhead.wordSlots.ToList().IndexOf(sorted[0]);
         // if closest slot is close enough to snap, snap it in place and assign the order
-        if (sorted.Count > 0 && Vector3.Distance(sorted[0].position, transform.position) < overhead.snapLeniency)
+        if (index > -1 && Vector3.Distance(sorted[0].position, transform.position) < overhead.snapLeniency && !overhead.words.ToList().Exists(x => x.currentOrder == index))
         {
             glow.transform.position = transform.position + new Vector3(-3f, 0f, 0f);
             glow.gameObject.SetActive(true);
