@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NotebookMenu : MonoBehaviour
 {
@@ -22,6 +23,9 @@ public class NotebookMenu : MonoBehaviour
     [SerializeField] GameObject controlsSettingsPanel;
 
 
+    public ScrollRect loadScroller;
+
+    public GameObject saveFilePrefab;
 
     public bool debugMode = false;
     public GameObject cheatsMenu;
@@ -47,7 +51,7 @@ public class NotebookMenu : MonoBehaviour
         gameObject.SetActive(true);
         Time.timeScale = 0;
     }
-    
+
     public void CloseNotebook()
     {
         gameObject.SetActive(false);
@@ -55,6 +59,25 @@ public class NotebookMenu : MonoBehaviour
 
     }
 
+
+    public void LoadLoadMenu()
+    {
+        if (currentRightPanel) currentRightPanel.SetActive(false);
+        currentRightPanel = loadPanel;
+        if (currentRightPanel) currentRightPanel.SetActive(true);
+        string[] saveFiles = System.IO.Directory.GetFiles("./saves/");
+        for (int i = 0; i < saveFiles.Length; ++i)
+        {
+            GameObject saveFile = Instantiate(saveFilePrefab, Vector3.zero, Quaternion.identity);
+            RectTransform rect = saveFile.transform as RectTransform;
+            rect.parent = loadScroller.viewport.GetChild(0);
+            rect.localPosition = new Vector3(0, -20 * i, 0);
+            rect.localScale = Vector3.one;
+            rect.sizeDelta = new Vector2(0, 20);
+        }
+
+        loadScroller.Rebuild(CanvasUpdate.Layout);
+    }
 
     public void ChangeRightPanel(string panel)
     {
@@ -69,9 +92,7 @@ public class NotebookMenu : MonoBehaviour
                 break;
 
             case "LoadPanel":
-                if (currentRightPanel) currentRightPanel.SetActive(false);
-                currentRightPanel = loadPanel;
-                if (currentRightPanel) currentRightPanel.SetActive(true);
+                LoadLoadMenu();
                 break;
 
             default:
