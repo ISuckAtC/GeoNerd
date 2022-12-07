@@ -127,10 +127,12 @@ public class CharacterController : MonoBehaviour
     {
         if (!inOffice)
         {
+            /*
             if (Input.GetKeyDown(KeyCode.T))
             {
                 GameManager.FMODPlayStatic(toot, transform.position, Vector3.zero);
             }
+            */
             if (!useDirectionalMovement)
             {
                 if (Input.GetKey(KeyCode.W))
@@ -283,11 +285,11 @@ public class CharacterController : MonoBehaviour
                 engineInstance.get3DAttributes(out attributes);
                 attributes.position = FMODUnity.RuntimeUtils.ToFMODVector(transform.position);
                 engineInstance.set3DAttributes(attributes);
-                if (currentSpeed > 0.1f || currentSpeed < -0.1f)
+                if (currSpeed > 0.1f || currSpeed < -0.1f)
                 {
-                    engineInstance.setParameterByName("CarState", 1f);
+                    engineInstance.setParameterByName("CarState", currSpeed / dirMaxSpeed);
                 }
-                else engineInstance.setParameterByName("CarState", 0f);
+                //else engineInstance.setParameterByName("CarState", currSpeed / dirMaxSpeed);
             }
         }
     }
