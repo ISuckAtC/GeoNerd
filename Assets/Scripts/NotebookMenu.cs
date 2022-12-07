@@ -27,12 +27,15 @@ public class NotebookMenu : MonoBehaviour
 
     public GameObject saveFilePrefab;
 
+    public GameObject inputText;
+    public GameObject newGamePanel;
+
     public bool debugMode = false;
     public GameObject cheatsMenu;
 
     void Start()
     {
-
+        bool enableGameManager = GameManager.Instance;
     }
 
     private void OnEnable()
@@ -66,17 +69,28 @@ public class NotebookMenu : MonoBehaviour
         currentRightPanel = loadPanel;
         if (currentRightPanel) currentRightPanel.SetActive(true);
         string[] saveFiles = System.IO.Directory.GetFiles("./saves/");
-        for (int i = 0; i < saveFiles.Length; ++i)
+        int saveCount = saveFiles.Length;
+        for (int i = 0; i < saveCount; ++i)
         {
-            GameObject saveFile = Instantiate(saveFilePrefab, Vector3.zero, Quaternion.identity);
+            GameObject saveFile = Instantiate(saveFilePrefab, saveFilePrefab.transform.position, saveFilePrefab.transform.rotation);
             RectTransform rect = saveFile.transform as RectTransform;
-            rect.parent = loadScroller.viewport.GetChild(0);
-            rect.localPosition = new Vector3(0, -20 * i, 0);
+            rect.SetParent(loadScroller.viewport.GetChild(0));
+            rect.offsetMin = new Vector2(0, -20 - (20 * i));
+            rect.offsetMax = new Vector2(0, -20 * i);
             rect.localScale = Vector3.one;
-            rect.sizeDelta = new Vector2(0, 20);
+
+            Button b = saveFile.GetComponent<Button>();
+            string name = saveFiles[i];
+            b.onClick.AddListener(() => LoadPlayer(name));
+
+            TMPro.TextMeshProUGUI text = saveFile.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>();
+
+            (string, System.DateTime) info = GameManager.GameData.LoadSaveInfo(name);
+            text.text = info.Item1 + "\n" + info.Item2;
         }
 
-        loadScroller.Rebuild(CanvasUpdate.Layout);
+        loadScroller.content.sizeDelta = new Vector2(94, 20 * saveCount);
+        loadScroller.content.position = new Vector3(0, -(20 * saveCount / 2f), 0);
     }
 
     public void ChangeRightPanel(string panel)
@@ -103,6 +117,37 @@ public class NotebookMenu : MonoBehaviour
 
 
         }
+    }
+
+    public void LoadPlayer(string name)
+    {
+        Debug.Log("Loading loading loading = " + name);
+        GameManager.GameData.LoadData(name);
+    }
+
+    public void NewGame()
+    {
+        newGamePanel.SetActive(true);
+    }
+
+    public void CloseNewGame()
+    {
+        newGamePanel.SetActive(false);
+    }
+
+    public void StartGame()
+    {
+        string name = inputText.GetComponent<TMPro.TextMeshProUGUI>().text;
+        if (name.Length < 2) return;
+        Debug.Log("Loading");
+        GameManager.GameData.LoadData(name);//.RunSynchronously();
+
+        ActuallyStart();
+    }
+
+    private void ActuallyStart()
+    {
+        GameManager.Instance.LoadScene("Norway");
     }
 
 

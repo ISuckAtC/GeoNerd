@@ -80,9 +80,8 @@ public class GameManager : MonoBehaviour
                 }
                 else
                 {
-                    GameData.LoadData("TESTPLAYER");
+                    //GameData.LoadData(playerId);
                 }
-                Flags = GameData.Flags;
             }
             return _instance;
         }
@@ -90,7 +89,14 @@ public class GameManager : MonoBehaviour
 
     public static void EnsureInstance()
     {
-        bool enabled = GameManager.Instance.enabled;
+        try
+        {
+            bool enabled = GameManager.Instance.enabled;
+        } catch (System.Exception e)
+        {
+            
+        }
+        
     }
 
     public void Start()
