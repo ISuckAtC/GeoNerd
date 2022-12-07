@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class NotebookMenu : MonoBehaviour
 {
@@ -72,7 +73,13 @@ public class NotebookMenu : MonoBehaviour
         if (currentRightPanel) currentRightPanel.SetActive(false);
         currentRightPanel = loadPanel;
         if (currentRightPanel) currentRightPanel.SetActive(true);
+        int childCount = loadScroller.viewport.GetChild(0).childCount;
+        for (int i = 0; i < childCount; ++i)
+        {
+            Destroy(loadScroller.viewport.GetChild(0).GetChild(i).gameObject);
+        }
         string[] saveFiles = System.IO.Directory.GetFiles("./saves/");
+        saveFiles = saveFiles.OrderBy(x => GameManager.GameData.LoadSaveInfo(x).Item2).Reverse().ToArray();
         int saveCount = saveFiles.Length;
         for (int i = 0; i < saveCount; ++i)
         {
@@ -85,7 +92,7 @@ public class NotebookMenu : MonoBehaviour
 
             Button b = saveFile.GetComponent<Button>();
             string name = saveFiles[i];
-            b.onClick.AddListener(() => LoadPlayer(name));
+            b.onClick.AddListener(() => LoadPlayer(name.Substring(name.LastIndexOf('/') + 1)));
 
             TMPro.TextMeshProUGUI text = saveFile.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>();
 
@@ -127,6 +134,7 @@ public class NotebookMenu : MonoBehaviour
     {
         Debug.Log("Loading loading loading = " + name);
         GameManager.GameData.LoadData(name);
+        ActuallyStart();
     }
 
     public void NewGame()

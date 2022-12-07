@@ -346,9 +346,9 @@ public class GameData
                 Flags.Add(flagArray[i], false);
             }
 
-            if (System.IO.File.Exists("./" + name))
+            if (System.IO.File.Exists("./saves/" + name))
             {
-                byte[] serialized = System.IO.File.ReadAllBytes("./" + name);
+                byte[] serialized = System.IO.File.ReadAllBytes("./saves/" + name);
 
                 playerId = name;
 
@@ -361,7 +361,7 @@ public class GameData
                 offset += 1 + nameBytes.Length;
 
 
-
+                offset += 8;
                 money = BitConverter.ToInt64(serialized, offset);
                 offset += 8;
 
