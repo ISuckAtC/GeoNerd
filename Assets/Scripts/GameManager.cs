@@ -127,7 +127,7 @@ public class GameManager : MonoBehaviour
             GameManager.GameData.SaveData();
         }
         // testing
-        //Flags[Flag.TESTFLAG] = true;
+        Flags[Flag.TESTFLAG] = true;
 
 
         nextScene = sceneName;

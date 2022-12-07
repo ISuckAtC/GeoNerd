@@ -281,7 +281,7 @@ MonoBehaviour:
   ground: {fileID: 1984488093}
   troll: {fileID: 996828618}
   timeText: {fileID: 0}
-  leavingScene: Ending Game
+  leavingScene: Norway
   leaving: 1
   cm: {fileID: 8987074891353733979}
 --- !u!1001 &609832032
