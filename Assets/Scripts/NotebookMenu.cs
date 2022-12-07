@@ -36,6 +36,10 @@ public class NotebookMenu : MonoBehaviour
     void Start()
     {
         bool enableGameManager = GameManager.Instance;
+        if (!System.IO.Directory.Exists("./saves"))
+        {
+            System.IO.Directory.CreateDirectory("./saves");
+        }
     }
 
     private void OnEnable()
