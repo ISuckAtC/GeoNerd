@@ -25,6 +25,7 @@ public class PlayOnStart : MonoBehaviour
     {
         if (--persist <= 0)
         {
+            instance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             instance.release();
             SceneManager.sceneLoaded -= Persist;
             Destroy(gameObject);
