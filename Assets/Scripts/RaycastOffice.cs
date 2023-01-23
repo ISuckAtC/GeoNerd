@@ -24,11 +24,6 @@ public class RaycastOffice : MonoBehaviour
             
             if (Physics.Raycast(ray, out hit, 9999f, 1<<9))
             {
-                //if (hit.collider.CompareTag("Office"))
-                //{
-                //    if(!file.activeSelf)
-                //        cf.ToggleOffice();
-                //}
                 if (hit.collider.CompareTag("Exit"))
                 {
                     cf.LeaveOffice();

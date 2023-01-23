@@ -92,21 +92,6 @@ public class OsloFollow : MonoBehaviour
                         if (hit.transform.CompareTag("Enterable"))
                             hitObject.GetComponent<LoadScene>().Load();
                 }
-
-                /*
-                if (hit.transform.CompareTag("Exit"))
-                {
-                    
-                }
-                if (hit.transform.CompareTag("Opera"))
-                {
-                    
-                }
-                if (hit.transform.CompareTag("Library"))
-                {
-                    
-                }
-                */
             }
         }
     }
